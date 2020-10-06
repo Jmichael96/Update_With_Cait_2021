@@ -2,34 +2,36 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPost } from '../../store/actions/post';
+import { useParams } from 'react-router-dom';
 
 // styles
 import './postContentPage.css';
 
-const PostContentPage = ({ match, post, fetchPost }) => {
+// components
+import isEmpty from '../../utils/isEmpty';
+
+const PostContentPage = ({ post: { post, loading }, fetchPost }) => {
+    // fetching param through react-router-dom
+    let { id } = useParams();
     useEffect(() => {
-        const id = match.params.id;
-        if (!post) {
+        if (isEmpty(post)) {
+            // fetching post if post does not exist
             fetchPost(id);
         }
-    }, []);
+    }, [id]);
+    return (
+        <h1>POST CONTENT</h1>
+    )
 };
 
 PostContentPage.propTypes = {
     fetchPost: PropTypes.func.isRequired,
-    post: PropTypes.any,
-    match: PropTypes.any,
+    post: PropTypes.object.isRequired,
 };
 
-const mapDispatchToProps = ({ posts }, ownProps) => (dispatch) => {
-    return {
-        post: posts[ownProps.match.params.id],
-        fetchPost: (id) => { dispatch(fetchPost(id)) }
-    }
-}
 const mapStateToProps = (state) => ({
     auth: state.auth,
-    postData: state.post
+    post: state.post
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostContentPage);
+export default connect(mapStateToProps, { fetchPost })(PostContentPage);

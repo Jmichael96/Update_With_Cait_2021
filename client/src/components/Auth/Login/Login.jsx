@@ -60,13 +60,14 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
             setModal('error', 'error', 'Please make sure to fill out each form', 'Okay', () => { });
             return;
         }
-        let formData = {
-            email,
-            password
-        };
+
         // submitted form to true for spinner
         setIsSubmitted(true);
         try {
+            let formData = {
+                email,
+                password
+            };
             // login action
             await login(formData);
         } catch (err) {
@@ -79,35 +80,37 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
     return (
         <article id="loginStyles_formWrap">
             <form onSubmit={(e) => onSubmitHandler(e)} id="loginStyles_form">
-                <input
-                    type="email"
-                    id="loginEmail"
-                    className="loginStyles_input"
-                    name="email"
-                    value={email}
-                    placeholder="E-mail"
-                    onChange={(e) => onChange(e)}
-                />
-                <div id="loginStyles_passwordWrap">
+                <div id="loginStyles_innerFormWrap">
                     <input
-                        type={!showPassword ? 'password' : 'text'}
-                        id="loginPassword"
+                        type="email"
+                        id="loginEmail"
                         className="loginStyles_input"
-                        value={password}
+                        name="email"
+                        value={email}
+                        placeholder="E-mail"
                         onChange={(e) => onChange(e)}
-                        name="password"
-                        placeholder="password"
                     />
-                    {renderIcons()}
-                </div>
-                <div className="loginStyles_actionWrap">
-                    {!renderSpinner ?
-                        <button type="submit" id="loginStyles_submitBtn" >
-                            SUBMIT
+                    <div id="loginStyles_passwordWrap">
+                        <input
+                            type={!showPassword ? 'password' : 'text'}
+                            id="loginPassword"
+                            className="loginStyles_input"
+                            value={password}
+                            onChange={(e) => onChange(e)}
+                            name="password"
+                            placeholder="password"
+                        />
+                        {renderIcons()}
+                    </div>
+                    <div className="loginStyles_actionWrap">
+                        {!renderSpinner ?
+                            <button type="submit" id="loginStyles_submitBtn" >
+                                SUBMIT
                         </button>
-                        :
-                        <p>Loading...</p>
-                    }
+                            :
+                            <p>Loading...</p>
+                        }
+                    </div>
                 </div>
             </form>
         </article>

@@ -32,24 +32,28 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 lifestylePosts: payload,
+                post: null,
                 loading: false
             };
         case types.FETCH_DEVOTIONAL:
             return {
                 ...state,
                 devotionalPosts: payload,
+                post: null,
                 loading: false
             };
         case types.FETCH_WELLNESS:
             return {
                 ...state,
                 wellnessPosts: payload,
+                post: null,
                 loading: false
             };
         case types.FETCH_GRAPHICS:
             return {
                 ...state,
                 graphicsPosts: payload,
+                post: null,
                 loading: false
             };
         case types.POST_ERROR:
