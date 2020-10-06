@@ -1,0 +1,89 @@
+/* root element for component */
+
+#createPostStyles_root {}
+
+/* page title */
+
+#createPostStyles_pageTitle {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* wrapper for title and category inputs */
+
+#createPostStyles_titleCategoryWrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+/* title input */
+
+#createPostStyles_titleInput {
+    border: 1px solid rgb(98, 98, 98);
+    border-radius: 3px;
+    padding: .3rem .4rem;
+    font-size: 1rem;
+}
+
+/* category input */
+
+#createPostStyles_categoryInput {
+    border: 1px solid rgb(98, 98, 98);
+    border-radius: 3px;
+    padding: .3rem .4rem;
+    font-size: 1rem;
+}
+
+/* summary input */
+
+#createPostStyles_summaryInput {
+    width: 90%;
+    max-width: 25rem;
+    border: 1px solid rgb(98, 98, 98);
+    margin-bottom: 2rem;
+    padding: .3rem
+}
+
+/* cover image input */
+
+#createPostStyles_coverImgInput {
+    width: 25rem;
+    border: 1px solid rgb(98, 98, 98);
+    margin-bottom: 2rem;
+}
+
+#createPostStyles_coverImgInput .ql-container {
+    width: 25rem;
+    height: 100%;
+}
+
+/* image inside cover image input */
+
+#createPostStyles_coverImgInput img {
+    display: block;
+    width: 24rem;
+}
+
+/* content input */
+
+#createPostStyles_contentInput {
+    width: 90%;
+    border: 1px solid rgb(98, 98, 98);
+}
+
+#createPostStyles_contentInput .ql-container {
+    height: 30rem;
+}
+
+#createPostStyles_contentInput img {
+    display: block;
+    width: 14rem;
+}
+
+/* submit button */
+
+#createPostStyles_submitBtn {
+    margin: 1rem 0;
+}

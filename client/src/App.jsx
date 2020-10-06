@@ -19,7 +19,7 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
-    store.dispatch(setAlert('Successfully made a message', 'success'))
+    // store.dispatch(setAlert('Successfully made a message', 'success'))
   }, []);
 
   return (

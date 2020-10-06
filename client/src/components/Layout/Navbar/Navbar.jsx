@@ -50,7 +50,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     );
 
     return (
-        <div class="nav">
+        <div className="nav">
             {/* <div class="navLogoWrapper"> */}
                 <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
             {/* </div> */}

@@ -18,7 +18,7 @@ let PostSchema = new mongoose.Schema({
         type: String
     },
     authorId: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
     authorName: {

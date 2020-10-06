@@ -19,12 +19,12 @@ const Alert = ({ alerts, removeAlert }) => {
                 {
                     alerts.map(alert => (
                         <div key={alert.id} className={`alert alert-${alert.alertType}`}>
-                            <div class={`alertStyles_iconWrap_${alert.alertType}`}>
+                            <div className={`alertStyles_iconWrap_${alert.alertType}`}>
                                 {alert.alertType === 'success' && <AiOutlineCheck className="iconText" />}
                                 {alert.alertType === 'error' && <VscError className="iconText" />}
                                 {/* {alert.alertType === 'warning' && <AiOutlineCheck />} */}
                             </div>
-                            <div class="alertStyles_bodyWrap">
+                            <div className="alertStyles_bodyWrap">
                                 <div className="alertStyles_msgWrap">
                                     <a href="#!" className="alertStyles_alertMsg">
                                         {alert.msg}

@@ -15,3 +15,7 @@ export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGOUT = 'LOGOUT';
 export const NOT_AUTHENTICATED = 'NOT_AUTHENTICATED';
+
+//! POST TYPES
+export const POST_ERROR = 'POST_ERROR';
+export const CREATE_POST = 'CREATE_POST';
