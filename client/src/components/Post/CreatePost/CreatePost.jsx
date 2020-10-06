@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
 // styles
 import './createPost.css';
 
 // components
 import Wrapper from '../../Layout/Wrapper/Wrapper';
+import validate from './validate';
 
-const CreatePost = ({ createPost, loading }) => {
+const CreatePost = ({ createPost, loading, setModal }) => {
+    // initiating dispatch function
+    const dispatch = useDispatch();
+
     // non react-quill form data
     const [formData, setFormData] = useState({
         title: '',
@@ -39,8 +43,9 @@ const CreatePost = ({ createPost, loading }) => {
     }, [loading, isSubmitted]);
 
     // on submit function handler
-    const submitHandler = async (e) => {
+    const submitHandler = useCallback(async (e) => {
         e.preventDefault();
+
         setIsSubmitted(true);
         try {
             let form = {
@@ -50,22 +55,20 @@ const CreatePost = ({ createPost, loading }) => {
                 coverImage,
                 content
             };
-
             await createPost(form);
         } catch (err) {
 
         }
         setIsSubmitted(false);
-    };
+    }, [createPost, title, summary, category, coverImage, content]);
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-
     return (
         <section id="createPostStyles_root">
             <h1 id="createPostStyles_pageTitle">Create Post</h1>
-            <form onSubmit={(e) => submitHandler(e)}>
+            <form>
                 <div id="createPostStyles_titleCategoryWrap">
                     <input
                         id="createPostStyles_titleInput"
@@ -127,7 +130,12 @@ const CreatePost = ({ createPost, loading }) => {
                 <Wrapper>
                     <button type="button">SAVE</button>
                     {!renderSpinner ?
-                        <button type="submit" id="createPostStyles_submitBtn">POST</button>
+                        <button type="submit" onClick={(e) => {
+                            if (!validate(title, category, summary, coverImage, content, dispatch, setModal)) {
+                                return;
+                            };
+                            submitHandler(e);
+                        }} id="createPostStyles_submitBtn">POST</button>
                         :
                         <p>LOADING...</p>
                     }
@@ -139,6 +147,7 @@ const CreatePost = ({ createPost, loading }) => {
 
 CreatePost.propTypes = {
     createPost: PropTypes.func.isRequired,
+    setModal: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
 };
 

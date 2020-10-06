@@ -29,4 +29,23 @@ exports.createPost = (req, res, next) => {
 
 // @route    GET api/posts/fetch_lifestyle
 // @desc     Fetch lifestyle posts
-// @access   Private
+// @access   Public
+exports.fetchLifestyle = (req, res, next) => {
+    Post.find({ category: 'Lifestyle' })
+        .then((posts) => {
+            if (!posts) {
+                return res.status(404).json({
+                    serverMsg: 'No posts found'
+                });
+            }
+            return res.status(200).json({
+                serverMsg: 'Found lifestyle posts',
+                posts: posts
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
+        });
+};
