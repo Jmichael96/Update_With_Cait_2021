@@ -1,0 +1,75 @@
+/* modal styles */
+
+.modal-window {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.575);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.modal-window:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-window>div {
+    width: 90%;
+    max-width: 30rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #f8f8f8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+/* header surrounding title */
+
+#modalHeader {
+    height: 2rem;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .4rem;
+}
+
+/* modal title text */
+
+#modalTitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* modal content wrap around text */
+
+#modalContent {
+    margin-top: 2rem;
+}
+
+/* style of text content */
+
+.modalContentText {
+    font-size: 1rem;
+}
+
+/* modal footer action wrap */
+
+/* #modalFooter {
+    
+} */

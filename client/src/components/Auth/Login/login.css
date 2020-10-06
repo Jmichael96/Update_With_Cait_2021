@@ -1,0 +1,69 @@
+/* form wrapper */
+
+#loginStyles_formWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* form element */
+
+#loginStyles_form {
+    width: 100%;
+    max-width: 22rem;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* input */
+
+.loginStyles_input {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-left: -8px;
+    margin-bottom: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding: .8rem .5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+.loginStyles_input:focus {
+    outline: none;
+}
+
+#loginStyles_passwordWrap {
+    position: relative;
+}
+
+/* style of password icons */
+
+.passwordIcon {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* action wrapper for login buttons */
+
+.loginStyles_actionWrap {
+    display: flex;
+    justify-content: center;
+}
+
+/* submit button for form */
+
+#loginStyles_submitBtn {
+    /* background-color: #1b1e1a; */
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 3px;
+    font-size: 1.4rem;
+    color: black;
+    cursor: pointer;
+}
