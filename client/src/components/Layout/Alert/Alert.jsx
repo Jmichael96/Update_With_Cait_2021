@@ -30,7 +30,7 @@ const Alert = ({ alerts, removeAlert }) => {
                                         {alert.msg}
                                     </a>
                                 </div>
-                                <a onClick={() => { removeAlertHandler(alert.id) }} href="#!" class="alertStyles_closeAlert" data-dismiss="alert" aria-hidden="true">x</a>
+                                <a onClick={() => { removeAlertHandler(alert.id) }} href="#!" className="alertStyles_closeAlert" data-dismiss="alert" aria-hidden="true">x</a>
                             </div>
                         </div>
                     ))

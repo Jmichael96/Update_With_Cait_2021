@@ -7,6 +7,10 @@ const isAuth = require('../middleware/check-auth');
 // @access   Private
 router.post('/create_post', isAuth, PostController.createPost);
 
+// @route    GET api/posts/fetch_post/:id
+// @desc     Fetch a single post
+// @access   Public
+router.get('/fetch_post/:id', PostController.fetchPost);
 
 // @route    GET api/posts/fetch_lifestyle
 // @desc     Fetch lifestyle posts

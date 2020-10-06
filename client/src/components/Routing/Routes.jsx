@@ -9,6 +9,8 @@ import Footer from '../Layout/Footer/footer';
 // pages
 import HomePage from '../../pages/HomePage/HomePage';
 import CreatePostPage from '../../pages/CreatePostPage/CreatePostPage';
+import PostContentPage from '../../pages/PostContentPage/PostContentPage';
+import LifestylePage from '../../pages/LifestylePage/LifestylePage';
 
 // assets
 import Modal from '../Layout/Modal/Modal';
@@ -23,6 +25,8 @@ const Routes = () => {
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/login1996" component={Login} />
+                <Route exact path="/post_content/:id" component={PostContentPage} />
+                <Route exact path="/lifestyle" component={LifestylePage} />
                 <PrivateRoute exact path="/create_post" component={CreatePostPage} />
             </Switch>
             <Footer />

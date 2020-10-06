@@ -27,3 +27,43 @@ export const createPost = ({ ...formData }) => (dispatch) => {
             });
         });
 };
+
+// fetch a single post
+export const fetchPost = (id) => (dispatch) => {
+    axios.get(`/api/posts/fetch_post/${id}`)
+        .then((res) => {
+            dispatch({
+                type: types.FETCH_POST,
+                payload: res.data
+            });
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.POST_ERROR,
+            });
+        });
+};
+
+// fetch lifestyle posts
+export const fetchLifestyle = () => (dispatch) => {
+    axios.get('/api/posts/fetch_lifestyle')
+        .then((res) => {
+            dispatch({
+                type: types.FETCH_LIFESTYLE,
+                payload: res.data.posts
+            });
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.POST_ERROR,
+            });
+        });
+};

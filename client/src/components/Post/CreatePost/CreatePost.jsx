@@ -12,9 +12,6 @@ import Wrapper from '../../Layout/Wrapper/Wrapper';
 import validate from './validate';
 
 const CreatePost = ({ createPost, loading, setModal }) => {
-    // initiating dispatch function
-    const dispatch = useDispatch();
-
     // non react-quill form data
     const [formData, setFormData] = useState({
         title: '',
@@ -33,6 +30,9 @@ const CreatePost = ({ createPost, loading, setModal }) => {
     // content for formData 
     const { title, summary, category } = formData;
 
+    // initiating dispatch function
+    const dispatch = useDispatch();
+
     // checking if store is loading and if user submitted form to render spinner accordingly
     useEffect(() => {
         if (loading && isSubmitted) {
@@ -45,7 +45,9 @@ const CreatePost = ({ createPost, loading, setModal }) => {
     // on submit function handler
     const submitHandler = useCallback(async (e) => {
         e.preventDefault();
-
+        if (!validate(title, category, summary, coverImage, content, setModal)) {
+            return;
+        }
         setIsSubmitted(true);
         try {
             let form = {
@@ -55,6 +57,7 @@ const CreatePost = ({ createPost, loading, setModal }) => {
                 coverImage,
                 content
             };
+
             await createPost(form);
         } catch (err) {
 
@@ -68,7 +71,7 @@ const CreatePost = ({ createPost, loading, setModal }) => {
     return (
         <section id="createPostStyles_root">
             <h1 id="createPostStyles_pageTitle">Create Post</h1>
-            <form>
+            <form onSubmit={(e) => { submitHandler(e) }}>
                 <div id="createPostStyles_titleCategoryWrap">
                     <input
                         id="createPostStyles_titleInput"
@@ -130,12 +133,7 @@ const CreatePost = ({ createPost, loading, setModal }) => {
                 <Wrapper>
                     <button type="button">SAVE</button>
                     {!renderSpinner ?
-                        <button type="submit" onClick={(e) => {
-                            if (!validate(title, category, summary, coverImage, content, dispatch, setModal)) {
-                                return;
-                            };
-                            submitHandler(e);
-                        }} id="createPostStyles_submitBtn">POST</button>
+                        <button type="submit" id="createPostStyles_submitBtn">POST</button>
                         :
                         <p>LOADING...</p>
                     }

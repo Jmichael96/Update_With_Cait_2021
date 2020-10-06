@@ -3,7 +3,7 @@ import * as types from '../actions/types';
 const initialState = {
     posts: [],
     devotionalPosts: [],
-    fitnessPosts: [],
+    wellnessPosts: [],
     graphicsPosts: [],
     lifestylePosts: [],
     reviewPosts: [],
@@ -20,6 +20,36 @@ export default (state = initialState, action) => {
                 ...state,
                 posts: [payload, ...state.posts],
                 post: payload,
+                loading: false
+            };
+        case types.FETCH_POST:
+            return {
+                ...state,
+                post: payload,
+                loading: false
+            };
+        case types.FETCH_LIFESTYLE:
+            return {
+                ...state,
+                lifestylePosts: payload,
+                loading: false
+            };
+        case types.FETCH_DEVOTIONAL:
+            return {
+                ...state,
+                devotionalPosts: payload,
+                loading: false
+            };
+        case types.FETCH_WELLNESS:
+            return {
+                ...state,
+                wellnessPosts: payload,
+                loading: false
+            };
+        case types.FETCH_GRAPHICS:
+            return {
+                ...state,
+                graphicsPosts: payload,
                 loading: false
             };
         case types.POST_ERROR:
