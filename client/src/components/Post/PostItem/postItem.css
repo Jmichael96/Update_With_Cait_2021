@@ -1,0 +1,113 @@
+/* card itself */
+
+.postItemStyles_card {
+    width: 100%;
+    max-width: 30rem;
+    padding: .5rem;
+    margin-top: 3rem;
+}
+
+/* content of post div wrap for greyscale effect */
+
+.postItemStyles_contentWrap {
+    -webkit-filter: grayscale(50%);
+    /* Chrome, Safari, Opera */
+    filter: grayscale(50%);
+    -webkit-transition: filter .3s ease-out, -webkit-filter .3s ease-out;
+    -moz-transition: filter .3s ease-out, -webkit-filter .3s ease-out;
+    -o-transition: filter .3s ease-out, -webkit-filter .3s ease-out;
+    transition: filter .3s ease-out, -webkit-filter .3s ease-out;
+}
+
+.postItemStyles_contentWrap:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+}
+
+/* card image */
+
+.postItemStyles_coverImg img {
+    display: flex;
+    width: 100%;
+    max-width: 30rem;
+    height: 23rem;
+    border-radius: 3px;
+}
+
+/* grey text paragraph wrap with the category and date */
+
+.postItemStyles_greyTextWrap {
+    color: grey;
+    margin: 0;
+}
+
+/* card title */
+
+.postItemStyles_title {
+    color: black;
+    font-size: 2rem;
+}
+
+/* post summary */
+
+.postItemStyles_summary {
+    color: black;
+    font-size: 1rem;
+}
+
+/* post button wrapper section surrounding 'read more' button and comment icon */
+
+.postItemStyles_btnWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* post 'read more' button */
+
+.postItemStyles_readMoreBtn {
+    background-color: #d492af;
+    border: 1px solid #d492af;
+    border-radius: 3px;
+    color: black;
+    -webkit-transition: color .3s ease-out;
+    -moz-transition: color .3s ease-out;
+    -o-transition: color .3s ease-out;
+    transition: color .3s ease-out;
+}
+
+.postItemStyles_readMoreBtn:hover {
+    color: white;
+}
+
+/* comment section wrap */
+
+.postItemStyles_commentWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* comment icon */
+
+.postItemStyles_commentIcon {
+    color: black;
+}
+
+/* post comment length */
+
+.postItemStyles_commentLength {
+    color: black;
+    font-size: 1.2rem;
+    margin: -.5rem 0 0 .3rem;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 958px) {
+    /* card image */
+    .postItemStyles_coverImg img {
+        width: 100%;
+        height: 100%;
+    }
+}

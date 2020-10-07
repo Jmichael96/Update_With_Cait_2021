@@ -67,3 +67,61 @@ export const fetchLifestyle = () => (dispatch) => {
             });
         });
 };
+
+// fetch devotional posts
+export const fetchDevotional = () => (dispatch) => {
+    axios.get('/api/posts/fetch_devotional')
+        .then((res) => {
+            dispatch({
+                type: types.FETCH_DEVOTIONAL,
+                payload: res.data.posts
+            });
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.POST_ERROR,
+            });
+        });
+};
+// fetch wellness posts
+export const fetchWellness = () => (dispatch) => {
+    axios.get('/api/posts/fetch_wellness')
+        .then((res) => {
+            dispatch({
+                type: types.FETCH_WELLNESS,
+                payload: res.data.posts
+            });
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.POST_ERROR,
+            });
+        });
+};
+// fetch graphic posts
+export const fetchGraphics = () => (dispatch) => {
+    axios.get('/api/posts/fetch_graphics')
+        .then((res) => {
+            dispatch({
+                type: types.FETCH_GRAPHICS,
+                payload: res.data.posts
+            });
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.POST_ERROR,
+            });
+        });
+};

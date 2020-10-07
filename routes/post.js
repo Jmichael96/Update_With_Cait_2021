@@ -17,4 +17,19 @@ router.get('/fetch_post/:id', PostController.fetchPost);
 // @access   Public
 router.get('/fetch_lifestyle', PostController.fetchLifestyle);
 
+// @route    GET api/posts/fetch_devotional
+// @desc     Fetch devotional posts
+// @access   Public
+router.get('/fetch_devotional', PostController.fetchDevotional);
+
+// @route    GET api/posts/fetch_wellness
+// @desc     Fetch devotional posts
+// @access   Public
+router.get('/fetch_wellness', PostController.fetchWellness);
+
+// @route    GET api/posts/fetch_graphics
+// @desc     Fetch devotional posts
+// @access   Public
+router.get('/fetch_graphics', PostController.fetchGraphics);
+
 module.exports = router;

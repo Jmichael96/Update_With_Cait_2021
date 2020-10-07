@@ -9,6 +9,7 @@ import './lifestylePage.css';
 // components
 import PostItem from '../../components/Post/PostItem/PostItem';
 import isEmpty from '../../utils/isEmpty';
+import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 
 const LifestylePage = ({ fetchLifestyle, post: { loading, lifestylePosts } }) => {
 
@@ -27,7 +28,9 @@ const LifestylePage = ({ fetchLifestyle, post: { loading, lifestylePosts } }) =>
 
     return (
         <section>
-            {loading ? <h1>LOADING...</h1> : renderPosts()}
+            <Wrapper>
+                {loading ? <h1>LOADING...</h1> : renderPosts()}
+            </Wrapper>
         </section>
     )
 };

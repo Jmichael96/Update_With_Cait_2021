@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 
 // styles
 import './createPost.css';
@@ -29,9 +28,6 @@ const CreatePost = ({ createPost, loading, setModal }) => {
 
     // content for formData 
     const { title, summary, category } = formData;
-
-    // initiating dispatch function
-    const dispatch = useDispatch();
 
     // checking if store is loading and if user submitted form to render spinner accordingly
     useEffect(() => {

@@ -34,7 +34,7 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
         else if (loading && !isSubmitted) {
             setRenderSpinner(false);
         }
-    }, [loading, isSubmitted]);
+    }, [isSubmitted]);
 
     // use effect to watch isAuthenticated and route to home page if its true
     useEffect(() => {
@@ -76,7 +76,6 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
         // setting is submitted to false
         setIsSubmitted(false);
     };
-
     return (
         <article id="loginStyles_formWrap">
             <form onSubmit={(e) => onSubmitHandler(e)} id="loginStyles_form">

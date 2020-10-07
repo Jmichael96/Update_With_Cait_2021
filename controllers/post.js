@@ -69,3 +69,73 @@ exports.fetchLifestyle = (req, res, next) => {
             });
         });
 };
+
+// @route    GET api/posts/fetch_devotional
+// @desc     Fetch devotional posts
+// @access   Public
+exports.fetchDevotional = (req, res, next) => {
+    Post.find({ category: 'Devotional' })
+    .then((posts) => {
+        if (posts.length <= 0) {
+            return res.status(404).json({
+                serverMsg: 'No posts found'
+            });
+        }
+        return res.status(200).json({
+            serverMsg: 'Fetched devotional posts',
+            posts: posts
+        });
+    })
+    .catch((err) => {
+        res.status(500).json({
+            serverMsg: 'Server error'
+        });
+    });
+};
+
+// @route    GET api/posts/fetch_wellness
+// @desc     Fetch devotional posts
+// @access   Public
+exports.fetchWellness = (req, res, next) => {
+    Post.find({ category: 'Wellness' })
+    .then((posts) => {
+        if (posts.length <= 0) {
+            return res.status(404).json({
+                serverMsg: 'No posts found'
+            });
+        }
+        return res.status(200).json({
+            serverMsg: 'Fetched wellness posts',
+            posts: posts
+        });
+    })
+    .catch((err) => {
+        res.status(500).json({
+            serverMsg: 'Server error'
+        });
+    });
+};
+
+// @route    GET api/posts/fetch_graphics
+// @desc     Fetch devotional posts
+// @access   Public
+exports.fetchGraphics = (req, res, next) => {
+    Post.find({ category: 'Graphics' })
+    .then((posts) => {
+        if (posts.length <= 0) {
+            return res.status(404).json({
+                serverMsg: 'No posts found'
+            });
+        }
+        return res.status(200).json({
+            serverMsg: 'Fetched graphic posts',
+            posts: posts
+        });
+    })
+    .catch((err) => {
+        res.status(500).json({
+            serverMsg: 'Server error'
+        });
+    });
+};
+
