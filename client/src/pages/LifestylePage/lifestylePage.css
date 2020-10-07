@@ -1,0 +1,15 @@
+/* button for rendering more posts */
+
+.lifestylePageStyles_loadMoreBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .8rem;
+}
+
+/* icon arrow down */
+
+.lifestylePageStyles_downIcon {
+    margin-left: .3rem;
+    color: black;
+}

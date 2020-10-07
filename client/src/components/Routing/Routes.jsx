@@ -11,6 +11,9 @@ import HomePage from '../../pages/HomePage/HomePage';
 import CreatePostPage from '../../pages/CreatePostPage/CreatePostPage';
 import PostContentPage from '../../pages/PostContentPage/PostContentPage';
 import LifestylePage from '../../pages/LifestylePage/LifestylePage';
+import DevotionalPage from '../../pages/DevotionalPage/DevotionalPage';
+import GraphicsPage from '../../pages/GraphicsPage/GraphicsPage';
+import WellnessPage from '../../pages/WellnessPage/WellnessPage';
 
 // assets
 import Modal from '../Layout/Modal/Modal';
@@ -27,6 +30,9 @@ const Routes = () => {
                 <Route exact path="/login1996" component={Login} />
                 <Route exact path="/post_content/:id" component={PostContentPage} />
                 <Route exact path="/lifestyle" component={LifestylePage} />
+                <Route exact path="/devotional" component={DevotionalPage} />
+                <Route exact path="/graphics" component={GraphicsPage} />
+                <Route exact path="/wellness" component={WellnessPage} />
                 <PrivateRoute exact path="/create_post" component={CreatePostPage} />
             </Switch>
             <Footer />

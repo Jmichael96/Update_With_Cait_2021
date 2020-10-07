@@ -30,10 +30,9 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             <Link to="/create_post" className="nav-link"><span className="navSpan">CREATE</span></Link>
             <Link to="/saved" className="nav-link"><span className="navSpan">SAVED</span></Link>
             <Link to="/lifestyle" className="nav-link"><span className="navSpan">LIFESTYLE</span></Link>
-            <Link to="/devotional_posts" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link>
-            <Link to="/wellness_posts" className="nav-link"><span className="navSpan">WELLNESS</span></Link>
-            <Link to="/review_posts" className="nav-link"><span className="navSpan">REVIEW</span></Link>
-            <Link to="/graphics_posts" className="nav-link"><span className="navSpan">GRAPHICS</span></Link>
+            <Link to="/devotional" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link>
+            <Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link>
+            <Link to="/graphics" className="nav-link"><span className="navSpan">GRAPHICS</span></Link>
             {/* <p>{!loading && !isEmpty(user) && <p>Welcome {user.name}</p>}</p> */}
         </section>
     );
@@ -42,10 +41,9 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         <section className="navLinkWrap">
             <Link to="/" className="nav-link"><span className="navSpan">HOME</span></Link>
             <Link to="/lifestyle" className="nav-link"><span className="navSpan">LIFESTYLE</span></Link>
-            <Link to="/devotional_posts" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link>
-            <Link to="/wellness_posts" className="nav-link"><span className="navSpan">WELLNESS</span></Link>
-            <Link to="/review_posts" className="nav-link"><span className="navSpan">REVIEW</span></Link>
-            <Link to="/graphics_posts" className="nav-link"><span className="navSpan">GRAPHICS</span></Link>
+            <Link to="/devotional" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link>
+            <Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link>
+            <Link to="/graphics" className="nav-link"><span className="navSpan">GRAPHICS</span></Link>
         </section>
     );
 
