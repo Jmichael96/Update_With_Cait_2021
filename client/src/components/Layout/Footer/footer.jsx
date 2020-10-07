@@ -12,10 +12,12 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer>
-        <p>&copy; {new Date().getFullYear()}</p>
-        <Link to="/login1996">login icon</Link>
-      </footer>
+      <main id="footerStyles_root">
+        <footer>
+          <p>&copy; {new Date().getFullYear()}</p>
+          <Link to="/login1996">login icon</Link>
+        </footer>
+      </main>
     )
   }
 }

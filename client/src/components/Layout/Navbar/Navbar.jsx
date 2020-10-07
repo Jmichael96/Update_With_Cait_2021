@@ -23,16 +23,25 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
     const authLinks = (
         <section className="navLinkWrap">
+            <Link to="/" className="nav-link"><span className="navSpan">HOME</span></Link>
+            <div className="navStyles_dropdownWrapper">
+                <ul>
+                    <li><span className="navSpan">POSTS</span>
+                        <ul>
+                            <li><Link to="/lifestyle" className="nav-link"><span className="navSpan">LIFESTYLE</span></Link></li>
+                            <li> <Link to="/devotional" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link></li>
+                            <li><Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link></li>
+                            <li><Link to="/graphics" className="nav-link"><span className="navSpan">GRAPHICS</span></Link></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <Link to="/create_post" className="nav-link"><span className="navSpan">CREATE</span></Link>
+            <Link to="/saved" className="nav-link"><span className="navSpan">SAVED</span></Link>
+
             <a href="#!" className="nav-link" onClick={logout}>
                 <span className="navSpan">LOGOUT</span>
             </a>
-            <Link to="/" className="nav-link"><span className="navSpan">HOME</span></Link>
-            <Link to="/create_post" className="nav-link"><span className="navSpan">CREATE</span></Link>
-            <Link to="/saved" className="nav-link"><span className="navSpan">SAVED</span></Link>
-            <Link to="/lifestyle" className="nav-link"><span className="navSpan">LIFESTYLE</span></Link>
-            <Link to="/devotional" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link>
-            <Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link>
-            <Link to="/graphics" className="nav-link"><span className="navSpan">GRAPHICS</span></Link>
             {/* <p>{!loading && !isEmpty(user) && <p>Welcome {user.name}</p>}</p> */}
         </section>
     );
@@ -50,9 +59,9 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     return (
         <div className="nav">
             {/* <div class="navLogoWrapper"> */}
-                <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
+            <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
             {/* </div> */}
-                {!isAuth ? guestLinks : authLinks}
+            {!isAuth ? guestLinks : authLinks}
         </div>
     )
 };

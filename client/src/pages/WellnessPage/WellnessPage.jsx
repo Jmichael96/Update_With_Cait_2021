@@ -21,7 +21,7 @@ const WellnessPage = ({ fetchWellness, post: { loading, wellnessPosts } }) => {
     // fetch lifestyle posts on load
     useEffect(() => {
         fetchWellness();
-    }, []);
+    }, [fetchWellness]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
     useEffect(() => {

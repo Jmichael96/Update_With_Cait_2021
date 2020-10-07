@@ -21,7 +21,7 @@ const LifestylePage = ({ fetchLifestyle, post: { loading, lifestylePosts } }) =>
     // fetch lifestyle posts on load
     useEffect(() => {
         fetchLifestyle();
-    }, []);
+    }, [fetchLifestyle]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
     useEffect(() => {
