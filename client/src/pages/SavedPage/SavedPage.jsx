@@ -8,6 +8,8 @@ import './savedPage.css';
 
 // components 
 import isEmpty from '../../utils/isEmpty';
+import SavedItem from '../../components/Post/SavedItem/SavedItem';
+import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 
 const SavedPage = ({ fetchSaved, saved: { loading, savedPosts, savedPost } }) => {
     useEffect(() => {
@@ -16,9 +18,23 @@ const SavedPage = ({ fetchSaved, saved: { loading, savedPosts, savedPost } }) =>
             fetchSaved();
         }
     }, [fetchSaved]);
-    
-    return (
-        <h1>saved posts</h1>
+
+    // render the saved items
+    const renderSavedItems = () => {
+        if (!loading && !isEmpty(savedPosts)) {
+            return Object.values(savedPosts).map((post, i) => {
+                return <SavedItem post={post} key={i + 1} />
+            });
+        }
+    };
+
+    return loading ? <h1>LOADING...</h1> : (
+        <article>
+            <h1 id="savedPageStyles_title">SAVED POSTS</h1>
+            <Wrapper>
+                {renderSavedItems()}
+            </Wrapper>
+        </article>
     );
 };
 

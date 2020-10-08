@@ -1,0 +1,56 @@
+/* outer card wrap */
+
+.savedItemStyles_card {
+    height: 8rem;
+    width: 100%;
+    max-width: 20rem;
+    background-color: rgb(160, 160, 160);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgb(163, 163, 163);
+    margin: .5rem;
+}
+
+/* inner card wrap surrounding all the content */
+
+.savedItemStyles_innerWrap {
+    display: block;
+    width: 100%;
+    padding: .5rem;
+}
+
+/* the category wrapper */
+
+.savedItemStyles_categoryWrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* category icon */
+
+.savedItemStyles_categoryIcon {}
+
+/* category text */
+
+.savedItemStyles_category {}
+
+/* title */
+
+.savedItemStyles_title {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+/* date */
+
+.savedItemStyles_date {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
