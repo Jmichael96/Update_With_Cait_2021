@@ -1,11 +1,20 @@
 /* footer root component */
 
 #footerStyles_root {
-    
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    height: 100%;
 }
 
 /* footer element */
 
 footer {
-    background-color: lightblue;
+    /* position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: red; */
+    width: 100%;
+    background: red;
 }

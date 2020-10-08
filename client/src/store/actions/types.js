@@ -24,3 +24,15 @@ export const FETCH_LIFESTYLE = 'FETCH_LIFESTYLE';
 export const FETCH_DEVOTIONAL = 'FETCH_DEVOTIONAL';
 export const FETCH_WELLNESS = 'FETCH_WELLNESS';
 export const FETCH_GRAPHICS = 'FETCH_GRAPHICS';
+
+//! SAVED POST TYPES
+export const SAVE_ERROR = 'SAVE_ERROR';
+export const SAVE_POST = 'SAVE_POST';
+export const FETCH_SAVED = 'FETCH_SAVED';
+export const DELETE_SAVED = 'DELETE_SAVED';
+export const FETCH_SAVED_POST = 'FETCH_SAVED_POST';
+export const RESAVE_POST = 'RESAVE_POST';
+// this one is for removing from the saved reducer
+export const PUBLISH_SAVED_POST_REMOVE = 'PUBLISH_SAVED_POST_REMOVE';
+// this one is for adding to the post reducer
+export const PUBLISH_SAVED_POST_ADD = 'PUBLISH_SAVED_POST_ADD';

@@ -5,7 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import PrivateRoute from './PrivateRoutes';
 import Login from '../Auth/Login/Login';
 import Navbar from '../Layout/Navbar/Navbar';
-import Footer from '../Layout/Footer/footer';
+// import Footer from '../Layout/Footer/footer';
+
 // pages
 import HomePage from '../../pages/HomePage/HomePage';
 import CreatePostPage from '../../pages/CreatePostPage/CreatePostPage';
@@ -35,7 +36,7 @@ const Routes = () => {
                 <Route exact path="/wellness" component={WellnessPage} />
                 <PrivateRoute exact path="/create_post" component={CreatePostPage} />
             </Switch>
-            <Footer />
+            {/* <Footer /> */}
         </main>
     );
 };

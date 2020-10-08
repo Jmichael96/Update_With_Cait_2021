@@ -56,6 +56,13 @@ export default (state = initialState, action) => {
                 post: null,
                 loading: false
             };
+        case types.PUBLISH_SAVED_POST_ADD:
+            return {
+                ...state,
+                posts: [payload, ...state.posts],
+                post: payload,
+                loading: false
+            };
         case types.POST_ERROR:
             return {
                 posts: [],

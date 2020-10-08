@@ -18,7 +18,8 @@ class Footer extends Component {
           <Link to="/login1996">login icon</Link>
         </footer>
       </main>
-    )
-  }
-}
+    );
+  };
+};
+
 export default Footer;

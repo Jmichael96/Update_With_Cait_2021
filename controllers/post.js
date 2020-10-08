@@ -51,7 +51,7 @@ exports.fetchPost = (req, res, next) => {
 // @desc     Fetch lifestyle posts
 // @access   Public
 exports.fetchLifestyle = (req, res, next) => {
-    Post.find({ category: 'Lifestyle' })
+    Post.find({ category: 'Lifestyle' }).sort({ _id: -1 })
         .then((posts) => {
             if (posts.length <= 0) {
                 return res.status(404).json({
@@ -74,7 +74,7 @@ exports.fetchLifestyle = (req, res, next) => {
 // @desc     Fetch devotional posts
 // @access   Public
 exports.fetchDevotional = (req, res, next) => {
-    Post.find({ category: 'Devotional' })
+    Post.find({ category: 'Devotional' }).sort({ _id: -1 })
     .then((posts) => {
         if (posts.length <= 0) {
             return res.status(404).json({
@@ -97,7 +97,7 @@ exports.fetchDevotional = (req, res, next) => {
 // @desc     Fetch devotional posts
 // @access   Public
 exports.fetchWellness = (req, res, next) => {
-    Post.find({ category: 'Wellness' })
+    Post.find({ category: 'Wellness' }).sort({ _id: -1 })
     .then((posts) => {
         if (posts.length <= 0) {
             return res.status(404).json({
@@ -120,7 +120,7 @@ exports.fetchWellness = (req, res, next) => {
 // @desc     Fetch devotional posts
 // @access   Public
 exports.fetchGraphics = (req, res, next) => {
-    Post.find({ category: 'Graphics' })
+    Post.find({ category: 'Graphics' }).sort({ _id: -1 })
     .then((posts) => {
         if (posts.length <= 0) {
             return res.status(404).json({
