@@ -38,13 +38,16 @@
 
 /* category text */
 
-.savedItemStyles_category {}
+.savedItemStyles_category {
+    margin-left: .3rem;
+}
 
 /* title */
 
 .savedItemStyles_title {
     margin: 1rem 0;
     text-align: center;
+    font-size: 1rem;
 }
 
 /* date */
@@ -52,5 +55,6 @@
 .savedItemStyles_date {
     text-decoration: none;
     text-align: center;
-    color: black;
+    color: rgb(44, 44, 44);
+    font-size: .8rem;
 }

@@ -7,10 +7,10 @@ import { AiFillTag } from 'react-icons/ai';
 // styles
 import './savedItem.css';
 
-const SavedItem = ({ post: { _id, title, category, summary, coverImage, content, date }, history }) => {
+const SavedItem = ({ post: { _id, title, category, date }, history }) => {
     // redirect function to redirect to saved post content for publishing or resaving post
     const redirectHandler = () => {
-        history.push(`saved_post/${_id}`);
+        history.push(`/saved_post/${_id}`);
     };
 
     return (
