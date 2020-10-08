@@ -14,10 +14,10 @@ const PostContentPage = ({ post: { post, loading }, fetchPost }) => {
     // fetching param through react-router-dom
     let { id } = useParams();
     useEffect(() => {
-        if (isEmpty(post)) {
+        // if (isEmpty(post)) {
             // fetching post if post does not exist
             fetchPost(id);
-        }
+        // }
     }, [id]);
     return (
         <h1>POST CONTENT</h1>

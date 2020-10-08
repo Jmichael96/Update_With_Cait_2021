@@ -13,12 +13,14 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 savedPosts: [payload, ...state.savedPosts],
+                savedPost: null,
                 loading: false
             };
         case types.FETCH_SAVED:
             return {
                 ...state,
                 savedPosts: payload,
+                savedPost: null,
                 loading: false
             };
         case types.FETCH_SAVED_POST:
