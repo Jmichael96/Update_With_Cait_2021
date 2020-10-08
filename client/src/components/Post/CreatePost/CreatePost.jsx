@@ -10,7 +10,7 @@ import './createPost.css';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import validate from './validate';
 
-const CreatePost = ({ createPost, loading, setModal }) => {
+const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
     // non react-quill form data
     const [formData, setFormData] = useState({
         title: '',
@@ -39,7 +39,7 @@ const CreatePost = ({ createPost, loading, setModal }) => {
     }, [loading, isSubmitted]);
 
     // on submit function handler
-    const submitHandler = useCallback(async (e) => {
+    const submitPostHandler = useCallback(async (e) => {
         e.preventDefault();
         if (!validate(title, category, summary, coverImage, content, setModal)) {
             return;
@@ -54,7 +54,7 @@ const CreatePost = ({ createPost, loading, setModal }) => {
                 content
             };
 
-            await createPost(form);
+            await createPost(history, form);
         } catch (err) {
 
         }
@@ -64,10 +64,33 @@ const CreatePost = ({ createPost, loading, setModal }) => {
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
+    // save post handler
+    const savePostHandler = useCallback(async () => {
+        // make sure there is data in at least one field
+        if (!title && !summary && !category && !coverImage && !content) {
+            setModal('error', 'save error', 'You must have at least one input field filled out in order to save your post', 'okay', () => { });
+            return;
+        }
+        setIsSubmitted(true);
+        try {
+            let form = {
+                title,
+                summary,
+                category,
+                coverImage,
+                content
+            };
+            await savePost(form);
+        } catch (err) {
+
+        }
+        setIsSubmitted(false);
+    }, [savePost, title, summary, category, coverImage, content]);
+
     return (
         <section id="createPostStyles_root">
             <h1 id="createPostStyles_pageTitle">Create Post</h1>
-            <form onSubmit={(e) => { submitHandler(e) }}>
+            <form>
                 <div id="createPostStyles_titleCategoryWrap">
                     <input
                         id="createPostStyles_titleInput"
@@ -127,9 +150,9 @@ const CreatePost = ({ createPost, loading, setModal }) => {
                     />
                 </Wrapper>
                 <Wrapper>
-                    <button type="button">SAVE</button>
+                    {!renderSpinner ? <button type="button" id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE</button> : <p>LOADING...</p>}
                     {!renderSpinner ?
-                        <button type="submit" id="createPostStyles_submitBtn">POST</button>
+                        <button type="submit" onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">POST</button>
                         :
                         <p>LOADING...</p>
                     }
@@ -142,7 +165,9 @@ const CreatePost = ({ createPost, loading, setModal }) => {
 CreatePost.propTypes = {
     createPost: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
+    savePost: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
+    history: PropTypes.any,
 };
 
 // Quill.register('modules/imageResize', ImageResize);

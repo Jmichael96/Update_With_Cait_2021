@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
         case types.SAVE_POST:
             return {
                 ...state,
-                savedPosts: [...payload, ...state.savedPosts],
+                savedPosts: [payload, ...state.savedPosts],
                 loading: false
             };
         case types.FETCH_SAVED:

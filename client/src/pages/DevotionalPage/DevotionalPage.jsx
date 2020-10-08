@@ -20,7 +20,10 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, devotionalPosts } })
 
     // fetch lifestyle posts on load
     useEffect(() => {
-        fetchDevotional();
+        // if there are not any devotional posts then fetch posts
+        if (loading && isEmpty(devotionalPosts)) {
+            fetchDevotional();
+        }
     }, [fetchDevotional]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state

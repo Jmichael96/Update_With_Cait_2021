@@ -22,10 +22,10 @@ exports.savePost = (req, res, next) => {
     });
 
     newSave.save()
-        .then((save) => {
-            res.status(201).json({
+        .then((savedPost) => {
+            return res.status(201).json({
                 serverMsg: 'Post saved',
-                savedPost: save
+                savedPost
             });
         })
         .catch((err) => {

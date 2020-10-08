@@ -3,7 +3,7 @@ import { setAlert } from './alert';
 import * as types from './types';
 
 // create post
-export const createPost = ({ ...formData }) => (dispatch) => {
+export const createPost = (history, { ...formData }) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -16,6 +16,8 @@ export const createPost = ({ ...formData }) => (dispatch) => {
                 payload: res.data.post
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
+            // redirect once successfully created post
+            history.push(`/post_content/${res.data.post._id}`);
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;

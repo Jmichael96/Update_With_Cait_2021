@@ -20,7 +20,10 @@ const LifestylePage = ({ fetchLifestyle, post: { loading, lifestylePosts } }) =>
 
     // fetch lifestyle posts on load
     useEffect(() => {
-        fetchLifestyle();
+        // if there are no posts then fetch lifestyle posts
+        if (loading && isEmpty(lifestylePosts)) {
+            fetchLifestyle();
+        }
     }, [fetchLifestyle]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state

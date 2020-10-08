@@ -61,7 +61,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             {/* <div class="navLogoWrapper"> */}
             <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
             {/* </div> */}
-            {!isAuth ? guestLinks : authLinks}
+            {!loading && !isAuth ? guestLinks : authLinks}
         </div>
     )
 };

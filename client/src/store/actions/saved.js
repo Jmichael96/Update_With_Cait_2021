@@ -90,7 +90,7 @@ export const fetchSavedPost = (id) => (dispatch) => {
 };
 
 // resave a post
-export const resavePost = ({ id, ...formData }) = (dispatch) => {
+export const resavePost = ({ id, ...formData }) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ export const resavePost = ({ id, ...formData }) = (dispatch) => {
 };
 
 // publish a saved post
-export const publishSavedPost = ({ savedId, ...formData }) = (dispatch) => {
+export const publishSavedPost = ({ savedId, ...formData }) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
