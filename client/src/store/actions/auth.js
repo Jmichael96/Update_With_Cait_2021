@@ -3,8 +3,15 @@ import { setAlert } from './alert';
 import * as types from './types';
 import setAuthToken from '../../utils/setAuthToken';
 
-// Load User
+//! LOAD USER
 export const loadUser = () => (dispatch) => {
+    dispatch({
+        type: types.USER_LOADING
+    });
+    dispatch(loadUserSuccess());
+};
+
+export const loadUserSuccess = () => (dispatch) => {
     if (localStorage.token) {
         setAuthToken(localStorage.token);
     }
@@ -12,48 +19,26 @@ export const loadUser = () => (dispatch) => {
     axios.get('/api/auth/load_user')
         .then((res) => {
             dispatch({
-                type: types.USER_LOADED,
+                type: types.USER_LOADING_SUCCESS,
                 payload: res.data
             });
         })
         .catch((err) => {
             dispatch({
-                type: types.NOT_AUTHENTICATED
+                type: types.USER_LOADING_FAIL
             });
         });
 };
 
-// register
-export const register = ({ ...formData }) => dispatch => {
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    };
-
-    axios.post('/api/auth/register', formData, config)
-        .then((res) => {
-            dispatch({
-                type: types.REGISTER_SUCCESS,
-                payload: res.data
-            });
-            dispatch(loadUser());
-            dispatch(setAlert('Successfully registered!', 'success'))
-
-        })
-        .catch((err) => {
-            const error = err.response.data.serverMsg;
-            if (error) {
-                dispatch(setAlert(error, 'danger'));
-            }
-            dispatch({
-                type: types.REGISTER_FAIL
-            });
-        });
-};
-
-// login
+//! LOGIN
 export const login = ({ email, password }) => dispatch => {
+    dispatch({
+        type: types.LOGIN
+    });
+    dispatch(loginSuccess(email, password));
+};
+
+export const loginSuccess = (email, password) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -82,8 +67,8 @@ export const login = ({ email, password }) => dispatch => {
         });
 };
 
-// logout 
+//! LOGOUT 
 export const logout = () => dispatch => {
     dispatch({ type: types.LOGOUT });
-    dispatch(setAlert('You have successfully logged out!', 'success'));
+    dispatch(setAlert('You have successfully logged out. Goodbye!', 'success'));
 }

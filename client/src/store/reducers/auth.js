@@ -11,33 +11,30 @@ export default (state = initialState, action) => {
     const { type, payload } = action;
 
     switch (type) {
-        case types.USER_LOADED:
+        case types.LOGIN:
+        case types.USER_LOADING:
             return {
                 ...state,
-                isAuthenticated: true,
-                loading: false,
-                user: payload
-            }
-        case types.REGISTER_SUCCESS:
+                user: null,
+                loading: true
+            };
         case types.LOGIN_SUCCESS:
+        case types.USER_LOADING_SUCCESS:
             localStorage.setItem('token', payload.token);
             return {
                 ...state,
                 ...payload,
                 isAuthenticated: true,
                 loading: false
-            }
-        case types.REGISTER_FAIL:
-        case types.AUTH_ERROR:
-        case types.LOGIN_FAIL:
+            };
+        case types.USER_LOADING_FAIL:
         case types.LOGOUT:
-        case types.NOT_AUTHENTICATED:
             localStorage.removeItem('token')
             return {
                 ...state,
                 token: null,
                 isAuthenticated: false,
-                loading: true
+                loading: false
             }
         default: return state;
     }

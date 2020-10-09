@@ -55,7 +55,7 @@ exports.fetchLifestyle = (req, res, next) => {
         .then((posts) => {
             if (posts.length <= 0) {
                 return res.status(404).json({
-                    serverMsg: 'No posts found'
+                    serverMsg: 'No lifestyle posts were found'
                 });
             }
             return res.status(200).json({
@@ -78,7 +78,7 @@ exports.fetchDevotional = (req, res, next) => {
     .then((posts) => {
         if (posts.length <= 0) {
             return res.status(404).json({
-                serverMsg: 'No posts found'
+                serverMsg: 'No devotional posts were found'
             });
         }
         return res.status(200).json({
@@ -94,14 +94,14 @@ exports.fetchDevotional = (req, res, next) => {
 };
 
 // @route    GET api/posts/fetch_wellness
-// @desc     Fetch devotional posts
+// @desc     Fetch wellness posts
 // @access   Public
 exports.fetchWellness = (req, res, next) => {
     Post.find({ category: 'Wellness' }).sort({ _id: -1 })
     .then((posts) => {
         if (posts.length <= 0) {
             return res.status(404).json({
-                serverMsg: 'No posts found'
+                serverMsg: 'No wellness posts were found'
             });
         }
         return res.status(200).json({
@@ -117,7 +117,7 @@ exports.fetchWellness = (req, res, next) => {
 };
 
 // @route    GET api/posts/fetch_graphics
-// @desc     Fetch devotional posts
+// @desc     Fetch grahpics posts
 // @access   Public
 exports.fetchGraphics = (req, res, next) => {
     Post.find({ category: 'Graphics' }).sort({ _id: -1 })
@@ -128,7 +128,7 @@ exports.fetchGraphics = (req, res, next) => {
             });
         }
         return res.status(200).json({
-            serverMsg: 'Fetched graphic posts',
+            serverMsg: 'Fetched graphics posts were found',
             posts: posts
         });
     })

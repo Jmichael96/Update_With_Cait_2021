@@ -2,8 +2,15 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import * as types from './types';
 
-// create post
+//! CREATE POST
 export const createPost = (history, { ...formData }) => (dispatch) => {
+    dispatch({
+        type: types.CREATE_POST
+    });
+    dispatch(createPostSuccess(history, formData))
+};
+
+export const createPostSuccess = (history, formData) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -12,7 +19,7 @@ export const createPost = (history, { ...formData }) => (dispatch) => {
     axios.post('/api/posts/create_post', formData, config)
         .then((res) => {
             dispatch({
-                type: types.CREATE_POST,
+                type: types.CREATE_POST_SUCCESS,
                 payload: res.data.post
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
@@ -25,17 +32,24 @@ export const createPost = (history, { ...formData }) => (dispatch) => {
                 dispatch(setAlert(error, 'error'));
             }
             dispatch({
-                type: types.POST_ERROR,
+                type: types.CREATE_POST_FAIL,
             });
         });
 };
 
+
 // fetch a single post
 export const fetchPost = (id) => (dispatch) => {
+    dispatch({
+        type: types.FETCH_POST
+    });
+    dispatch(fetchPostSuccess(id))
+};
+export const fetchPostSuccess = (id) => (dispatch) => {
     axios.get(`/api/posts/fetch_post/${id}`)
         .then((res) => {
             dispatch({
-                type: types.FETCH_POST,
+                type: types.FETCH_POST_SUCCESS,
                 payload: res.data
             });
         })
@@ -45,85 +59,110 @@ export const fetchPost = (id) => (dispatch) => {
                 dispatch(setAlert(error, 'error'));
             }
             dispatch({
-                type: types.POST_ERROR,
+                type: types.FETCH_POST_FAIL,
             });
         });
 };
 
 // fetch lifestyle posts
 export const fetchLifestyle = () => (dispatch) => {
+    dispatch({
+        type: types.FETCH_LIFESTYLE
+    });
+    dispatch(fetchLifestyleSuccess());
+};
+export const fetchLifestyleSuccess = () => (dispatch) => {
     axios.get('/api/posts/fetch_lifestyle')
         .then((res) => {
             dispatch({
-                type: types.FETCH_LIFESTYLE,
+                type: types.FETCH_LIFESTYLE_SUCCESS,
                 payload: res.data.posts
             });
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'error'));
+                dispatch(setAlert(error, 'warning'));
             }
             dispatch({
-                type: types.POST_ERROR,
+                type: types.FETCH_LIFESTYLE_FAIL,
             });
         });
 };
-
 // fetch devotional posts
 export const fetchDevotional = () => (dispatch) => {
+    dispatch({
+        type: types.FETCH_DEVOTIONAL
+    });
+    dispatch(fetchDevotionalSuccess());
+};
+export const fetchDevotionalSuccess = () => (dispatch) => {
     axios.get('/api/posts/fetch_devotional')
         .then((res) => {
             dispatch({
-                type: types.FETCH_DEVOTIONAL,
+                type: types.FETCH_DEVOTIONAL_SUCCESS,
                 payload: res.data.posts
             });
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'error'));
+                dispatch(setAlert(error, 'warning'));
             }
             dispatch({
-                type: types.POST_ERROR,
+                type: types.FETCH_DEVOTIONAL_FAIL,
             });
         });
+
 };
 // fetch wellness posts
 export const fetchWellness = () => (dispatch) => {
+    dispatch({
+        type: types.FETCH_WELLNESS
+    });
+    dispatch(fetchWellnessSuccess());
+};
+export const fetchWellnessSuccess = () => (dispatch) => {
     axios.get('/api/posts/fetch_wellness')
         .then((res) => {
             dispatch({
-                type: types.FETCH_WELLNESS,
+                type: types.FETCH_WELLNESS_SUCCESS,
                 payload: res.data.posts
             });
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'error'));
+                dispatch(setAlert(error, 'warning'));
             }
             dispatch({
-                type: types.POST_ERROR,
+                type: types.FETCH_WELLNESS_FAIL,
             });
         });
 };
 // fetch graphic posts
 export const fetchGraphics = () => (dispatch) => {
+    dispatch({
+        type: types.FETCH_GRAPHICS
+    });
+    dispatch(fetchGraphicsSuccess());
+};
+
+export const fetchGraphicsSuccess = () => (dispatch) => {
     axios.get('/api/posts/fetch_graphics')
         .then((res) => {
             dispatch({
-                type: types.FETCH_GRAPHICS,
+                type: types.FETCH_GRAPHICS_SUCCESS,
                 payload: res.data.posts
             });
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'error'));
+                dispatch(setAlert(error, 'warning'));
             }
             dispatch({
-                type: types.POST_ERROR,
+                type: types.FETCH_GRAPHICS_FAIL,
             });
         });
 };

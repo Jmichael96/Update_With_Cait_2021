@@ -1,7 +1,6 @@
 import * as types from '../actions/types';
 
 const initialState = {
-    posts: [],
     devotionalPosts: [],
     wellnessPosts: [],
     graphicsPosts: [],
@@ -15,6 +14,23 @@ export default (state = initialState, action) => {
 
     switch (type) {
         case types.CREATE_POST:
+        case types.FETCH_DEVOTIONAL:
+        case types.FETCH_GRAPHICS:
+        case types.FETCH_WELLNESS:
+        case types.FETCH_LIFESTYLE:
+        case types.PUBLISH_SAVED_POST_ADD:
+        case types.FETCH_POST:
+            return {
+                ...state,
+                loading: true
+            }
+        case types.CREATE_POST_FAIL:
+            return {
+                ...state,
+                post: null,
+                loading: false
+            }
+        case types.CREATE_POST_SUCCESS:
             let createdPostCategory = payload.category;
             // return post to the correct destination
             const sortPost = (cat) => {
@@ -30,60 +46,99 @@ export default (state = initialState, action) => {
                     let devoState = {
                         devotionalPosts: [payload, ...state.devotionalPosts]
                     }
-                    return tempState(devoState);
+                    return sortPost(devoState);
                 case 'Lifestyle':
                     let lifeState = {
                         devotionalPosts: [payload, ...state.lifestylePosts]
                     }
-                    return tempState(lifeState);
+                    return sortPost(lifeState);
                 case 'Graphics':
                     let graphicState = {
                         graphicsPosts: [payload, ...state.graphicsPosts]
                     }
-                    return tempState(graphicState);
+                    return sortPost(graphicState);
                 case 'Wellness':
                     let wellnessState = {
                         wellnessPosts: [payload, ...state.wellnessPosts]
                     }
-                    return tempState(wellnessState);
+                    return sortPost(wellnessState);
                 default: return state;
             }
-
-        case types.FETCH_POST:
+        case types.FETCH_POST_FAIL:
+            return {
+                ...state,
+                post: null,
+                loading: false
+            }
+        case types.FETCH_POST_SUCCESS:
             return {
                 ...state,
                 post: payload,
                 loading: false
             };
-        case types.FETCH_LIFESTYLE:
+        case types.FETCH_LIFESTYLE_FAIL:
+            return {
+                ...state,
+                lifestylePosts: [],
+                post: null,
+                loading: false
+            }
+        case types.FETCH_LIFESTYLE_SUCCESS:
             return {
                 ...state,
                 lifestylePosts: payload,
                 post: null,
                 loading: false
             };
-        case types.FETCH_DEVOTIONAL:
+        case types.FETCH_DEVOTIONAL_FAIL:
+            return {
+                ...state,
+                devotionalPosts: [],
+                post: null,
+                loading: false
+            }
+        case types.FETCH_DEVOTIONAL_SUCCESS:
             return {
                 ...state,
                 devotionalPosts: payload,
                 post: null,
                 loading: false
             };
-        case types.FETCH_WELLNESS:
+        case types.FETCH_WELLNESS_FAIL:
+            return {
+                ...state,
+                wellnessPosts: [],
+                post: null,
+                loading: false
+            }
+        case types.FETCH_WELLNESS_SUCCESS:
             return {
                 ...state,
                 wellnessPosts: payload,
                 post: null,
                 loading: false
             };
-        case types.FETCH_GRAPHICS:
+        case types.FETCH_GRAPHICS_FAIL:
+            return {
+                ...state,
+                graphicsPosts: [],
+                post: null,
+                loading: false
+            }
+        case types.FETCH_GRAPHICS_SUCCESS:
             return {
                 ...state,
                 graphicsPosts: payload,
                 post: null,
                 loading: false
             };
-        case types.PUBLISH_SAVED_POST_ADD:
+        case types.PUBLISH_SAVED_POST_ADD_FAIL:
+            return {
+                ...state,
+                post: null,
+                loading: false
+            };
+        case types.PUBLISH_SAVED_POST_ADD_SUCCESS:
             let publishedPostCategory = payload.category;
             // created a function to return the state that was needed
             const tempState = (cat) => {

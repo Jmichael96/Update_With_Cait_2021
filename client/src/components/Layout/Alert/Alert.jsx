@@ -22,7 +22,7 @@ const Alert = ({ alerts, removeAlert }) => {
                             <div className={`alertStyles_iconWrap_${alert.alertType}`}>
                                 {alert.alertType === 'success' && <AiOutlineCheck className="iconText" />}
                                 {alert.alertType === 'error' && <VscError className="iconText" />}
-                                {/* {alert.alertType === 'warning' && <AiOutlineCheck />} */}
+                                {alert.alertType === 'warning' && <AiOutlineWarning style={{ color: "black" }} className="iconText" />}
                             </div>
                             <div className="alertStyles_bodyWrap">
                                 <div className="alertStyles_msgWrap">

@@ -119,6 +119,39 @@
     margin-top: -5px;
     background: #aa1919;
 }
+/* icon wrapper warning */
+.alertStyles_iconWrap_warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 100%;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    border: 1px solid #ffee00;
+    background-color: #ffee00;
+}
+
+.alertStyles_iconWrap_warning:after {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    display: block;
+    content: '';
+    width: 10px;
+    height: 10px;
+    border: 1px solid #ffee00;
+    position: absolute;
+    border-left: 0;
+    border-bottom: 0;
+    top: 50%;
+    right: -6px;
+    margin-top: -5px;
+    background: #ffee00;
+}
 
 /* content wrapper for message and close button */
 
