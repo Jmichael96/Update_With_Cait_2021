@@ -20,6 +20,7 @@ export default (state = initialState, action) => {
         case types.FETCH_LIFESTYLE:
         case types.PUBLISH_SAVED_POST_ADD:
         case types.FETCH_POST:
+        case types.UPDATE_POST:
             return {
                 ...state,
                 loading: true
@@ -171,6 +172,53 @@ export default (state = initialState, action) => {
                         wellnessPosts: [payload, ...state.wellnessPosts]
                     }
                     return tempState(wellnessState);
+                default: return state;
+            }
+        case types.UPDATE_POST_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
+        case types.UPDATE_POST_SUCCESS:
+            let updatedPostCategory = payload.category;
+            // created function to return state that is needed
+            const updatedPostState = (cat) => {
+                return {
+                    ...state,
+                    ...cat,
+                    post: payload.post
+                };
+            };
+
+            switch (updatedPostCategory) {
+                case 'Devotional':
+                    let devoState = {
+                        devotionalPosts: state.devotionalPosts.map(post =>
+                            post._id === payload.id ? { ...post, ...payload.post } : post
+                        )
+                    }
+                    return updatedPostState(devoState);
+                case 'Lifestyle':
+                    let lifeState = {
+                        lifestylePosts: state.lifestylePosts.map(post =>
+                            post._id === payload.id ? { ...post, ...payload.post } : post
+                        )
+                    }
+                    return updatedPostState(lifeState);
+                case 'Graphics':
+                    let graphicState = {
+                        graphicsPosts: state.graphicsPosts.map(post =>
+                            post._id === payload.id ? { ...post, ...payload.post } : post
+                        )
+                    }
+                    return updatedPostState(graphicState);
+                case 'Wellness':
+                    let wellnessState = {
+                        wellnessPosts: state.wellnessPosts.map(post =>
+                            post._id === payload.id ? { ...post, ...payload.post } : post
+                        )
+                    }
+                    return updatedPostState(wellnessState);
                 default: return state;
             }
         case types.POST_ERROR:

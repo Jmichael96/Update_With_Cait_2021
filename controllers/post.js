@@ -75,22 +75,22 @@ exports.fetchLifestyle = (req, res, next) => {
 // @access   Public
 exports.fetchDevotional = (req, res, next) => {
     Post.find({ category: 'Devotional' }).sort({ _id: -1 })
-    .then((posts) => {
-        if (posts.length <= 0) {
-            return res.status(404).json({
-                serverMsg: 'No devotional posts were found'
+        .then((posts) => {
+            if (posts.length <= 0) {
+                return res.status(404).json({
+                    serverMsg: 'No devotional posts were found'
+                });
+            }
+            return res.status(200).json({
+                serverMsg: 'Fetched devotional posts',
+                posts: posts
             });
-        }
-        return res.status(200).json({
-            serverMsg: 'Fetched devotional posts',
-            posts: posts
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
         });
-    })
-    .catch((err) => {
-        res.status(500).json({
-            serverMsg: 'Server error'
-        });
-    });
 };
 
 // @route    GET api/posts/fetch_wellness
@@ -98,22 +98,22 @@ exports.fetchDevotional = (req, res, next) => {
 // @access   Public
 exports.fetchWellness = (req, res, next) => {
     Post.find({ category: 'Wellness' }).sort({ _id: -1 })
-    .then((posts) => {
-        if (posts.length <= 0) {
-            return res.status(404).json({
-                serverMsg: 'No wellness posts were found'
+        .then((posts) => {
+            if (posts.length <= 0) {
+                return res.status(404).json({
+                    serverMsg: 'No wellness posts were found'
+                });
+            }
+            return res.status(200).json({
+                serverMsg: 'Fetched wellness posts',
+                posts: posts
             });
-        }
-        return res.status(200).json({
-            serverMsg: 'Fetched wellness posts',
-            posts: posts
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
         });
-    })
-    .catch((err) => {
-        res.status(500).json({
-            serverMsg: 'Server error'
-        });
-    });
 };
 
 // @route    GET api/posts/fetch_graphics
@@ -121,21 +121,63 @@ exports.fetchWellness = (req, res, next) => {
 // @access   Public
 exports.fetchGraphics = (req, res, next) => {
     Post.find({ category: 'Graphics' }).sort({ _id: -1 })
-    .then((posts) => {
-        if (posts.length <= 0) {
-            return res.status(404).json({
-                serverMsg: 'No posts found'
+        .then((posts) => {
+            if (posts.length <= 0) {
+                return res.status(404).json({
+                    serverMsg: 'No posts found'
+                });
+            }
+            return res.status(200).json({
+                serverMsg: 'Fetched graphics posts were found',
+                posts: posts
             });
-        }
-        return res.status(200).json({
-            serverMsg: 'Fetched graphics posts were found',
-            posts: posts
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
         });
-    })
-    .catch((err) => {
-        res.status(500).json({
-            serverMsg: 'Server error'
-        });
-    });
 };
 
+// @route    PUT api/posts/update_post/:id
+// @desc     Update a post
+// @access   Private
+exports.updatePost = (req, res, next) => {
+    if (!req.user) {
+        return res.status(401).json({
+            serverMsg: 'You are not authorized'
+        });
+    }
+
+    const postFields = {
+        title: req.body.title,
+        category: req.body.category,
+        summary: req.body.summary,
+        coverImage: req.body.coverImage,
+        content: req.body.content,
+        like_number: req.body.likeNumber,
+        comments: req.body.comments
+    };
+
+    Post.findByIdAndUpdate(
+        { _id: req.params.id, authorId: req.user._id },
+        { $set: postFields },
+        { new: true, upsert: true }
+    )
+        .then((post) => {
+            if (!post) {
+                return res.status(404).json({
+                    serverMsg: 'Post could not be found'
+                });
+            }
+            return res.status(201).json({
+                serverMsg: 'Updated post successfully',
+                post
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
+        });
+};

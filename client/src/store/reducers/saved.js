@@ -70,7 +70,7 @@ export default (state = initialState, action) => {
                 savedPosts: state.savedPosts.map(post =>
                     post._id === payload.id ? { ...post, ...payload.post } : post
                 ),
-                savedPost: null,
+                savedPost: payload.post,
                 loading: false
             };
         case types.PUBLISH_SAVED_POST_REMOVE_FAIL:

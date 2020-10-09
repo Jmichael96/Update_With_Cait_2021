@@ -32,4 +32,9 @@ router.get('/fetch_wellness', PostController.fetchWellness);
 // @access   Public
 router.get('/fetch_graphics', PostController.fetchGraphics);
 
+// @route    PUT api/posts/update_post/:id
+// @desc     Update a post
+// @access   Private
+router.put('/update_post/:id', isAuth, PostController.updatePost);
+
 module.exports = router;
