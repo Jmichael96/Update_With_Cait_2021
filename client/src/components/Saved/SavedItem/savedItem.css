@@ -13,7 +13,7 @@
     margin: .5rem;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
+    cursor: default;
 }
 
 /* inner card wrap surrounding all the content */
@@ -73,8 +73,12 @@
 /* delete icon */
 
 .savedItemStyles_deleteIcon {
-    color: rgb(241, 3, 3);
+    color: rgb(255, 255, 255);
     font-size: 1.3rem;
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
     /* webkit animation */
     -webkit-animation-duration: .5s;
     -webkit-animation-iteration-count: 1;
@@ -98,7 +102,7 @@
 }
 
 .savedItemStyles_deleteIcon:hover {
-    
+    color: red;
 }
 
 /* open button */
@@ -109,6 +113,9 @@
     left: 0;
     width: 100%;
     cursor: pointer;
+    padding: .1rem 0;
+    background-color: white;
+    border: 1px solid white;
     /* webkit animation */
     -webkit-animation-duration: .5s;
     -webkit-animation-iteration-count: 1;
