@@ -7,6 +7,7 @@ import './postContent.css';
 // components
 import PostData from './PostData/PostData';
 import isEmpty from '../../../utils/isEmpty';
+import Wrapper from '../../Layout/Wrapper/Wrapper';
 
 const PostContent = ({ updatePost, loading, post }) => {
     const renderPostData = () => {
@@ -25,7 +26,9 @@ const PostContent = ({ updatePost, loading, post }) => {
     };
     return (
         <article>
-            {loading ? <h1>LOADING...</h1> : renderPostData()}
+            <Wrapper>
+                {loading ? <h1>LOADING...</h1> : renderPostData()}
+            </Wrapper>
         </article>
     );
 };

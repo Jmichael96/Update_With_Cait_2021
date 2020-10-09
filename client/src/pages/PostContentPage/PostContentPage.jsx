@@ -18,16 +18,6 @@ const PostContentPage = ({ post: { post, loading }, fetchPost, updatePost }) => 
         fetchPost(id);
     }, [id]);
 
-    // render post content
-    // const renderPostContent = () => {
-    //     if (isEmpty(post)) {
-    //         return null;
-    //     }
-
-    //     if (!loading && !isEmpty(post)) {
-    //         return;
-    //     }
-    // };
     return (
         <article>
             <h1>POST CONTENT</h1>
