@@ -63,7 +63,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             {/* </div> */}
             {!loading && !isAuth ? guestLinks : authLinks}
         </div>
-    )
+    );
 };
 
 Navbar.propTypes = {

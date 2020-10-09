@@ -110,8 +110,7 @@ const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
                         <option>Choose Your Category</option>
                         <option value="Lifestyle">Lifestyle</option>
                         <option value="Devotional">Devotional</option>
-                        <option value="Fitness">Fitness</option>
-                        <option value="Review">Review</option>
+                        <option value="Wellness">Wellness</option>
                         <option value="Graphics">Graphics</option>
                     </select>
                 </div>

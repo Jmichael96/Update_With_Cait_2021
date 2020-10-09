@@ -18,8 +18,14 @@ export default (state = initialState, action) => {
                 user: null,
                 loading: true
             };
-        case types.LOGIN_SUCCESS:
         case types.USER_LOADING_SUCCESS:
+            return {
+                ...state,
+                isAuthenticated: true,
+                user: payload,
+                loading: false
+            };
+        case types.LOGIN_SUCCESS:
             localStorage.setItem('token', payload.token);
             return {
                 ...state,
