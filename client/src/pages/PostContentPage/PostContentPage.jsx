@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPost } from '../../store/actions/post';
+import { fetchPost, updatePost } from '../../store/actions/post';
 import { useParams } from 'react-router-dom';
 
 // styles
@@ -9,23 +9,36 @@ import './postContentPage.css';
 
 // components
 import isEmpty from '../../utils/isEmpty';
+import PostContent from '../../components/Post/PostContent/PostContent';
 
-const PostContentPage = ({ post: { post, loading }, fetchPost }) => {
+const PostContentPage = ({ post: { post, loading }, fetchPost, updatePost }) => {
     // fetching param through react-router-dom
     let { id } = useParams();
     useEffect(() => {
-        // if (isEmpty(post)) {
-            // fetching post if post does not exist
-            fetchPost(id);
-        // }
+        fetchPost(id);
     }, [id]);
+
+    // render post content
+    // const renderPostContent = () => {
+    //     if (isEmpty(post)) {
+    //         return null;
+    //     }
+
+    //     if (!loading && !isEmpty(post)) {
+    //         return;
+    //     }
+    // };
     return (
-        <h1>POST CONTENT</h1>
-    )
+        <article>
+            <h1>POST CONTENT</h1>
+            <PostContent post={post} loading={loading} updatePost={updatePost} />
+        </article>
+    );
 };
 
 PostContentPage.propTypes = {
     fetchPost: PropTypes.func.isRequired,
+    updatePost: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
 };
 
@@ -34,4 +47,4 @@ const mapStateToProps = (state) => ({
     post: state.post
 });
 
-export default connect(mapStateToProps, { fetchPost })(PostContentPage);
+export default connect(mapStateToProps, { fetchPost, updatePost })(PostContentPage);

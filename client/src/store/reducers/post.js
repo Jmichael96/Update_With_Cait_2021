@@ -23,6 +23,7 @@ export default (state = initialState, action) => {
         case types.UPDATE_POST:
             return {
                 ...state,
+                post: null,
                 loading: true
             }
         case types.CREATE_POST_FAIL:

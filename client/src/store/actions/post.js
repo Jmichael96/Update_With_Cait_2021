@@ -38,7 +38,7 @@ export const createPostSuccess = (history, formData) => (dispatch) => {
 };
 
 
-// fetch a single post
+//! FETCH A SINGLE POST
 export const fetchPost = (id) => (dispatch) => {
     dispatch({
         type: types.FETCH_POST
@@ -64,7 +64,7 @@ export const fetchPostSuccess = (id) => (dispatch) => {
         });
 };
 
-// fetch lifestyle posts
+//! FETCH LIFESTYLE POSTS
 export const fetchLifestyle = () => (dispatch) => {
     dispatch({
         type: types.FETCH_LIFESTYLE
@@ -89,7 +89,8 @@ export const fetchLifestyleSuccess = () => (dispatch) => {
             });
         });
 };
-// fetch devotional posts
+
+//! FETCH DEVOTIONAL POSTS
 export const fetchDevotional = () => (dispatch) => {
     dispatch({
         type: types.FETCH_DEVOTIONAL
@@ -115,7 +116,8 @@ export const fetchDevotionalSuccess = () => (dispatch) => {
         });
 
 };
-// fetch wellness posts
+
+//! FETCH WELLNESS POSTS
 export const fetchWellness = () => (dispatch) => {
     dispatch({
         type: types.FETCH_WELLNESS
@@ -140,7 +142,8 @@ export const fetchWellnessSuccess = () => (dispatch) => {
             });
         });
 };
-// fetch graphic posts
+
+//! FETCH GRAPHICS POSTS
 export const fetchGraphics = () => (dispatch) => {
     dispatch({
         type: types.FETCH_GRAPHICS
@@ -166,3 +169,39 @@ export const fetchGraphicsSuccess = () => (dispatch) => {
             });
         });
 };
+
+//! UPDATE POST
+export const updatePost = (id, { ...formData }) => (dispatch) => {
+    dispatch({
+        type: types.UPDATE_POST
+    });
+    dispatch(updatePostSuccess(id, formData));
+};
+
+export const updatePostSuccess = (id, formData) => (dispatch) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    axios.put(`/api/posts/update_post/${id}`, formData, config)
+        .then((res) => {
+            dispatch({
+                type: types.UPDATE_POST_SUCCESS,
+                payload: {
+                    id,
+                    post: res.data.post
+                }
+            });
+            dispatch(setAlert(res.data.serverMsg, 'success'));
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'warning'));
+            }
+            dispatch({
+                type: types.UPDATE_POST_FAIL,
+            });
+        });
+};  
