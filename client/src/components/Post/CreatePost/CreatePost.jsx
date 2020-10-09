@@ -8,7 +8,7 @@ import './createPost.css';
 
 // components
 import Wrapper from '../../Layout/Wrapper/Wrapper';
-import validate from './validate';
+import validate from '../../../utils/validateForm';
 
 const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
     // non react-quill form data

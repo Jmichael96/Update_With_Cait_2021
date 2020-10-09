@@ -32,15 +32,24 @@ export default (state = initialState, action) => {
         case types.RESAVE_POST:
             return {
                 ...state,
-                savedPost: payload,
+                savedPosts: state.savedPosts.map(post =>
+                    post._id === payload.id ? { ...post, ...payload.post } : post
+                ),
+                savedPost: null,
                 loading: false
             };
         case types.PUBLISH_SAVED_POST_REMOVE:
             return {
                 ...state,
-                savedPosts: [payload.unsavedPost, ...state.savedPosts],
+                savedPosts: state.savedPosts.filter(post => post._id !== payload),
                 loading: false
             };
+        case types.DELETE_SAVED:
+            return {
+                ...state,
+                savedPosts: state.savedPosts.filter(post => post._id !== payload),
+                loading: false
+            }
         case types.SAVE_ERROR:
             return {
                 ...state,

@@ -164,26 +164,27 @@ exports.resave = (req, res, next) => {
 // @desc     Publish a post that was saved
 // @access   Private
 exports.publishSavedPost = async (req, res, next) => {
+
     if (!req.user) {
         return res.status(401).json({
             serverMsg: 'You are not authorized'
         });
     }
     try {
-
+        const { title, category, summary, coverImage, content } = req.body.formData;
         const post = new Post({
-            title: req.body.title,
-            coverImage: req.body.coverImage,
-            summary: req.body.summary,
-            category: req.body.category,
-            content: req.body.content,
+            title: title,
+            coverImage: coverImage,
+            summary: summary,
+            category: category,
+            content: content,
             authorId: req.user._id,
             authorName: req.user.name,
             like_number: 0
         });
 
         // saving new contents to the post model
-        const newPost = await post.Save();
+        const newPost = await post.save();
 
         // removing saved post
         const deletedPost = await Saved.findByIdAndDelete({ _id: req.body.savedId });
@@ -194,8 +195,9 @@ exports.publishSavedPost = async (req, res, next) => {
             unsavedPost: deletedPost
         });
     } catch (err) {
+        console.log(err);
         return res.status(500).json({
-            serverMsg: 'Server error'
+            serverMsg: 'Server error. Please try again later.'
         });
     }
 };

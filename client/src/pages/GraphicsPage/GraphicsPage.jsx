@@ -21,9 +21,9 @@ const GraphicsPage = ({ fetchGraphics, post: { loading, graphicsPosts } }) => {
     // fetch lifestyle posts on load
     useEffect(() => {
         // if there are no graphics posts then fetch posts
-        if (loading && isEmpty(graphicsPosts)) {
+        // if (isEmpty(graphicsPosts)) {
             fetchGraphics();
-        }
+        // }
     }, [fetchGraphics]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state

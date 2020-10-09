@@ -18,7 +18,7 @@ const SavedItem = ({ deleteSaved, setModal, post: { _id, title, category, date }
     };
 
     const confirmDeleteHandler = (e) => {
-        setModal('confirm', 'Are you sure?', 'You cannot go back once confirming', 'yes delete', () => { });
+        setModal('confirm', 'Are you sure?', 'You cannot go back once confirming', 'yes delete', () => { deleteSaved(_id) });
     };
 
     // for mouse enter

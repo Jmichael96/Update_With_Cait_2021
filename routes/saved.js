@@ -25,7 +25,7 @@ router.get('/fetch_saved_post/:id', isAuth, SavedController.fetchSavedPost);
 // @route    PUT api/save/resave_post/:id
 // @desc     Re-save a post and update it after adding to it again
 // @access   Private
-router.get('/resave_post/:id', isAuth, SavedController.resave);
+router.put('/resave_post/:id', isAuth, SavedController.resave);
 
 // @route    POST api/save/publish_saved_post
 // @desc     Publish a post that was saved

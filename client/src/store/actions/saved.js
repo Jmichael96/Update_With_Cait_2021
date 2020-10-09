@@ -54,7 +54,7 @@ export const deleteSaved = (id) => (dispatch) => {
         .then((res) => {
             dispatch({
                 type: types.DELETE_SAVED,
-                payload: res.data.deletedPost
+                payload: id
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
         })
@@ -90,7 +90,7 @@ export const fetchSavedPost = (id) => (dispatch) => {
 };
 
 // resave a post
-export const resavePost = ({ id, ...formData }) => (dispatch) => {
+export const resavePost = (id, history, { ...formData }) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -100,9 +100,13 @@ export const resavePost = ({ id, ...formData }) => (dispatch) => {
         .then((res) => {
             dispatch({
                 type: types.RESAVE_POST,
-                payload: res.data.savedPost
+                payload: {
+                    id: id,
+                    post: res.data.savedPost
+                }
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
+            history.push('/saved');
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
@@ -116,19 +120,19 @@ export const resavePost = ({ id, ...formData }) => (dispatch) => {
 };
 
 // publish a saved post
-export const publishSavedPost = ({ savedId, ...formData }) => (dispatch) => {
+export const publishSavedPost = (savedId, history, { ...formData }) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
-
+    console.log(savedId, formData);
     axios.post('/api/save/publish_saved_post', { savedId, formData }, config)
         .then((res) => {
             // this is for unsaving a post and removing it from the saved reducer
             dispatch({
                 type: types.PUBLISH_SAVED_POST_REMOVE,
-                payload: res.data.unsavedPost
+                payload: savedId
             });
             // this is for adding post the post reducer
             dispatch({
@@ -136,6 +140,11 @@ export const publishSavedPost = ({ savedId, ...formData }) => (dispatch) => {
                 payload: res.data.newPost
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
+            const publishedId = res.data.newPost._id;
+            if (!publishedId) {
+                return;
+            }
+            history.push(`/post_content/${publishedId}`);
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;

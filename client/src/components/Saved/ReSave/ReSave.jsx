@@ -8,32 +8,35 @@ import './reSave.css';
 
 // components
 import Wrapper from '../../Layout/Wrapper/Wrapper';
+import isEmpty from '../../../utils/isEmpty';
+import validate from '../../../utils/validateForm';
 
-const ReSave = ({ resavePost, publishSavedPost, loading, savedPost: { _id, title, category, summary, coverImage, content } }) => {
+const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { _id, title, category, summary, coverImage, content }, history }) => {
     const [formData, setFormData] = useState({
-        titleData: title,
-        categoryData: category,
-        summaryData: summary,
+        titleData: '',
+        categoryData: '',
+        summaryData: '',
     });
-
     // react quill cover image
-    const [coverImageData, setCoverImageData] = useState(coverImage);
+    const [coverImageData, setCoverImageData] = useState('');
     // react quill content 
-    const [contentData, setContentData] = useState(content);
+    const [contentData, setContentData] = useState('');
     // when to render spinner
     const [renderSpinner, setRenderSpinner] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+
     const { titleData, categoryData, summaryData } = formData;
-    
+
     useEffect(() => {
         if (!loading) {
             setFormData({
-                title: title,
-                category: category,
-                summary: summary,
+                titleData: isEmpty(title) ? '' : title,
+                categoryData: isEmpty(category) ? '' : category,
+                summaryData: isEmpty(summary) ? '' : summary,
             });
-            setCoverImageData(coverImage);
-            setContentData(content);
+
+            setCoverImageData(isEmpty(coverImage) ? '' : coverImage);
+            setContentData(isEmpty(content) ? '' : content);
         }
     }, [loading, title, category, summary, coverImage, content]);
 
@@ -50,11 +53,44 @@ const ReSave = ({ resavePost, publishSavedPost, loading, savedPost: { _id, title
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const publishPostHandler = useCallback(async (e) => {
+        e.preventDefault();
+        if (!validate(titleData, categoryData, summaryData, coverImageData, contentData, setModal)) {
+            return;
+        }
+        setIsSubmitted(true);
+        try {
+            let form = {
+                title: titleData,
+                category: categoryData,
+                summary: summaryData,
+                coverImage: coverImageData,
+                content: contentData
+            }
+            await publishSavedPost(_id, history, form);
+        } catch (err) {
 
+        }
+        setIsSubmitted(false);
     });
 
     const resavePostHandler = useCallback(async (e) => {
+        e.preventDefault();
 
+        setIsSubmitted(true);
+        try {
+            let form = {
+                title: titleData,
+                category: categoryData,
+                summary: summaryData,
+                coverImage: coverImageData,
+                content: contentData
+            };
+
+            await resavePost(_id, history, form)
+        } catch (err) {
+
+        }
+        setIsSubmitted(false);
     });
 
     return loading ? <h1>LOADING...</h1> : (
@@ -65,14 +101,13 @@ const ReSave = ({ resavePost, publishSavedPost, loading, savedPost: { _id, title
                         id="resaveStyles_titleInput"
                         type="text"
                         placeholder="Title"
-                        className="form-control"
-                        name="title"
-                        onChange={(e) => onChangeHandler(e)}
+                        name="titleData"
                         value={titleData}
+                        onChange={(e) => onChangeHandler(e)}
                     />
                     <select
                         id="resaveStyles_categoryInput"
-                        name="category"
+                        name="categoryData"
                         onChange={(e) => onChangeHandler(e)}
                         value={categoryData}
                         className="browser-default custom-select">
@@ -89,7 +124,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, savedPost: { _id, title
                         type="text"
                         placeholder="Summary"
                         className="form-control"
-                        name="summary"
+                        name="summaryData"
                         id="resaveStyles_summaryInput"
                         rows="5"
                         onChange={(e) => onChangeHandler(e)}
@@ -100,7 +135,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, savedPost: { _id, title
                     <ReactQuill
                         id="resaveStyles_coverImgInput"
                         placeholder="Cover Image"
-                        name="coverImage"
+                        name="coverImageData"
                         modules={coverImageModules}
                         formats={coverImageFormats}
                         value={coverImageData}
@@ -113,13 +148,13 @@ const ReSave = ({ resavePost, publishSavedPost, loading, savedPost: { _id, title
                         modules={modules}
                         formats={formats}
                         placeholder="Body"
-                        name="content"
+                        name="contentData"
                         value={contentData}
                         onChange={(e) => setContentData(e)}
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!renderSpinner ? <button type="button" id="resaveStyles_resaveBtn" onClick={resavePostHandler}>RE-SAVE</button> : <p>LOADING...</p>}
+                    {!renderSpinner ? <button type="button" id="resaveStyles_resaveBtn" onClick={(e) => resavePostHandler(e)}>RE-SAVE</button> : <p>LOADING...</p>}
                     {!renderSpinner ?
                         <button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">PUBLISH</button>
                         :
@@ -135,7 +170,9 @@ ReSave.propTypes = {
     resavePost: PropTypes.func.isRequired,
     publishSavedPost: PropTypes.func.isRequired,
     savedPost: PropTypes.object.isRequired,
+    setModal: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
+    history: PropTypes.any,
 };
 const modules = {
     toolbar: [
