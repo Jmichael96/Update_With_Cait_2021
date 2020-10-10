@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPost, updatePost } from '../../store/actions/post';
 import { useParams } from 'react-router-dom';
+import { setModal } from '../../store/actions/modal';
 
 // styles
 import './postContentPage.css';
@@ -11,7 +12,7 @@ import './postContentPage.css';
 import isEmpty from '../../utils/isEmpty';
 import PostContent from '../../components/Post/PostContent/PostContent';
 
-const PostContentPage = ({ post: { post, loading }, fetchPost, updatePost }) => {
+const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal }) => {
     // fetching param through react-router-dom
     let { id } = useParams();
     useEffect(() => {
@@ -21,7 +22,7 @@ const PostContentPage = ({ post: { post, loading }, fetchPost, updatePost }) => 
     return (
         <article>
             <h1>POST CONTENT</h1>
-            <PostContent post={post} loading={loading} updatePost={updatePost} />
+            <PostContent post={post} auth={auth} loading={loading} updatePost={updatePost} setModal={setModal} />
         </article>
     );
 };
@@ -29,7 +30,9 @@ const PostContentPage = ({ post: { post, loading }, fetchPost, updatePost }) => 
 PostContentPage.propTypes = {
     fetchPost: PropTypes.func.isRequired,
     updatePost: PropTypes.func.isRequired,
+    setModal: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -37,4 +40,4 @@ const mapStateToProps = (state) => ({
     post: state.post
 });
 
-export default connect(mapStateToProps, { fetchPost, updatePost })(PostContentPage);
+export default connect(mapStateToProps, { fetchPost, updatePost, setModal })(PostContentPage);

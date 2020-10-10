@@ -7,7 +7,8 @@ const initialState = {
         modalTitle: null,
         modalContent: null,
         modalActionText: null,
-        modalAction: () => { }
+        modalAction: () => { },
+        Component: null
     }
 };
 

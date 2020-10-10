@@ -20,10 +20,14 @@ export default (state = initialState, action) => {
         case types.FETCH_LIFESTYLE:
         case types.PUBLISH_SAVED_POST_ADD:
         case types.FETCH_POST:
-        case types.UPDATE_POST:
             return {
                 ...state,
                 post: null,
+                loading: true
+            }
+        case types.UPDATE_POST:
+            return {
+                ...state,
                 loading: true
             }
         case types.CREATE_POST_FAIL:

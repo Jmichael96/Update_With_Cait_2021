@@ -11,12 +11,14 @@ import Wrapper from '../Wrapper/Wrapper';
 const Modal = () => {
     const modalInfo = useSelector((state) => state.modal);
     const dispatch = useDispatch();
-    const { modalType, modalTitle, modalText, modalActionText, modalAction } = modalInfo.modalData;
+    const { modalType, modalTitle, modalText, modalActionText, modalAction, Component } = modalInfo.modalData;
 
     // render the appropriate content for the type of modal
     const renderContent = () => {
         if (modalType === 'error') {
             return (<p className="modalContentText" style={{ textAlign: 'center' }}>{modalText}</p>);
+        } else if (modalType === 'component') {
+            return <Component />
         }
     };
 
@@ -40,7 +42,7 @@ const Modal = () => {
                     {renderContent()}
                 </div>
                 <Wrapper styles={{ padding: '1rem' }}>
-                    {modalType === 'confirm' ? <button className="modalActionBtn" onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
+                    {modalType === 'component' ? <button className="modalActionBtn" onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
                     {modalActionText && <button className="modalActionBtn" onClick={actionHandler}>{modalActionText.toUpperCase()}</button>}
                 </Wrapper>
             </div>

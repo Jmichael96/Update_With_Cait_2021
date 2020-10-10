@@ -1,23 +1,23 @@
 const validateForm = (title, category, summary, coverImage, content, setModal) => {
 
     if (!title) {
-        setModal('error', 'title', 'Please make sure to submit a title', 'okay', () => { });
+        setModal('error', 'title', 'Please make sure to submit a title', 'okay', () => { }, null);
         return false;
     }
     if (!category) {
-        setModal('error', 'category', 'Please make sure to select a category', 'okay', () => { });
+        setModal('error', 'category', 'Please make sure to select a category', 'okay', () => { }, null);
         return false;
     }
     if (!summary || summary.length < 3) {
-        setModal('error', 'summary', 'Please make sure to submit a summary', 'okay', () => { });
+        setModal('error', 'summary', 'Please make sure to submit a summary', 'okay', () => { }, null);
         return false;
     }
     if (!coverImage) {
-        setModal('error', 'cover image', 'Please make sure to submit a cover image', 'okay', () => { });
+        setModal('error', 'cover image', 'Please make sure to submit a cover image', 'okay', () => { }, null);
         return false;
     }
     if (!content) {
-        setModal('error', 'content', 'Please make sure to submit some content', 'okay', () => { });
+        setModal('error', 'content', 'Please make sure to submit some content', 'okay', () => { }, null);
         return false;
     }
     return true;
