@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 // styles
@@ -12,6 +12,29 @@ import EditPost from './EditPost/EditPost';
 
 const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
 
+    // const [titleData, setTitleData] = useState('');
+    // const [categoryData, setCategoryData] = useState('');
+    // const [summaryData, setSummaryData] = useState('');
+    // // react quill cover image
+    // const [coverImageData, setCoverImageData] = useState('');
+    // // react quill content 
+    // const [contentData, setContentData] = useState('');
+
+    // // setting all default data to form inputs for editing
+    // useEffect(() => {
+    //     if (!loading && !isEmpty(post)) {
+    //         // extracting the post contents
+    //         const { title, category, summary, coverImage, content } = post;
+    //         setTitleData(isEmpty(title) ? '' : title);
+    //         setCategoryData(isEmpty(category) ? '' : category);
+    //         setSummaryData(isEmpty(summary) ? '' : summary);
+    //         setCoverImageData(isEmpty(coverImage) ? '' : coverImage);
+    //         setContentData(isEmpty(content) ? '' : content);
+    //     }
+    // }, [post]);
+
+
+
     const renderPostData = () => {
         if (!loading && !isEmpty(post)) {
             return <PostData post={post} />
@@ -24,16 +47,32 @@ const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
     const renderComments = () => {
 
     };
-    const renderer = () => {
-        return <EditPost updatePost={updatePost} loading={loading} post={post} />;
-    }
+    //! EDIT SECTION
+
+    // render this through the edit post modal
+    const modalComponentHandler = () => {
+        return <EditPost post={post} />;
+    };
+    // edit post function which renders a modal
     const editPostHandler = () => {
-        setModal('component', 'EDITOR', null, 'UPDATE', () => { }, renderer)
+        setModal('component', 'EDITOR', null, 'UPDATE', () => { }, modalComponentHandler);
+    };
+
+    const renderEditComponent = () => {
+        if (!isEmpty(post)) {
+            if (!loading && !auth.isAuthenticated) {
+                return null;
+            }
+
+            if (!loading && auth.isAuthenticated) {
+                return <EditPost post={post} />;
+            }
+        }
     };
 
     return (
         <article>
-            {!loading && auth.isAuthenticated && <button onClick={editPostHandler}>EDIT</button>}
+            {renderEditComponent()}
             <Wrapper>
                 {loading ? <h1>LOADING...</h1> : renderPostData()}
             </Wrapper>
@@ -45,7 +84,7 @@ PostContent.propTypes = {
     updatePost: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
-    post: PropTypes.object.isRequired,
+    post: PropTypes.object,
     auth: PropTypes.object.isRequired,
 };
 
