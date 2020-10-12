@@ -25,6 +25,7 @@ export default (state = initialState, action) => {
                 post: null,
                 loading: true
             };
+        case types.DELETE_POST:
         case types.UPDATE_POST:
             return {
                 ...state,
@@ -194,6 +195,23 @@ export default (state = initialState, action) => {
                 lifestylePosts: updatedCategory === 'Lifestyle' ? [payload.post, ...state.lifestylePosts] : state.lifestylePosts,
                 graphicsPosts: updatedCategory === 'Graphics' ? [payload.post, ...state.graphicsPosts] : state.graphicsPosts,
                 wellnessPosts: updatedCategory === 'Wellness' ? [payload.post, ...state.wellnessPosts] : state.wellnessPosts,
+                loading: false
+            };
+        case types.DELETE_POST_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
+        case types.DELETE_POST_SUCCESS:
+            // extracting the category from the deleted post
+            let deletedCategory = payload.post.category
+            return {
+                ...state,
+                post: null,
+                devotionalPosts: deletedCategory === 'Devotional' ? state.devotionalPosts.filter(post => post._id !== payload.id) : state.devotionalPosts,
+                lifestylePosts: deletedCategory === 'Lifestyle' ? state.lifestylePosts.filter(post => post._id !== payload.id) : state.lifestylePosts,
+                graphicsPosts: deletedCategory === 'Graphics' ? state.graphicsPosts.filter(post => post._id !== payload.id) : state.graphicsPosts,
+                wellnessPosts: deletedCategory === 'Wellness' ? state.wellnessPosts.filter(post => post._id !== payload.id) : state.wellnessPosts,
                 loading: false
             };
         case types.POST_ERROR:

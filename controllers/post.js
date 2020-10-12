@@ -181,3 +181,32 @@ exports.updatePost = (req, res, next) => {
             });
         });
 };
+
+// @route    DELETE api/posts/delete_post/:id
+// @desc     Delete a post
+// @access   Private
+exports.deletePost = (req, res, next) => {
+    if (!req.user) {
+        return res.status(401).json({
+            serverMsg: 'You are not authorized'
+        });
+    }
+    Post.findByIdAndDelete({ _id: req.params.id })
+        .then((post) => {
+            if (!post) {
+                return res.status(404).json({
+                    serverMsg: 'Could not find post and delete it. Please try again later'
+                });
+            }
+
+            return res.status(200).json({
+                serverMsg: 'Deleted post successfully',
+                post
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
+        });
+};

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import PropTypes, { any } from 'prop-types';
+import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { withRouter } from 'react-router-dom';
@@ -75,7 +75,6 @@ const EditPost = ({ post, loading, setModal, updatePost, history }) => {
                 comments: comments,
                 date: date
             };
-            console.log(_id);
             await updatePost(_id, history, form);
             setDisplayModal(false);
         } catch (err) {

@@ -37,12 +37,12 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
     return (
         <article className="postItemStyles_card" onClick={redirectHandler}>
             <div className="postItemStyles_contentWrap">
-                <span className="postItemStyles_coverImg" dangerouslySetInnerHTML={{ __html: coverImage }}></span>
+                <span className="postItemStyles_coverImg" dangerouslySetInnerHTML={{ __html: !isEmpty(coverImage) && coverImage }}></span>
                 <p className="postItemStyles_greyTextWrap">
                     {category.toUpperCase()} {' '}|{' '}<Moment format="MMMM DD, YYYY">{date.toUpperCase()}</Moment>
                 </p>
-                <h3 className="postItemStyles_title">{title}</h3>
-                <p className="postItemStyles_summary">{summary}</p>
+                <h3 className="postItemStyles_title">{!isEmpty(title) && title}</h3>
+                <p className="postItemStyles_summary">{!isEmpty(summary) && summary}</p>
             </div>
             <section className="postItemStyles_btnWrap">
                 <button className="postItemStyles_readMoreBtn">READ MORE {' '} <FaArrowAltCircleRight className="postItemStyles_rightArrowIcon" /></button>

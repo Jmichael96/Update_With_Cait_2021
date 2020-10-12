@@ -206,4 +206,35 @@ export const updatePostSuccess = (id, history, formData) => (dispatch) => {
                 type: types.UPDATE_POST_FAIL,
             });
         });
-};  
+};
+
+//! DELETE POST
+export const deletePost = (id, history) => (dispatch) => {
+    dispatch({
+        type: types.DELETE_POST
+    });
+    dispatch(deletePostSuccess(id, history));
+};
+
+export const deletePostSuccess = (id, history) => (dispatch) => {
+    axios.delete(`/api/posts/delete_post/${id}`)
+        .then((res) => {
+            dispatch({
+                type: types.DELETE_POST_SUCCESS,
+                payload: {
+                    id: id,
+                    post: res.data.post
+                }
+            });
+            dispatch(setAlert(res.data.serverMsg, 'success'));
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'warning'));
+            }
+            dispatch({
+                type: types.DELETE_POST_FAIL,
+            });
+        });
+};

@@ -1,0 +1,16 @@
+/* root element for component */
+
+#postContentStyles_root {}
+
+/* authenticated buttons for edit and deleting */
+
+#postContentStyles_authActionBtnWrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+/* delete button */
+
+#postContentStyles_deleteBtn {}

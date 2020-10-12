@@ -14,10 +14,14 @@ const Modal = () => {
     const { modalType, modalTitle, modalText, modalActionText, modalAction } = modalInfo.modalData;
 
     // render the appropriate content for the type of modal
-    const renderContent = () => {
-        if (modalType === 'error') {
-            return (<p className="modalContentText" style={{ textAlign: 'center' }}>{modalText}</p>);
-        } 
+    const renderContent = () => {        
+        switch (modalType) {
+            case 'error':
+                return (<p className="modalContentText" style={{ textAlign: 'center' }}>{modalText}</p>);
+            case 'confirm':
+                return (<p className="modalContentText" style={{ textAlign: 'center' }}>{modalText}</p>);
+            default: return;
+        };
     };
 
     // handler for modalAction being passed in
@@ -40,7 +44,7 @@ const Modal = () => {
                     {renderContent()}
                 </div>
                 <Wrapper styles={{ padding: '1rem' }}>
-                    {modalType === 'component' ? <button className="modalActionBtn" onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
+                    {modalType === 'confirm' ? <button className="modalActionBtn" onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
                     {modalActionText && <button className="modalActionBtn" onClick={actionHandler}>{modalActionText.toUpperCase()}</button>}
                 </Wrapper>
             </div>

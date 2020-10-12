@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPost, updatePost } from '../../store/actions/post';
+import { fetchPost, updatePost, deletePost } from '../../store/actions/post';
 import { useParams } from 'react-router-dom';
 import { setModal } from '../../store/actions/modal';
 
@@ -12,7 +12,7 @@ import './postContentPage.css';
 import isEmpty from '../../utils/isEmpty';
 import PostContent from '../../components/Post/PostContent/PostContent';
 
-const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal }) => {
+const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost }) => {
     // fetching param through react-router-dom
     let { id } = useParams();
     useEffect(() => {
@@ -21,8 +21,7 @@ const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost,
 
     return (
         <article>
-            <h1>POST CONTENT</h1>
-            <PostContent post={post} auth={auth} loading={loading} updatePost={updatePost} setModal={setModal} />
+            <PostContent post={post} auth={auth} loading={loading} updatePost={updatePost} setModal={setModal} deletePost={deletePost} />
         </article>
     );
 };
@@ -30,6 +29,7 @@ const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost,
 PostContentPage.propTypes = {
     fetchPost: PropTypes.func.isRequired,
     updatePost: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
@@ -40,4 +40,4 @@ const mapStateToProps = (state) => ({
     post: state.post
 });
 
-export default connect(mapStateToProps, { fetchPost, updatePost, setModal })(PostContentPage);
+export default connect(mapStateToProps, { fetchPost, updatePost, setModal, deletePost })(PostContentPage);

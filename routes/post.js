@@ -37,4 +37,9 @@ router.get('/fetch_graphics', PostController.fetchGraphics);
 // @access   Private
 router.put('/update_post/:id', isAuth, PostController.updatePost);
 
+// @route    DELETE api/posts/delete_post/:id
+// @desc     Delete a post
+// @access   Private
+router.delete('/delete_post/:id', isAuth, PostController.deletePost);
+
 module.exports = router;

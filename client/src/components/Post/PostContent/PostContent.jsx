@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 // styles
 import './postContent.css';
@@ -10,30 +11,7 @@ import isEmpty from '../../../utils/isEmpty';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import EditPost from './EditPost/EditPost';
 
-const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
-
-    // const [titleData, setTitleData] = useState('');
-    // const [categoryData, setCategoryData] = useState('');
-    // const [summaryData, setSummaryData] = useState('');
-    // // react quill cover image
-    // const [coverImageData, setCoverImageData] = useState('');
-    // // react quill content 
-    // const [contentData, setContentData] = useState('');
-
-    // // setting all default data to form inputs for editing
-    // useEffect(() => {
-    //     if (!loading && !isEmpty(post)) {
-    //         // extracting the post contents
-    //         const { title, category, summary, coverImage, content } = post;
-    //         setTitleData(isEmpty(title) ? '' : title);
-    //         setCategoryData(isEmpty(category) ? '' : category);
-    //         setSummaryData(isEmpty(summary) ? '' : summary);
-    //         setCoverImageData(isEmpty(coverImage) ? '' : coverImage);
-    //         setContentData(isEmpty(content) ? '' : content);
-    //     }
-    // }, [post]);
-
-
+const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history }) => {
 
     const renderPostData = () => {
         if (!loading && isEmpty(post)) {
@@ -50,16 +28,6 @@ const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
     const renderComments = () => {
 
     };
-    //! EDIT SECTION
-
-    // render this through the edit post modal
-    const modalComponentHandler = () => {
-        return <EditPost post={post} />;
-    };
-    // edit post function which renders a modal
-    const editPostHandler = () => {
-        setModal('component', 'EDITOR', null, 'UPDATE', () => { }, modalComponentHandler);
-    };
 
     const renderEditComponent = () => {
         if (!isEmpty(post)) {
@@ -72,10 +40,25 @@ const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
             }
         }
     };
+    // render the delete post
+    const renderDeleteBtn = () => {
+        if (!loading && !isEmpty(post)) {
+            if (!auth.loading && !auth.isAuthenticated) {
+                return null;
+            }
+            if (!auth.loading && auth.isAuthenticated) {
+
+                return <button onClick={() => { setModal('confirm', 'delete post', 'Are you sure you want to delete this post?', 'confirm', () => { deletePost(post._id, history) }) }} type="button">DELETE</button>
+            }
+        }
+    };
 
     return (
-        <article>
-            {renderEditComponent()}
+        <article id="postContentStyles_root">
+            <div id="postContentStyles_authActionBtnWrap">
+                {renderEditComponent()}
+                {renderDeleteBtn()}
+            </div>
             <Wrapper>
                 {loading ? <h1>LOADING...</h1> : renderPostData()}
             </Wrapper>
@@ -86,9 +69,11 @@ const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
 PostContent.propTypes = {
     updatePost: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
+    deletePost: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     post: PropTypes.object,
     auth: PropTypes.object.isRequired,
+    history: PropTypes.any,
 };
 
-export default PostContent;
+export default withRouter(PostContent);
