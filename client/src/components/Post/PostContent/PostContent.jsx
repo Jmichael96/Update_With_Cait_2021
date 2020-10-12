@@ -36,6 +36,9 @@ const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
 
 
     const renderPostData = () => {
+        if (!loading && isEmpty(post)) {
+            return null;
+        }
         if (!loading && !isEmpty(post)) {
             return <PostData post={post} />
         }

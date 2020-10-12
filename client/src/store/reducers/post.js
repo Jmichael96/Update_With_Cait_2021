@@ -24,18 +24,18 @@ export default (state = initialState, action) => {
                 ...state,
                 post: null,
                 loading: true
-            }
+            };
         case types.UPDATE_POST:
             return {
                 ...state,
                 loading: true
-            }
+            };
         case types.CREATE_POST_FAIL:
             return {
                 ...state,
                 post: null,
                 loading: false
-            }
+            };
         case types.CREATE_POST_SUCCESS:
             let createdPostCategory = payload.category;
             // return post to the correct destination
@@ -75,7 +75,7 @@ export default (state = initialState, action) => {
                 ...state,
                 post: null,
                 loading: false
-            }
+            };
         case types.FETCH_POST_SUCCESS:
             return {
                 ...state,
@@ -88,7 +88,7 @@ export default (state = initialState, action) => {
                 lifestylePosts: [],
                 post: null,
                 loading: false
-            }
+            };
         case types.FETCH_LIFESTYLE_SUCCESS:
             return {
                 ...state,
@@ -102,7 +102,7 @@ export default (state = initialState, action) => {
                 devotionalPosts: [],
                 post: null,
                 loading: false
-            }
+            };
         case types.FETCH_DEVOTIONAL_SUCCESS:
             return {
                 ...state,
@@ -116,7 +116,7 @@ export default (state = initialState, action) => {
                 wellnessPosts: [],
                 post: null,
                 loading: false
-            }
+            };
         case types.FETCH_WELLNESS_SUCCESS:
             return {
                 ...state,
@@ -130,7 +130,7 @@ export default (state = initialState, action) => {
                 graphicsPosts: [],
                 post: null,
                 loading: false
-            }
+            };
         case types.FETCH_GRAPHICS_SUCCESS:
             return {
                 ...state,
@@ -164,7 +164,7 @@ export default (state = initialState, action) => {
                     return tempState(devoState);
                 case 'Lifestyle':
                     let lifeState = {
-                        devotionalPosts: [payload, ...state.lifestylePosts]
+                        lifestylePosts: [payload, ...state.lifestylePosts]
                     }
                     return tempState(lifeState);
                 case 'Graphics':
@@ -185,47 +185,17 @@ export default (state = initialState, action) => {
                 loading: false
             };
         case types.UPDATE_POST_SUCCESS:
-            let updatedPostCategory = payload.category;
-            // created function to return state that is needed
-            const updatedPostState = (cat) => {
-                return {
-                    ...state,
-                    ...cat,
-                    post: payload
-                };
+            // extracting category from updated post
+            let updatedCategory = payload.post.category;
+            return {
+                ...state,
+                post: payload.post,
+                devotionalPosts: updatedCategory === 'Devotional' ? [payload.post, ...state.devotionalPosts] : state.devotionalPosts,
+                lifestylePosts: updatedCategory === 'Lifestyle' ? [payload.post, ...state.lifestylePosts] : state.lifestylePosts,
+                graphicsPosts: updatedCategory === 'Graphics' ? [payload.post, ...state.graphicsPosts] : state.graphicsPosts,
+                wellnessPosts: updatedCategory === 'Wellness' ? [payload.post, ...state.wellnessPosts] : state.wellnessPosts,
+                loading: false
             };
-
-            switch (updatedPostCategory) {
-                case 'Devotional':
-                    let devoState = {
-                        devotionalPosts: state.devotionalPosts.map(post =>
-                            post._id === payload.id ? { ...post, ...payload.post } : post
-                        )
-                    }
-                    return updatedPostState(devoState);
-                case 'Lifestyle':
-                    let lifeState = {
-                        lifestylePosts: state.lifestylePosts.map(post =>
-                            post._id === payload.id ? { ...post, ...payload.post } : post
-                        )
-                    }
-                    return updatedPostState(lifeState);
-                case 'Graphics':
-                    let graphicState = {
-                        graphicsPosts: state.graphicsPosts.map(post =>
-                            post._id === payload.id ? { ...post, ...payload.post } : post
-                        )
-                    }
-                    return updatedPostState(graphicState);
-                case 'Wellness':
-                    let wellnessState = {
-                        wellnessPosts: state.wellnessPosts.map(post =>
-                            post._id === payload.id ? { ...post, ...payload.post } : post
-                        )
-                    }
-                    return updatedPostState(wellnessState);
-                default: return state;
-            }
         case types.POST_ERROR:
             return {
                 posts: [],

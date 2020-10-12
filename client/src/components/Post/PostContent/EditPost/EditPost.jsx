@@ -64,7 +64,7 @@ const EditPost = ({ post, loading, setModal, updatePost, history }) => {
         setIsSubmitted(true);
         try {
             // extracting from the post
-            const { _id, like_number, comments } = post;
+            const { _id, like_number, comments, date } = post;
             let form = {
                 title: titleData,
                 category: categoryData,
@@ -72,7 +72,8 @@ const EditPost = ({ post, loading, setModal, updatePost, history }) => {
                 coverImage: coverImageData,
                 content: contentData,
                 like_number: like_number,
-                comments: comments
+                comments: comments,
+                date: date
             };
             console.log(_id);
             await updatePost(_id, history, form);
