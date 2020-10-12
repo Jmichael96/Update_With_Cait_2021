@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { withRouter } from 'react-router-dom';
 
 // styles
 import './editPost.css';
@@ -12,7 +11,7 @@ import isEmpty from '../../../../utils/isEmpty';
 import Wrapper from '../../../Layout/Wrapper/Wrapper';
 import validate from '../../../../utils/validateForm';
 
-const EditPost = ({ post, loading, setModal, updatePost, history }) => {
+const EditPost = ({ post, loading, setModal, updatePost }) => {
     const [formData, setFormData] = useState({
         titleData: '',
         categoryData: '',
@@ -75,13 +74,13 @@ const EditPost = ({ post, loading, setModal, updatePost, history }) => {
                 comments: comments,
                 date: date
             };
-            await updatePost(_id, history, form);
+            await updatePost(_id, form);
             setDisplayModal(false);
         } catch (err) {
 
         }
         setIsSubmitted(false);
-    });
+    }, [post, titleData, categoryData, summaryData, coverImageData, contentData]);
 
     const renderForm = () => {
         return (
@@ -175,7 +174,6 @@ EditPost.propTypes = {
     updatePost: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
     loading: PropTypes.object.isRequired,
-    history: PropTypes.any,
 };
 
 const modules = {
@@ -225,4 +223,4 @@ const coverImageFormats = [
 
 ];
 
-export default withRouter(EditPost);
+export default EditPost;

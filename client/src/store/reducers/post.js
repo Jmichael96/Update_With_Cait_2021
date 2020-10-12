@@ -27,6 +27,7 @@ export default (state = initialState, action) => {
             };
         case types.DELETE_POST:
         case types.UPDATE_POST:
+        case types.ADD_COMMENT:
             return {
                 ...state,
                 loading: true
@@ -214,16 +215,30 @@ export default (state = initialState, action) => {
                 wellnessPosts: deletedCategory === 'Wellness' ? state.wellnessPosts.filter(post => post._id !== payload.id) : state.wellnessPosts,
                 loading: false
             };
-        case types.POST_ERROR:
+        case types.ADD_COMMENT_FAIL:
             return {
-                posts: [],
-                devotionalPosts: [],
-                fitnessPosts: [],
-                graphicsPosts: [],
-                lifestylePosts: [],
-                reviewPosts: [],
-                post: null,
-                loading: true,
+                ...state,
+                loading: false
+            };
+        case types.ADD_COMMENT_SUCCESS:
+            // extracting the category for the comment added post
+            let addedCommentCat = payload.post.category;
+            return {
+                ...state,
+                post: { ...state.post, comments: payload.post.comments },
+                devotionalPosts: addedCommentCat === 'Devotional' ? state.devotionalPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.devotionalPosts,
+                lifestylePosts: addedCommentCat === 'Lifestyle' ? state.lifestylePosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.lifestylePosts,
+                graphicsPosts: addedCommentCat === 'Graphics' ? state.graphicsPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.graphicsPosts,
+                wellnessPosts: addedCommentCat === 'Wellness' ? state.wellnessPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.wellnessPosts,
+                loading: false
             };
         default: return state;
     };

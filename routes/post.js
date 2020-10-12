@@ -42,4 +42,9 @@ router.put('/update_post/:id', isAuth, PostController.updatePost);
 // @access   Private
 router.delete('/delete_post/:id', isAuth, PostController.deletePost);
 
+// @route    PUT api/posts/add_comment/:id
+// @desc     Add a comment to a post
+// @access   Publish
+router.put('/add_comment/:id', PostController.addComment);
+
 module.exports = router;

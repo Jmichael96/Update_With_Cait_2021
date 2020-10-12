@@ -171,14 +171,14 @@ export const fetchGraphicsSuccess = () => (dispatch) => {
 };
 
 //! UPDATE POST
-export const updatePost = (id, history, { ...formData }) => (dispatch) => {
+export const updatePost = (id, { ...formData }) => (dispatch) => {
     dispatch({
         type: types.UPDATE_POST
     });
-    dispatch(updatePostSuccess(id, history, formData));
+    dispatch(updatePostSuccess(id, formData));
 };
 
-export const updatePostSuccess = (id, history, formData) => (dispatch) => {
+export const updatePostSuccess = (id, formData) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -227,6 +227,7 @@ export const deletePostSuccess = (id, history) => (dispatch) => {
                 }
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
+            history.push('/');
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
@@ -235,6 +236,43 @@ export const deletePostSuccess = (id, history) => (dispatch) => {
             }
             dispatch({
                 type: types.DELETE_POST_FAIL,
+            });
+        });
+};
+
+//! ADD COMMENT
+export const addComment = (id, { ...formData }) => (dispatch) => {
+    dispatch({
+        type: types.ADD_COMMENT
+    });
+    dispatch(addCommentSuccess(id, formData));
+};
+
+export const addCommentSuccess = (id, formData) => (dispatch) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    axios.put(`/api/posts/add_comment/${id}`, formData, config)
+        .then((res) => {
+            dispatch({
+                type: types.ADD_COMMENT_SUCCESS,
+                payload: {
+                    id: id,
+                    post: res.data.post
+                }
+            });
+            dispatch(setAlert(res.data.serverMsg, 'success'));
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'warning'));
+            }
+            dispatch({
+                type: types.ADD_COMMENT_FAIL,
             });
         });
 };

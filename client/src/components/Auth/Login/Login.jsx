@@ -79,7 +79,7 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
     return (
         <article id="loginStyles_formWrap">
             <form onSubmit={(e) => onSubmitHandler(e)} id="loginStyles_form">
-                <div id="loginStyles_innerFormWrap">
+                <div>
                     <input
                         type="email"
                         id="loginEmail"

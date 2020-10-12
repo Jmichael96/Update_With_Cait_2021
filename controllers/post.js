@@ -210,3 +210,36 @@ exports.deletePost = (req, res, next) => {
             });
         });
 };
+
+
+// @route    PUT api/posts/add_comment/:id
+// @desc     Add a comment to a post
+// @access   Publish
+exports.addComment = (req, res, next) => {
+    if (!req.body.name || !req.body.text) {
+        return res.status(406).json({
+            serverMsg: 'Please make sure to enter a name and message'
+        });
+    }
+
+    Post.findByIdAndUpdate({ _id: req.params.id })
+        .then((post) => {
+            // creating a new object to push to comments array
+            const newComment = {
+                name: req.body.name,
+                text: req.body.text
+            };
+            // adding to the comments array
+            post.comments.unshift(newComment);
+            post.save();
+            return res.status(201).json({
+                serverMsg: 'Added comment successfully',
+                post: post,
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
+        });
+};

@@ -10,8 +10,9 @@ import PostData from './PostData/PostData';
 import isEmpty from '../../../utils/isEmpty';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import EditPost from './EditPost/EditPost';
+import Comments from './Comments/Comments';
 
-const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history }) => {
+const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment }) => {
 
     const renderPostData = () => {
         if (!loading && isEmpty(post)) {
@@ -26,7 +27,12 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
     };
 
     const renderComments = () => {
-
+        if (!loading && isEmpty(post)) {
+            return null;
+        }
+        if (!loading && !isEmpty(post)) {
+            return <Comments addComment={addComment} loading={loading} auth={auth} comments={post.comments} />
+        }
     };
 
     const renderEditComponent = () => {
@@ -62,6 +68,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             <Wrapper>
                 {loading ? <h1>LOADING...</h1> : renderPostData()}
             </Wrapper>
+            {renderComments()}
         </article>
     );
 };
@@ -70,6 +77,7 @@ PostContent.propTypes = {
     updatePost: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
     deletePost: PropTypes.func.isRequired,
+    addComment: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     post: PropTypes.object,
     auth: PropTypes.object.isRequired,
