@@ -1,0 +1,132 @@
+/* form styles */
+
+#editPostStyles_titleCategoryWrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* summary */
+
+#editPostStyles_summaryInput {
+    width: 95%;
+    max-width: 25rem;
+    margin-top: 1rem;
+}
+
+/* cover image */
+
+#editPostStyles_coverImgInput {
+    width: 20rem;
+    border: 1px solid rgb(98, 98, 98);
+    margin-top: 1rem;
+}
+
+#editPostStyles_coverImgInput .ql-container {
+    width: 20rem;
+    height: 100%;
+}
+
+/* image inside cover image input */
+
+#editPostStyles_coverImgInput img {
+    display: block;
+    width: 18rem;
+}
+
+/* content input */
+
+#editPostStyles_contentInput {
+    margin-top: 1rem;
+    width: 90%;
+    border: 1px solid rgb(98, 98, 98);
+}
+
+#editPostStyles_contentInput .ql-container {
+    height: 30rem;
+}
+
+#editPostStyles_contentInput img {
+    display: block;
+    width: 12rem;
+}
+
+/* modal styles */
+
+.editPostStyles_modal-window {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.575);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 800;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.editPostStyles_modal-window:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.editPostStyles_modal-window>div {
+    width: 100%;
+    max-width: 90%;
+    height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #f8f8f8;
+    border-radius: 3px;
+    overflow-y: scroll;
+}
+
+/* header surrounding title */
+
+#editPostStyles_modalHeader {
+    height: 2rem;
+    background-color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .4rem;
+}
+
+/* modal title text */
+
+#editPostStyles_modalTitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* modal content wrap around text */
+
+#editPostStyles_modalContent {
+    margin-top: 2rem;
+}
+
+/* style of text content */
+
+.editPostStyles_modalContentText {
+    font-size: 1rem;
+}
+
+/* button wrapper */
+
+#editPostStyles_btnWrap {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 1rem 0;
+}

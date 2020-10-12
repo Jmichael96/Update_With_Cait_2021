@@ -191,7 +191,7 @@ export default (state = initialState, action) => {
                 return {
                     ...state,
                     ...cat,
-                    post: payload.post
+                    post: payload
                 };
             };
 

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect, useCallback } from 'react';
+import PropTypes, { any } from 'prop-types';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { withRouter } from 'react-router-dom';
 
 // styles
 import './editPost.css';
@@ -9,17 +10,91 @@ import './editPost.css';
 // components
 import isEmpty from '../../../../utils/isEmpty';
 import Wrapper from '../../../Layout/Wrapper/Wrapper';
+import validate from '../../../../utils/validateForm';
 
-const EditPost = ({ setTitleData, titleData, coverImageData, contentData, setCoverImageData, setContentData }) => {
+const EditPost = ({ post, loading, setModal, updatePost, history }) => {
+    const [formData, setFormData] = useState({
+        titleData: '',
+        categoryData: '',
+        summaryData: ''
+    });
+    const [coverImageData, setCoverImageData] = useState('');
+    const [contentData, setContentData] = useState('');
+    // setting modal 
+    const [displayModal, setDisplayModal] = useState(false);
+    // on submit change to true
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    // set to render spinner
+    const [renderSpinner, setRenderSpinner] = useState(false);
 
-    return (
-        <article id="editPostStyles_root">
-            <h1>Thingy</h1>
+    // extracting from the formData state
+    const { titleData, categoryData, summaryData } = formData;
+
+    useEffect(() => {
+        if (!loading && !isEmpty(post)) {
+            const { title, category, summary, coverImage, content } = post;
+            setFormData({
+                titleData: isEmpty(title) ? '' : title,
+                categoryData: isEmpty(category) ? '' : category,
+                summaryData: isEmpty(summary) ? '' : summary
+            });
+            setCoverImageData(isEmpty(coverImage) ? '' : coverImage);
+            setContentData(isEmpty(content) ? '' : content);
+        }
+    }, [post, displayModal]);
+
+    // checking if store is loading and if user submitted form to render spinner accordingly
+    useEffect(() => {
+        if (loading && isSubmitted) {
+            setRenderSpinner(true);
+        } else if (loading && !isSubmitted) {
+            setRenderSpinner(false);
+        }
+    }, [loading, isSubmitted]);
+
+    // on change handler 
+    const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    // submit handler 
+    const onSubmitHandler = useCallback(async (e) => {
+        e.preventDefault();
+        if (!validate(titleData, categoryData, summaryData, coverImageData, contentData, setModal)) {
+            return;
+        }
+        setIsSubmitted(true);
+        try {
+            // extracting from the post
+            const { _id, like_number, comments } = post;
+            let form = {
+                title: titleData,
+                category: categoryData,
+                summary: summaryData,
+                coverImage: coverImageData,
+                content: contentData,
+                like_number: like_number,
+                comments: comments
+            };
+            console.log(_id);
+            await updatePost(_id, history, form);
+            setDisplayModal(false);
+        } catch (err) {
+
+        }
+        setIsSubmitted(false);
+    });
+
+    const renderForm = () => {
+        return (
             <form>
-                <div id="resaveStyles_titleCategoryWrap">
-                    <input value={titleData} name="titleData" onChange={(e) => setTitleData(e.target.value)} />
-                    {/* <select
-                        id="resaveStyles_categoryInput"
+                <div id="editPostStyles_titleCategoryWrap">
+                    <input
+                        id="editPostStyles_titleInput"
+                        value={titleData}
+                        name="titleData"
+                        onChange={onChangeHandler}
+                    />
+                    <select
+                        id="editPostStyles_categoryInput"
                         name="categoryData"
                         onChange={(e) => onChangeHandler(e)}
                         value={categoryData}
@@ -30,23 +105,23 @@ const EditPost = ({ setTitleData, titleData, coverImageData, contentData, setCov
                         <option value="Fitness">Fitness</option>
                         <option value="Review">Review</option>
                         <option value="Graphics">Graphics</option>
-                    </select> */}
+                    </select>
                 </div>
                 <Wrapper>
-                    {/* <textarea
+                    <textarea
                         type="text"
                         placeholder="Summary"
                         className="form-control"
                         name="summaryData"
-                        id="resaveStyles_summaryInput"
+                        id="editPostStyles_summaryInput"
                         rows="5"
                         onChange={(e) => onChangeHandler(e)}
                         value={summaryData}>
-                    </textarea> */}
+                    </textarea>
                 </Wrapper>
                 <Wrapper>
                     <ReactQuill
-                        id="resaveStyles_coverImgInput"
+                        id="editPostStyles_coverImgInput"
                         placeholder="Cover Image"
                         name="coverImageData"
                         modules={coverImageModules}
@@ -57,7 +132,7 @@ const EditPost = ({ setTitleData, titleData, coverImageData, contentData, setCov
                 </Wrapper>
                 <Wrapper>
                     <ReactQuill
-                        id="resaveStyles_contentInput"
+                        id="editPostStyles_contentInput"
                         modules={modules}
                         formats={formats}
                         placeholder="Body"
@@ -67,17 +142,40 @@ const EditPost = ({ setTitleData, titleData, coverImageData, contentData, setCov
                     />
                 </Wrapper>
             </form>
+        );
+    };
+
+    return (
+        <article id="editPostStyles_root">
+            <button onClick={() => setDisplayModal(true)}>EDIT</button>
+            <div id="editPostStyles_open-modal" className="editPostStyles_modal-window" style={{
+                visibility: displayModal ? 'visible' : 'hidden',
+                opacity: displayModal ? 1 : 0,
+                pointerEvents: displayModal ? 'auto' : 'none',
+            }}>
+                <div>
+                    <div id="editPostStyles_modalHeader">
+                        <h4>EDIT POST</h4>
+                    </div>
+                    <div id="editPostStyles_modalContent">
+                        {renderForm()}
+                    </div>
+                    <div id="editPostStyles_btnWrap">
+                        <button id="editPostStyles_cancelBtn" onClick={() => setDisplayModal(false)}>CANCEL</button>
+                        {!renderSpinner ? <button id="editPostStyles_updateBtn" onClick={(e) => onSubmitHandler(e)}>UPDATE</button> : <h1>LOADING</h1>}
+                    </div>
+                </div>
+            </div>
         </article>
     );
 };
 
 EditPost.propTypes = {
-    titleData: PropTypes.any,
-    setTitleData: PropTypes.func.isRequired,
-    coverImageData: PropTypes.any,
-    contentData: PropTypes.any,
-    setCoverImageData: PropTypes.func.isRequired,
-    setContentData: PropTypes.func.isRequired,
+    setModal: PropTypes.func.isRequired,
+    updatePost: PropTypes.func.isRequired,
+    post: PropTypes.object.isRequired,
+    loading: PropTypes.object.isRequired,
+    history: PropTypes.any,
 };
 
 const modules = {
@@ -127,4 +225,4 @@ const coverImageFormats = [
 
 ];
 
-export default EditPost;
+export default withRouter(EditPost);

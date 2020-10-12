@@ -11,15 +11,13 @@ import Wrapper from '../Wrapper/Wrapper';
 const Modal = () => {
     const modalInfo = useSelector((state) => state.modal);
     const dispatch = useDispatch();
-    const { modalType, modalTitle, modalText, modalActionText, modalAction, Component } = modalInfo.modalData;
+    const { modalType, modalTitle, modalText, modalActionText, modalAction } = modalInfo.modalData;
 
     // render the appropriate content for the type of modal
     const renderContent = () => {
         if (modalType === 'error') {
             return (<p className="modalContentText" style={{ textAlign: 'center' }}>{modalText}</p>);
-        } else if (modalType === 'component') {
-            return <Component />
-        }
+        } 
     };
 
     // handler for modalAction being passed in

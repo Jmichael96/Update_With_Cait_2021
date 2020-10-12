@@ -8,7 +8,6 @@ const initialState = {
         modalContent: null,
         modalActionText: null,
         modalAction: () => { },
-        Component: null
     }
 };
 

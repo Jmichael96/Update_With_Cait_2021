@@ -65,7 +65,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal }) => {
             }
 
             if (!loading && auth.isAuthenticated) {
-                return <EditPost post={post} />;
+                return <EditPost post={post} setModal={setModal} updatePost={updatePost} loading={loading} />;
             }
         }
     };

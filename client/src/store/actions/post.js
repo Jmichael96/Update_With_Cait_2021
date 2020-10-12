@@ -171,19 +171,20 @@ export const fetchGraphicsSuccess = () => (dispatch) => {
 };
 
 //! UPDATE POST
-export const updatePost = (id, { ...formData }) => (dispatch) => {
+export const updatePost = (id, history, { ...formData }) => (dispatch) => {
     dispatch({
         type: types.UPDATE_POST
     });
-    dispatch(updatePostSuccess(id, formData));
+    dispatch(updatePostSuccess(id, history, formData));
 };
 
-export const updatePostSuccess = (id, formData) => (dispatch) => {
+export const updatePostSuccess = (id, history, formData) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
+
     axios.put(`/api/posts/update_post/${id}`, formData, config)
         .then((res) => {
             dispatch({
@@ -193,6 +194,7 @@ export const updatePostSuccess = (id, formData) => (dispatch) => {
                     post: res.data.post
                 }
             });
+            console.log(res.data);
             dispatch(setAlert(res.data.serverMsg, 'success'));
         })
         .catch((err) => {

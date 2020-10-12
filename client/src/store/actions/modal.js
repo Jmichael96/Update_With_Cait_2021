@@ -1,6 +1,6 @@
 import * as types from './types';
 
-export const setModal = (modalType, modalTitle, modalText, modalActionText, modalAction, Component) => (dispatch) => {
+export const setModal = (modalType, modalTitle, modalText, modalActionText, modalAction) => (dispatch) => {
     dispatch({
         type: types.SET_MODAL,
         payload: {
@@ -9,7 +9,6 @@ export const setModal = (modalType, modalTitle, modalText, modalActionText, moda
             modalText,
             modalActionText,
             modalAction,
-            Component
         }
     });
 };
