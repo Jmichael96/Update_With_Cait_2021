@@ -221,7 +221,7 @@ exports.addComment = (req, res, next) => {
             serverMsg: 'Please make sure to enter a name and message'
         });
     }
-    console.log('addComment()');
+
     Post.findByIdAndUpdate({ _id: req.params.id })
         .then((post) => {
             // creating a new object to push to comments array
@@ -229,7 +229,7 @@ exports.addComment = (req, res, next) => {
                 name: req.body.name,
                 text: req.body.text
             };
-            console.log(newComment);
+
             // adding to the comments array
             post.comments.unshift(newComment);
             post.save();

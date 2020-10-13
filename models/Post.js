@@ -32,11 +32,11 @@ let PostSchema = new mongoose.Schema({
     },
     comments: [
         {
-            authorName: {
+            name: {
                 type: String,
                 required: true
             },
-            content: {
+            text: {
                 type: String,
                 required: true
             },
