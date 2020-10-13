@@ -31,7 +31,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             return null;
         }
         if (!loading && !isEmpty(post)) {
-            return <Comments addComment={addComment} loading={loading} auth={auth} comments={post.comments} />
+            return <Comments addComment={addComment} postId={post._id} loading={loading} auth={auth} comments={post.comments} />
         }
     };
 

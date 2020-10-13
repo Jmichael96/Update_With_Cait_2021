@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import './addComment.css';
 
 // components
+import isEmpty from '../../../../../utils/isEmpty';
 
-const AddComment = ({ addComment, loading }) => {
+const AddComment = ({ addComment, loading, postId }) => {
     const [formData, setFormData] = useState({
         name: '',
         text: ''
@@ -17,6 +18,8 @@ const AddComment = ({ addComment, loading }) => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     // set to render spinner
     const [renderSpinner, setRenderSpinner] = useState(false);
+    // render an error message with this state
+    const [formError, setFormError] = useState();
     // extracting contents from form data
     const { name, text } = formData;
 
@@ -35,10 +38,8 @@ const AddComment = ({ addComment, loading }) => {
     const renderForm = () => {
         return (
             <form id="addCommentStyles_form">
-                <div id="addCommentStyles_inputWrap">
-                    <input id="addCommentStyles_nameInput" name="name" placeholder="Your Name" value={name} onChange={onChangeHandler} />
-                    <textarea id="addCommentStyles_textInput" rows="4" placeholder="Type a comment..." value={text} onChange={onChangeHandler} ></textarea>
-                </div>
+                <input className="addCommentStyles_inputs" name="name" placeholder="Your Name" value={name} onChange={(e) => onChangeHandler(e)} />
+                <textarea className="addCommentStyles_inputs" name="text" rows="4" placeholder="Type a comment..." value={text} onChange={(e) => onChangeHandler(e)}></textarea>
             </form>
         );
     };
@@ -46,7 +47,33 @@ const AddComment = ({ addComment, loading }) => {
     // on form submission
     const onSubmitHandler = useCallback(async (e) => {
         e.preventDefault();
-    }, []);
+        // setting the form submission to true
+        setIsSubmitted(true);
+        // setting the form error to null
+        setFormError();
+
+        if (isEmpty(name) && isEmpty(text)) {
+            setIsSubmitted(false);
+            setFormError('Please add a name and message');
+            return;
+        }
+        if (isEmpty(name)) {
+            setIsSubmitted(false);
+            setFormError('Please submit a name');
+            return;
+        }
+        if (isEmpty(text)) {
+            setIsSubmitted(false);
+            setFormError('Please enter a message');
+            return;
+        }
+        let formData = {
+            name,
+            text
+        };
+        await addComment(postId, formData);
+        setIsSubmitted(false);
+    }, [addComment, name, text, postId]);
 
     return (
         <article id="addCommentStyles_root">
@@ -62,10 +89,11 @@ const AddComment = ({ addComment, loading }) => {
                     </div>
                     <div id="addCommentStyles_modalContent">
                         {renderForm()}
+                        <span id="addCommentStyles_errorMsg">{!isEmpty(formError) && formError}</span>
                     </div>
                     <div id="addCommentStyles_btnWrap">
                         <button id="addCommentStyles_cancelBtn" onClick={() => setDisplayModal(false)}>CANCEL</button>
-                        {!renderSpinner ? <button id="addCommentStyles_updateBtn" onClick={(e) => { onChangeHandler(e) }}>COMMENT</button> : <h1>LOADING</h1>}
+                        {!renderSpinner ? <button id="addCommentStyles_updateBtn" onClick={(e) => { onSubmitHandler(e) }}>SUBMIT</button> : <h1>LOADING</h1>}
                     </div>
                 </div>
             </div>
@@ -76,6 +104,7 @@ const AddComment = ({ addComment, loading }) => {
 AddComment.propTypes = {
     addComment: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
+    postId: PropTypes.string.isRequired,
 };
 
 export default AddComment;

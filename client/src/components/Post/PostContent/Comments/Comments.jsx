@@ -8,7 +8,7 @@ import isEmpty from '../../../../utils/isEmpty';
 import CommentItem from './CommentItem/CommentItem';
 import AddComment from './AddComment/AddComment';
 
-const Comments = ({ addComment, comments, auth, loading }) => {
+const Comments = ({ addComment, comments, auth, loading, postId }) => {
     // render the comments 
     const renderComments = () => {
         if (!loading && isEmpty(comments)) {
@@ -22,7 +22,7 @@ const Comments = ({ addComment, comments, auth, loading }) => {
     };
 
     const renderAddComment = () => {
-        return <AddComment addComment={addComment} loading={loading} />
+        return <AddComment addComment={addComment} postId={postId} loading={loading} />
     };
 
     return (
@@ -38,6 +38,7 @@ Comments.propTypes = {
     comments: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
+    postId: PropTypes.string.isRequired,
 };
 
 export default Comments;

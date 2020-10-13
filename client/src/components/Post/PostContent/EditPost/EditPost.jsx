@@ -70,8 +70,8 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
                 summary: summaryData,
                 coverImage: coverImageData,
                 content: contentData,
-                like_number: like_number,
-                comments: comments,
+                like_number: like_number === null ? 0 : like_number,
+                comments: isEmpty(comments) ? [] : comments,
                 date: date
             };
             await updatePost(_id, form);

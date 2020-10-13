@@ -200,7 +200,7 @@ export const updatePostSuccess = (id, formData) => (dispatch) => {
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'warning'));
+                dispatch(setAlert(error, 'error'));
             }
             dispatch({
                 type: types.UPDATE_POST_FAIL,
@@ -232,7 +232,7 @@ export const deletePostSuccess = (id, history) => (dispatch) => {
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'warning'));
+                dispatch(setAlert(error, 'error'));
             }
             dispatch({
                 type: types.DELETE_POST_FAIL,
@@ -254,7 +254,7 @@ export const addCommentSuccess = (id, formData) => (dispatch) => {
             'Content-Type': 'application/json'
         }
     };
-
+    console.log(id);
     axios.put(`/api/posts/add_comment/${id}`, formData, config)
         .then((res) => {
             dispatch({
@@ -269,7 +269,7 @@ export const addCommentSuccess = (id, formData) => (dispatch) => {
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'warning'));
+                dispatch(setAlert(error, 'error'));
             }
             dispatch({
                 type: types.ADD_COMMENT_FAIL,

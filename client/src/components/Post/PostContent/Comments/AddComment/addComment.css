@@ -1,28 +1,22 @@
 /* form for adding the comment */
 
 #addCommentStyles_form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
+    width: 100%;
+    padding: 1rem;
 }
 
-/* input wrapper around both input boxes */
+/* text inputs */
 
-#addCommentStyles_inputWrap {}
-
-/* name input */
-
-#addCommentStyles_nameInput {
+.addCommentStyles_inputs {
     display: block;
-    width: auto;
-}
-
-/* text input */
-
-#addCommentStyles_textInput {
-    display: block;
-    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15rem;
+    padding: .5rem;
+    border-radius: 6px;
+    border: 1px solid black;
+    margin-top: 1rem;
 }
 
 /* modal styles */
@@ -73,6 +67,7 @@
     justify-content: center;
     align-items: center;
     padding: .4rem;
+    border-radius: 5px;
 }
 
 /* modal title text */
@@ -85,7 +80,11 @@
 /* modal content wrap around text */
 
 #addCommentStyles_modalContent {
-    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
 }
 
 /* style of text content */
@@ -101,4 +100,19 @@
     justify-content: space-evenly;
     align-items: center;
     margin: 1rem 0;
+}
+
+/* the form error message */
+
+#addCommentStyles_errorMsg {
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    font-size: .8rem;
+    color: red;
+    width: 100%;
+    text-align: center;
 }
