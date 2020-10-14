@@ -19,7 +19,7 @@ const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }
         }
         if (!loading && !isEmpty(comments)) {
             return Object.values(comments).map((comment, i) => {
-                return <CommentItem key={i + 1} comment={comment} deleteComment={deleteComment} postId={postId} />;
+                return <CommentItem key={i + 1} comment={comment} deleteComment={deleteComment} postId={postId} auth={auth} />;
             });
         }
     };

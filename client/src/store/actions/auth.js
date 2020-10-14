@@ -68,18 +68,18 @@ export const loginSuccess = (email, password) => (dispatch) => {
 };
 
 //! LOGOUT 
-export const logout = (token) => dispatch => {
+export const logout = () => dispatch => {
     dispatch({ type: types.LOGOUT });
-    dispatch(logoutSuccess(token));
+    dispatch(logoutSuccess());
 }
-export const logoutSuccess = (token) => (dispatch) => {
+export const logoutSuccess = () => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
         }
     };
 
-    axios.put('/api/auth/logout', { token }, config)
+    axios.put('/api/auth/logout', config)
         .then((res) => {
             dispatch({
                 type: types.LOGOUT_SUCCESS

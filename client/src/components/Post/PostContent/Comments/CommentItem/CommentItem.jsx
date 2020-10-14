@@ -7,7 +7,7 @@ import './commentItem.css';
 // components
 import DeleteComment from '../DeleteComment/DeleteComment';
 
-const CommentItem = ({ comment: { _id, name, text, date }, deleteComment, postId }) => {
+const CommentItem = ({ comment: { _id, name, text, date }, deleteComment, postId, auth: { loading, isAuthenticated } }) => {
     // using for mouse enter and mouse leave in the delete comment icon
     const [mouseVisible, setMouseVisible] = useState(false);
 
@@ -31,13 +31,15 @@ const CommentItem = ({ comment: { _id, name, text, date }, deleteComment, postId
             <div className="commentItemStyles_commentDateWrap">
                 <p>{new Date(date).toLocaleString()}</p>
             </div>
-            <div className="commentItemStyles_deleteCommentWrap" style={{ display: !mouseVisible ? 'none' : 'block' }}>
-                <DeleteComment
-                    commentId={_id}
-                    deleteHandler={deleteComment}
-                    postId={postId}
-                />
-            </div>
+            {!loading && isAuthenticated &&
+                <div className="commentItemStyles_deleteCommentWrap" style={{ display: !mouseVisible ? 'none' : 'block' }}>
+                    <DeleteComment
+                        commentId={_id}
+                        deleteHandler={deleteComment}
+                        postId={postId}
+                    />
+                </div>
+            }
         </section>
     )
 };
@@ -45,6 +47,7 @@ const CommentItem = ({ comment: { _id, name, text, date }, deleteComment, postId
 CommentItem.propTypes = {
     deleteComment: PropTypes.func.isRequired,
     comment: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
     postId: PropTypes.string.isRequired,
 };
 
