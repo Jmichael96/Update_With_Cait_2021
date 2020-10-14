@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPost, updatePost, deletePost, addComment, deleteComment } from '../../store/actions/post';
+import { fetchPost, updatePost, deletePost, addComment, deleteComment, likePost } from '../../store/actions/post';
 import { useParams } from 'react-router-dom';
 import { setModal } from '../../store/actions/modal';
 
@@ -12,7 +12,7 @@ import './postContentPage.css';
 import isEmpty from '../../utils/isEmpty';
 import PostContent from '../../components/Post/PostContent/PostContent';
 
-const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost, addComment, deleteComment }) => {
+const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost, addComment, deleteComment, likePost }) => {
     // fetching param through react-router-dom
     let { id } = useParams();
     useEffect(() => {
@@ -30,6 +30,7 @@ const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost,
                 deletePost={deletePost}
                 addComment={addComment}
                 deleteComment={deleteComment}
+                likePost={likePost}
             />
         </article>
     );
@@ -42,6 +43,7 @@ PostContentPage.propTypes = {
     setModal: PropTypes.func.isRequired,
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
+    likePost: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
 };
@@ -51,4 +53,4 @@ const mapStateToProps = (state) => ({
     post: state.post
 });
 
-export default connect(mapStateToProps, { fetchPost, updatePost, setModal, deletePost, addComment, deleteComment })(PostContentPage);
+export default connect(mapStateToProps, { fetchPost, updatePost, setModal, deletePost, addComment, deleteComment, likePost })(PostContentPage);

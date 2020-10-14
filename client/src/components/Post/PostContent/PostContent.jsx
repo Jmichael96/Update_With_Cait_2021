@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { FaComment } from 'react-icons/fa';
+import { ImHeart } from 'react-icons/im';
 
 // styles
 import './postContent.css';
@@ -11,8 +13,9 @@ import isEmpty from '../../../utils/isEmpty';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import EditPost from './EditPost/EditPost';
 import Comments from './Comments/Comments';
+import Likes from './Likes/Likes';
 
-const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment, deleteComment }) => {
+const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment, deleteComment, likePost }) => {
 
     const renderPostData = () => {
         if (!loading && isEmpty(post)) {
@@ -23,7 +26,12 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
         }
     };
     const renderLikes = () => {
-
+        if (!loading && isEmpty(post)) {
+            return null;
+        }
+        if (!loading && !isEmpty(post)) {
+            return <Likes post={post} loading={loading} likePost={likePost} />
+        }
     };
 
     const renderComments = () => {
@@ -59,6 +67,30 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
         }
     };
 
+    // render the like amount
+    const renderLikeNum = () => {
+        if (!loading && isEmpty(post)) {
+            return null;
+        }
+        if (!loading && post.like_number === null) {
+            return 0;
+        }
+        if (!loading && post.like_number >= 1) {
+            return post.like_number;
+        }
+    };
+    // render the comment amount
+    const renderCommentNum = () => {
+        if (!loading && isEmpty(post)) {
+            return null;
+        }
+        if (!loading && isEmpty(post.comments)) {
+            return 0;
+        }
+        if (!loading && post.comments.length >= 1) {
+            return post.comments.length;
+        }
+    }
     return (
         <article id="postContentStyles_root">
             <div id="postContentStyles_authActionBtnWrap">
@@ -68,8 +100,20 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             <Wrapper>
                 {loading ? <h1>LOADING...</h1> : renderPostData()}
             </Wrapper>
+
+            {!loading &&
+                <Wrapper styles={{ justifyContent: 'flex-start' }}>
+                    <div id="postContentStyles_likeAmountWrap">
+                        <ImHeart />{' '}{renderLikeNum()}
+                    </div>
+                    <div id="postContentStyles_commentAmountWrap">
+                        <FaComment />{' '}{renderCommentNum()}
+                    </div>
+                </Wrapper>
+            }
+            {renderLikes()}
             {renderComments()}
-        </article>
+        </article >
     );
 };
 
@@ -79,6 +123,7 @@ PostContent.propTypes = {
     deletePost: PropTypes.func.isRequired,
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
+    likePost: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     post: PropTypes.object,
     auth: PropTypes.object.isRequired,

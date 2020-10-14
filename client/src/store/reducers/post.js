@@ -263,6 +263,29 @@ export default (state = initialState, action) => {
                     post._id === payload.id ? { ...post, comments: payload.post.comments } : post
                 ) : state.wellnessPosts,
             };
+        case types.LIKE_POST_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
+        case types.LIKE_POST_SUCCESS:
+            let likedPostCat = payload.post.category;
+            return {
+                ...state,
+                post: { ...state.post, like_number: payload.post.like_number },
+                devotionalPosts: likedPostCat === 'Devotional' ? state.devotionalPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.devotionalPosts,
+                lifestylePosts: likedPostCat === 'Lifestyle' ? state.lifestylePosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.lifestylePosts,
+                graphicsPosts: likedPostCat === 'Graphics' ? state.graphicsPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.graphicsPosts,
+                wellnessPosts: likedPostCat === 'Wellness' ? state.wellnessPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.wellnessPosts,
+            }
         default: return state;
     };
 };

@@ -308,3 +308,35 @@ export const deleteCommentSuccess = (postId, commentId) => (dispatch) => {
             });
         });
 }
+
+//! LIKE POST
+export const likePost = (id, likeNumber) => (dispatch) => {
+    dispatch({
+        type: types.LIKE_POST
+    });
+    dispatch(likeSuccess(id, likeNumber));
+};
+
+export const likeSuccess = (id, likeNumber) => (dispatch) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    axios.put(`/api/posts/like/${id}`, { likeNumber }, config)
+        .then((res) => {
+            dispatch({
+                type: types.LIKE_POST_SUCCESS,
+                payload: res.data.post
+            });
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.LIKE_POST_FAIL,
+            });
+        })
+};

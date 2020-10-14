@@ -288,3 +288,20 @@ exports.deleteComment = (req, res, next) => {
             });
         });
 };
+
+
+// @route    PUT api/posts/like/:id
+// @desc     Like a post
+// @access   Public
+exports.likePost = (req, res, next) => {
+    Post.findByIdAndUpdate({ _id: req.params.id })
+        .then((post) => {
+            let newLikeNumber = req.body.likeNumber;
+            console.log(newLikeNumber);
+        })
+        .catch((err) => {
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
+            });
+        });
+};

@@ -52,4 +52,9 @@ router.put('/add_comment/:id', PostController.addComment);
 // @access   Private
 router.delete('/delete_comment/:postId/:commentId', isAuth, PostController.deleteComment);
 
+// @route    PUT api/posts/like/:id
+// @desc     Like a post
+// @access   Public
+router.put('/like/:id', PostController.likePost);
+
 module.exports = router;
