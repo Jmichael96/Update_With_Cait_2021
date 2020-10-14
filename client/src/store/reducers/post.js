@@ -27,7 +27,6 @@ export default (state = initialState, action) => {
             };
         case types.DELETE_POST:
         case types.UPDATE_POST:
-        case types.ADD_COMMENT:
             return {
                 ...state,
                 loading: true
@@ -239,6 +238,30 @@ export default (state = initialState, action) => {
                     post._id === payload.id ? { ...post, comments: payload.post.comments } : post
                 ) : state.wellnessPosts,
                 loading: false
+            };
+        case types.DELETE_COMMENT_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
+        case types.DELETE_COMMENT_SUCCESS:
+            // extracting the category
+            let deletedPostCat = payload.post.category;
+            return {
+                ...state,
+                post: { ...state.post, comments: payload.post.comments },
+                devotionalPosts: deletedPostCat === 'Devotional' ? state.devotionalPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.devotionalPosts,
+                lifestylePosts: deletedPostCat === 'Lifestyle' ? state.lifestylePosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.lifestylePosts,
+                graphicsPosts: deletedPostCat === 'Graphics' ? state.graphicsPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.graphicsPosts,
+                wellnessPosts: deletedPostCat === 'Wellness' ? state.wellnessPosts.map(post =>
+                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                ) : state.wellnessPosts,
             };
         default: return state;
     };

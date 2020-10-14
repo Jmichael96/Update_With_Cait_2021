@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPost, updatePost, deletePost, addComment } from '../../store/actions/post';
+import { fetchPost, updatePost, deletePost, addComment, deleteComment } from '../../store/actions/post';
 import { useParams } from 'react-router-dom';
 import { setModal } from '../../store/actions/modal';
 
@@ -12,7 +12,7 @@ import './postContentPage.css';
 import isEmpty from '../../utils/isEmpty';
 import PostContent from '../../components/Post/PostContent/PostContent';
 
-const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost, addComment }) => {
+const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost, addComment, deleteComment }) => {
     // fetching param through react-router-dom
     let { id } = useParams();
     useEffect(() => {
@@ -21,7 +21,16 @@ const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost,
 
     return (
         <article>
-            <PostContent post={post} auth={auth} loading={loading} updatePost={updatePost} setModal={setModal} deletePost={deletePost} addComment={addComment} />
+            <PostContent
+                post={post}
+                auth={auth}
+                loading={loading}
+                updatePost={updatePost}
+                setModal={setModal}
+                deletePost={deletePost}
+                addComment={addComment}
+                deleteComment={deleteComment}
+            />
         </article>
     );
 };
@@ -32,6 +41,7 @@ PostContentPage.propTypes = {
     deletePost: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
     addComment: PropTypes.func.isRequired,
+    deleteComment: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
 };
@@ -41,4 +51,4 @@ const mapStateToProps = (state) => ({
     post: state.post
 });
 
-export default connect(mapStateToProps, { fetchPost, updatePost, setModal, deletePost, addComment })(PostContentPage);
+export default connect(mapStateToProps, { fetchPost, updatePost, setModal, deletePost, addComment, deleteComment })(PostContentPage);

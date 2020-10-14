@@ -50,6 +50,7 @@ exports.loadUser = (req, res, next) => {
                 return;
             }
             return res.status(200).json(user);
+
         })
         .catch((err) => {
             console.log(err);
@@ -104,5 +105,30 @@ exports.login = (req, res, next) => {
             res.status(500).json({
                 serverMsg: 'Incorrect username or password'
             });
+        });
+};
+
+// @route    PUT api/auth/logout
+// @desc     login user
+// @access   Private
+exports.logout = (req, res, next) => {
+    User.findById({ _id: req.user._id })
+        .then((user) => {
+            // if not user then return
+            if (!user) {
+                return res.status(404).json({
+                    serverMsg: 'No user found'
+                });
+            }
+            // remove the auth header
+            delete req.headers['x-auth-token'];
+            return res.status(201).json({
+                serverMsg: 'logged out successfully',
+            });
+        })
+        .catch((err) => {
+            return res.status(500).json({
+                serverMsg: 'Server error!'
+            })
         });
 };

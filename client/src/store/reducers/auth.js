@@ -33,14 +33,25 @@ export default (state = initialState, action) => {
                 isAuthenticated: true,
                 loading: false
             };
-        case types.USER_LOADING_FAIL:
         case types.LOGOUT:
+            return {
+                ...state,
+                loading: true
+            };
+        case types.LOGOUT_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
+        case types.USER_LOADING_FAIL:
+        case types.LOGOUT_SUCCESS:
             localStorage.removeItem('token')
             return {
                 ...state,
                 token: null,
                 isAuthenticated: false,
-                loading: false
+                loading: false,
+                user: null
             }
         default: return state;
     }

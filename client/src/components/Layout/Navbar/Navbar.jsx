@@ -10,7 +10,7 @@ import isEmpty from '../../../utils/isEmpty';
 // styles
 import './navbar.css';
 
-const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+const Navbar = ({ auth: { token, isAuthenticated, loading, user }, logout }) => {
     const [isAuth, setIsAuth] = useState(false);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             <Link to="/create_post" className="nav-link"><span className="navSpan">CREATE</span></Link>
             <Link to="/saved" className="nav-link"><span className="navSpan">SAVED</span></Link>
 
-            <a href="#!" className="nav-link" onClick={logout}>
+            <a href="#!" className="nav-link" onClick={() => logout(token)}>
                 <span className="navSpan">LOGOUT</span>
             </a>
             {/* <p>{!loading && !isEmpty(user) && <p>Welcome {user.name}</p>}</p> */}

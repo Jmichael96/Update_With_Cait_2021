@@ -12,7 +12,7 @@ import Wrapper from '../../Layout/Wrapper/Wrapper';
 import EditPost from './EditPost/EditPost';
 import Comments from './Comments/Comments';
 
-const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment }) => {
+const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment, deleteComment }) => {
 
     const renderPostData = () => {
         if (!loading && isEmpty(post)) {
@@ -31,7 +31,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             return null;
         }
         if (!loading && !isEmpty(post)) {
-            return <Comments addComment={addComment} postId={post._id} loading={loading} auth={auth} comments={post.comments} />
+            return <Comments addComment={addComment} deleteComment={deleteComment} postId={post._id} loading={loading} auth={auth} comments={post.comments} />
         }
     };
 
@@ -78,6 +78,7 @@ PostContent.propTypes = {
     setModal: PropTypes.func.isRequired,
     deletePost: PropTypes.func.isRequired,
     addComment: PropTypes.func.isRequired,
+    deleteComment: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     post: PropTypes.object,
     auth: PropTypes.object.isRequired,

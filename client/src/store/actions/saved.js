@@ -53,7 +53,7 @@ export const fetchSavedSuccess = () => (dispatch) => {
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'error'));
+                dispatch(setAlert(error, 'warning'));
             }
             dispatch({
                 type: types.FETCH_SAVED_FAIL,

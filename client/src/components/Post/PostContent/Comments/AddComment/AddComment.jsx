@@ -73,6 +73,7 @@ const AddComment = ({ addComment, loading, postId }) => {
         };
         await addComment(postId, formData);
         setIsSubmitted(false);
+        setDisplayModal(false);
     }, [addComment, name, text, postId]);
 
     return (

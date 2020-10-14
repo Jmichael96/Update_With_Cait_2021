@@ -214,7 +214,7 @@ exports.deletePost = (req, res, next) => {
 
 // @route    PUT api/posts/add_comment/:id
 // @desc     Add a comment to a post
-// @access   Publish
+// @access   Public
 exports.addComment = (req, res, next) => {
     if (!req.body.name || !req.body.text) {
         return res.status(406).json({
@@ -242,6 +242,49 @@ exports.addComment = (req, res, next) => {
             console.log(err);
             res.status(500).json({
                 serverMsg: 'Server error'
+            });
+        });
+};
+
+// @route    DELETE api/posts/delete_comment/:postId/:commentId
+// @desc     Delete a comment
+// @access   Private
+exports.deleteComment = (req, res, next) => {
+    console.log(req.user);
+    if (!req.user) {
+        return res.status(401).json({
+            serverMsg: 'You are not authorized'
+        });
+    }
+    console.log('deletePost()');
+
+    Post.findById({ _id: req.params.postId })
+        .then((post) => {
+            // pull out the comment
+            const comment = post.comments.find(
+                comment => comment.id === req.params.commentId
+            );
+            // make sure comment exists
+            if (!comment) {
+                return res.status(404).json({
+                    serverMsg: 'Comment could not be found'
+                });
+            }
+            // get the index of the post
+            const commentIndex = post.comments.map(comment => comment._id).indexOf(req.params.commentId);
+
+            // remove the comment
+            post.comments.splice(commentIndex, 1);
+            post.save();
+            return res.status(200).json({
+                serverMsg: 'Successfully removed the comment',
+                post: post
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json({
+                serverMsg: 'There was a problem with our server in completing your request. Please try again later'
             });
         });
 };

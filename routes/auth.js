@@ -17,4 +17,9 @@ router.get('/load_user', isAuth, AuthController.loadUser);
 // @access   Public
 router.post('/login', AuthController.login);
 
+// @route    PUT api/auth/logout
+// @desc     login user
+// @access   Public
+router.put('/logout', isAuth, AuthController.logout);
+
 module.exports = router;

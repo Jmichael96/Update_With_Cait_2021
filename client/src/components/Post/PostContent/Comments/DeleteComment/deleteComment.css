@@ -1,0 +1,7 @@
+/* delete icon */
+
+.deleteCommentStyles_icon {
+    cursor: pointer;
+    color: red;
+    font-size: 1rem;
+}

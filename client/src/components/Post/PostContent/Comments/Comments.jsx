@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // styles
+import './comments.css';
 
 // components
 import isEmpty from '../../../../utils/isEmpty';
 import CommentItem from './CommentItem/CommentItem';
 import AddComment from './AddComment/AddComment';
+import DeleteComment from './DeleteComment/DeleteComment';
 
-const Comments = ({ addComment, comments, auth, loading, postId }) => {
+const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }) => {
+
     // render the comments 
     const renderComments = () => {
         if (!loading && isEmpty(comments)) {
@@ -16,7 +19,7 @@ const Comments = ({ addComment, comments, auth, loading, postId }) => {
         }
         if (!loading && !isEmpty(comments)) {
             return Object.values(comments).map((comment, i) => {
-                return <CommentItem key={i + 1} comment={comment} />
+                return <CommentItem key={i + 1} comment={comment} deleteComment={deleteComment} postId={postId} />;
             });
         }
     };
@@ -35,6 +38,7 @@ const Comments = ({ addComment, comments, auth, loading, postId }) => {
 
 Comments.propTypes = {
     addComment: PropTypes.func.isRequired,
+    deleteComment: PropTypes.func.isRequired,
     comments: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,

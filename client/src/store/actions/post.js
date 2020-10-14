@@ -254,7 +254,7 @@ export const addCommentSuccess = (id, formData) => (dispatch) => {
             'Content-Type': 'application/json'
         }
     };
-    console.log(id);
+
     axios.put(`/api/posts/add_comment/${id}`, formData, config)
         .then((res) => {
             dispatch({
@@ -276,3 +276,35 @@ export const addCommentSuccess = (id, formData) => (dispatch) => {
             });
         });
 };
+
+//! DELETE COMMENT
+export const deleteComment = (postId, commentId) => (dispatch) => {
+    dispatch({
+        type: types.DELETE_COMMENT
+    });
+    dispatch(deleteCommentSuccess(postId, commentId));
+};
+
+export const deleteCommentSuccess = (postId, commentId) => (dispatch) => {
+    console.log(postId, commentId);
+    axios.delete(`/api/posts/delete_comment/${postId}/${commentId}`)
+        .then((res) => {
+            dispatch({
+                type: types.DELETE_COMMENT_SUCCESS,
+                payload: {
+                    id: postId,
+                    post: res.data.post
+                }
+            });
+            dispatch(setAlert(res.data.serverMsg, 'success'));
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.DELETE_COMMENT_FAIL,
+            });
+        });
+}
