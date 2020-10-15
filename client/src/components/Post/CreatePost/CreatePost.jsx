@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ import './createPost.css';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import validate from '../../../utils/validateForm';
 
-const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
+const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal, history }) => {
     // non react-quill form data
     const [formData, setFormData] = useState({
         title: '',
@@ -21,22 +21,9 @@ const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
     const [coverImage, setCoverImage] = useState('');
     // react quill content 
     const [content, setContent] = useState('');
-    // when to render spinner
-    const [renderSpinner, setRenderSpinner] = useState(false);
-    // set true or false when form is submitted
-    const [isSubmitted, setIsSubmitted] = useState(false);
 
     // content for formData 
     const { title, summary, category } = formData;
-
-    // checking if store is loading and if user submitted form to render spinner accordingly
-    useEffect(() => {
-        if (loading && isSubmitted) {
-            setRenderSpinner(true);
-        } else if (loading && !isSubmitted) {
-            setRenderSpinner(false);
-        }
-    }, [loading, isSubmitted]);
 
     // on submit function handler
     const submitPostHandler = useCallback(async (e) => {
@@ -44,7 +31,6 @@ const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
         if (!validate(title, category, summary, coverImage, content, setModal)) {
             return;
         }
-        setIsSubmitted(true);
         try {
             let form = {
                 title,
@@ -58,7 +44,6 @@ const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
         } catch (err) {
 
         }
-        setIsSubmitted(false);
     }, [createPost, title, summary, category, coverImage, content]);
 
     // on change handler
@@ -71,7 +56,6 @@ const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
             setModal('error', 'save error', 'You must have at least one input field filled out in order to save your post', 'okay', () => { });
             return;
         }
-        setIsSubmitted(true);
         try {
             let form = {
                 title,
@@ -84,7 +68,6 @@ const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
         } catch (err) {
 
         }
-        setIsSubmitted(false);
     }, [savePost, title, summary, category, coverImage, content]);
 
     return (
@@ -149,8 +132,8 @@ const CreatePost = ({ createPost, loading, savePost, setModal, history }) => {
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!renderSpinner ? <button type="button" id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE</button> : <p>LOADING...</p>}
-                    {!renderSpinner ?
+                    {!savedLoading ? <button type="button" id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE</button> : <p>LOADING...</p>}
+                    {!postLoading ?
                         <button type="submit" onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">POST</button>
                         :
                         <p>LOADING...</p>
@@ -165,7 +148,8 @@ CreatePost.propTypes = {
     createPost: PropTypes.func.isRequired,
     setModal: PropTypes.func.isRequired,
     savePost: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
+    postLoading: PropTypes.bool.isRequired,
+    savedLoading: PropTypes.bool.isRequired,
     history: PropTypes.any,
 };
 

@@ -13,7 +13,7 @@ import isEmpty from '../../utils/isEmpty';
 // styles
 import './createPostPage.css';
 
-const CreatePostPage = ({ createPost, setModal, savePost, post: { loading, post }, history }) => {
+const CreatePostPage = ({ createPost, setModal, savePost, post: { loading, post }, saved, history }) => {
 
     // use effect watching for a new post and will redirect to new location
     useEffect(() => {
@@ -23,7 +23,7 @@ const CreatePostPage = ({ createPost, setModal, savePost, post: { loading, post 
     }, [post, loading]);
 
     const renderCreatePost = () => {
-        return <CreatePost history={history} createPost={createPost} setModal={setModal} loading={loading} savePost={savePost} />;
+        return <CreatePost history={history} createPost={createPost} setModal={setModal} postLoading={loading} savedLoading={saved.loading} savePost={savePost} />;
     };
 
     return (
@@ -38,11 +38,13 @@ CreatePostPage.propTypes = {
     post: PropTypes.object.isRequired,
     setModal: PropTypes.func.isRequired,
     savePost: PropTypes.func.isRequired,
+    saved: PropTypes.object.isRequired,
     history: PropTypes.any,
 };
 
 const mapStateToProps = (state) => ({
-    post: state.post
+    post: state.post,
+    saved: state.saved
 });
 
 const exportCreatePostPage = withRouter(CreatePostPage);

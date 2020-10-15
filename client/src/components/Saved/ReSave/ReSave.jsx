@@ -22,8 +22,8 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
     // react quill content 
     const [contentData, setContentData] = useState('');
     // when to render spinner
-    const [renderSpinner, setRenderSpinner] = useState(false);
-    const [isSubmitted, setIsSubmitted] = useState(false);
+    // const [renderSpinner, setRenderSpinner] = useState(false);
+    // const [isSubmitted, setIsSubmitted] = useState(false);
 
     const { titleData, categoryData, summaryData } = formData;
 
@@ -41,13 +41,13 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
     }, [loading, title, category, summary, coverImage, content]);
 
     // checking if store is loading and if user submitted form to render spinner accordingly
-    useEffect(() => {
-        if (loading && isSubmitted) {
-            setRenderSpinner(true);
-        } else if (loading && !isSubmitted) {
-            setRenderSpinner(false);
-        }
-    }, [loading, isSubmitted]);
+    // useEffect(() => {
+    //     if (loading && isSubmitted) {
+    //         setRenderSpinner(true);
+    //     } else if (loading && !isSubmitted) {
+    //         setRenderSpinner(false);
+    //     }
+    // }, [loading, isSubmitted]);
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,7 +57,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         if (!validate(titleData, categoryData, summaryData, coverImageData, contentData, setModal)) {
             return;
         }
-        setIsSubmitted(true);
+        // setIsSubmitted(true);
         try {
             let form = {
                 title: titleData,
@@ -70,13 +70,22 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         } catch (err) {
 
         }
-        setIsSubmitted(false);
+        // setIsSubmitted(false);
     });
 
     const resavePostHandler = useCallback(async (e) => {
         e.preventDefault();
-
-        setIsSubmitted(true);
+        // validate for if all forms are empty
+        if (isEmpty(titleData) && isEmpty(categoryData) && isEmpty(summaryData) && isEmpty(coverImageData) && isEmpty(contentData)) {
+            setModal('error', 'form error', 'You make sure at least one field is filled out', 'okay', () => { });
+            return;
+        }
+        if (titleData === title && categoryData === category && summaryData === summary && coverImageData === coverImage && contentData === content) {
+            history.push('/saved');
+            setModal('error', 'same content', 'No content has been changed so there is no need to re-save', 'okay', () => { });
+            return;
+        }
+        // setIsSubmitted(true);
         try {
             let form = {
                 title: titleData,
@@ -90,7 +99,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         } catch (err) {
 
         }
-        setIsSubmitted(false);
+        // setIsSubmitted(false);
     });
 
     return loading ? <h1>LOADING...</h1> : (
@@ -154,8 +163,8 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!renderSpinner ? <button type="button" id="resaveStyles_resaveBtn" onClick={(e) => resavePostHandler(e)}>RE-SAVE</button> : <p>LOADING...</p>}
-                    {!renderSpinner ?
+                    {!loading ? <button type="button" id="resaveStyles_resaveBtn" onClick={(e) => resavePostHandler(e)}>RE-SAVE</button> : <p>LOADING...</p>}
+                    {!loading ?
                         <button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">PUBLISH</button>
                         :
                         <p>LOADING...</p>

@@ -6,7 +6,7 @@ const initialState = {
     graphicsPosts: [],
     lifestylePosts: [],
     post: null,
-    loading: true,
+    loading: false,
 };
 
 export default (state = initialState, action) => {

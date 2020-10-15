@@ -3,7 +3,7 @@ import * as types from '../actions/types';
 const initialState = {
     savedPosts: [],
     savedPost: null,
-    loading: true
+    loading: false
 };
 
 export default (state = initialState, action) => {
