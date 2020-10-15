@@ -72,10 +72,18 @@ const AddComment = ({ addComment, loading, postId }) => {
             text
         };
         await addComment(postId, formData);
+        resetHandler();
         setIsSubmitted(false);
         setDisplayModal(false);
     }, [addComment, name, text, postId]);
 
+    // reset form
+    const resetHandler = () => {
+        setFormData({
+            name: '',
+            text: ''
+        });
+    }
     return (
         <article id="addCommentStyles_root">
             <button onClick={() => setDisplayModal(true)}>ADD COMMENT</button>

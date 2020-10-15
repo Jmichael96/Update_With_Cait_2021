@@ -327,7 +327,6 @@ export const likeSuccess = (id, likeNumber) => (dispatch) => {
     };
     axios.put(`/api/posts/like/${id}`, { likeNumber }, config)
         .then((res) => {
-            console.log(res)
             dispatch({
                 type: types.LIKE_POST_SUCCESS,
                 payload: {

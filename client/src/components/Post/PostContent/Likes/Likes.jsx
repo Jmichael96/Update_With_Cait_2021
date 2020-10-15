@@ -18,7 +18,6 @@ const Likes = ({ likePost, post: { _id, like_number }, loading }) => {
             setIsLiked(true);
             let newNum = +like_number;
             newNum += 1;
-            console.log(newNum);
             await likePost(_id, newNum);
         }
         else if (isLiked) {
