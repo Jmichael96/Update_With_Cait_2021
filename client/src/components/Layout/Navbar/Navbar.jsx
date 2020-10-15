@@ -6,13 +6,17 @@ import { Link } from 'react-router-dom';
 
 // components
 import SmSpinner from '../SmSpinner/SmSpinner';
+import MobileNav from '../MobileNav/MobileNav';
 
 // styles
 import './navbar.css';
 
 const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     const [isAuth, setIsAuth] = useState(false);
+    // set whether or not the mobile nav should be set
+    const [mobilize, setMobilize] = useState(null);
 
+    // set if a user is authenticated to render appropriate nav links
     useEffect(() => {
         if (!isAuthenticated) {
             setIsAuth(false);
@@ -20,6 +24,23 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             setIsAuth(true);
         }
     }, [isAuthenticated]);
+
+    // listener for the windows width
+    useEffect(() => {
+        resizeHandler();
+        window.addEventListener('resize', resizeHandler);
+
+        return () => window.removeEventListener('resize', resizeHandler);
+    }, []);
+    // function to handle inside the resize event listener
+    const resizeHandler = () => {
+        console.log('fired')
+        if (window.innerWidth >= 1025) {
+            setMobilize(false);
+        } else if (window.innerWidth <= 1024) {
+            setMobilize(true);
+        }
+    };
 
     const authLinks = (
         <section className="navLinkWrap">
@@ -57,12 +78,26 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
         </section>
     );
 
+    // render the navbars accordingly
+    const renderNavs = () => {
+        if (mobilize === false) {
+            return (
+                <div>
+                    {/* <div class="navLogoWrapper"> */}
+                    <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
+                    {/* </div> */}
+                    {!loading && !isAuth ? guestLinks : authLinks}
+                </div>
+            )
+        } else if (mobilize === true) {
+            return <MobileNav />
+        }
+    };
     return (
-        <div className="nav">
-            {/* <div class="navLogoWrapper"> */}
-            <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
-            {/* </div> */}
-            {!loading && !isAuth ? guestLinks : authLinks}
+        <div>
+            <div className="nav">
+                {renderNavs()}
+            </div>
         </div>
     );
 };
