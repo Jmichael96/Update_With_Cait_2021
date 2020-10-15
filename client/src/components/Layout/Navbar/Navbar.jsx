@@ -34,7 +34,6 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     }, []);
     // function to handle inside the resize event listener
     const resizeHandler = () => {
-        console.log('fired')
         if (window.innerWidth >= 1025) {
             setMobilize(false);
         } else if (window.innerWidth <= 1024) {
@@ -84,18 +83,19 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             return (
                 <div>
                     {/* <div class="navLogoWrapper"> */}
-                    <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
+
                     {/* </div> */}
                     {!loading && !isAuth ? guestLinks : authLinks}
                 </div>
             )
         } else if (mobilize === true) {
-            return <MobileNav />
+            return <MobileNav isAuthenticated={isAuth} user={user} authLoading={loading} logout={logout} />
         }
     };
     return (
         <div>
             <div className="nav">
+                <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
                 {renderNavs()}
             </div>
         </div>

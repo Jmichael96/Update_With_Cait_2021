@@ -5,18 +5,16 @@
     width: 100%;
     background-color: #ffffff;
     box-shadow: 0 1px 15px rgba(126, 126, 126, 0.394);
-}
-
-/* nav logo wrapper */
-
-.navLogoWrapper {
-    display: flex;
+    position: relative;
 }
 
 /* nav logo */
 
 #navLogo {
     width: 10rem;
+    position: absolute;
+    top: 2px;
+    left: 2px;
 }
 
 /* nav link buttons */
@@ -32,6 +30,7 @@
     float: right;
     display: flex;
     margin-top: .6rem;
+    align-items: center;
 }
 
 /* style of text buttons for navigation links */
@@ -66,9 +65,11 @@
 }
 
 /* dropdown */
+
 .navStyles_dropdownWrapper {
     padding: 0 .3rem;
 }
+
 .navStyles_dropdownWrapper ul {
     font-size: 0;
     list-style-type: none;
