@@ -10,8 +10,6 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './store/actions/auth';
-import { fetchDevotional, fetchGraphics, fetchLifestyle, fetchWellness } from './store/actions/post';
-import { setAlert } from './store/actions/alert';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -21,11 +19,6 @@ if (localStorage.token) {
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
-    store.dispatch(setAlert('this is a message!', 'success'));
-    // store.dispatch(fetchDevotional());
-    // store.dispatch(fetchGraphics());
-    // store.dispatch(fetchLifestyle());
-    // store.dispatch(fetchWellness());
   }, []);
 
   return (

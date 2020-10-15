@@ -11,6 +11,7 @@ import './postContentPage.css';
 // components
 import isEmpty from '../../utils/isEmpty';
 import PostContent from '../../components/Post/PostContent/PostContent';
+import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
 const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost, addComment, deleteComment, likePost }) => {
     // fetching param through react-router-dom
@@ -19,7 +20,7 @@ const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost,
         fetchPost(id);
     }, [id]);
 
-    return (
+    return loading ? <LgSpinner /> : (
         <article>
             <PostContent
                 post={post}

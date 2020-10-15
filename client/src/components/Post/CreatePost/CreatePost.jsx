@@ -9,6 +9,7 @@ import './createPost.css';
 // components
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import validate from '../../../utils/validateForm';
+import SmSpinner from '../../Layout/SmSpinner/SmSpinner';
 
 const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal, history }) => {
     // non react-quill form data
@@ -132,11 +133,11 @@ const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal,
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!savedLoading ? <button type="button" id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE</button> : <p>LOADING...</p>}
+                    {!savedLoading ? <button type="button" id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE</button> : <SmSpinner />}
                     {!postLoading ?
                         <button type="submit" onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">POST</button>
                         :
-                        <p>LOADING...</p>
+                        <SmSpinner />
                     }
                 </Wrapper>
             </form>

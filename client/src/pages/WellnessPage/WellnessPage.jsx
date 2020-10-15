@@ -11,6 +11,7 @@ import './wellnessPage.css';
 import PostItem from '../../components/Post/PostItem/PostItem';
 import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
+import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
 const WellnessPage = ({ fetchWellness, post: { loading, wellnessPosts } }) => {
     // set limit for how many blogs to render on page
@@ -21,9 +22,9 @@ const WellnessPage = ({ fetchWellness, post: { loading, wellnessPosts } }) => {
     // fetch lifestyle posts on load
     useEffect(() => {
         // if there is not any wellness posts then fetch posts
-        // if (isEmpty(wellnessPosts)) {
+        if (!loading && isEmpty(wellnessPosts)) {
             fetchWellness();
-        // }
+        }
     }, [fetchWellness]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
@@ -55,11 +56,24 @@ const WellnessPage = ({ fetchWellness, post: { loading, wellnessPosts } }) => {
         }
     };
 
+    // render the load more button
+    const renderLoadMoreBtn = () => {
+        if (!loading && isEmpty(wellnessPosts)) {
+            return null;
+        }
+        if (loading && isEmpty(wellnessPosts)) {
+            return null;
+        }
+        if (!loading && !isEmpty(wellnessPosts) && !reachedLimit) {
+            return <button className="wellnessPageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="wellnessPageStyles_downIcon" /></button>
+        }
+    };
+
     return (
         <section>
             <Wrapper>
                 {loading ? <h1>LOADING...</h1> : renderPosts()}
-                {!loading && !reachedLimit ? <button className="lifestylePageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="lifestylePageStyles_downIcon" /></button> : null}
+                {renderLoadMoreBtn()}
             </Wrapper>
         </section>
     )

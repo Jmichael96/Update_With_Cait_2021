@@ -10,6 +10,7 @@ import './editPost.css';
 import isEmpty from '../../../../utils/isEmpty';
 import Wrapper from '../../../Layout/Wrapper/Wrapper';
 import validate from '../../../../utils/validateForm';
+import SmSpinner from '../../../Layout/SmSpinner/SmSpinner';
 
 const EditPost = ({ post, loading, setModal, updatePost }) => {
     const [formData, setFormData] = useState({
@@ -21,10 +22,6 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
     const [contentData, setContentData] = useState('');
     // setting modal 
     const [displayModal, setDisplayModal] = useState(false);
-    // on submit change to true
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    // set to render spinner
-    const [renderSpinner, setRenderSpinner] = useState(false);
 
     // extracting from the formData state
     const { titleData, categoryData, summaryData } = formData;
@@ -42,15 +39,6 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
         }
     }, [post, displayModal]);
 
-    // checking if store is loading and if user submitted form to render spinner accordingly
-    useEffect(() => {
-        if (loading && isSubmitted) {
-            setRenderSpinner(true);
-        } else if (loading && !isSubmitted) {
-            setRenderSpinner(false);
-        }
-    }, [loading, isSubmitted]);
-
     // on change handler 
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -60,7 +48,6 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
         if (!validate(titleData, categoryData, summaryData, coverImageData, contentData, setModal)) {
             return;
         }
-        setIsSubmitted(true);
         try {
             // extracting from the post
             const { _id, like_number, comments, date } = post;
@@ -70,7 +57,7 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
                 summary: summaryData,
                 coverImage: coverImageData,
                 content: contentData,
-                like_number: like_number === null ? 0 : like_number,
+                likeNumber: like_number === null ? 0 : like_number,
                 comments: isEmpty(comments) ? [] : comments,
                 date: date
             };
@@ -79,7 +66,6 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
         } catch (err) {
 
         }
-        setIsSubmitted(false);
     }, [post, titleData, categoryData, summaryData, coverImageData, contentData]);
 
     const renderForm = () => {
@@ -161,7 +147,7 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
                     </div>
                     <div id="editPostStyles_btnWrap">
                         <button id="editPostStyles_cancelBtn" onClick={() => setDisplayModal(false)}>CANCEL</button>
-                        {!renderSpinner ? <button id="editPostStyles_updateBtn" onClick={(e) => onSubmitHandler(e)}>UPDATE</button> : <h1>LOADING</h1>}
+                        {!loading ? <button id="editPostStyles_updateBtn" onClick={(e) => onSubmitHandler(e)}>UPDATE</button> : <SmSpinner />}
                     </div>
                 </div>
             </div>

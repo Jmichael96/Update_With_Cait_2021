@@ -12,6 +12,10 @@ import { setModal } from '../../../store/actions/modal';
 // styles
 import './login.css';
 
+// components 
+import SmSpinner from '../../Layout/SmSpinner/SmSpinner';
+import Colors from '../../../utils/constants/Colors';
+
 const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history }) => {
     const [formData, setFormData] = useState({
         email: '',
@@ -19,22 +23,8 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
     });
     // set for password to be visible 
     const [showPassword, setShowPassword] = useState(false);
-    // set true or false for when the form is submitted
-    // const [isSubmitted, setIsSubmitted] = useState(false);
-    // // when to render the loading
-    // const [renderSpinner, setRenderSpinner] = useState(false);
-
+    // extracting formData 
     const { email, password } = formData;
-
-    // checking if the store is loading and if the form is submitted in order to render the spinner
-    // useEffect(() => {
-    //     if (loading && isSubmitted) {
-    //         setRenderSpinner(true);
-    //     }
-    //     else if (loading && !isSubmitted) {
-    //         setRenderSpinner(false);
-    //     }
-    // }, [isSubmitted]);
 
     // use effect to watch isAuthenticated and route to home page if its true
     useEffect(() => {
@@ -57,12 +47,9 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         if (!email || !password) {
-            setModal('error', 'error', 'Please make sure to fill out each form', 'Okay', () => { });
+            setModal('error', 'form error', 'Please make sure to fill out each form', 'Okay', () => { });
             return;
         }
-
-        // submitted form to true for spinner
-        // setIsSubmitted(true);
         try {
             let formData = {
                 email,
@@ -73,11 +60,9 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
         } catch (err) {
 
         }
-        // setting is submitted to false
-        // setIsSubmitted(false);
     };
     return (
-        <article id="loginStyles_formWrap">
+        <article id="loginStyles_formWrap" style={{ backgroundColor: Colors.secondaryBgColor}}>
             <form onSubmit={(e) => onSubmitHandler(e)} id="loginStyles_form">
                 <div>
                     <input
@@ -107,7 +92,7 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
                                 SUBMIT
                         </button>
                             :
-                            <p>LOADING...</p>
+                            <SmSpinner />
                         }
                     </div>
                 </div>

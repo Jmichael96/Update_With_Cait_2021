@@ -5,7 +5,7 @@ import { logout } from '../../../store/actions/auth';
 import { Link } from 'react-router-dom';
 
 // components
-import isEmpty from '../../../utils/isEmpty';
+import SmSpinner from '../SmSpinner/SmSpinner';
 
 // styles
 import './navbar.css';
@@ -40,7 +40,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             <Link to="/saved" className="nav-link"><span className="navSpan">SAVED</span></Link>
 
             <a href="#!" className="nav-link" onClick={() => logout()}>
-                {!loading ? <span className="navSpan">LOGOUT</span> : <h1>LOADING...</h1>}
+                {!loading ? <span className="navSpan">LOGOUT</span> : <SmSpinner />}
             </a>
             {/* <p>{!loading && !isEmpty(user) && <p>Welcome {user.name}</p>}</p> */}
         </section>

@@ -11,19 +11,20 @@ import './graphicsPage.css';
 import PostItem from '../../components/Post/PostItem/PostItem';
 import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
+import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
 const GraphicsPage = ({ fetchGraphics, post: { loading, graphicsPosts } }) => {
     // set limit for how many blogs to render on page
     const [limit, setLimit] = useState(6);
     // boolean for when limit has been reached
-    const [reachedLimit, setReachedLimit] = useState(null);
+    const [reachedLimit, setReachedLimit] = useState(false);
 
     // fetch lifestyle posts on load
     useEffect(() => {
         // if there are no graphics posts then fetch posts
-        // if (isEmpty(graphicsPosts)) {
+        if (!loading && isEmpty(graphicsPosts)) {
             fetchGraphics();
-        // }
+        }
     }, [fetchGraphics]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
@@ -55,11 +56,26 @@ const GraphicsPage = ({ fetchGraphics, post: { loading, graphicsPosts } }) => {
         }
     };
 
-    return (
+    // render the load more button
+    const renderLoadMoreBtn = () => {
+        if (!loading && isEmpty(graphicsPosts)) {
+            return null;
+        }
+        if (loading && isEmpty(graphicsPosts)) {
+            return null;
+        }
+        if (!loading && !isEmpty(graphicsPosts) && !reachedLimit) {
+            return <button className="graphicsPageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="graphicsPageStyles_downIcon" /></button>
+        }
+    };
+
+    return loading ? <LgSpinner /> : (
         <section>
             <Wrapper>
-                {loading ? <h1>LOADING...</h1> : renderPosts()}
-                {!loading && !reachedLimit ? <button className="lifestylePageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="lifestylePageStyles_downIcon" /></button> : null}
+                {renderPosts()}
+            </Wrapper>
+            <Wrapper>
+                {renderLoadMoreBtn()}
             </Wrapper>
         </section>
     )

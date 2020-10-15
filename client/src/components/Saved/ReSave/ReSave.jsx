@@ -10,6 +10,7 @@ import './reSave.css';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import isEmpty from '../../../utils/isEmpty';
 import validate from '../../../utils/validateForm';
+import SmSpinner from '../../Layout/SmSpinner/SmSpinner';
 
 const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { _id, title, category, summary, coverImage, content }, history }) => {
     const [formData, setFormData] = useState({
@@ -46,7 +47,6 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         if (!validate(titleData, categoryData, summaryData, coverImageData, contentData, setModal)) {
             return;
         }
-        // setIsSubmitted(true);
         try {
             let form = {
                 title: titleData,
@@ -59,7 +59,6 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         } catch (err) {
 
         }
-        // setIsSubmitted(false);
     });
 
     const resavePostHandler = useCallback(async (e) => {
@@ -89,7 +88,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         }
     });
 
-    return loading ? <h1>LOADING...</h1> : (
+    return (
         <article id="resaveStyles_root">
             <form id="resaveStyles_form">
                 <div id="resaveStyles_titleCategoryWrap">
@@ -150,11 +149,11 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!loading ? <button type="button" id="resaveStyles_resaveBtn" onClick={(e) => resavePostHandler(e)}>RE-SAVE</button> : <p>LOADING...</p>}
+                    {!loading ? <button type="button" id="resaveStyles_resaveBtn" onClick={(e) => resavePostHandler(e)}>RE-SAVE</button> : <SmSpinner />}
                     {!loading ?
                         <button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">PUBLISH</button>
                         :
-                        <p>LOADING...</p>
+                        <SmSpinner />
                     }
                 </Wrapper>
             </form>

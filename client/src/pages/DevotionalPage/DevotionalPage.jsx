@@ -11,6 +11,7 @@ import './devotionalPage.css';
 import PostItem from '../../components/Post/PostItem/PostItem';
 import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
+import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
 const DevotionalPage = ({ fetchDevotional, post: { loading, devotionalPosts } }) => {
     // set limit for how many blogs to render on page
@@ -21,9 +22,9 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, devotionalPosts } })
     // fetch lifestyle posts on load
     useEffect(() => {
         // if there are not any devotional posts then fetch posts
-        // if (isEmpty(devotionalPosts)) {
+        if (!loading && isEmpty(devotionalPosts)) {
             fetchDevotional();
-        // }
+        }
     }, [fetchDevotional]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
@@ -55,11 +56,25 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, devotionalPosts } })
         }
     };
 
-    return (
+    // render the load more button
+    const renderLoadMoreBtn = () => {
+        if (!loading && isEmpty(devotionalPosts)) {
+            return null;
+        }
+        if (loading && isEmpty(devotionalPosts)) {
+            return null;
+        }
+        if (!loading && !isEmpty(devotionalPosts) && !reachedLimit) {
+            return <button className="devotionalPageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="devotionalPageStyles_downIcon" /></button>
+        }
+    };
+
+
+    return loading ? <LgSpinner /> : (
         <section>
             <Wrapper>
-                {loading ? <h1>LOADING...</h1> : renderPosts()}
-                {!loading && !reachedLimit ? <button className="lifestylePageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="lifestylePageStyles_downIcon" /></button> : null}
+                {!loading ? renderPosts() : <h1>LOADING...</h1>}
+                {renderLoadMoreBtn()}
             </Wrapper>
         </section>
     )

@@ -49,15 +49,15 @@ const Modal = () => {
             pointerEvents: modalInfo.isOpen ? 'auto' : 'none',
         }}>
             <div style={{ maxHeight: modalType !== 'error' ? '40rem' : '' }}>
-                <div id="modalHeader" style={{ backgroundColor: Colors.accentColor }}>
-                    {modalTitle && <h1 id="modalTitle" style={{ color: modalHeaderText() }}>{modalTitle.toUpperCase()}</h1>}
+                <div id="modalHeader" style={{ backgroundColor: Colors.secondaryBgColor }}>
+                    {modalTitle && <h1 id="modalTitle">{modalTitle.toUpperCase()}</h1>}
                 </div>
                 <div id="modalContent">
                     {renderContent()}
                 </div>
                 <Wrapper styles={{ padding: '1rem' }}>
-                    {modalType === 'confirm' ? <button className="modalActionBtn" style={{ backgroundColor: Colors.accentColor, borderColor: Colors.accentColor }} onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
-                    {modalActionText && <button className="modalActionBtn" style={{ backgroundColor: Colors.accentColor, borderColor: Colors.accentColor }} onClick={actionHandler}>{modalActionText.toUpperCase()}</button>}
+                    {modalType === 'confirm' ? <button className="modalActionBtn" style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
+                    {modalActionText && <button className="modalActionBtn" style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={actionHandler}>{modalActionText.toUpperCase()}</button>}
                 </Wrapper>
             </div>
         </div>

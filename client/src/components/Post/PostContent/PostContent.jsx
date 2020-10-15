@@ -98,10 +98,10 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
                 {renderDeleteBtn()}
             </div>
             <Wrapper>
-                {loading ? <h1>LOADING...</h1> : renderPostData()}
+                {!loading && !isEmpty(post) && renderPostData()}
             </Wrapper>
 
-            {!loading &&
+            {!loading && !isEmpty(post) &&
                 <Wrapper styles={{ justifyContent: 'flex-start' }}>
                     <div id="postContentStyles_likeAmountWrap">
                         <ImHeart />{' '}{renderLikeNum()}
