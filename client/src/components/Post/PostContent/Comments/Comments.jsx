@@ -61,7 +61,7 @@ const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }
             return null;
         }
         if (!loading && !reachedLimit) {
-            return <button onClick={loadMore}>SEE MORE{' '}<FaArrowAltCircleDown /></button>
+            return <button onClick={loadMore} id="commentsStyles_seeMoreBtn">SEE MORE{' '}<FaArrowAltCircleDown /></button>
         }
     };
 

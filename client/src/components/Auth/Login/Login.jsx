@@ -20,21 +20,21 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
     // set for password to be visible 
     const [showPassword, setShowPassword] = useState(false);
     // set true or false for when the form is submitted
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    // when to render the loading
-    const [renderSpinner, setRenderSpinner] = useState(false);
+    // const [isSubmitted, setIsSubmitted] = useState(false);
+    // // when to render the loading
+    // const [renderSpinner, setRenderSpinner] = useState(false);
 
     const { email, password } = formData;
 
     // checking if the store is loading and if the form is submitted in order to render the spinner
-    useEffect(() => {
-        if (loading && isSubmitted) {
-            setRenderSpinner(true);
-        }
-        else if (loading && !isSubmitted) {
-            setRenderSpinner(false);
-        }
-    }, [isSubmitted]);
+    // useEffect(() => {
+    //     if (loading && isSubmitted) {
+    //         setRenderSpinner(true);
+    //     }
+    //     else if (loading && !isSubmitted) {
+    //         setRenderSpinner(false);
+    //     }
+    // }, [isSubmitted]);
 
     // use effect to watch isAuthenticated and route to home page if its true
     useEffect(() => {
@@ -62,7 +62,7 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
         }
 
         // submitted form to true for spinner
-        setIsSubmitted(true);
+        // setIsSubmitted(true);
         try {
             let formData = {
                 email,
@@ -74,7 +74,7 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
 
         }
         // setting is submitted to false
-        setIsSubmitted(false);
+        // setIsSubmitted(false);
     };
     return (
         <article id="loginStyles_formWrap">
@@ -102,12 +102,12 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
                         {renderIcons()}
                     </div>
                     <div className="loginStyles_actionWrap">
-                        {!renderSpinner ?
+                        {!loading ?
                             <button type="submit" id="loginStyles_submitBtn" >
                                 SUBMIT
                         </button>
                             :
-                            <p>Loading...</p>
+                            <p>LOADING...</p>
                         }
                     </div>
                 </div>
