@@ -13,7 +13,7 @@ import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
-const LifestylePage = ({ fetchLifestyle, post: { loading, lifestylePosts } }) => {
+const LifestylePage = ({ fetchLifestyle, post: { loading, fetchedDbLifestyle, lifestylePosts } }) => {
     // set limit for how many blogs to render on page
     const [limit, setLimit] = useState(6);
     // boolean for when limit has been reached
@@ -22,7 +22,7 @@ const LifestylePage = ({ fetchLifestyle, post: { loading, lifestylePosts } }) =>
     // fetch lifestyle posts on load
     useEffect(() => {
         // if there are no posts then fetch lifestyle posts
-        if (!loading && isEmpty(lifestylePosts)) {
+        if (!fetchedDbLifestyle) {
             fetchLifestyle();
         }
     }, [fetchLifestyle]);
@@ -72,7 +72,7 @@ const LifestylePage = ({ fetchLifestyle, post: { loading, lifestylePosts } }) =>
     return loading ? <LgSpinner /> : (
         <section>
             <Wrapper>
-                {renderPosts()}
+                {!loading && fetchedDbLifestyle && renderPosts()}
             </Wrapper>
             <Wrapper>
                 {renderLoadMoreBtn()}

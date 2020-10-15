@@ -48,7 +48,7 @@ exports.fetchSaved = (req, res, next) => {
         .then((savedPosts) => {
             if (!savedPosts || savedPosts.length <= 0) {
                 return res.status(404).json({
-                    serverMsg: 'There were no saved posts found'
+                    serverMsg: 'There are no saved posts'
                 });
             }
             return res.status(200).json({
@@ -164,12 +164,6 @@ exports.resave = (req, res, next) => {
 // @desc     Publish a post that was saved
 // @access   Private
 exports.publishSavedPost = async (req, res, next) => {
-
-    if (!req.user) {
-        return res.status(401).json({
-            serverMsg: 'You are not authorized'
-        });
-    }
     try {
         const { title, category, summary, coverImage, content } = req.body.formData;
         const post = new Post({

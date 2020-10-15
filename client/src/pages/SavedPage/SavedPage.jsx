@@ -11,11 +11,12 @@ import './savedPage.css';
 import isEmpty from '../../utils/isEmpty';
 import SavedItem from '../../components/Saved/SavedItem/SavedItem';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
+import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
-const SavedPage = ({ fetchSaved, deleteSaved, setModal, saved: { loading, savedPosts } }) => {
+const SavedPage = ({ fetchSaved, deleteSaved, setModal, saved: { loading, fetchedDbSaved, savedPosts } }) => {
     useEffect(() => {
         // if there are no saved posts present then fetch saved posts
-        if (isEmpty(savedPosts)) {
+        if (!fetchedDbSaved) {
             fetchSaved();
         }
     }, [fetchSaved]);
@@ -29,13 +30,13 @@ const SavedPage = ({ fetchSaved, deleteSaved, setModal, saved: { loading, savedP
         }
     };
 
-    return loading ? <h1>LOADING...</h1> : (
+    return loading ? <LgSpinner /> : (
         <article>
-            <h1 id="savedPageStyles_title">SAVED POSTS</h1>
+            {!loading && !isEmpty(savedPosts) && <h1 id="savedPageStyles_title">SAVED POSTS</h1>}
             <Wrapper>
-                {renderSavedItems()}
+                {!loading && fetchedDbSaved && renderSavedItems()}
             </Wrapper>
-        </article>
+        </article >
     );
 };
 

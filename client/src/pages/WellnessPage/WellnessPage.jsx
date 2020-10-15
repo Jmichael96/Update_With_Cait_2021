@@ -13,7 +13,7 @@ import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
-const WellnessPage = ({ fetchWellness, post: { loading, wellnessPosts } }) => {
+const WellnessPage = ({ fetchWellness, post: { loading, fetchedDbWellness, wellnessPosts } }) => {
     // set limit for how many blogs to render on page
     const [limit, setLimit] = useState(6);
     // boolean for when limit has been reached
@@ -22,7 +22,7 @@ const WellnessPage = ({ fetchWellness, post: { loading, wellnessPosts } }) => {
     // fetch lifestyle posts on load
     useEffect(() => {
         // if there is not any wellness posts then fetch posts
-        if (!loading && isEmpty(wellnessPosts)) {
+        if (!fetchedDbWellness) {
             fetchWellness();
         }
     }, [fetchWellness]);
@@ -72,7 +72,7 @@ const WellnessPage = ({ fetchWellness, post: { loading, wellnessPosts } }) => {
     return (
         <section>
             <Wrapper>
-                {loading ? <h1>LOADING...</h1> : renderPosts()}
+                {!loading && fetchedDbWellness && renderPosts()}
                 {renderLoadMoreBtn()}
             </Wrapper>
         </section>

@@ -3,7 +3,8 @@ import * as types from '../actions/types';
 const initialState = {
     savedPosts: [],
     savedPost: null,
-    loading: false
+    loading: false,
+    fetchedDbSaved: false
 };
 
 export default (state = initialState, action) => {
@@ -17,6 +18,7 @@ export default (state = initialState, action) => {
         case types.DELETE_SAVED:
             return {
                 ...state,
+                savedPost: null,
                 loading: true
             }
         case types.SAVE_POST_FAIL:
@@ -44,7 +46,8 @@ export default (state = initialState, action) => {
                 ...state,
                 savedPosts: payload,
                 savedPost: null,
-                loading: false
+                loading: false,
+                fetchedDbSaved: true
             };
         case types.FETCH_SAVED_POST_FAIL:
             return {

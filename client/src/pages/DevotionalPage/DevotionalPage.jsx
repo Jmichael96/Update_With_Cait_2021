@@ -13,7 +13,7 @@ import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
-const DevotionalPage = ({ fetchDevotional, post: { loading, devotionalPosts } }) => {
+const DevotionalPage = ({ fetchDevotional, post: { loading, fetchedDbDevotional, devotionalPosts } }) => {
     // set limit for how many blogs to render on page
     const [limit, setLimit] = useState(6);
     // boolean for when limit has been reached
@@ -22,7 +22,7 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, devotionalPosts } })
     // fetch lifestyle posts on load
     useEffect(() => {
         // if there are not any devotional posts then fetch posts
-        if (!loading && isEmpty(devotionalPosts)) {
+        if (!fetchedDbDevotional) {
             fetchDevotional();
         }
     }, [fetchDevotional]);
@@ -73,7 +73,7 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, devotionalPosts } })
     return loading ? <LgSpinner /> : (
         <section>
             <Wrapper>
-                {!loading ? renderPosts() : <h1>LOADING...</h1>}
+                {!loading && fetchedDbDevotional && renderPosts()}
                 {renderLoadMoreBtn()}
             </Wrapper>
         </section>

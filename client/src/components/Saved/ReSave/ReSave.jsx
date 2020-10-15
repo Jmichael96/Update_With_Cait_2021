@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
-
+import { useSelector } from 'react-redux';
 // styles
 import './reSave.css';
 
@@ -26,6 +26,9 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
     // extracting data from formData obj
     const { titleData, categoryData, summaryData } = formData;
 
+    // extracting the post state data with the useSelector method
+    const postData = useSelector((state) => state.post);
+
     useEffect(() => {
         if (!loading) {
             setFormData({
@@ -38,6 +41,16 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
             setContentData(isEmpty(content) ? '' : content);
         }
     }, [loading, title, category, summary, coverImage, content]);
+
+    // extracting data from the postData state obj
+    const postLoading = postData.postLoading;
+    const post = postData.post;
+    // checking if a post is submitted to the post state then will be redirected
+    useEffect(() => {
+        if (!postLoading && !loading && !isEmpty(post)) {
+            history.push(`/post_content/${post._id}`);
+        }
+    }, [postLoading, post]);
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -70,7 +83,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         }
         if (titleData === title && categoryData === category && summaryData === summary && coverImageData === coverImage && contentData === content) {
             history.push('/saved');
-            setModal('confirm', 'same content', 'No content has been changed so there is no need to re-save', 'okay', () => { });
+            setModal('error', 'same content', 'No content has been changed so there is no need to re-save', 'okay', () => { });
             return;
         }
         try {

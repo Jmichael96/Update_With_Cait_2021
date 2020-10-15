@@ -156,6 +156,9 @@ export const publishSavedPost = (savedId, history, { ...formData }) => (dispatch
     dispatch({
         type: types.PUBLISH_SAVED_POST_REMOVE
     });
+    dispatch({
+        type: types.PUBLISH_SAVED_POST_ADD
+    });
     dispatch(publishSavedPostSuccess(savedId, history, formData));
 };
 
@@ -179,11 +182,6 @@ export const publishSavedPostSuccess = (savedId, history, formData) => (dispatch
                 payload: res.data.newPost
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
-            const publishedId = res.data.newPost._id;
-            if (!publishedId) {
-                return;
-            }
-            history.push(`/post_content/${publishedId}`);
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;

@@ -7,6 +7,10 @@ const initialState = {
     lifestylePosts: [],
     post: null,
     loading: false,
+    fetchedDbLifestyle: false,
+    fetchedDbGraphics: false,
+    fetchedDbWellness: false,
+    fetchedDbDevotional: false
 };
 
 export default (state = initialState, action) => {
@@ -95,7 +99,8 @@ export default (state = initialState, action) => {
                 ...state,
                 lifestylePosts: payload,
                 post: null,
-                loading: false
+                loading: false,
+                fetchedDbLifestyle: true
             };
         case types.FETCH_DEVOTIONAL_FAIL:
             return {
@@ -109,7 +114,8 @@ export default (state = initialState, action) => {
                 ...state,
                 devotionalPosts: payload,
                 post: null,
-                loading: false
+                loading: false,
+                fetchedDbDevotional: true
             };
         case types.FETCH_WELLNESS_FAIL:
             return {
@@ -123,7 +129,8 @@ export default (state = initialState, action) => {
                 ...state,
                 wellnessPosts: payload,
                 post: null,
-                loading: false
+                loading: false,
+                fetchedDbWellness: true
             };
         case types.FETCH_GRAPHICS_FAIL:
             return {
@@ -137,7 +144,8 @@ export default (state = initialState, action) => {
                 ...state,
                 graphicsPosts: payload,
                 post: null,
-                loading: false
+                loading: false,
+                fetchedDbGraphics: true
             };
         case types.PUBLISH_SAVED_POST_ADD_FAIL:
             return {

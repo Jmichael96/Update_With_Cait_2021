@@ -29,9 +29,8 @@ const SavedPostContentPage = ({ fetchSavedPost, resavePost, publishSavedPost, se
         }
     };
 
-    return loading ? <h1>LOADING...</h1> : (
-        <article>
-            <h1>saved post</h1>
+    return (
+        <article id="savedPostContentPageStyles_root">
             {renderResave()}
         </article>
     );
