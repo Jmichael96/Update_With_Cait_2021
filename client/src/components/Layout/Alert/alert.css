@@ -119,7 +119,9 @@
     margin-top: -5px;
     background: #aa1919;
 }
+
 /* icon wrapper warning */
+
 .alertStyles_iconWrap_warning {
     display: flex;
     justify-content: center;

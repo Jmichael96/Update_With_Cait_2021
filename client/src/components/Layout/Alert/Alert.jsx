@@ -7,6 +7,8 @@ import { removeAlert } from '../../../store/actions/alert';
 
 // styles
 import './alert.css';
+// components
+import Colors from '../../../utils/constants/Colors';
 
 const Alert = ({ alerts, removeAlert }) => {
     const removeAlertHandler = (id) => {
@@ -18,7 +20,7 @@ const Alert = ({ alerts, removeAlert }) => {
             <div id="alertStyles_root">
                 {
                     alerts.map(alert => (
-                        <div key={alert.id} className={`alert alert-${alert.alertType}`}>
+                        <div key={alert.id} className={`alert alert-${alert.alertType}`} style={{ backgroundColor: Colors.primaryBgColor }}>
                             <div className={`alertStyles_iconWrap_${alert.alertType}`}>
                                 {alert.alertType === 'success' && <AiOutlineCheck className="iconText" />}
                                 {alert.alertType === 'error' && <VscError className="iconText" />}
