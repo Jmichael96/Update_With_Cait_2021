@@ -7,6 +7,7 @@ import './modal.css';
 
 // components
 import Wrapper from '../Wrapper/Wrapper';
+import Colors from '../../../utils/constants/Colors';
 
 const Modal = () => {
     const modalInfo = useSelector((state) => state.modal);
@@ -14,7 +15,7 @@ const Modal = () => {
     const { modalType, modalTitle, modalText, modalActionText, modalAction } = modalInfo.modalData;
 
     // render the appropriate content for the type of modal
-    const renderContent = () => {        
+    const renderContent = () => {
         switch (modalType) {
             case 'error':
                 return (<p className="modalContentText" style={{ textAlign: 'center' }}>{modalText}</p>);
@@ -30,6 +31,17 @@ const Modal = () => {
         dispatch(removeModal());
     };
 
+    // configure modal header text color
+    const modalHeaderText = () => {
+        switch (modalType) {
+            case 'error':
+                return '#df0202';
+            case 'confirm':
+                return 'white';
+            default: return;
+        };
+    };
+
     return (
         <div id="open-modal" className="modal-window" style={{
             visibility: modalInfo.isOpen ? 'visible' : 'hidden',
@@ -37,15 +49,15 @@ const Modal = () => {
             pointerEvents: modalInfo.isOpen ? 'auto' : 'none',
         }}>
             <div style={{ maxHeight: modalType !== 'error' ? '40rem' : '' }}>
-                <div id="modalHeader">
-                    {modalTitle && <h1 id="modalTitle">{modalTitle.toUpperCase()}</h1>}
+                <div id="modalHeader" style={{ backgroundColor: Colors.accentColor }}>
+                    {modalTitle && <h1 id="modalTitle" style={{ color: modalHeaderText() }}>{modalTitle.toUpperCase()}</h1>}
                 </div>
                 <div id="modalContent">
                     {renderContent()}
                 </div>
                 <Wrapper styles={{ padding: '1rem' }}>
-                    {modalType === 'confirm' ? <button className="modalActionBtn" onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
-                    {modalActionText && <button className="modalActionBtn" onClick={actionHandler}>{modalActionText.toUpperCase()}</button>}
+                    {modalType === 'confirm' ? <button className="modalActionBtn" style={{ backgroundColor: Colors.accentColor, borderColor: Colors.accentColor }} onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
+                    {modalActionText && <button className="modalActionBtn" style={{ backgroundColor: Colors.accentColor, borderColor: Colors.accentColor }} onClick={actionHandler}>{modalActionText.toUpperCase()}</button>}
                 </Wrapper>
             </div>
         </div>

@@ -21,10 +21,8 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
     const [coverImageData, setCoverImageData] = useState('');
     // react quill content 
     const [contentData, setContentData] = useState('');
-    // when to render spinner
-    // const [renderSpinner, setRenderSpinner] = useState(false);
-    // const [isSubmitted, setIsSubmitted] = useState(false);
 
+    // extracting data from formData obj
     const { titleData, categoryData, summaryData } = formData;
 
     useEffect(() => {
@@ -39,15 +37,6 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
             setContentData(isEmpty(content) ? '' : content);
         }
     }, [loading, title, category, summary, coverImage, content]);
-
-    // checking if store is loading and if user submitted form to render spinner accordingly
-    // useEffect(() => {
-    //     if (loading && isSubmitted) {
-    //         setRenderSpinner(true);
-    //     } else if (loading && !isSubmitted) {
-    //         setRenderSpinner(false);
-    //     }
-    // }, [loading, isSubmitted]);
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -77,15 +66,14 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         e.preventDefault();
         // validate for if all forms are empty
         if (isEmpty(titleData) && isEmpty(categoryData) && isEmpty(summaryData) && isEmpty(coverImageData) && isEmpty(contentData)) {
-            setModal('error', 'form error', 'You make sure at least one field is filled out', 'okay', () => { });
+            setModal('error', 'form error', 'Please make sure at least one field is filled out', 'okay', () => { });
             return;
         }
         if (titleData === title && categoryData === category && summaryData === summary && coverImageData === coverImage && contentData === content) {
             history.push('/saved');
-            setModal('error', 'same content', 'No content has been changed so there is no need to re-save', 'okay', () => { });
+            setModal('confirm', 'same content', 'No content has been changed so there is no need to re-save', 'okay', () => { });
             return;
         }
-        // setIsSubmitted(true);
         try {
             let form = {
                 title: titleData,
@@ -97,9 +85,8 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
 
             await resavePost(_id, history, form)
         } catch (err) {
-
+            throw err;
         }
-        // setIsSubmitted(false);
     });
 
     return loading ? <h1>LOADING...</h1> : (

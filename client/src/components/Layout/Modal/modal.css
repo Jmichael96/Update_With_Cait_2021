@@ -34,7 +34,7 @@
     -o-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background: #f8f8f8;
-    border-radius: 3px;
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -42,7 +42,7 @@
 
 #modalHeader {
     height: 2rem;
-    background-color: red;
+    background-color: #df0202;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,23 +53,37 @@
 
 #modalTitle {
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 /* modal content wrap around text */
 
 #modalContent {
     margin-top: 2rem;
+    padding: 0 .5rem;
 }
 
 /* style of text content */
 
 .modalContentText {
-    font-size: 1rem;
+    font-size: .9rem;
 }
 
-/* modal footer action wrap */
+/* cancel button for modal confirms */
 
-/* #modalFooter {
-    
-} */
+.modalActionBtn {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    padding: .3rem .5rem;
+    cursor: pointer;
+    box-shadow: 0 2px 7px rgb(197, 197, 197);
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
+}
+
+.modalActionBtn:hover {
+    color: white;
+}
