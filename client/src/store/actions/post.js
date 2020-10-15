@@ -311,8 +311,10 @@ export const deleteCommentSuccess = (postId, commentId) => (dispatch) => {
 
 //! LIKE POST
 export const likePost = (id, likeNumber) => (dispatch) => {
+    // dispatching the like post and submitting the number to the store for immediate updating
     dispatch({
-        type: types.LIKE_POST
+        type: types.LIKE_POST,
+        payload: likeNumber
     });
     dispatch(likeSuccess(id, likeNumber));
 };
@@ -325,9 +327,14 @@ export const likeSuccess = (id, likeNumber) => (dispatch) => {
     };
     axios.put(`/api/posts/like/${id}`, { likeNumber }, config)
         .then((res) => {
+            console.log(res)
             dispatch({
                 type: types.LIKE_POST_SUCCESS,
-                payload: res.data.post
+                payload: {
+                    id: id,
+                    post: res.data.post,
+                    likeNumber: likeNumber
+                }
             });
         })
         .catch((err) => {

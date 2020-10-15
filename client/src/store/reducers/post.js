@@ -263,6 +263,11 @@ export default (state = initialState, action) => {
                     post._id === payload.id ? { ...post, comments: payload.post.comments } : post
                 ) : state.wellnessPosts,
             };
+        case types.LIKE_POST:
+            return {
+                ...state,
+                post: { ...state.post, like_number: payload }
+            };
         case types.LIKE_POST_FAIL:
             return {
                 ...state,
@@ -272,7 +277,6 @@ export default (state = initialState, action) => {
             let likedPostCat = payload.post.category;
             return {
                 ...state,
-                post: { ...state.post, like_number: payload.post.like_number },
                 devotionalPosts: likedPostCat === 'Devotional' ? state.devotionalPosts.map(post =>
                     post._id === payload.id ? { ...post, comments: payload.post.comments } : post
                 ) : state.devotionalPosts,

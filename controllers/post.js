@@ -297,9 +297,24 @@ exports.likePost = (req, res, next) => {
     Post.findByIdAndUpdate({ _id: req.params.id })
         .then((post) => {
             let newLikeNumber = req.body.likeNumber;
-            console.log(newLikeNumber);
+            if (!post) {
+                return res.status(404).json({
+                    serverMsg: 'Post could not be found'
+                });
+            }
+            // if the given like number is greater than the post's like_number
+            if (newLikeNumber > post.like_number) {
+                post.like_number = newLikeNumber;
+            }
+            post.save();
+            console.log(post);
+            return res.status(201).json({
+                serverMsg: 'Post has been liked',
+                post: post
+            });
         })
         .catch((err) => {
+            console.log(err);
             return res.status(500).json({
                 serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });

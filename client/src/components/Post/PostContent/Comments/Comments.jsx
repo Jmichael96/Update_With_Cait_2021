@@ -39,7 +39,7 @@ const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }
 Comments.propTypes = {
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
-    comments: PropTypes.object.isRequired,
+    comments: PropTypes.array.isRequired,
     auth: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     postId: PropTypes.string.isRequired,
