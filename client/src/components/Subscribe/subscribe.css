@@ -1,0 +1,59 @@
+/* root element of component */
+
+#subscribeStyles_root {
+    margin-top: 13rem;
+    padding: 1rem;
+}
+
+/* text explaining what the subscription is for */
+
+#subscribeStyles_infoText {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* content wrapper to wrap with a card */
+
+#subscribeStyles_cardContentWrap {
+    width: 40rem;
+    padding: 1rem;
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* form element */
+
+#subscribeStyles_form {}
+
+/* input elements */
+
+.subscribeStyles_input {
+    border: none;
+    border-radius: 4px;
+    padding: .5rem .3rem;
+    font-size: 1.2rem;
+    margin: 0 .5rem;
+    width: 90%;
+    max-width: 14rem;
+    height: 1.4rem;
+}
+
+/* submit button */
+
+#subscribeStyles_submitBtn {
+    margin: 1rem .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.4rem;
+    padding: .8rem .3rem;
+    font-size: 1.2rem;
+}
+
+/* mail icon inside the submit button */
+
+.subscribeStyles_mailIcon {
+    font-size: 1.3rem;
+    color: black;
+    margin-left: .2rem;
+}

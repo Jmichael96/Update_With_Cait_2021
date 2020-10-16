@@ -11,14 +11,14 @@ const PostCategories = () => {
     return (
         <section id="postCategoriesStyles_root">
             <div id="postCategoriesStyles_relativeBg" style={{ backgroundColor: Colors.accentColor }}>
-                <main>
+                <main className="postCategoriesStyles_card">
+                    
+                </main>
+                <main className="postCategoriesStyles_card">
+                    
+                </main>
+                <main className="postCategoriesStyles_card">
 
-                </main>
-                <main>
-                    
-                </main>
-                <main>
-                    
                 </main>
             </div>
         </section>
