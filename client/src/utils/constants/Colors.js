@@ -7,6 +7,7 @@
 
 export default {
     secondaryBgColor: '#5f7264',
-    accentColor:'#9f6544',
+    accentColor: '#ede3ce',
     primaryBgColor: '#fffdfb',
+    navText: '#fff',
 }

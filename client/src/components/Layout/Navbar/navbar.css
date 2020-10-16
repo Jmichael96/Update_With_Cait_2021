@@ -1,20 +1,24 @@
 /* navbar itself */
 
-.nav {
+.navbarStyles_nav {
     height: 3.5rem;
     width: 100%;
     background-color: #ffffff;
-    box-shadow: 0 1px 15px rgba(126, 126, 126, 0.394);
+    box-shadow: 0 0px 8px rgba(126, 126, 126, 0.394);
     position: relative;
 }
 
-/* nav logo */
+/* navbar link wrapper for desktop users */
 
-#navLogo {
-    width: 10rem;
-    position: absolute;
-    top: 2px;
-    left: 2px;
+#navbarStyles_desktopLinkWrap {
+    display: flex;
+    align-items: center;
+}
+/* icon links */
+
+.navbarStyles_socialIcon {
+    font-size: 1.5rem;
+    margin: .7rem .3rem 0 .3rem;
 }
 
 /* nav link buttons */
@@ -27,10 +31,11 @@
 /* nav link wrapper */
 
 .navLinkWrap {
-    float: right;
     display: flex;
-    margin-top: .6rem;
     align-items: center;
+    justify-content: flex-start;
+    margin-top: .5rem;
+    margin-right: auto;
 }
 
 /* style of text buttons for navigation links */
@@ -54,7 +59,7 @@
     height: 2px;
     left: 50%;
     position: absolute;
-    background: rgb(144, 0, 0);
+    background: rgb(0, 0, 0);
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }

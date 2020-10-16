@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../../store/actions/auth';
 import { Link } from 'react-router-dom';
+import { AiFillInstagram, AiFillLinkedin, AiFillFacebook } from 'react-icons/ai';
 
 // components
 import SmSpinner from '../SmSpinner/SmSpinner';
 import MobileNav from '../MobileNav/MobileNav';
+import Colors from '../../../utils/constants/Colors';
 
 // styles
 import './navbar.css';
@@ -81,23 +83,25 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     const renderNavs = () => {
         if (mobilize === false) {
             return (
-                <div>
-                    {/* <div class="navLogoWrapper"> */}
-
-                    {/* </div> */}
+                <div id="navbarStyles_desktopLinkWrap">
                     {!loading && !isAuth ? guestLinks : authLinks}
+                    <div className="navbarStyles_socialIconWrap">
+                        <AiFillFacebook className="navbarStyles_socialIcon" />
+                        <AiFillInstagram className="navbarStyles_socialIcon" />
+                        <AiFillLinkedin className="navbarStyles_socialIcon" />
+                    </div>
                 </div>
             )
         } else if (mobilize === true) {
-            return <MobileNav isAuthenticated={isAuth} user={user} authLoading={loading} logout={logout} />
+            return (
+                <MobileNav isAuthenticated={isAuth} user={user} authLoading={loading} logout={logout} />
+            )
         }
     };
+
     return (
-        <div>
-            <div className="nav">
-                <img id="navLogo" alt="UWC Logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
-                {renderNavs()}
-            </div>
+        <div className="navbarStyles_nav" style={{ backgroundColor: Colors.accentColor }}>
+            {renderNavs()}
         </div>
     );
 };
