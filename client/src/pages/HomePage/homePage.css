@@ -1,0 +1,97 @@
+/* home page root element */
+
+#homePageStyles_root {}
+
+/* header image wrapper */
+
+#homePageStyles_introImageWrap {
+    height: 100%;
+    margin-top: 2rem;
+}
+
+/* inner image wrapper around images */
+
+#homePageStyles_introInnerWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* main center image of cait */
+
+#homePageStyles_mainImg {
+    position: absolute;
+    top: 7rem;
+    left: 50%;
+    -moz-transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: block;
+    width: 85%;
+    max-width: 40rem;
+    border: .8rem solid rgb(255, 255, 255);
+    border-radius: 3px;
+    padding: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* the two background images behind the front middle image one is left and the other is right*/
+
+.homePageStyles_underlayImgLeft {
+    display: block;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 .5rem 0 .5rem;
+    border-radius: 3px;
+    padding-right: 1rem;
+    height: 30rem;
+}
+
+.homePageStyles_underlayImgRight {
+    display: block;
+    width: 100%;
+    max-width: 40rem;
+    margin: 0 .5rem 0 .5rem;
+    border-radius: 3px;
+    padding-left: 1rem;
+    height: 30rem;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 754px) {
+    .homePageStyles_underlayImgLeft {
+        height: 25rem;
+    }
+    .homePageStyles_underlayImgRight {
+        height: 25rem;
+    }
+}
+
+@media only screen and (max-width: 632px) {
+    .homePageStyles_underlayImgLeft {
+        height: 20rem;
+    }
+    .homePageStyles_underlayImgRight {
+        height: 20rem;
+    }
+}
+
+@media only screen and (max-width: 478px) {
+    .homePageStyles_underlayImgLeft {
+        height: 17rem;
+    }
+    .homePageStyles_underlayImgRight {
+        height: 17rem;
+    }
+}
+
+@media only screen and (max-width: 410px) {
+    .homePageStyles_underlayImgLeft {
+        height: 14rem;
+    }
+    .homePageStyles_underlayImgRight {
+        height: 14rem;
+    }
+}
