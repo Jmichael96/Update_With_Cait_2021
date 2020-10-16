@@ -1,0 +1,13 @@
+/* root component element */
+
+#postCategoriesStyles_root {
+    height: 100%;
+}
+
+/* relative background for the cards */
+
+#postCategoriesStyles_relativeBg {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
