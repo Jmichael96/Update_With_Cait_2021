@@ -11,15 +11,24 @@ const PostCategories = () => {
     return (
         <section id="postCategoriesStyles_root">
             <div id="postCategoriesStyles_relativeBg" style={{ backgroundColor: Colors.accentColor }}>
-                <main className="postCategoriesStyles_card">
-                    
-                </main>
-                <main className="postCategoriesStyles_card">
-                    
-                </main>
-                <main className="postCategoriesStyles_card">
+                <div className="postCategoriesStyles_outerCard">
+                    <main className="postCategoriesStyles_card">
 
-                </main>
+                    </main>
+                    <button className="postCategoriesStyles_button">lifestyle</button>
+                </div>
+                <div className="postCategoriesStyles_outerCard">
+                    <main className="postCategoriesStyles_card">
+
+                    </main>
+                    <button>devotional</button>
+                </div>
+                <div className="postCategoriesStyles_outerCard">
+                    <main className="postCategoriesStyles_card">
+
+                    </main>
+                    <button>graphics</button>
+                </div>
             </div>
         </section>
     );
