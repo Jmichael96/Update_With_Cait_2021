@@ -20,13 +20,19 @@
 
 .postCategoriesStyles_outerCard {
     width: 100%;
-    max-width: 20rem;
+    max-width: 22rem;
     margin: 2rem .5rem 0 .5rem;
     background-color: white;
     height: 21rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     border-radius: 3px;
     cursor: pointer;
+    overflow: hidden;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
 }
 
 /* each category card */
@@ -34,8 +40,15 @@
 .postCategoriesStyles_outerCard>.postCategoriesStyles_card {
     height: 18rem;
     width: 100%;
-    max-width: 20rem;
     background-color: rgb(97, 97, 97);
+}
+
+.postCategoriesStyles_outerCard:hover {
+    -webkit-transform: scale(1.1) rotate(-4deg);
+    -moz-transform: scale(1.1) rotate(-4deg);
+    -ms-transform: scale(1.1) rotate(-4deg);
+    -o-transform: scale(1.1) rotate(-4deg);
+    transform: scale(1.1) rotate(-4deg);
 }
 
 /* selecting the middle card for unique styling */
@@ -50,6 +63,33 @@
     text-align: center;
     margin: .4rem 0 0 0;
     font-size: 1.4rem;
+}
+
+/* the lifestyle background */
+
+.postCategoriesStyles_outerCard:nth-child(1)>.postCategoriesStyles_card {
+    background-image: url('../../../assets/images/graphics.JPG');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* devotional background */
+
+.postCategoriesStyles_outerCard:nth-child(2)>.postCategoriesStyles_card {
+    background-image: url('../../../assets/images/graphics.JPG');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* graphics background */
+
+.postCategoriesStyles_outerCard:nth-child(3)>.postCategoriesStyles_card {
+    background-image: url('../../../assets/images/graphics.JPG');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* ! MEDIA QUERIES */
