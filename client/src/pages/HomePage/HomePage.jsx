@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { } from '../../store/actions/post';
 import { setModal } from '../../store/actions/modal';
+import { Link } from 'react-router-dom';
 
 // styles
 import './homePage.css';
@@ -28,16 +29,28 @@ const HomePage = ({ setModal }) => {
                 </div>
                 <img id="homePageStyles_mainImg" src={require('../../assets/images/cait2.JPG')} />
             </section>
-            {/* <section id="homePageStyles_aboutWrap" style={{ backgroundColor: Colors.accentColor }}>
-                <div id="homePageStyles_aboutPWrap">
-                    <p className="homePageStyles_pText">
-                        passionate about being the hands and feet of god and spreading the good news through writing.
-                        just here to be a friend to all. welcome to the update with cait!
-                    </p>
-                </div>
-            </section> */}
             <Subscribe setModal={setModal} />
             <PostCategories />
+            <section id="homePageStyles_aboutWrap" style={{ borderColor: Colors.accentColor }}>
+                <Wrapper styles={{ justifyContent: 'space-evenly' }}>
+                    <div id="homePageStyles_aboutImgWrap" style={{ borderColor: Colors.accentColor }}>
+                        <img id="homePageStyles_aboutImg" alt="caitlyn" src={require('../../assets/images/cait.JPG')} />
+                    </div>
+                    <div id="homePageStyles_aboutPWrap">
+                        <Wrapper>
+                            <p className="homePageStyles_pText">
+                                Passionate about being the hands and feet of god and spreading the good news through writing.
+                                Just here to be a friend to all. Welcome to the Update With Cait!
+                        </p>
+                        </Wrapper>
+                        <Wrapper>
+                            <Link to="/about">
+                                <button id="homePageStyles_aboutBtn">READ MORE</button>
+                            </Link>
+                        </Wrapper>
+                    </div>
+                </Wrapper>
+            </section>
         </article>
     );
 };

@@ -64,25 +64,63 @@
 /* about section wrapper */
 
 #homePageStyles_aboutWrap {
-    height: 8rem;
-    margin-top: 11rem;
-    padding: 1rem;
+    margin-top: 3rem;
+    border-top: .8rem solid;
+    border-bottom: .8rem solid;
+    padding: 2rem 0;
 }
 
-/* inner wrap surrounding the paragraph intro text */
+/* image wrapper */
 
-#homePageStyles_aboutPWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+#homePageStyles_aboutImgWrap {
+    border-width: .4rem;
+    border-style: solid;
+    border-radius: 3px;
+    padding: .5rem;
+    overflow: hidden;
+    width: 100%;
+    max-width: 26rem;
+    margin: 1rem;
+}
+
+/* image of cait in the about section */
+
+#homePageStyles_aboutImg {
+    display: block;
+    width: 100%;
+    max-width: 26rem;
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+#homePageStyles_aboutImg:hover {
+    -webkit-transform: scale(1.2) rotate(5deg);
+    -moz-transform: scale(1.2) rotate(5deg);
+    -ms-transform: scale(1.2) rotate(5deg);
+    -o-transform: scale(1.2) rotate(5deg);
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* the read more about button */
+
+#homePageStyles_aboutBtn {
+        
 }
 
 /* the paragraph text */
 
 .homePageStyles_pText {
-    width: 42rem;
+    width: 90%;
+    max-width: 35rem;
     text-align: center;
+    margin: 3rem 0;
+    line-height: 1.5rem;
+    font-size: 1.2rem;
 }
 
 /* ! MEDIA QUERIES */
