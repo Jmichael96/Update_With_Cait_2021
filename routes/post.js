@@ -32,6 +32,11 @@ router.get('/fetch_wellness', PostController.fetchWellness);
 // @access   Public
 router.get('/fetch_graphics', PostController.fetchGraphics);
 
+// @route    GET api/posts/fetch_recent
+// @desc     Fetching the most recent blogs
+// @access   Public
+router.get('/fetch_recent', PostController.fetchRecentBlogs);
+
 // @route    PUT api/posts/update_post/:id
 // @desc     Update a post
 // @access   Private

@@ -139,6 +139,29 @@ exports.fetchGraphics = (req, res, next) => {
         });
 };
 
+// @route    GET api/posts/fetch_recent
+// @desc     Fetching the most recent blogs
+// @access   Public
+exports.fetchRecentBlogs = (req, res, next) => {
+    Post.find().sort({ _id: -1 }).limit(3)
+        .then((posts) => {
+            if (!posts || posts.length <= 0) {
+                return res.status(404).json({
+                    serverMsg: 'There were no posts found'
+                });
+            }
+            return res.status(200).json({
+                serverMsg: 'Fetched recent posts',
+                posts
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                serverMsg: 'Server error'
+            });
+        });
+};
+
 // @route    PUT api/posts/update_post/:id
 // @desc     Update a post
 // @access   Private

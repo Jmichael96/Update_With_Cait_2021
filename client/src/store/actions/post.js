@@ -170,6 +170,29 @@ export const fetchGraphicsSuccess = () => (dispatch) => {
         });
 };
 
+//! FETCH RECENT POSTS
+export const fetchRecentPosts = () => (dispatch) => {
+    dispatch({
+        type: types.FETCH_RECENT
+    });
+    dispatch(fetchRecentPostsSuccess());
+};
+
+export const fetchRecentPostsSuccess = () => (dispatch) => {
+    axios.get('/api/posts/fetch_recent')
+        .then((res) => {
+            dispatch({
+                type: types.FETCH_RECENT_SUCCESS,
+                payload: res.data.posts
+            });
+        })
+        .catch((err) => {
+            dispatch({
+                type: types.FETCH_RECENT_FAIL,
+            });
+        });
+};
+
 //! UPDATE POST
 export const updatePost = (id, { ...formData }) => (dispatch) => {
     dispatch({

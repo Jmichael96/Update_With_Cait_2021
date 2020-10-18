@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { } from '../../store/actions/post';
+import { fetchRecentPosts } from '../../store/actions/post';
 import { setModal } from '../../store/actions/modal';
 import { Link } from 'react-router-dom';
 
@@ -17,8 +17,13 @@ import Subscribe from '../../components/Subscribe/Subscribe';
 import isEmpty from '../../utils/isEmpty';
 import Colors from '../../utils/constants/Colors';
 
-const HomePage = ({ setModal }) => {
-
+const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts } }) => {
+    // fetch the most recent posts
+    useEffect(() => {
+        if (!fetchedRecentPosts && isEmpty(recentPosts)) {
+            fetchRecentPosts();
+        }
+    }, [fetchRecentPosts, fetchedRecentPosts, recentPosts]);
 
     return (
         <article id="homePageStyles_root">
@@ -57,10 +62,12 @@ const HomePage = ({ setModal }) => {
 
 HomePage.propTypes = {
     setModal: PropTypes.func.isRequired,
+    fetchRecentPosts: PropTypes.func.isRequired,
+    post: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     post: state.post
 });
 
-export default connect(mapStateToProps, { setModal })(HomePage);
+export default connect(mapStateToProps, { setModal, fetchRecentPosts })(HomePage);

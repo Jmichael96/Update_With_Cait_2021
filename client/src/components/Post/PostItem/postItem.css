@@ -1,154 +1,126 @@
-/* card itself */
+/* card */
 
 .postItemStyles_card {
+    height: 100%;
+    min-height: 26rem;
     width: 100%;
-    max-width: 30rem;
-    padding: .5rem;
-    margin-top: 3rem;
-}
-
-/* content of post div wrap for greyscale effect */
-
-.postItemStyles_contentWrap {
-    -webkit-filter: grayscale(50%);
-    /* Chrome, Safari, Opera */
-    filter: grayscale(50%);
-    -webkit-transition: filter .3s ease-out, -webkit-filter .3s ease-out;
-    -moz-transition: filter .3s ease-out, -webkit-filter .3s ease-out;
-    -o-transition: filter .3s ease-out, -webkit-filter .3s ease-out;
-    transition: filter .3s ease-out, -webkit-filter .3s ease-out;
-}
-
-.postItemStyles_contentWrap:hover {
-    -webkit-filter: grayscale(0%);
-    filter: grayscale(0%);
-}
-
-/* card image */
-
-.postItemStyles_coverImg img {
-    display: flex;
-    width: 100%;
-    max-width: 30rem;
-    height: 23rem;
+    max-width: 28rem;
+    background-color: rgb(189, 189, 189);
     border-radius: 3px;
+    position: relative;
+    margin: 3rem .8rem;
     cursor: pointer;
 }
 
-/* grey text paragraph wrap with the category and date */
+/* inner card wrap to keep the content aligned with the image */
 
-.postItemStyles_greyTextWrap {
-    color: grey;
+.postItemStyles_innerCard {
+    padding: .5rem;
+}
+
+/* cover image wrapper */
+
+.postItemStyles_coverImgWrap {
+    margin-top: -2rem;
+    width: 100%;
+    max-width: 22rem;
+}
+
+/* cover image */
+
+.postItemStyles_coverImg img {
+    display: block;
+    width: 100%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+/* quill p tag surrounding the img element */
+
+.postItemStyles_coverImg>p {
     margin: 0;
 }
 
-/* card title */
+/* content wrapper holding the title, summary, category and button */
+
+.postItemStyles_contentWrap {
+    width: 100%;
+}
+
+/* title */
 
 .postItemStyles_title {
-    color: black;
-    font-size: 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1rem 0;
 }
 
-/* post summary */
+/* date */
+
+.postItemStyles_date {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgb(104, 104, 104)
+}
+
+/* the divider dividing the date and summary */
+
+.postItemStyles_divider {
+    border: 1px solid;
+    margin: 1rem 0;
+}
+
+/* summary */
 
 .postItemStyles_summary {
-    color: black;
-    font-size: 1rem;
+    width: 90%;
+    max-width: 22rem;
+    height: 100%;
+    min-height: 6rem;
 }
 
-/* post button wrapper section surrounding 'read more' button and comment icon */
-
-.postItemStyles_btnWrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* post 'read more' button */
-
-.postItemStyles_readMoreBtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #d492af;
-    border: 1px solid #d492af;
-    border-radius: 3px;
-    color: black;
-    font-size: 1rem;
-    -webkit-transition: color .3s ease-out;
-    -moz-transition: color .3s ease-out;
-    -o-transition: color .3s ease-out;
-    transition: color .3s ease-out;
-    cursor: pointer;
-    padding: .3rem .5rem;
-}
-
-.postItemStyles_readMoreBtn:hover {
-    color: white;
-}
-/* right arrow icon */
-.postItemStyles_rightArrowIcon {
-    margin-left: .3rem;
-}
-/* icon section wrap for both comments and likes */
+/* comment wrapper */
 
 .postItemStyles_iconWrap {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-}
-
-/* like section wrap */
-
-.postItemStyles_likeWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* like icon */
-
-.postItemStyles_likeIcon {
-    color: black;
-}
-
-/* like number */
-
-.postItemStyles_likeNumber {
-    color: black;
-    font-size: 1.2rem;
-    margin: 0 .3rem;
-    text-decoration: none;
-}
-
-/* comment section wrap */
-
-.postItemStyles_commentWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: .5rem;
 }
 
 /* comment icon */
 
-.postItemStyles_commentIcon {
-    color: black;
+.postItemStyles_icon {
+    font-size: 1.3rem;
+    margin-right: .1rem;
 }
 
-/* post comment length */
+/* comment number */
 
-.postItemStyles_commentLength {
-    color: black;
+.postItemStyles_iconNum {
     font-size: 1.2rem;
-    margin: 0 .3rem;
+    margin-left: .1rem;
 }
 
-/* ! MEDIA QUERIES */
+/* read button */
 
-@media only screen and (max-width: 958px) {
-    /* card image */
-    .postItemStyles_coverImg img {
-        width: 100%;
-        height: 100%;
-    }
+.postItemStyles_readBtn {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    width: 62px;
+    height: 62px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* the read button icon */
+
+.postItemStyles_readIcon {
+    font-size: 2rem;
 }

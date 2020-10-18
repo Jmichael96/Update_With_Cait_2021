@@ -5,12 +5,14 @@ const initialState = {
     wellnessPosts: [],
     graphicsPosts: [],
     lifestylePosts: [],
+    recentPosts: [],
     post: null,
     loading: false,
     fetchedDbLifestyle: false,
     fetchedDbGraphics: false,
     fetchedDbWellness: false,
-    fetchedDbDevotional: false
+    fetchedDbDevotional: false,
+    fetchedRecentPosts: false
 };
 
 export default (state = initialState, action) => {
@@ -24,6 +26,7 @@ export default (state = initialState, action) => {
         case types.FETCH_LIFESTYLE:
         case types.PUBLISH_SAVED_POST_ADD:
         case types.FETCH_POST:
+        case types.FETCH_RECENT:
             return {
                 ...state,
                 post: null,
@@ -146,6 +149,19 @@ export default (state = initialState, action) => {
                 post: null,
                 loading: false,
                 fetchedDbGraphics: true
+            };
+        case types.FETCH_RECENT_FAIL:
+            return {
+                ...state,
+                recentPosts: [],
+                loading: false,
+            };
+        case types.FETCH_RECENT_SUCCESS:
+            return {
+                ...state,
+                recentPosts: payload,
+                loading: false,
+                fetchedRecentPosts: true
             };
         case types.PUBLISH_SAVED_POST_ADD_FAIL:
             return {
