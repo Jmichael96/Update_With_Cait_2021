@@ -1,0 +1,20 @@
+/* root element of the component */
+
+/* #recentPostsStyles_root {
+    height: 35rem;
+    margin-top: 7rem;
+} */
+
+/* spinner wrapper to make sure it shows on home page */
+
+#recentPostsStyles_spinnerWrap {
+    position: relative;
+    height: 35rem;
+    margin-top: 7rem;
+}
+
+/* selecting the class name since it is being added through the postItem prop in recentPosts component */
+
+.recentRendering:nth-child(2) {
+    
+}

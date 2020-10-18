@@ -12,18 +12,14 @@ import './homePage.css';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import PostCategories from '../../components/Post/PostCategories/PostCategories';
 import Subscribe from '../../components/Subscribe/Subscribe';
+import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
+import RecentPosts from '../../components/Post/RecentPosts/RecentPosts';
 
 // utils
 import isEmpty from '../../utils/isEmpty';
 import Colors from '../../utils/constants/Colors';
 
 const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts } }) => {
-    // fetch the most recent posts
-    useEffect(() => {
-        if (!fetchedRecentPosts && isEmpty(recentPosts)) {
-            fetchRecentPosts();
-        }
-    }, [fetchRecentPosts, fetchedRecentPosts, recentPosts]);
 
     return (
         <article id="homePageStyles_root">
@@ -55,6 +51,11 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                         </Wrapper>
                     </div>
                 </Wrapper>
+            </section>
+            <section id="homePageStyles_recentPostWrap" >
+                <div id="homePageStyles_innerRecentPostWrap" style={{ backgroundColor: Colors.accentColor }}>
+                    <RecentPosts fetchRecentPosts={fetchRecentPosts} recentPosts={recentPosts} loading={loading} fetchedRecentPosts={fetchedRecentPosts} />
+                </div>
             </section>
         </article>
     );

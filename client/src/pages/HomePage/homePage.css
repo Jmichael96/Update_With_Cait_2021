@@ -108,9 +108,7 @@
 
 /* the read more about button */
 
-#homePageStyles_aboutBtn {
-        
-}
+#homePageStyles_aboutBtn {}
 
 /* the paragraph text */
 
@@ -121,6 +119,17 @@
     margin: 3rem 0;
     line-height: 1.5rem;
     font-size: 1.2rem;
+}
+
+/* the recent posts section wrap */
+
+#homePageStyles_recentPostWrap {
+    
+}
+#homePageStyles_innerRecentPostWrap {
+    background-color: rgb(78, 114, 146);
+    height: 18rem;
+    margin-top: 5rem;
 }
 
 /* ! MEDIA QUERIES */

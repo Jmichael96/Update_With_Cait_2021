@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import { FaComment, FaHeart } from 'react-icons/fa';
@@ -15,8 +15,7 @@ import Colors from '../../../utils/constants/Colors';
 // components
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 
-const PostItem = ({ post: { _id, title, coverImage, summary, date, category, like_number, comments }, history }) => {
-
+const PostItem = ({ post: { _id, title, coverImage, summary, date, category, like_number, comments }, isRecentPosts, history }) => {
     const redirectHandler = () => {
         history.push(`/post_content/${_id}`);
     };
@@ -50,7 +49,7 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
         }
     };
     return (
-        <article className="postItemStyles_card" onClick={redirectHandler}>
+        <article className={`postItemStyles_card ${isRecentPosts === true && 'recentRendering'}`} onClick={redirectHandler}>
             <Wrapper>
                 <div className="postItemStyles_innerCard">
                     <Wrapper>
@@ -61,7 +60,7 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
                     <div className="postItemStyles_contentWrap">
                         <h3 className="postItemStyles_title">{!isEmpty(title) && title}</h3>
                         <p className="postItemStyles_date">
-                            <Moment format="MMMM DD, YYYY">{date.toUpperCase()}</Moment>
+                            <Moment format="MMMM DD, YYYY">{!isEmpty(date) && date.toUpperCase()}</Moment>
                         </p>
                         <div style={{ borderColor: Colors.accentColor }} className="postItemStyles_divider"></div>
                         {renderSummary()}
@@ -87,6 +86,7 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
 
 PostItem.propTypes = {
     post: PropTypes.object.isRequired,
+    isRecentPosts: PropTypes.bool,
     history: PropTypes.any,
 };
 

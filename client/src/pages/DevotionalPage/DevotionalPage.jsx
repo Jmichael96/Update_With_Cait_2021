@@ -74,6 +74,8 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, fetchedDbDevotional,
         <section>
             <Wrapper>
                 {!loading && fetchedDbDevotional && renderPosts()}
+            </Wrapper>
+            <Wrapper>
                 {renderLoadMoreBtn()}
             </Wrapper>
         </section>
