@@ -62,4 +62,9 @@ router.delete('/delete_comment/:postId/:commentId', isAuth, PostController.delet
 // @access   Public
 router.put('/like/:id', PostController.likePost);
 
+// @route    PUT api/posts/unlike/:id
+// @desc     Unlike a post
+// @access   Public
+router.put('/unlike/:id', PostController.unlikePost);
+
 module.exports = router;

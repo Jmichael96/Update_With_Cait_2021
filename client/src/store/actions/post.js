@@ -367,5 +367,43 @@ export const likeSuccess = (id, likeNumber) => (dispatch) => {
             dispatch({
                 type: types.LIKE_POST_FAIL,
             });
-        })
+        });
+};
+
+//! UNLIKE POST
+export const unlikePost = (id, likeNumber) => (dispatch) => {
+  // dispatching the unlike post and submitting the number to the store for immediate updating
+  dispatch({
+    type: types.UNLIKE_POST,
+    payload: likeNumber
+});
+dispatch(unlikeSuccess(id, likeNumber));
+};
+
+export const unlikeSuccess = (id, likeNumber) => (dispatch) => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    axios.put(`/api/posts/unlike/${id}`, { likeNumber }, config)
+    .then((res) => {
+        dispatch({
+            type: types.UNLIKE_POST_SUCCESS,
+            payload: {
+                id: id,
+                post: res.data.post,
+                likeNumber: likeNumber
+            }
+        });
+    })
+    .catch((err) => {
+        const error = err.response.data.serverMsg;
+        if (error) {
+            dispatch(setAlert(error, 'error'));
+        }
+        dispatch({
+            type: types.UNLIKE_POST_FAIL,
+        });
+    });
 };

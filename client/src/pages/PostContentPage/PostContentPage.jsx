@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPost, updatePost, deletePost, addComment, deleteComment, likePost } from '../../store/actions/post';
+import { fetchPost, updatePost, deletePost, addComment, deleteComment, likePost, unlikePost } from '../../store/actions/post';
 import { useParams } from 'react-router-dom';
 import { setModal } from '../../store/actions/modal';
 
@@ -13,7 +13,7 @@ import isEmpty from '../../utils/isEmpty';
 import PostContent from '../../components/Post/PostContent/PostContent';
 import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 
-const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost, addComment, deleteComment, likePost }) => {
+const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost, setModal, deletePost, addComment, deleteComment, likePost, unlikePost }) => {
     // fetching param through react-router-dom
     let { id } = useParams();
     useEffect(() => {
@@ -32,6 +32,7 @@ const PostContentPage = ({ post: { post, loading }, auth, fetchPost, updatePost,
                 addComment={addComment}
                 deleteComment={deleteComment}
                 likePost={likePost}
+                unlikePost={unlikePost}
             />
         </article>
     );
@@ -45,6 +46,7 @@ PostContentPage.propTypes = {
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
     likePost: PropTypes.func.isRequired,
+    unlikePost: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
 };
@@ -54,4 +56,4 @@ const mapStateToProps = (state) => ({
     post: state.post
 });
 
-export default connect(mapStateToProps, { fetchPost, updatePost, setModal, deletePost, addComment, deleteComment, likePost })(PostContentPage);
+export default connect(mapStateToProps, { fetchPost, updatePost, setModal, deletePost, addComment, deleteComment, likePost, unlikePost })(PostContentPage);

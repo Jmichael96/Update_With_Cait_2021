@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsHeartFill } from 'react-icons/bs';
 
@@ -8,7 +8,7 @@ import './likes.css';
 // components
 import isEmpty from '../../../../utils/isEmpty';
 
-const Likes = ({ likePost, post: { _id, like_number }, loading }) => {
+const Likes = ({ likePost, unlikePost, post: { _id, like_number }, loading }) => {
     // to distinguish when a post is liked or unlikthe user and when to call each function
     const [isLiked, setIsLiked] = useState(false);
 
@@ -22,6 +22,9 @@ const Likes = ({ likePost, post: { _id, like_number }, loading }) => {
         }
         else if (isLiked) {
             setIsLiked(false);
+            let newUnlikeNum = +like_number;
+            newUnlikeNum -= 1;
+            await unlikePost(_id, newUnlikeNum);
         }
     };
 
@@ -37,6 +40,7 @@ const Likes = ({ likePost, post: { _id, like_number }, loading }) => {
 
 Likes.propTypes = {
     likePost: PropTypes.func.isRequired,
+    unlikePost: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
 };

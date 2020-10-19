@@ -15,7 +15,7 @@ import EditPost from './EditPost/EditPost';
 import Comments from './Comments/Comments';
 import Likes from './Likes/Likes';
 
-const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment, deleteComment, likePost }) => {
+const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment, deleteComment, likePost, unlikePost }) => {
 
     const renderPostData = () => {
         if (!loading && isEmpty(post)) {
@@ -30,7 +30,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             return null;
         }
         if (!loading && !isEmpty(post)) {
-            return <Likes post={post} loading={loading} likePost={likePost} />
+            return <Likes post={post} loading={loading} likePost={likePost} unlikePost={unlikePost} />
         }
     };
 
@@ -124,6 +124,7 @@ PostContent.propTypes = {
     addComment: PropTypes.func.isRequired,
     deleteComment: PropTypes.func.isRequired,
     likePost: PropTypes.func.isRequired,
+    unlikePost: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     post: PropTypes.object,
     auth: PropTypes.object.isRequired,
