@@ -28,6 +28,7 @@
 
 #footerStyles_ownershipWrap {
     text-align: center;
+    position: relative;
 }
 
 /* ownership text */
@@ -43,4 +44,16 @@
 #footerStyles_heartIcon {
     margin: 0 .3rem;
     color: rgb(133, 0, 0);
+}
+/* login icon */
+#footerStyles_loginIcon {
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    font-size: 1.4rem;
+    opacity: 0;
+    cursor: default;
+}
+#footerStyles_loginIcon:hover {
+    opacity: 1;
 }
