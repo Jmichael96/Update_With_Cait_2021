@@ -19,6 +19,19 @@
     margin: 2rem 0;
 }
 
+/* post content */
+
+#postDataStyles_content {
+    width: 100%;
+}
+
+/* the content images */
+
+#postDataStyles_content img {
+    height: 8rem;
+    width: auto;
+}
+
 /* date wrapper */
 
 #postDataStyles_dateWrap {
@@ -26,4 +39,14 @@
     color: grey;
     font-weight: 600;
     font-size: .8rem;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 438px) {
+    /* the content images */
+    #postDataStyles_content img {
+        width: 100%;
+        height: auto;
+    }
 }

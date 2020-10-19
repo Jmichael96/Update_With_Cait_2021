@@ -78,8 +78,7 @@
 }
 
 #createPostStyles_contentInput img {
-    display: block;
-    width: 14rem;
+    height: 150px;
 }
 
 /* submit button */
