@@ -54,6 +54,7 @@ export default (state = initialState, action) => {
                 state.recentPosts.pop();
                 // pushing the contents to the array
                 updatedRecentPosts.push(...state.recentPosts);
+                // push the new post to the begging of the updatedRecentPosts array
                 updatedRecentPosts.unshift(payload);
             }
             return {
@@ -161,38 +162,15 @@ export default (state = initialState, action) => {
         case types.PUBLISH_SAVED_POST_ADD_SUCCESS:
             let publishedPostCategory = payload.category;
             // created a function to return the state that was needed
-            const tempState = (cat) => {
-                return {
-                    ...state,
-                    ...cat,
-                    post: payload,
-                    loading: false
-                }
+            return {
+                ...state,
+                post: payload,
+                devotionalPosts: publishedPostCategory === 'Devotional' ? [payload, ...state.devotionalPosts] : state.devotionalPosts,
+                lifestylePosts: publishedPostCategory === 'Lifestyle' ? [payload, ...state.lifestylePosts] : state.lifestylePosts,
+                graphicsPosts: publishedPostCategory === 'Graphics' ? [payload, ...state.graphicsPosts] : state.graphicsPosts,
+                wellnessPosts: publishedPostCategory === 'Wellness' ? [payload, ...state.wellnessPosts] : state.wellnessPosts,
+                loading: false
             };
-
-            switch (publishedPostCategory) {
-                case 'Devotional':
-                    let devoState = {
-                        devotionalPosts: [payload, ...state.devotionalPosts]
-                    }
-                    return tempState(devoState);
-                case 'Lifestyle':
-                    let lifeState = {
-                        lifestylePosts: [payload, ...state.lifestylePosts]
-                    }
-                    return tempState(lifeState);
-                case 'Graphics':
-                    let graphicState = {
-                        graphicsPosts: [payload, ...state.graphicsPosts]
-                    }
-                    return tempState(graphicState);
-                case 'Wellness':
-                    let wellnessState = {
-                        wellnessPosts: [payload, ...state.wellnessPosts]
-                    }
-                    return tempState(wellnessState);
-                default: return state;
-            }
         case types.UPDATE_POST_FAIL:
             return {
                 ...state,
