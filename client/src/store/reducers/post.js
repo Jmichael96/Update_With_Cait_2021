@@ -47,37 +47,26 @@ export default (state = initialState, action) => {
         case types.CREATE_POST_SUCCESS:
             let createdPostCategory = payload.category;
             // return post to the correct destination
-            const sortPost = (cat) => {
-                return {
-                    ...state,
-                    ...cat,
-                    post: payload,
-                    loading: false
-                }
-            };
-            switch (createdPostCategory) {
-                case 'Devotional':
-                    let devoState = {
-                        devotionalPosts: [payload, ...state.devotionalPosts]
-                    }
-                    return sortPost(devoState);
-                case 'Lifestyle':
-                    let lifeState = {
-                        devotionalPosts: [payload, ...state.lifestylePosts]
-                    }
-                    return sortPost(lifeState);
-                case 'Graphics':
-                    let graphicState = {
-                        graphicsPosts: [payload, ...state.graphicsPosts]
-                    }
-                    return sortPost(graphicState);
-                case 'Wellness':
-                    let wellnessState = {
-                        wellnessPosts: [payload, ...state.wellnessPosts]
-                    }
-                    return sortPost(wellnessState);
-                default: return state;
+
+            let updatedRecentPosts = [];
+            if (state.fetchedRecentPosts) {
+                // removing the last item inside the array
+                state.recentPosts.pop();
+                // pushing the contents to the array
+                updatedRecentPosts.push(...state.recentPosts);
+                updatedRecentPosts.unshift(payload);
             }
+            return {
+                ...state,
+                post: payload,
+                loading: false,
+                devotionalPosts: createdPostCategory === 'Devotional' ? [payload, ...state.devotionalPosts] : state.devotionalPosts,
+                lifestylePosts: createdPostCategory === 'Lifestyle' ? [payload, ...state.lifestylePosts] : state.lifestylePosts,
+                graphicsPosts: createdPostCategory === 'Graphics' ? [payload, ...state.graphicsPosts] : state.graphicsPosts,
+                wellnessPosts: createdPostCategory === 'Wellness' ? [payload, ...state.wellnessPosts] : state.wellnessPosts,
+                recentPosts: !state.fetchedRecentPosts ? state.recentPosts : updatedRecentPosts
+            };
+
         case types.FETCH_POST_FAIL:
             return {
                 ...state,
@@ -302,16 +291,16 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 devotionalPosts: likedPostCat === 'Devotional' ? state.devotionalPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.devotionalPosts,
                 lifestylePosts: likedPostCat === 'Lifestyle' ? state.lifestylePosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.lifestylePosts,
                 graphicsPosts: likedPostCat === 'Graphics' ? state.graphicsPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.graphicsPosts,
                 wellnessPosts: likedPostCat === 'Wellness' ? state.wellnessPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.wellnessPosts,
             }
         case types.UNLIKE_POST:
@@ -329,16 +318,16 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 devotionalPosts: unlikedPostCat === 'Devotional' ? state.devotionalPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.devotionalPosts,
                 lifestylePosts: unlikedPostCat === 'Lifestyle' ? state.lifestylePosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.lifestylePosts,
                 graphicsPosts: unlikedPostCat === 'Graphics' ? state.graphicsPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.graphicsPosts,
                 wellnessPosts: unlikedPostCat === 'Wellness' ? state.wellnessPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
+                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.wellnessPosts,
             };
         default: return state;
