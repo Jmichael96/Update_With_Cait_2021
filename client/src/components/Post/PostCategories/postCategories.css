@@ -20,7 +20,7 @@
 .postCategoriesStyles_outerCard {
     width: 100%;
     max-width: 22rem;
-    margin: 2rem .5rem 0 .5rem;
+    margin: 3rem .5rem 0 .5rem;
     background-color: white;
     height: 21rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -42,18 +42,20 @@
     background-color: rgb(97, 97, 97);
 }
 
+/* ! NEED TO CHANGE THE HOVER EFFECT TO SOMETHING THE CLIENT LIKES */
+
 .postCategoriesStyles_outerCard:hover {
-    -webkit-transform: scale(1.1) rotate(-4deg);
+    /* -webkit-transform: scale(1.1) rotate(-4deg);
     -moz-transform: scale(1.1) rotate(-4deg);
     -ms-transform: scale(1.1) rotate(-4deg);
     -o-transform: scale(1.1) rotate(-4deg);
-    transform: scale(1.1) rotate(-4deg);
+    transform: scale(1.1) rotate(-4deg); */
 }
 
 /* selecting the middle card for unique styling */
 
 .postCategoriesStyles_outerCard:nth-child(2) {
-    margin-top: 6rem;
+    /* margin-top: 6rem; */
 }
 
 /* card label text */
@@ -106,5 +108,4 @@
     #postCategoriesStyles_root {
         height: auto;
     }
-    
 }

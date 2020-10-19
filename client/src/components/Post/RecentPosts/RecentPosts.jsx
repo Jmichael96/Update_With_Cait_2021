@@ -31,17 +31,20 @@ const RecentPosts = ({ fetchRecentPosts, loading, fetchedRecentPosts, recentPost
         }
         if (fetchedRecentPosts && !isEmpty(recentPosts)) {
             return Object.values(recentPosts).map((post, i) => {
-                return <PostItem post={post} isRecentPosts={true} />;
+                return <PostItem post={post} />;
             });
         }
     };
 
-    return loading ? (<div id="recentPostsStyles_spinnerWrap"><LgSpinner /></div>) : (
-        <div id="recentPostsStyles_root">
-            <Wrapper>
-                {renderRecentPosts()}
-            </Wrapper>
-        </div>
+    return (
+        <section id="recentPostsStyles_root" style={{ backgroundColor: Colors.accentColor }}>
+            <div>
+                {!loading && fetchedRecentPosts && <h3 id="recentPostStyles_title">In Case You Missed It</h3>}
+                <Wrapper>
+                    {!loading ? renderRecentPosts() : <div id="recentPostsStyles_spinnerWrap"><LgSpinner /></div>}
+                </Wrapper>
+            </div>
+        </section>
     );
 };
 

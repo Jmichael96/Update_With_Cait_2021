@@ -124,12 +124,25 @@
 /* the recent posts section wrap */
 
 #homePageStyles_recentPostWrap {
-    
+    height: 35rem;
+    margin-top: 7rem;
+    position: relative;
 }
+
 #homePageStyles_innerRecentPostWrap {
-    background-color: rgb(78, 114, 146);
-    height: 18rem;
-    margin-top: 5rem;
+    /* height: 20rem; */
+    /* margin-top: 5rem; */
+}
+
+/* loader spinner wrap for the recent posts */
+
+#homePageStyles_recentPostSpinnerWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
 /* ! MEDIA QUERIES */

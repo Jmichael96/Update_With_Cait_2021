@@ -15,7 +15,7 @@ import Colors from '../../../utils/constants/Colors';
 // components
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 
-const PostItem = ({ post: { _id, title, coverImage, summary, date, category, like_number, comments }, isRecentPosts, history }) => {
+const PostItem = ({ post: { _id, title, coverImage, summary, date, category, like_number, comments }, history }) => {
     const redirectHandler = () => {
         history.push(`/post_content/${_id}`);
     };
@@ -49,7 +49,7 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
         }
     };
     return (
-        <article className={`postItemStyles_card ${isRecentPosts === true && 'recentRendering'}`} onClick={redirectHandler}>
+        <article className="postItemStyles_card" onClick={redirectHandler}>
             <Wrapper>
                 <div className="postItemStyles_innerCard">
                     <Wrapper>
@@ -86,7 +86,6 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
 
 PostItem.propTypes = {
     post: PropTypes.object.isRequired,
-    isRecentPosts: PropTypes.bool,
     history: PropTypes.any,
 };
 

@@ -52,11 +52,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                     </div>
                 </Wrapper>
             </section>
-            <section id="homePageStyles_recentPostWrap" >
-                <div id="homePageStyles_innerRecentPostWrap" style={{ backgroundColor: Colors.accentColor }}>
-                    <RecentPosts fetchRecentPosts={fetchRecentPosts} recentPosts={recentPosts} loading={loading} fetchedRecentPosts={fetchedRecentPosts} />
-                </div>
-            </section>
+            <RecentPosts fetchRecentPosts={fetchRecentPosts} recentPosts={recentPosts} loading={loading} fetchedRecentPosts={fetchedRecentPosts} />
         </article>
     );
 };

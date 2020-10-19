@@ -1,20 +1,43 @@
 /* root element of the component */
 
-/* #recentPostsStyles_root {
-    height: 35rem;
+#recentPostsStyles_root {
+    height: 33rem;
     margin-top: 7rem;
-} */
+    position: relative;
+    padding: .5rem;
+}
+
+/* inner wrapper surrounding all content */
+
+#recentPostsStyles_relativeBg {}
+
+/* title for the component */
+
+#recentPostStyles_title {
+    text-align: center;
+}
 
 /* spinner wrapper to make sure it shows on home page */
 
 #recentPostsStyles_spinnerWrap {
-    position: relative;
-    height: 35rem;
-    margin-top: 7rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
 /* selecting the class name since it is being added through the postItem prop in recentPosts component */
 
-.recentRendering:nth-child(2) {
-    
+.recentRendering {
+    margin-top: 31rem;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 1436px) {
+    #recentPostsStyles_root {
+        height: auto;
+    }
 }
