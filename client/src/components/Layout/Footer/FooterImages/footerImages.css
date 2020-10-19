@@ -1,0 +1,74 @@
+/* footer images root element */
+
+#footerImagesStyles_root {
+    height: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* inner wrapper surrounding the content images */
+
+#footerImageStyles_innerWrap {
+    display: flex;
+}
+
+/* footer image relative card */
+
+.footerImagesStyles_card {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 3px;
+    margin: 0 .5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ! selecting each card by the nth-child and changing the background */
+
+.footerImagesStyles_card:nth-child(1) {
+    background-image: url('../../../../assets/images/footerImages/footerImg1.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.footerImagesStyles_card:nth-child(2) {
+    background-image: url('../../../../assets/images/footerImages/footerImg2.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.footerImagesStyles_card:nth-child(3) {
+    background-image: url('../../../../assets/images/footerImages/footerImg3.JPG');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 1079px) {
+    .footerImagesStyles_card:nth-last-child(1) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 901px) {
+    .footerImagesStyles_card:nth-last-child(2) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 715px) {
+    .footerImagesStyles_card:nth-last-child(3) {
+        display: none;
+    }
+}
+@media only screen and (max-width: 519px) {
+    .footerImagesStyles_card:nth-last-child(4) {
+        display: none;
+    }
+}

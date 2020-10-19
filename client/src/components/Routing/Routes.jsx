@@ -1,11 +1,14 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+// styles
+import './routes.css';
+
 // components
 import PrivateRoute from './PrivateRoutes';
 import Login from '../Auth/Login/Login';
 import Navbar from '../Layout/Navbar/Navbar';
-// import Footer from '../Layout/Footer/footer';
+import Footer from '../Layout/Footer/footer';
 
 // pages
 import HomePage from '../../pages/HomePage/HomePage';
@@ -24,7 +27,7 @@ import Alert from '../Layout/Alert/Alert';
 
 const Routes = () => {
     return (
-        <main>
+        <main id="routesStyles_root">
             <Alert />
             <Modal />
             <Navbar />

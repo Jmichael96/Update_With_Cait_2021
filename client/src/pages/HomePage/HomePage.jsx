@@ -12,8 +12,8 @@ import './homePage.css';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import PostCategories from '../../components/Post/PostCategories/PostCategories';
 import Subscribe from '../../components/Subscribe/Subscribe';
-import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
 import RecentPosts from '../../components/Post/RecentPosts/RecentPosts';
+import Footer from '../../components/Layout/Footer/footer';
 
 // utils
 import isEmpty from '../../utils/isEmpty';
@@ -53,6 +53,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                 </Wrapper>
             </section>
             <RecentPosts fetchRecentPosts={fetchRecentPosts} recentPosts={recentPosts} loading={loading} fetchedRecentPosts={fetchedRecentPosts} />
+            {!loading && fetchedRecentPosts && <Footer />}
         </article>
     );
 };

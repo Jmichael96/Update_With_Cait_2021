@@ -1,20 +1,46 @@
 /* footer root component */
 
 #footerStyles_root {
-    display: flex;
-    justify-content: flex-start;
-    align-items: baseline;
-    height: 100%;
+    margin-top: 12rem;
 }
 
-/* footer element */
+/* inner footer wrap surrounding the images and logo */
 
-footer {
-    /* position: absolute;
-    bottom: 0;
-    left: 0;
+#footerStyles_innerWrap {
+    padding: 1rem 0;
+}
+
+/* footer logo */
+
+#footerStyles_logoImg {
+    display: block;
     width: 100%;
-    background: red; */
-    width: 100%;
-    background: red;
+    max-width: 15rem;
+}
+
+/* copyright text */
+
+#footerStyles_copyrightText {
+    text-align: center;
+}
+
+/* ownership text wrapper */
+
+#footerStyles_ownershipWrap {
+    text-align: center;
+}
+
+/* ownership text */
+
+#footerStyles_ownershipText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* heart icon */
+
+#footerStyles_heartIcon {
+    margin: 0 .3rem;
+    color: rgb(133, 0, 0);
 }

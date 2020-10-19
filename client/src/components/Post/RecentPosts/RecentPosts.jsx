@@ -31,7 +31,7 @@ const RecentPosts = ({ fetchRecentPosts, loading, fetchedRecentPosts, recentPost
         }
         if (fetchedRecentPosts && !isEmpty(recentPosts)) {
             return Object.values(recentPosts).map((post, i) => {
-                return <PostItem post={post} />;
+                return <PostItem key={i + 1} post={post} />;
             });
         }
     };
@@ -52,7 +52,7 @@ RecentPosts.propTypes = {
     fetchRecentPosts: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     fetchedRecentPosts: PropTypes.bool.isRequired,
-    recentPosts: PropTypes.object.isRequired,
+    recentPosts: PropTypes.array.isRequired,
 };
 
 export default RecentPosts;
