@@ -34,9 +34,9 @@
     top: 80%;
     max-width: 300px;
     background: #555;
-    -webkit-box-shadow: 0 15px 15px #555;
-    -moz-box-shadow: 0 15px 15px #555;
-    box-shadow: 0 15px 15px #555;
+    -webkit-box-shadow: 0 15px 15px rgba(85, 85, 85, 0.6);
+    -moz-box-shadow: 0 15px 15px rgba(85, 85, 85, 0.6);
+    box-shadow: 0 15px 15px rgba(85, 85, 85, 0.6);
     -webkit-transform: rotate(-7deg);
     -moz-transform: rotate(-7deg);
     -o-transform: rotate(-7deg);
@@ -109,9 +109,9 @@
 #aboutPageStyles_contentWrap {
     width: 100%;
     max-width: 55rem;
-    margin: .5rem;
+    margin: 2rem 1rem;
     padding: 2rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
     border-radius: 3px;
 }
 
@@ -119,4 +119,16 @@
 
 .aboutPageStyles_aboutText {
     line-height: 1.5rem;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 1024px) {
+    .aboutPageStyles_pRoidWrap:nth-child(odd) {
+        -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(-0deg);
+    -o-transform: rotate(-0deg);
+    -ms-transform: rotate(-0deg);
+    transform: rotate(-0deg);
+    }
 }
