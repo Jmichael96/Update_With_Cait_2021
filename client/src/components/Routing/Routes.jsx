@@ -8,7 +8,6 @@ import './routes.css';
 import PrivateRoute from './PrivateRoutes';
 import Login from '../Auth/Login/Login';
 import Navbar from '../Layout/Navbar/Navbar';
-import Footer from '../Layout/Footer/footer';
 
 // pages
 import HomePage from '../../pages/HomePage/HomePage';
@@ -20,6 +19,7 @@ import GraphicsPage from '../../pages/GraphicsPage/GraphicsPage';
 import WellnessPage from '../../pages/WellnessPage/WellnessPage';
 import SavedPage from '../../pages/SavedPage/SavedPage';
 import SavedPostContentPage from '../../pages/SavedPostContentPage/SavedPostContentPage';
+import AboutPage from '../../pages/AboutPage/AboutPage';
 
 // assets
 import Modal from '../Layout/Modal/Modal';
@@ -33,6 +33,7 @@ const Routes = () => {
             <Navbar />
             <Switch>
                 <Route exact path="/" component={HomePage} />
+                <Route exact path="/about" component={AboutPage} />
                 <Route exact path="/login1996" component={Login} />
                 <Route exact path="/post_content/:id" component={PostContentPage} />
                 <Route exact path="/lifestyle" component={LifestylePage} />
