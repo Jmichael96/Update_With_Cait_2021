@@ -12,10 +12,6 @@
     text-align: center;
 }
 
-/* content wrapper */
-
-#aboutPageStyles_contentWrap {}
-
 /* polaroid images wrapper */
 
 .aboutPageStyles_pRoidWrap {
@@ -106,4 +102,21 @@
     -o-transform: rotate(-55deg);
     -ms-transform: rotate(-55deg);
     transform: rotate(-55deg);
+}
+
+/* content wrapper containing about text */
+
+#aboutPageStyles_contentWrap {
+    width: 100%;
+    max-width: 55rem;
+    margin: .5rem;
+    padding: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+/* about text p element */
+
+.aboutPageStyles_aboutText {
+    line-height: 1.5rem;
 }
