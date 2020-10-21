@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMail } from 'react-icons/ai';
+import { useSelector } from 'react-redux';
 
 // styles
 import './subscribe.css';
@@ -11,8 +12,9 @@ import isEmpty from '../../utils/isEmpty';
 
 // components
 import Wrapper from '../Layout/Wrapper/Wrapper';
+import SmSpinner from '../Layout/SmSpinner/SmSpinner';
 
-const Subscribe = ({ setModal }) => {
+const Subscribe = ({ setModal, subscribe }) => {
     // form data state
     const [formData, setFormData] = useState({
         name: '',
@@ -21,6 +23,9 @@ const Subscribe = ({ setModal }) => {
 
     // extracting data from formData obj
     const { name, email } = formData;
+
+    // selecting the state loading data from subscribe reducer
+    const subData = useSelector((state) => state.subscribe);
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,6 +44,7 @@ const Subscribe = ({ setModal }) => {
             setModal('error', 'form error', 'The email you have submitted is not in the correct format', 'okay', () => { });
             return;
         }
+        subscribe(name, email);
     };
 
     return (
@@ -53,7 +59,7 @@ const Subscribe = ({ setModal }) => {
                             <input
                                 name="name"
                                 type="text"
-                                placeholder="First Name"
+                                placeholder="Full Name"
                                 className="subscribeStyles_input"
                                 onChange={onChangeHandler}
                             />
@@ -66,7 +72,7 @@ const Subscribe = ({ setModal }) => {
                             />
                         </Wrapper>
                         <Wrapper>
-                            <button type="submit" id="subscribeStyles_submitBtn">SUBSCRIBE{' '}<AiOutlineMail className="subscribeStyles_mailIcon" /></button>
+                            {!subData.loading ? <button type="submit" id="subscribeStyles_submitBtn">SUBSCRIBE{' '}<AiOutlineMail className="subscribeStyles_mailIcon" /></button> : <SmSpinner />}
                         </Wrapper>
                     </form>
                 </div>
@@ -77,6 +83,7 @@ const Subscribe = ({ setModal }) => {
 
 Subscribe.propTypes = {
     setModal: PropTypes.func.isRequired,
+    subscribe: PropTypes.func.isRequired,
 };
 
 export default Subscribe;

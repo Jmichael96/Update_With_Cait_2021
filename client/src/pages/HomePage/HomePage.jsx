@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchRecentPosts } from '../../store/actions/post';
+import { subscribe } from '../../store/actions/subscribe';
 import { setModal } from '../../store/actions/modal';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +20,7 @@ import Footer from '../../components/Layout/Footer/footer';
 import isEmpty from '../../utils/isEmpty';
 import Colors from '../../utils/constants/Colors';
 
-const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts } }) => {
+const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts }, subscribe }) => {
 
     return (
         <article id="homePageStyles_root">
@@ -30,7 +31,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                 </div>
                 <img id="homePageStyles_mainImg" src={require('../../assets/images/cait2.JPG')} />
             </section>
-            <Subscribe setModal={setModal} />
+            <Subscribe setModal={setModal} subscribe={subscribe} />
             <PostCategories />
             <section id="homePageStyles_aboutWrap" style={{ borderColor: Colors.accentColor }}>
                 <Wrapper styles={{ justifyContent: 'space-evenly' }}>
@@ -61,11 +62,12 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
 HomePage.propTypes = {
     setModal: PropTypes.func.isRequired,
     fetchRecentPosts: PropTypes.func.isRequired,
+    subscribe: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-    post: state.post
+    post: state.post,
 });
 
-export default connect(mapStateToProps, { setModal, fetchRecentPosts })(HomePage);
+export default connect(mapStateToProps, { setModal, fetchRecentPosts, subscribe })(HomePage);
