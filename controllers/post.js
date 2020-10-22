@@ -6,55 +6,50 @@ const sendMail = require('../services/nodemailer');
 // @desc     Create a post
 // @access   Private
 exports.createPost = async (req, res, next) => {
-    const post = new Post({
-        title: req.body.title,
-        coverImage: req.body.coverImage,
-        summary: req.body.summary,
-        category: req.body.category,
-        content: req.body.content,
-        authorId: req.user._id,
-        authorName: req.user.name,
-        like_number: 0
-    });
-    // assigning the bcc emails to the array to send mail
-    const bccArray = [];
-    // finding all the subs
-    const subs = await Sub.find();
-    console.log(subs);
-    // iterating over the subs and pushing it to the bccArray
-    for (let sub in subs) {
-        bccArray.push(subs[sub].email);
-    }
-    // saving the new post
-    const newPost = await post.save();
+    try {
+        const post = new Post({
+            title: req.body.title,
+            coverImage: req.body.coverImage,
+            summary: req.body.summary,
+            category: req.body.category,
+            content: req.body.content,
+            authorId: req.user._id,
+            authorName: req.user.name,
+            like_number: 0
+        });
+        // assigning the bcc emails to the array to send mail
+        const bccArray = [];
+        // finding all the subs
+        const subs = await Sub.find();
 
-    // creating html for the email
-    const html = `
-        <h5>Post Summary:</h5>
-        <br />
-        <p>${newPost.summary}</p>
-        <br />
-        <a target="_blank" href="https://www.updatewithcait/post_content/${newPost._id}">Post Link</a>
-    `;
-    // sending mail 
-    sendMail('New blog post from Update With Cait', bccArray, html, false);
+        // iterating over the subs and pushing it to the bccArray
+        for (let sub in subs) {
+            bccArray.push(subs[sub].email);
+        }
+        // saving the new post
+        const newPost = await post.save();
 
-    // returning the successful status
-    return res.status(201).json({
-        serverMsg: 'Created post successfully',
-        post: newPost
-    });
-    // post.save()
-    //     .then((createdPost) => {
-    //         res.status(201).json({
-    //             serverMsg: 'Created post successfully',
-    //             post: createdPost
-    //         });
-    //     }).catch((err) => {
-    //         res.status(500).json({
-    //             serverMsg: 'Server error'
-    //         });
-    //     });
+        // creating html for the email
+        const html = `
+            <h5>Post Summary:</h5>
+            <br />
+            <p>${newPost.summary}</p>
+            <br />
+            <a target="_blank" href="https://www.updatewithcait.com/">Post Link</a>
+        `;
+        // sending mail 
+        sendMail('New blog post from Update With Cait', bccArray, html, false);
+
+        // returning the successful status
+        return res.status(201).json({
+            serverMsg: 'Created post successfully',
+            post: newPost
+        });
+    } catch (err) {
+        return res.status(500).json({
+            serverMsg: 'Server error'
+        });
+    };
 };
 
 // @route    GET api/posts/fetch_post/:id
