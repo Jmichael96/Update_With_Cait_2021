@@ -5,6 +5,7 @@ import { fetchRecentPosts } from '../../store/actions/post';
 import { subscribe } from '../../store/actions/subscribe';
 import { setModal } from '../../store/actions/modal';
 import { Link } from 'react-router-dom';
+import RetroHitCounter from 'react-retro-hit-counter';
 
 // styles
 import './homePage.css';
@@ -20,8 +21,18 @@ import Footer from '../../components/Layout/Footer/footer';
 import isEmpty from '../../utils/isEmpty';
 import Colors from '../../utils/constants/Colors';
 
-const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts }, subscribe }) => {
+const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts }, auth, subscribe }) => {
 
+    const renderCounter = () => {
+        if (!auth.loading && auth.isAuthenticated) {
+            return (
+                <div id="homePageStyles_hitCounterWrap">
+                    <a href="https://www.hitwebcounter.com" target="_blank">
+                        <img src="https://hitwebcounter.com/counter/counter.php?page=7696640&style=0010&nbdigits=5&type=page&initCount=0" title="Total Website Hits" Alt="Web Hits" border="0" /></a>
+                </div>
+            )
+        }
+    }
     return (
         <article id="homePageStyles_root">
             <section id="homePageStyles_introImageWrap">
@@ -55,6 +66,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
             </section>
             <RecentPosts fetchRecentPosts={fetchRecentPosts} recentPosts={recentPosts} loading={loading} fetchedRecentPosts={fetchedRecentPosts} />
             {!loading && fetchedRecentPosts && <Footer />}
+            {renderCounter()}
         </article>
     );
 };
@@ -64,10 +76,12 @@ HomePage.propTypes = {
     fetchRecentPosts: PropTypes.func.isRequired,
     subscribe: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
     post: state.post,
+    auth: state.auth
 });
 
 export default connect(mapStateToProps, { setModal, fetchRecentPosts, subscribe })(HomePage);

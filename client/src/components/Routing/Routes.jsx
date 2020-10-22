@@ -8,6 +8,7 @@ import './routes.css';
 import PrivateRoute from './PrivateRoutes';
 import Login from '../Auth/Login/Login';
 import Navbar from '../Layout/Navbar/Navbar';
+import ScrollTop from '../Layout/ScrollTop/ScrollTop';
 
 // pages
 import HomePage from '../../pages/HomePage/HomePage';
@@ -31,6 +32,7 @@ const Routes = () => {
             <Alert />
             <Modal />
             <Navbar />
+            <ScrollTop />
             <Switch>
                 <Route exact path="/" component={HomePage} />
                 <Route exact path="/about" component={AboutPage} />
