@@ -12,6 +12,7 @@ import isEmpty from '../../utils/isEmpty';
 
 // components
 import Wrapper from '../Layout/Wrapper/Wrapper';
+import Button from '../Button/Button';
 import SmSpinner from '../Layout/SmSpinner/SmSpinner';
 
 const Subscribe = ({ setModal, subscribe }) => {
@@ -63,7 +64,7 @@ const Subscribe = ({ setModal, subscribe }) => {
                     <p id="subscribeStyles_infoText">
                         Subscribe to get notified when the latest and new blogs drop!
                     </p>
-                    <form id="subscribeStyles_form" onSubmit={(e) => { onSubmitHandler(e) }}>
+                    <form id="subscribeStyles_form">
                         <Wrapper styles={{ justifyContent: 'center' }}>
                             <input
                                 name="name"
@@ -83,7 +84,8 @@ const Subscribe = ({ setModal, subscribe }) => {
                             />
                         </Wrapper>
                         <Wrapper>
-                            {!subData.loading ? <button type="submit" id="subscribeStyles_submitBtn">SUBSCRIBE{' '}<AiOutlineMail className="subscribeStyles_mailIcon" /></button> : <SmSpinner />}
+                            {!subData.loading ? <Button onClick={(e) => onSubmitHandler(e)}>Subscribe</Button> : <SmSpinner />}
+
                         </Wrapper>
                     </form>
                 </div>

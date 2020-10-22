@@ -5,7 +5,6 @@ import { fetchRecentPosts } from '../../store/actions/post';
 import { subscribe } from '../../store/actions/subscribe';
 import { setModal } from '../../store/actions/modal';
 import { Link } from 'react-router-dom';
-import RetroHitCounter from 'react-retro-hit-counter';
 
 // styles
 import './homePage.css';
@@ -18,7 +17,6 @@ import RecentPosts from '../../components/Post/RecentPosts/RecentPosts';
 import Footer from '../../components/Layout/Footer/footer';
 
 // utils
-import isEmpty from '../../utils/isEmpty';
 import Colors from '../../utils/constants/Colors';
 
 const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts }, auth, subscribe }) => {

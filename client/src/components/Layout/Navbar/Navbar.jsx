@@ -75,7 +75,6 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             <Link to="/devotional" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link>
             <Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link>
             <Link to="/graphics" className="nav-link"><span className="navSpan">GRAPHICS</span></Link>
-            {/* <Link to="/login1996">LOGIN</Link> */}
         </section>
     );
 

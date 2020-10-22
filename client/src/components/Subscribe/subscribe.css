@@ -38,22 +38,9 @@
     height: 1.4rem;
 }
 
-/* submit button */
-
-#subscribeStyles_submitBtn {
-    margin: 1rem .5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 1.4rem;
-    padding: .8rem .3rem;
-    font-size: 1.2rem;
-}
-
 /* mail icon inside the submit button */
 
 .subscribeStyles_mailIcon {
     font-size: 1.3rem;
-    color: black;
-    margin-left: .2rem;
+    color: #ffffff;
 }
