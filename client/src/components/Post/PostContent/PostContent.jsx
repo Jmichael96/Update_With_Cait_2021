@@ -102,19 +102,34 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             <Wrapper>
                 {!loading && !isEmpty(post) && renderPostData()}
             </Wrapper>
-
+            <Wrapper >
+                <div id="postContentStyles_likeBtnWrap">
+                    <Wrapper styles={{ justifyContent: 'flex-start' }}>
+                        {renderLikes()}
+                    </Wrapper>
+                </div>
+            </Wrapper>
             {!loading && !isEmpty(post) &&
-                <Wrapper styles={{ justifyContent: 'flex-start' }}>
-                    <div id="postContentStyles_likeAmountWrap">
-                        <ImHeart />{' '}{renderLikeNum()}
-                    </div>
-                    <div id="postContentStyles_commentAmountWrap">
-                        <FaComment />{' '}{renderCommentNum()}
+                <Wrapper>
+                    <div id="postContentStyles_amountDataWrap">
+                        <Wrapper styles={{ justifyContent: 'flex-start' }}>
+                            <div id="postContentStyles_likeAmountWrap">
+                                <ImHeart className="postContentStyles_amountIcons" />{' '}{renderLikeNum()}
+                            </div>
+                            <div id="postContentStyles_commentAmountWrap">
+                                <FaComment className="postContentStyles_amountIcons" />{' '}{renderCommentNum()}
+                            </div>
+                        </Wrapper>
                     </div>
                 </Wrapper>
             }
-            {renderLikes()}
-            {renderComments()}
+            <Wrapper >
+                <div id="postContentStyles_commentWrap">
+                    <Wrapper styles={{ justifyContent: 'flex-start' }}>
+                        {renderComments()}
+                    </Wrapper>
+                </div>
+            </Wrapper>
         </article >
     );
 };

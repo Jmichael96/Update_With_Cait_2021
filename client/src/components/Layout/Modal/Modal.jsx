@@ -31,18 +31,7 @@ const Modal = () => {
         await modalAction();
         dispatch(removeModal());
     };
-
-    // configure modal header text color
-    const modalHeaderText = () => {
-        switch (modalType) {
-            case 'error':
-                return '#df0202';
-            case 'confirm':
-                return 'white';
-            default: return;
-        };
-    };
-
+    
     return (
         <div id="open-modal" className="modal-window" style={{
             visibility: modalInfo.isOpen ? 'visible' : 'hidden',

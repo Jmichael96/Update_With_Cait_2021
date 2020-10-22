@@ -1,4 +1,11 @@
+/* root element of the component */
+
+#commentsStyles_root {
+    width: 100%;
+}
+
 /* button icon */
+
 .commentsStyles_btnIcon {
     margin-left: .4rem;
 }

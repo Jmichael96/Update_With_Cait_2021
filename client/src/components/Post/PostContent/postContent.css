@@ -1,8 +1,6 @@
 /* root element for component */
 
-/* #postContentStyles_root {
-    background-color: #8f0303;
-} */
+#postContentStyles_root {}
 
 /* authenticated buttons for edit and deleting */
 
@@ -14,6 +12,56 @@
 }
 
 /* delete icon  */
+
 .postContentStyles_deleteIcon {
     margin-left: .4rem;
+}
+
+/* like button wrapper */
+
+#postContentStyles_likeBtnWrap {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 .5rem;
+}
+
+/* the like amount and comment amount data wrapper */
+
+#postContentStyles_amountDataWrap {
+    width: 100%;
+    max-width: 60rem;
+    margin: 1rem .5rem;
+}
+
+/* like amount wrapper */
+
+#postContentStyles_likeAmountWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+/* comment amount wrapper */
+
+#postContentStyles_commentAmountWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+    font-size: 1.2rem;
+}
+
+/* like and comment icons */
+
+.postContentStyles_amountIcons {
+    margin-right: .4rem;
+}
+
+/* comment wrapper containing the comment component */
+
+#postContentStyles_commentWrap {
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 .5rem;
 }

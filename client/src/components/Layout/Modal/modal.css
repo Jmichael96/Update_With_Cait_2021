@@ -60,12 +60,12 @@
 /* modal content wrap around text */
 
 #modalContent {
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding: 0 .5rem;
 }
 
 /* style of text content */
 
 .modalContentText {
-    font-size: .9rem;
+    font-size: 1rem;
 }

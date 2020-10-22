@@ -2,6 +2,6 @@
 
 .deleteCommentStyles_icon {
     cursor: pointer;
-    color: red;
-    font-size: 1rem;
+    color: rgb(161, 0, 0);
+    font-size: 1.5rem;
 }

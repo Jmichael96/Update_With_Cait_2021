@@ -6,10 +6,12 @@ import { FaArrowAltCircleDown } from 'react-icons/fa';
 import './comments.css';
 
 // components
-import isEmpty from '../../../../utils/isEmpty';
 import CommentItem from './CommentItem/CommentItem';
 import AddComment from './AddComment/AddComment';
 import Button from '../../../Button/Button';
+import Wrapper from '../../../Layout/Wrapper/Wrapper';
+// utils
+import isEmpty from '../../../../utils/isEmpty';
 
 const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }) => {
     // set limit for how many comments to render on a post
@@ -70,7 +72,9 @@ const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }
         <article id="commentsStyles_root">
             {renderAddComment()}
             {renderComments()}
-            {renderLoadMore()}
+            <Wrapper>
+                {renderLoadMore()}
+            </Wrapper>
         </article>
     );
 };

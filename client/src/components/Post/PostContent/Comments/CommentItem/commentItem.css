@@ -2,14 +2,39 @@
 
 .commentItemStyles_commentCard {
     position: relative;
+    padding: 1rem;
+    margin: 2rem 0;
+    border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* the name */
+
+.commentItemStyles_commentNameWrap>h6 {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+/* the comment text */
+
+.commentItemStyles_commentTextWrap>p {
+    font-size: .9rem;
+}
+
+/* the date */
+
+.commentItemStyles_commentDateWrap>p {
+    font-size: .9rem;
+    color: rgb(105, 105, 105)
 }
 
 /* delete wrapper */
 
 .commentItemStyles_deleteCommentWrap {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: .5rem;
+    right: .5rem;
     /* webkit animation */
     -webkit-animation-duration: .5s;
     -webkit-animation-iteration-count: 1;
@@ -30,24 +55,25 @@
     animation-iteration-count: 1;
     animation-fill-mode: both;
     animation-name: zoom-down;
+    overflow: hidden;
 }
 
 /* for the trashcan delete icon when being rendered */
 
 @-webkit-keyframes zoom-down {
     0% {
-        transform: translateY(-50px);
+        opacity: 0;
     }
     100% {
-        transform: translateY(0px);
+        opacity: 1;
     }
 }
 
 @keyframes zoom-down {
     0% {
-        transform: translateY(-50px);
+        opacity: 0;
     }
     100% {
-        transform: translateY(0px);
+        opacity: 1;
     }
 }

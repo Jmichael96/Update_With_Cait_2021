@@ -78,7 +78,7 @@ const AddComment = ({ addComment, loading, postId }) => {
             }}>
                 <div>
                     <div id="addCommentStyles_modalHeader">
-                        <h4>EDIT POST</h4>
+                        <h4>ADD COMMENT</h4>
                     </div>
                     <div id="addCommentStyles_modalContent">
                         {renderForm()}

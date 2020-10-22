@@ -12,7 +12,8 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 15rem;
+    width: 100%;
+    max-width: 18rem;
     padding: .5rem;
     border-radius: 6px;
     border: 1px solid black;
@@ -68,6 +69,7 @@
     align-items: center;
     padding: .4rem;
     border-radius: 5px;
+    margin-top: 1rem;
 }
 
 /* modal title text */
@@ -115,4 +117,13 @@
     color: red;
     width: 100%;
     text-align: center;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 378px) {
+    /* text inputs */
+    .addCommentStyles_inputs {
+        max-width: 12rem;
+    }
 }
