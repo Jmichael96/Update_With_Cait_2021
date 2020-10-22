@@ -1,9 +1,11 @@
 const Post = require('../models/Post');
+const Sub = require('../models/Subscribe');
+const sendMail = require('../services/nodemailer');
 
 // @route    POST api/posts/create_post
 // @desc     Create a post
 // @access   Private
-exports.createPost = (req, res, next) => {
+exports.createPost = async (req, res, next) => {
     const post = new Post({
         title: req.body.title,
         coverImage: req.body.coverImage,
@@ -14,17 +16,45 @@ exports.createPost = (req, res, next) => {
         authorName: req.user.name,
         like_number: 0
     });
-    post.save()
-        .then((createdPost) => {
-            res.status(201).json({
-                serverMsg: 'Created post successfully',
-                post: createdPost
-            });
-        }).catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
-            });
-        });
+    // assigning the bcc emails to the array to send mail
+    const bccArray = [];
+    // finding all the subs
+    const subs = await Sub.find();
+    console.log(subs);
+    // iterating over the subs and pushing it to the bccArray
+    for (let sub in subs) {
+        bccArray.push(subs[sub].email);
+    }
+    // saving the new post
+    const newPost = await post.save();
+
+    // creating html for the email
+    const html = `
+        <h5>Post Summary:</h5>
+        <br />
+        <p>${newPost.summary}</p>
+        <br />
+        <a target="_blank" href="https://www.updatewithcait/post_content/${newPost._id}">Post Link</a>
+    `;
+    // sending mail 
+    sendMail('New blog post from Update With Cait', bccArray, html, false);
+
+    // returning the successful status
+    return res.status(201).json({
+        serverMsg: 'Created post successfully',
+        post: newPost
+    });
+    // post.save()
+    //     .then((createdPost) => {
+    //         res.status(201).json({
+    //             serverMsg: 'Created post successfully',
+    //             post: createdPost
+    //         });
+    //     }).catch((err) => {
+    //         res.status(500).json({
+    //             serverMsg: 'Server error'
+    //         });
+    //     });
 };
 
 // @route    GET api/posts/fetch_post/:id

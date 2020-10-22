@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMail } from 'react-icons/ai';
 import { useSelector } from 'react-redux';
@@ -31,7 +31,7 @@ const Subscribe = ({ setModal, subscribe }) => {
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     // on submit handler
-    const onSubmitHandler = (e) => {
+    const onSubmitHandler = useCallback(async (e) => {
         e.preventDefault();
         // email regex
         const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -44,7 +44,16 @@ const Subscribe = ({ setModal, subscribe }) => {
             setModal('error', 'form error', 'The email you have submitted is not in the correct format', 'okay', () => { });
             return;
         }
-        subscribe(name, email);
+        await subscribe(name, email);
+        resetForm();
+    }, [name, email, subscribe]);
+
+    // reset the form
+    const resetForm = () => {
+        setFormData({
+            name: '',
+            email: ''
+        });
     };
 
     return (
@@ -62,6 +71,7 @@ const Subscribe = ({ setModal, subscribe }) => {
                                 placeholder="Full Name"
                                 className="subscribeStyles_input"
                                 onChange={onChangeHandler}
+                                value={name}
                             />
                             <input
                                 name="email"
@@ -69,6 +79,7 @@ const Subscribe = ({ setModal, subscribe }) => {
                                 placeholder="your@email.com"
                                 onChange={onChangeHandler}
                                 className="subscribeStyles_input"
+                                value={email}
                             />
                         </Wrapper>
                         <Wrapper>

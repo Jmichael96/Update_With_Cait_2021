@@ -1,4 +1,4 @@
-const sendMail = require('../middleware/nodemailer');
+const sendMail = require('../services/nodemailer');
 const Sub = require('../models/Subscribe');
 
 // @route    POST api/subscribe/new_sub
@@ -10,7 +10,6 @@ exports.newSub = async (req, res, next) => {
             serverMsg: 'Please enter a name and email'
         });
     }
-
 
     try {
         let sub = await Sub.findOne({ email: req.body.email });
@@ -25,25 +24,14 @@ exports.newSub = async (req, res, next) => {
         });
 
         await sub.save();
-
-        sendMail(`Thank you ${sub.name}, for subscribing to the Update With Cait`, sub.email, 'This is going to be fun!!');
+        const html = `<p style={{ color: 'red' }}>This is super cool!</p><br /><h1>&copy; Copyright</h1>`;
+        sendMail(`Thank you ${sub.name}, for subscribing to the Update With Cait`, sub.email, html, true);
         return res.status(200).json({
             serverMsg: `Thank you for subscribing, ${sub.name}`
         });
     } catch (err) {
-
-    }
-
-    // sub.save()
-    //     .then((createdSub) => {
-    //         sendMail(`Thank you ${createdSub.name}, for subscribing to the Update With Cait`, createdSub.email, 'This is going to be fun!!');
-    //         return res.status(200).json({
-    //             serverMsg: `Thank you for subscribing ${createdSub.name}`
-    //         });
-    //     })
-    //     .catch((err) => {
-    //         return res.status(500).json({
-    //             serverMsg: 'There was a problem with our server while completing your request. Please try again later'
-    //         });
-    //     });
+        return res.status(500).json({
+            serverMsg: 'There was a problem with our server while completing your request. Please try again later'
+        });
+    };
 };
