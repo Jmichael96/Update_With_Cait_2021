@@ -8,7 +8,7 @@ import Colors from '../../utils/constants/Colors';
 
 const Button = (props) => {
     return (
-        <a className="buttonStyles_btn push" {...props} style={{ backgroundColor: Colors.secondaryBgColor }}>{props.children}</a>
+        <a className="buttonStyles_btn push" {...props} style={{ backgroundColor: !props.isDelete ? Colors.secondaryBgColor : '#8f0303' }}>{props.children}</a>
     );
 };
 

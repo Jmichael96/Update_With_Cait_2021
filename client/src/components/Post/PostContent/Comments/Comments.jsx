@@ -9,6 +9,7 @@ import './comments.css';
 import isEmpty from '../../../../utils/isEmpty';
 import CommentItem from './CommentItem/CommentItem';
 import AddComment from './AddComment/AddComment';
+import Button from '../../../Button/Button';
 
 const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }) => {
     // set limit for how many comments to render on a post
@@ -61,7 +62,7 @@ const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }
             return null;
         }
         if (!loading && !reachedLimit) {
-            return <button onClick={loadMore} id="commentsStyles_seeMoreBtn">SEE MORE{' '}<FaArrowAltCircleDown /></button>
+            return <Button onClick={loadMore}>SEE MORE{' '}<FaArrowAltCircleDown className="commentsStyles_btnIcon" /></Button>
         }
     };
 

@@ -15,6 +15,7 @@ import PostCategories from '../../components/Post/PostCategories/PostCategories'
 import Subscribe from '../../components/Subscribe/Subscribe';
 import RecentPosts from '../../components/Post/RecentPosts/RecentPosts';
 import Footer from '../../components/Layout/Footer/footer';
+import Button from '../../components/Button/Button';
 
 // utils
 import Colors from '../../utils/constants/Colors';
@@ -56,7 +57,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                         </Wrapper>
                         <Wrapper>
                             <Link to="/about">
-                                <button id="homePageStyles_aboutBtn">READ MORE</button>
+                                <Button>READ MORE</Button>
                             </Link>
                         </Wrapper>
                     </div>

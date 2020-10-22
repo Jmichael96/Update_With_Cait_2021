@@ -12,6 +12,7 @@ import PostItem from '../../components/Post/PostItem/PostItem';
 import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
+import Button from '../../components/Button/Button';
 
 const GraphicsPage = ({ fetchGraphics, post: { loading, fetchedDbGraphics, graphicsPosts } }) => {
     // set limit for how many blogs to render on page
@@ -65,7 +66,7 @@ const GraphicsPage = ({ fetchGraphics, post: { loading, fetchedDbGraphics, graph
             return null;
         }
         if (!loading && !isEmpty(graphicsPosts) && !reachedLimit) {
-            return <button className="graphicsPageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="graphicsPageStyles_downIcon" /></button>
+            return <Button onClick={loadMore}>Show More <FaArrowAltCircleDown className="lifestylePageStyles_downIcon" /></Button>
         }
     };
 

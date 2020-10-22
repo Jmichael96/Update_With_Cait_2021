@@ -86,3 +86,10 @@
 #createPostStyles_submitBtn {
     margin: 1rem 0;
 }
+
+/* save icon */
+
+.createPostStyles_btnIcon {
+    color: white;
+    margin-left: .3rem;
+}

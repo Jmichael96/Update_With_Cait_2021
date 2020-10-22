@@ -8,7 +8,20 @@
     font-size: 1.2rem;
 }
 
-/* Push */
+.push {
+    display: inline-flex;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.push:hover {
+    animation-name: push;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
 
 @keyframes push {
     50% {
@@ -17,18 +30,4 @@
     100% {
         transform: scale(1);
     }
-}
-
-.push {
-    display: inline-block;
-    -webkit-tap-highlight-color: transparent;
-    transform: translateZ(0);
-    box-shadow: 0 0 1px transparent;
-}
-
-.push:hover {
-    animation-name: push;
-    animation-duration: 0.3s;
-    animation-timing-function: linear;
-    animation-iteration-count: 1;
 }

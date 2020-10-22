@@ -82,12 +82,8 @@
     width: 14rem;
 }
 
-/* submit button */
+/* icons*/
 
-#resaveStyles_publishBtn {
-    margin: 1rem 0;
+.resaveStyles_icon {
+    margin-left: .4rem;
 }
-
-/* resave button */
-
-#resaveStyles_resaveBtn {}

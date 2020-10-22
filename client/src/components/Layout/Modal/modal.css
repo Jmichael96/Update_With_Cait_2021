@@ -69,22 +69,3 @@
 .modalContentText {
     font-size: .9rem;
 }
-
-/* cancel button for modal confirms */
-
-.modalActionBtn {
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3px;
-    padding: .3rem .5rem;
-    cursor: pointer;
-    box-shadow: 0 2px 7px rgb(197, 197, 197);
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -o-transition: all 0.3s;
-    transition: all 0.3s ease-in-out;
-}
-
-.modalActionBtn:hover {
-    color: white;
-}

@@ -6,6 +6,8 @@ import 'react-quill/dist/quill.snow.css';
 
 // styles
 import './postData.css';
+
+// utils
 import isEmpty from '../../../../utils/isEmpty';
 
 const PostData = ({ post: { title, content, date } }) => {

@@ -3,15 +3,19 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
+import { AiOutlineDownload, AiFillCheckCircle } from 'react-icons/ai';
+
 // styles
 import './reSave.css';
 
 // components
 import Wrapper from '../../Layout/Wrapper/Wrapper';
-import isEmpty from '../../../utils/isEmpty';
 import validate from '../../../utils/validateForm';
 import SmSpinner from '../../Layout/SmSpinner/SmSpinner';
+import Button from '../../Button/Button';
 
+// utils
+import isEmpty from '../../../utils/isEmpty';
 const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { _id, title, category, summary, coverImage, content }, history }) => {
     const [formData, setFormData] = useState({
         titleData: '',
@@ -162,9 +166,9 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!loading ? <button type="button" id="resaveStyles_resaveBtn" onClick={(e) => resavePostHandler(e)}>RE-SAVE</button> : <SmSpinner />}
+                    {!loading ? <Button onClick={(e) => resavePostHandler(e)}>RE-SAVE <AiOutlineDownload className="resaveStyles_icon" /></Button> : <SmSpinner />}
                     {!loading ?
-                        <button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">PUBLISH</button>
+                        <Button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">PUBLISH <AiFillCheckCircle className="resaveStyles_icon" /></Button>
                         :
                         <SmSpinner />
                     }

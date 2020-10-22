@@ -6,6 +6,9 @@ import { BsHeartFill } from 'react-icons/bs';
 import './likes.css';
 
 // components
+import Button from '../../../Button/Button';
+
+// utils
 import isEmpty from '../../../../utils/isEmpty';
 
 const Likes = ({ likePost, unlikePost, post: { _id, like_number }, loading }) => {
@@ -31,8 +34,7 @@ const Likes = ({ likePost, unlikePost, post: { _id, like_number }, loading }) =>
     return (
         <article id="likesStyles_root">
             <div id="likesStyles_likeActionWrap">
-
-                <button id="likesStyles_likeBtn" onClick={handleLikes}><BsHeartFill className="likesStyles_heartIcon" style={{ color: !isLiked ? 'grey' : 'red' }} />{' '}{!isLiked ? 'LIKE' : 'LIKED'}</button>
+                <Button id="likesStyles_likeBtn" onClick={handleLikes}><BsHeartFill className="likesStyles_heartIcon" style={{ color: !isLiked ? 'grey' : 'red' }} />{' '}{!isLiked ? 'LIKE' : 'LIKED'}</Button>
             </div>
         </article>
     );

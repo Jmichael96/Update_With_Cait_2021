@@ -12,6 +12,7 @@ import PostItem from '../../components/Post/PostItem/PostItem';
 import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
+import Button from '../../components/Button/Button';
 
 const WellnessPage = ({ fetchWellness, post: { loading, fetchedDbWellness, wellnessPosts } }) => {
     // set limit for how many blogs to render on page
@@ -65,11 +66,11 @@ const WellnessPage = ({ fetchWellness, post: { loading, fetchedDbWellness, welln
             return null;
         }
         if (!loading && !isEmpty(wellnessPosts) && !reachedLimit) {
-            return <button className="wellnessPageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="wellnessPageStyles_downIcon" /></button>
+            return <Button onClick={loadMore}>Show More <FaArrowAltCircleDown className="lifestylePageStyles_downIcon" /></Button>
         }
     };
 
-    return (
+    return loading ? <LgSpinner /> : (
         <section>
             <Wrapper>
                 {!loading && fetchedDbWellness && renderPosts()}

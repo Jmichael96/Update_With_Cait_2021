@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import './addComment.css';
 
 // components
+import Button from '../../../../Button/Button';
+
+// utils
 import isEmpty from '../../../../../utils/isEmpty';
 
 const AddComment = ({ addComment, loading, postId }) => {
@@ -14,23 +17,10 @@ const AddComment = ({ addComment, loading, postId }) => {
     });
     // setting modal 
     const [displayModal, setDisplayModal] = useState(false);
-    // on submit change to true
-    const [isSubmitted, setIsSubmitted] = useState(false);
-    // set to render spinner
-    const [renderSpinner, setRenderSpinner] = useState(false);
     // render an error message with this state
     const [formError, setFormError] = useState();
     // extracting contents from form data
     const { name, text } = formData;
-
-    // checking if store is loading and if user submitted form to render spinner accordingly
-    useEffect(() => {
-        if (loading && isSubmitted) {
-            setRenderSpinner(true);
-        } else if (loading && !isSubmitted) {
-            setRenderSpinner(false);
-        }
-    }, [loading, isSubmitted]);
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,23 +37,18 @@ const AddComment = ({ addComment, loading, postId }) => {
     // on form submission
     const onSubmitHandler = useCallback(async (e) => {
         e.preventDefault();
-        // setting the form submission to true
-        setIsSubmitted(true);
         // setting the form error to null
         setFormError();
 
         if (isEmpty(name) && isEmpty(text)) {
-            setIsSubmitted(false);
             setFormError('Please add a name and message');
             return;
         }
         if (isEmpty(name)) {
-            setIsSubmitted(false);
             setFormError('Please submit a name');
             return;
         }
         if (isEmpty(text)) {
-            setIsSubmitted(false);
             setFormError('Please enter a message');
             return;
         }
@@ -73,7 +58,6 @@ const AddComment = ({ addComment, loading, postId }) => {
         };
         await addComment(postId, formData);
         resetHandler();
-        setIsSubmitted(false);
         setDisplayModal(false);
     }, [addComment, name, text, postId]);
 
@@ -86,7 +70,7 @@ const AddComment = ({ addComment, loading, postId }) => {
     }
     return (
         <article id="addCommentStyles_root">
-            <button onClick={() => setDisplayModal(true)}>ADD COMMENT</button>
+            <Button onClick={() => setDisplayModal(true)}>ADD COMMENT</Button>
             <div id="addCommentStyles_open-modal" className="addCommentStyles_modal-window" style={{
                 visibility: displayModal ? 'visible' : 'hidden',
                 opacity: displayModal ? 1 : 0,
@@ -101,8 +85,8 @@ const AddComment = ({ addComment, loading, postId }) => {
                         <span id="addCommentStyles_errorMsg">{!isEmpty(formError) && formError}</span>
                     </div>
                     <div id="addCommentStyles_btnWrap">
-                        <button id="addCommentStyles_cancelBtn" onClick={() => setDisplayModal(false)}>CANCEL</button>
-                        {!renderSpinner ? <button id="addCommentStyles_updateBtn" onClick={(e) => { onSubmitHandler(e) }}>SUBMIT</button> : <h1>LOADING</h1>}
+                        <Button onClick={() => { setDisplayModal(false); resetHandler(); }}>CANCEL</Button>
+                        <Button onClick={(e) => { onSubmitHandler(e) }}>SUBMIT</Button>
                     </div>
                 </div>
             </div>

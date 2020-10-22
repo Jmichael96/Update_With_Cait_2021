@@ -8,6 +8,7 @@ import './modal.css';
 // components
 import Wrapper from '../Wrapper/Wrapper';
 import Colors from '../../../utils/constants/Colors';
+import Button from '../../Button/Button';
 
 const Modal = () => {
     const modalInfo = useSelector((state) => state.modal);
@@ -56,8 +57,8 @@ const Modal = () => {
                     {renderContent()}
                 </div>
                 <Wrapper styles={{ padding: '1rem' }}>
-                    {modalType === 'confirm' ? <button className="modalActionBtn" style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={() => { dispatch(removeModal()) }}>CANCEL</button> : ''}
-                    {modalActionText && <button className="modalActionBtn" style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={actionHandler}>{modalActionText.toUpperCase()}</button>}
+                    {modalType === 'confirm' ? <Button style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={() => { dispatch(removeModal()) }}>CANCEL</Button> : ''}
+                    {modalActionText && <Button style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={actionHandler}>{modalActionText.toUpperCase()}</Button>}
                 </Wrapper>
             </div>
         </div>

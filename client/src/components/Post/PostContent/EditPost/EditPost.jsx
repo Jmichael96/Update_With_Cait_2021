@@ -2,15 +2,19 @@ import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { AiFillEdit } from 'react-icons/ai';
 
 // styles
 import './editPost.css';
 
 // components
-import isEmpty from '../../../../utils/isEmpty';
 import Wrapper from '../../../Layout/Wrapper/Wrapper';
 import validate from '../../../../utils/validateForm';
 import SmSpinner from '../../../Layout/SmSpinner/SmSpinner';
+import Button from '../../../Button/Button';
+
+// utils
+import isEmpty from '../../../../utils/isEmpty';
 
 const EditPost = ({ post, loading, setModal, updatePost }) => {
     const [formData, setFormData] = useState({
@@ -132,7 +136,7 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
 
     return (
         <article id="editPostStyles_root">
-            <button onClick={() => setDisplayModal(true)}>EDIT</button>
+            <Button onClick={() => setDisplayModal(true)}>EDIT <AiFillEdit className="editPostStyles_editIcon" /></Button>
             <div id="editPostStyles_open-modal" className="editPostStyles_modal-window" style={{
                 visibility: displayModal ? 'visible' : 'hidden',
                 opacity: displayModal ? 1 : 0,
@@ -146,8 +150,8 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
                         {renderForm()}
                     </div>
                     <div id="editPostStyles_btnWrap">
-                        <button id="editPostStyles_cancelBtn" onClick={() => setDisplayModal(false)}>CANCEL</button>
-                        {!loading ? <button id="editPostStyles_updateBtn" onClick={(e) => onSubmitHandler(e)}>UPDATE</button> : <SmSpinner />}
+                        <Button onClick={() => setDisplayModal(false)}>CANCEL</Button>
+                        {!loading ? <Button onClick={(e) => onSubmitHandler(e)}>UPDATE</Button> : <SmSpinner />}
                     </div>
                 </div>
             </div>

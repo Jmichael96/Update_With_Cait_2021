@@ -3,18 +3,20 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { FaComment } from 'react-icons/fa';
 import { ImHeart } from 'react-icons/im';
-
+import { AiFillDelete } from 'react-icons/ai';
 // styles
 import './postContent.css';
 
 // components
 import PostData from './PostData/PostData';
-import isEmpty from '../../../utils/isEmpty';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import EditPost from './EditPost/EditPost';
 import Comments from './Comments/Comments';
 import Likes from './Likes/Likes';
+import Button from '../../Button/Button';
 
+// utils
+import isEmpty from '../../../utils/isEmpty';
 const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, history, addComment, deleteComment, likePost, unlikePost }) => {
 
     const renderPostData = () => {
@@ -62,7 +64,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             }
             if (!auth.loading && auth.isAuthenticated) {
 
-                return <button onClick={() => { setModal('confirm', 'delete post', 'Are you sure you want to delete this post?', 'confirm', () => { deletePost(post._id, history) }) }} type="button">DELETE</button>
+                return <Button isDelete onClick={() => { setModal('confirm', 'delete post', 'Are you sure you want to delete this post?', 'confirm', () => { deletePost(post._id, history) }) }} type="button">DELETE <AiFillDelete className="postContentStyles_deleteIcon" /></Button>
             }
         }
     };

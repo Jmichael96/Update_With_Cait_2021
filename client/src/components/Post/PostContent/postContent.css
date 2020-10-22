@@ -1,6 +1,8 @@
 /* root element for component */
 
-#postContentStyles_root {}
+/* #postContentStyles_root {
+    background-color: #8f0303;
+} */
 
 /* authenticated buttons for edit and deleting */
 
@@ -11,6 +13,7 @@
     margin-top: 1rem;
 }
 
-/* delete button */
-
-#postContentStyles_deleteBtn {}
+/* delete icon  */
+.postContentStyles_deleteIcon {
+    margin-left: .4rem;
+}

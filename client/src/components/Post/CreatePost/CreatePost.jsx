@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
+import { AiOutlineDownload, AiFillCheckCircle } from 'react-icons/ai';
 
 // styles
 import './createPost.css';
@@ -10,6 +11,7 @@ import './createPost.css';
 import Wrapper from '../../Layout/Wrapper/Wrapper';
 import validate from '../../../utils/validateForm';
 import SmSpinner from '../../Layout/SmSpinner/SmSpinner';
+import Button from '../../Button/Button';
 
 const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal, history }) => {
     // non react-quill form data
@@ -133,9 +135,9 @@ const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal,
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!savedLoading ? <button type="button" id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE</button> : <SmSpinner />}
+                    {!savedLoading ? <Button id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE <AiOutlineDownload className="createPostStyles_btnIcon" /></Button> : <SmSpinner />}
                     {!postLoading ?
-                        <button type="submit" onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">POST</button>
+                        <Button onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">POST <AiFillCheckCircle className="createPostStyles_btnIcon" /></Button>
                         :
                         <SmSpinner />
                     }

@@ -12,6 +12,7 @@ import PostItem from '../../components/Post/PostItem/PostItem';
 import isEmpty from '../../utils/isEmpty';
 import Wrapper from '../../components/Layout/Wrapper/Wrapper';
 import LgSpinner from '../../components/Layout/LgSpinner/LgSpinner';
+import Button from '../../components/Button/Button';
 
 const LifestylePage = ({ fetchLifestyle, post: { loading, fetchedDbLifestyle, lifestylePosts } }) => {
     // set limit for how many blogs to render on page
@@ -65,7 +66,7 @@ const LifestylePage = ({ fetchLifestyle, post: { loading, fetchedDbLifestyle, li
             return null;
         }
         if (!loading && !isEmpty(lifestylePosts) && !reachedLimit) {
-            return <button className="lifestylePageStyles_loadMoreBtn" onClick={loadMore}>Show More <FaArrowAltCircleDown className="lifestylePageStyles_downIcon" /></button>
+            return <Button onClick={loadMore}>Show More <FaArrowAltCircleDown className="lifestylePageStyles_downIcon" /></Button>
         }
     };
 

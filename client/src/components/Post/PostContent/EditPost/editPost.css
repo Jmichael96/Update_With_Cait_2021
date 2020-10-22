@@ -130,3 +130,7 @@
     align-items: center;
     margin: 1rem 0;
 }
+/* edit icon */
+.editPostStyles_editIcon {
+    margin-left: .4rem;
+}
