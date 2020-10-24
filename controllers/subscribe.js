@@ -25,7 +25,7 @@ exports.newSub = async (req, res, next) => {
 
         await sub.save();
         const html = `<p style={{ color: 'red' }}>This is super cool!</p><br /><h1>&copy; Copyright</h1>`;
-        sendMail(`Thank you ${sub.name}, for subscribing to the Update With Cait`, sub.email, html, true);
+        sendMail(`Thank you for subscribing to the Update With Cait`, sub.email, html, true);
         return res.status(200).json({
             serverMsg: `Thank you for subscribing, ${sub.name}`
         });

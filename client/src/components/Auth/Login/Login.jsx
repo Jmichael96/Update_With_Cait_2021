@@ -14,6 +14,9 @@ import './login.css';
 
 // components 
 import SmSpinner from '../../Layout/SmSpinner/SmSpinner';
+import Button from '../../Button/Button';
+
+// utils
 import Colors from '../../../utils/constants/Colors';
 
 const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history }) => {
@@ -62,8 +65,8 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
         }
     };
     return (
-        <article id="loginStyles_formWrap" style={{ backgroundColor: Colors.secondaryBgColor}}>
-            <form onSubmit={(e) => onSubmitHandler(e)} id="loginStyles_form">
+        <article id="loginStyles_formWrap" style={{ backgroundColor: Colors.secondaryBgColor }}>
+            <form id="loginStyles_form">
                 <div>
                     <input
                         type="email"
@@ -87,13 +90,9 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
                         {renderIcons()}
                     </div>
                     <div className="loginStyles_actionWrap">
-                        {!loading ?
-                            <button type="submit" id="loginStyles_submitBtn" >
-                                SUBMIT
-                        </button>
-                            :
-                            <SmSpinner />
-                        }
+                        <Button onClick={(e) => onSubmitHandler(e)} >
+                            {!loading ? 'SUBMIT' : <SmSpinner />}
+                        </Button>
                     </div>
                 </div>
             </form>

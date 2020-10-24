@@ -151,7 +151,7 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
                     </div>
                     <div id="editPostStyles_btnWrap">
                         <Button onClick={() => setDisplayModal(false)}>CANCEL</Button>
-                        {!loading ? <Button onClick={(e) => onSubmitHandler(e)}>UPDATE</Button> : <SmSpinner />}
+                        <Button onClick={(e) => onSubmitHandler(e)}>{!loading ? 'UPDATE' : <SmSpinner />}</Button>
                     </div>
                 </div>
             </div>

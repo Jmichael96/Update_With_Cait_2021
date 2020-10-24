@@ -166,12 +166,8 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!loading ? <Button onClick={(e) => resavePostHandler(e)}>RE-SAVE <AiOutlineDownload className="resaveStyles_icon" /></Button> : <SmSpinner />}
-                    {!loading ?
-                        <Button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">PUBLISH <AiFillCheckCircle className="resaveStyles_icon" /></Button>
-                        :
-                        <SmSpinner />
-                    }
+                    <Button onClick={(e) => resavePostHandler(e)}>{!loading ? <span>RE-SAVE <AiOutlineDownload className="resaveStyles_icon" /></span> : <SmSpinner />}</Button>
+                    <Button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">{!loading ? <span>PUBLISH <AiFillCheckCircle className="resaveStyles_icon" /></span> : <SmSpinner />}</Button>
                 </Wrapper>
             </form>
         </article>

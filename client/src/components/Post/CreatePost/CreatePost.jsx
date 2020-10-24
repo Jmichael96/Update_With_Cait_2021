@@ -135,12 +135,8 @@ const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal,
                     />
                 </Wrapper>
                 <Wrapper>
-                    {!savedLoading ? <Button id="createPostStyles_saveBtn" onClick={savePostHandler}>SAVE <AiOutlineDownload className="createPostStyles_btnIcon" /></Button> : <SmSpinner />}
-                    {!postLoading ?
-                        <Button onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">POST <AiFillCheckCircle className="createPostStyles_btnIcon" /></Button>
-                        :
-                        <SmSpinner />
-                    }
+                    <Button id="createPostStyles_saveBtn" onClick={savePostHandler}>{!savedLoading ? <span>SAVE <AiOutlineDownload className="createPostStyles_btnIcon" /></span> : <SmSpinner />}</Button>
+                    <Button onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">{!postLoading ? <span>POST <AiFillCheckCircle className="createPostStyles_btnIcon" /></span> : <SmSpinner />}</Button>
                 </Wrapper>
             </form>
         </section>

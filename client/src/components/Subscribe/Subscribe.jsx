@@ -84,7 +84,7 @@ const Subscribe = ({ setModal, subscribe }) => {
                             />
                         </Wrapper>
                         <Wrapper>
-                            {!subData.loading ? <Button onClick={(e) => onSubmitHandler(e)}>Subscribe <AiOutlineMail className="subscribeStyles_mailIcon" /></Button> : <SmSpinner />}
+                            <Button onClick={(e) => onSubmitHandler(e)}>{!subData.loading ? <span>Subscribe < AiOutlineMail className="subscribeStyles_mailIcon" /></span> : <SmSpinner />}</Button>
                         </Wrapper>
                     </form>
                 </div>
