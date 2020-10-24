@@ -64,6 +64,7 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
 
         }
     };
+    
     return (
         <article id="loginStyles_formWrap" style={{ backgroundColor: Colors.secondaryBgColor }}>
             <form id="loginStyles_form">
