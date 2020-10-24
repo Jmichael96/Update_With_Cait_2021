@@ -16,8 +16,12 @@
     max-width: 18rem;
     padding: .5rem;
     border-radius: 6px;
-    border: 1px solid black;
+    border: 3px solid #838383;
     margin-top: 1rem;
+}
+
+.addCommentStyles_inputs:focus {
+    border: 3px solid #2a2a2a;
 }
 
 /* modal styles */

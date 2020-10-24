@@ -51,6 +51,9 @@
     height: 38rem;
     margin-right: 1rem;
     margin-left: .5rem;
+    -webkit-filter: grayscale(40%);
+    /* Chrome, Safari, Opera */
+    filter: grayscale(40%);
 }
 
 .homePageStyles_underlayImgRight {
@@ -59,6 +62,9 @@
     height: 38rem;
     margin-left: 1rem;
     margin-right: .5rem;
+    -webkit-filter: grayscale(40%);
+    /* Chrome, Safari, Opera */
+    filter: grayscale(40%);
 }
 
 /* about section wrapper */

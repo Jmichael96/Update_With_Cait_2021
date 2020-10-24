@@ -26,6 +26,12 @@
     width: 100%;
 }
 
+/* post text */
+
+#postDataStyles_content>.ql-container>.ql-editor>p {
+    font-size: 1rem;
+    line-height: 1.4rem;
+}
 /* the content images */
 
 #postDataStyles_content img {

@@ -50,25 +50,50 @@
 
 /* ! MEDIA QUERIES */
 
-@media only screen and (max-width: 1079px) {
+@media only screen and (max-width: 1716px) {
     .footerImagesStyles_card:nth-last-child(1) {
         display: none;
     }
 }
 
-@media only screen and (max-width: 901px) {
+@media only screen and (max-width: 1571px) {
     .footerImagesStyles_card:nth-last-child(2) {
         display: none;
     }
 }
 
-@media only screen and (max-width: 715px) {
+@media only screen and (max-width: 1413px) {
     .footerImagesStyles_card:nth-last-child(3) {
         display: none;
     }
 }
-@media only screen and (max-width: 519px) {
+
+@media only screen and (max-width: 1210px) {
     .footerImagesStyles_card:nth-last-child(4) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1068px) {
+    .footerImagesStyles_card:nth-last-child(5) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 866px) {
+    .footerImagesStyles_card:nth-last-child(6) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 723px) {
+    .footerImagesStyles_card:nth-last-child(7) {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .footerImagesStyles_card:nth-last-child(8) {
         display: none;
     }
 }

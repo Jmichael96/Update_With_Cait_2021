@@ -25,6 +25,18 @@ const FooterImages = () => {
             {/* 6th */}
             <main className="footerImagesStyles_card">
             </main>
+            {/* 7th */}
+            <main className="footerImagesStyles_card">
+            </main>
+            {/* 8th */}
+            <main className="footerImagesStyles_card">
+            </main>
+            {/* 9th */}
+            <main className="footerImagesStyles_card">
+            </main>
+            {/* 10th */}
+            <main className="footerImagesStyles_card">
+            </main>
         </section>
     );
 };
