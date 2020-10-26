@@ -21,6 +21,7 @@ import WellnessPage from '../../pages/WellnessPage/WellnessPage';
 import SavedPage from '../../pages/SavedPage/SavedPage';
 import SavedPostContentPage from '../../pages/SavedPostContentPage/SavedPostContentPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
+import UnSubscribePage from '../../pages/UnSubscribePage/UnSubscribePage';
 
 // assets
 import Modal from '../Layout/Modal/Modal';
@@ -42,6 +43,7 @@ const Routes = () => {
                 <Route exact path="/devotional" component={DevotionalPage} />
                 <Route exact path="/graphics" component={GraphicsPage} />
                 <Route exact path="/wellness" component={WellnessPage} />
+                <Route exact path="/unsub" component={UnSubscribePage} />
                 <PrivateRoute exact path="/create_post" component={CreatePostPage} />
                 <PrivateRoute exact path="/saved" component={SavedPage} />
                 <PrivateRoute exact path="/saved_post/:id" component={SavedPostContentPage} />

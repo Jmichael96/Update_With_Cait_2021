@@ -37,6 +37,38 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1rem;
+}
+
+/* ownership name */
+
+#footerStyles_ownershipText>a {
+    text-decoration: none;
+    margin-left: .4rem;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-block;
+    padding: .2rem 0;
+    position: relative;
+    color: black;
+}
+
+#footerStyles_ownershipText>a:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: rgb(0, 0, 0);
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+#footerStyles_ownershipText>a:hover:after {
+    width: 100%;
+    left: 0;
 }
 
 /* heart icon */

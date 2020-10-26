@@ -32,7 +32,7 @@ const Footer = () => {
         <Link to="/login1996">
           <AiOutlineLogin id="footerStyles_loginIcon" />
         </Link>
-        <p id="footerStyles_ownershipText">Built with <FaHeart id="footerStyles_heartIcon" /> by Jeffrey VanHorn</p>
+        <p id="footerStyles_ownershipText">Built with <FaHeart id="footerStyles_heartIcon" /> by <a target="_blank" href="https://codevh.com">Jeffrey VanHorn</a></p>
       </div>
     </footer>
   )
