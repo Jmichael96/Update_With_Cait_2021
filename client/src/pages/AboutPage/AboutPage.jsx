@@ -34,7 +34,7 @@ const AboutPage = () => {
                 <Wrapper styles={{ overflow: 'hidden', marginTop: '2rem' }}>
                     <div className="aboutPageStyles_pRoidWrap">
                         <img alt="polaroid" className="aboutPageStyles_polaroidImg" src={require('../../assets/images/polaroid.png')} />
-                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/footerImages/footerImg1.JPG')} />
+                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/footerImages/footerImg9.JPG')} />
                         <img alt="thumbtack" className="aboutPageStyles_thumbtack" src={require('../../assets/images/thumbtack.png')} />
                     </div>
                 </Wrapper>}
@@ -42,7 +42,7 @@ const AboutPage = () => {
                 <Wrapper styles={{ overflow: 'hidden', marginTop: '2rem' }}>
                     <div className="aboutPageStyles_pRoidWrap">
                         <img alt="polaroid" className="aboutPageStyles_polaroidImg" src={require('../../assets/images/polaroid.png')} />
-                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/footerImages/footerImg1.JPG')} />
+                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/aboutImages/aboutImg2.JPG')} />
                         <img alt="thumbtack" className="aboutPageStyles_thumbtack" src={require('../../assets/images/thumbtack.png')} />
                     </div>
                     <div className="aboutPageStyles_pRoidWrap">
@@ -52,17 +52,17 @@ const AboutPage = () => {
                     </div>
                     <div className="aboutPageStyles_pRoidWrap">
                         <img alt="polaroid" className="aboutPageStyles_polaroidImg" src={require('../../assets/images/polaroid.png')} />
-                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/cait.JPG')} />
+                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/aboutImages/aboutImg3.JPG')} />
                         <img alt="thumbtack" className="aboutPageStyles_thumbtack" src={require('../../assets/images/thumbtack.png')} />
                     </div>
                     <div className="aboutPageStyles_pRoidWrap">
                         <img alt="polaroid" className="aboutPageStyles_polaroidImg" src={require('../../assets/images/polaroid.png')} />
-                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/cait3.JPG')} />
+                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/aboutImages/aboutImg4.JPG')} />
                         <img alt="thumbtack" className="aboutPageStyles_thumbtack" src={require('../../assets/images/thumbtack.png')} />
                     </div>
                     <div className="aboutPageStyles_pRoidWrap">
                         <img alt="polaroid" className="aboutPageStyles_polaroidImg" src={require('../../assets/images/polaroid.png')} />
-                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/cait3.JPG')} />
+                        <img alt="poloroid picture" className="aboutPageStyles_innerImg" src={require('../../assets/images/aboutImages/aboutImg1.JPG')} />
                         <img alt="thumbtack" className="aboutPageStyles_thumbtack" src={require('../../assets/images/thumbtack.png')} />
                     </div>
                 </Wrapper>}

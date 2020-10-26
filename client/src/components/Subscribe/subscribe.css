@@ -1,8 +1,7 @@
 /* root element of component */
 
 #subscribeStyles_root {
-    margin-top: 13rem;
-    padding: 1rem;
+    margin-top: 10rem;
 }
 
 /* text explaining what the subscription is for */
@@ -15,7 +14,8 @@
 /* content wrapper to wrap with a card */
 
 #subscribeStyles_cardContentWrap {
-    width: 40rem;
+    width: 100%;
+    max-width: 40rem;
     padding: 1rem;
     border-radius: 3px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);

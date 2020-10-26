@@ -59,7 +59,7 @@ const Subscribe = ({ setModal, subscribe }) => {
 
     return (
         <section id="subscribeStyles_root">
-            <Wrapper>
+            <Wrapper styles={{ margin: '0 1rem'}}>
                 <div id="subscribeStyles_cardContentWrap" style={{ backgroundColor: Colors.accentColor }}>
                     <p id="subscribeStyles_infoText">
                         Subscribe to get notified when the latest and new blogs drop!

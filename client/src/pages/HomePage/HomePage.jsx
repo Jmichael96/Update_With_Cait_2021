@@ -46,7 +46,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
             <section id="homePageStyles_aboutWrap" style={{ borderColor: Colors.accentColor }}>
                 <Wrapper styles={{ justifyContent: 'space-evenly' }}>
                     <div id="homePageStyles_aboutImgWrap" style={{ borderColor: Colors.accentColor }}>
-                        <img id="homePageStyles_aboutImg" alt="caitlyn" src={require('../../assets/images/cait.JPG')} />
+                        <img id="homePageStyles_aboutImg" alt="caitlyn" src={require('../../assets/images/aboutImages/aboutImg1.JPG')} />
                     </div>
                     <div id="homePageStyles_aboutPWrap">
                         <Wrapper>

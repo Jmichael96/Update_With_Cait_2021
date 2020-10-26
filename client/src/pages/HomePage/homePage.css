@@ -97,19 +97,6 @@
     max-width: 26rem;
     border-radius: 3px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    -webkit-transition: all 0.4s ease-in-out;
-    -moz-transition: all 0.4s ease-in-out;
-    -ms-transition: all 0.4s ease-in-out;
-    -o-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-}
-
-#homePageStyles_aboutImg:hover {
-    -webkit-transform: scale(1.2) rotate(5deg);
-    -moz-transform: scale(1.2) rotate(5deg);
-    -ms-transform: scale(1.2) rotate(5deg);
-    -o-transform: scale(1.2) rotate(5deg);
-    transform: scale(1.2) rotate(5deg);
 }
 
 /* the read more about button */

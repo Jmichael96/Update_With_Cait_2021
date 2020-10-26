@@ -1,8 +1,8 @@
 /* root component element */
 
 #postCategoriesStyles_root {
-    height: 35rem;
-    margin-top: 7rem;
+    height: 27rem;
+    margin-top: 6rem;
 }
 
 /* relative background for the cards */
@@ -69,7 +69,7 @@
 /* the lifestyle background */
 
 .postCategoriesStyles_outerCard:nth-child(1)>.postCategoriesStyles_card {
-    background-image: url('../../../assets/images/graphics.JPG');
+    background-image: url('../../../assets/images/lifestyle.JPG');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -78,7 +78,7 @@
 /* devotional background */
 
 .postCategoriesStyles_outerCard:nth-child(2)>.postCategoriesStyles_card {
-    background-image: url('../../../assets/images/graphics.JPG');
+    background-image: url('../../../assets/images/devotional.JPG');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

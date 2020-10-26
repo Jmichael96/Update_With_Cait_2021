@@ -16,7 +16,7 @@
 
 .aboutPageStyles_pRoidWrap {
     position: relative;
-    width: 17rem;
+    width: 14rem;
     height: 16rem;
     background-color: transparent;
     margin: 2rem 1rem;
@@ -83,9 +83,10 @@
 
 .aboutPageStyles_innerImg {
     position: absolute;
-    width: 15rem;
-    top: 15px;
-    left: 18px;
+    display: block;
+    width: 12.25rem;
+    top: 14px;
+    left: 15px;
     height: 12rem;
 }
 
@@ -94,7 +95,7 @@
 .aboutPageStyles_thumbtack {
     position: absolute;
     top: 0;
-    left: 7.5rem;
+    left: 6rem;
     height: 1.8rem;
     transform: rotate(-55deg);
     -moz-transform: rotate(-55deg);

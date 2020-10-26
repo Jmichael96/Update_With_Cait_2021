@@ -1,7 +1,7 @@
 /* footer root component */
 
 #footerStyles_root {
-    margin-top: 12rem;
+    margin-top: 8rem;
 }
 
 /* inner footer wrap surrounding the images and logo */
@@ -45,7 +45,9 @@
     margin: 0 .3rem;
     color: rgb(133, 0, 0);
 }
+
 /* login icon */
+
 #footerStyles_loginIcon {
     position: absolute;
     bottom: 0;
@@ -54,6 +56,16 @@
     opacity: 0;
     cursor: default;
 }
+
 #footerStyles_loginIcon:hover {
     opacity: 1;
+}
+
+/* ! MEDIA QUERIES */
+
+@media only screen and (max-width: 1436px) {
+    /* footer root component */
+    #footerStyles_root {
+        margin-top: 5rem;
+    }
 }
