@@ -27,7 +27,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
             return (
                 <div id="homePageStyles_hitCounterWrap">
                     <a href="https://www.hitwebcounter.com" target="_blank">
-                        <img src="https://hitwebcounter.com/counter/counter.php?page=7696640&style=0010&nbdigits=5&type=page&initCount=0" title="Total Website Hits" Alt="Web Hits" border="0" /></a>
+                        <img src="https://hitwebcounter.com/counter/counter.php?page=7696640&style=0010&nbdigits=5&type=page&initCount=0" title="Total Website Hits" alt="Web Hits" border="0" /></a>
                 </div>
             )
         }

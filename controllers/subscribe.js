@@ -24,7 +24,11 @@ exports.newSub = async (req, res, next) => {
         });
 
         await sub.save();
-        const html = `<p style={{ color: 'red' }}>This is super cool!</p><br /><h1>&copy; Copyright</h1>`;
+        const html = `<p>Thank you for subscribing to the Update With Cait blog. From here every time a new blog is posted you will be immediately notified!</p>
+                        <br />
+                        <p style="text-align:center; color:black; font-size:.7rem;" font-weight:500;>&copy; Copyright</p>
+                        <p style="text-align:center; color:black; font-size:.7rem;">To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${sub.email}">HERE</a>
+                    </p>`;
         sendMail(`Thank you for subscribing to the Update With Cait`, sub.email, html, true);
         return res.status(200).json({
             serverMsg: `Thank you for subscribing, ${sub.name}`

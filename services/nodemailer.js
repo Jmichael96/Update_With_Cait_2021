@@ -16,9 +16,7 @@ const transporter = nodemailer.createTransport(smtpConfig);
 
 module.exports = sendMail = (subject, sendingTo, html, isNew) => {
     let mailOptions;
-    let unSubHtml = `<p>To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${sendingTo}>HERE</a></p>`
     if (!isNew) {
-        console.log('this is for the new posts!');
         mailOptions = {
             from: EMAIL,
             bcc: sendingTo,
@@ -26,7 +24,6 @@ module.exports = sendMail = (subject, sendingTo, html, isNew) => {
             html: html
         }
     } else if (isNew) {
-        console.log('this is a new user');
         mailOptions = {
             from: EMAIL,
             to: sendingTo,
