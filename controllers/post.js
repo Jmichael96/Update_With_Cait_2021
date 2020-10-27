@@ -29,16 +29,20 @@ exports.createPost = async (req, res, next) => {
         // saving the new post
         const newPost = await post.save();
 
-        // creating html for the email
-        const html = `
-            <h5>Post Summary:</h5>
-            <br />
-            <p>${newPost.summary}</p>
-            <br />
-            <a target="_blank" href="https://www.updatewithcait.com/">Post Link</a>
-        `;
-        // sending mail 
-        sendMail('New blog post from Update With Cait', bccArray, html, false);
+        for (let i = 0; i < bccArray.length; i++) {
+            // creating html for the email
+            const html = `
+                <h5>Post Summary:</h5>
+                <br />
+                <p>${newPost.summary}</p>
+                <br />
+                <a target="_blank" href="https://www.updatewithcait.com/">Post Link</a>
+                <br />
+                <p>To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${bccArray[i]}">HERE</a></p>
+            `;
+            // sending mail 
+            sendMail('New blog post from Update With Cait', bccArray[i], html, false);
+        };
 
         // returning the successful status
         return res.status(201).json({

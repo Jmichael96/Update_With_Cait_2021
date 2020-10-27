@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { unSubscribe } from '../../store/actions/subscribe';
@@ -18,6 +18,18 @@ import isEmpty from '../../utils/isEmpty';
 
 const UnSubscribePage = ({ sub: { loading }, unSubscribe, setModal }) => {
     const [email, setEmail] = useState('');
+
+    useEffect(() => {
+        const queryString = window.location.search;
+
+        const urlParams = new URLSearchParams(queryString);
+
+        const userEmail = urlParams.get('user_email')
+
+        if (userEmail) {
+            setEmail(userEmail);
+        }
+    }, []);
 
     // on submit
     const onSubmitHandler = useCallback(async (e) => {
@@ -58,7 +70,7 @@ const UnSubscribePage = ({ sub: { loading }, unSubscribe, setModal }) => {
                     </Wrapper>
                     <Wrapper>
                         <Button onClick={(e) => onSubmitHandler(e)} >
-                            {!loading ? 'SUBMIT' : <SmSpinner />}
+                            {!loading ? 'UNSUBSCRIBE' : <SmSpinner />}
                         </Button>
                     </Wrapper>
                 </form>
