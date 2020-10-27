@@ -33,3 +33,34 @@ export const subscribeSuccess = (name, email) => (dispatch) => {
             });
         });
 };
+
+//! UNSUBSCRIBE
+export const unSubscribe = (email) => (dispatch) => {
+    dispatch({
+        type: types.UNSUBSCRIBE
+    });
+    dispatch(unSubscribeSuccess(email));
+};
+
+export const unSubscribeSuccess = (email) => (dispatch) => {
+
+    axios.delete('/api/subscribe/unsubscribe', {
+        params: {
+            email: email
+        }
+    }).then((res) => {
+        dispatch({
+            type: types.UNSUBSCRIBE_SUCCESS,
+        });
+        dispatch(setAlert(res.data.serverMsg, 'success'));
+    })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.UNSUBSCRIBE_FAIL,
+            });
+        });
+};

@@ -44,7 +44,27 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
             <Subscribe setModal={setModal} subscribe={subscribe} />
             <PostCategories />
             <section id="homePageStyles_aboutWrap" style={{ borderColor: Colors.accentColor }}>
-                <Wrapper styles={{ justifyContent: 'space-evenly' }}>
+                <Wrapper>
+                    <div id="homePageStyles_aboutCard" style={{ backgroundColor: Colors.accentColor }}>
+                        <Wrapper styles={{ justifyContent: 'space-evenly' }}>
+                            <img id="homePageStyles_aboutImg" alt="caitlyn" src={require('../../assets/images/aboutImages/aboutImg1.JPG')} />
+                            <div id="homePageStyles_aboutPWrap">
+                                <Wrapper>
+                                    <p className="homePageStyles_pText">
+                                        Passionate about being the hands and feet of god and spreading the good news through writing.
+                                        Just here to be a friend to all. Welcome to the Update With Cait!
+                                    </p>
+                                </Wrapper>
+                                <Wrapper>
+                                    <Link to="/about">
+                                        <Button>READ MORE</Button>
+                                    </Link>
+                                </Wrapper>
+                            </div>
+                        </Wrapper>
+                    </div>
+                </Wrapper>
+                {/* <Wrapper styles={{ justifyContent: 'space-evenly' }}>
                     <div id="homePageStyles_aboutImgWrap" style={{ borderColor: Colors.accentColor }}>
                         <img id="homePageStyles_aboutImg" alt="caitlyn" src={require('../../assets/images/aboutImages/aboutImg1.JPG')} />
                     </div>
@@ -61,7 +81,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                             </Link>
                         </Wrapper>
                     </div>
-                </Wrapper>
+                </Wrapper> */}
             </section>
             <RecentPosts fetchRecentPosts={fetchRecentPosts} recentPosts={recentPosts} loading={loading} fetchedRecentPosts={fetchedRecentPosts} />
             {!loading && fetchedRecentPosts && <Footer />}

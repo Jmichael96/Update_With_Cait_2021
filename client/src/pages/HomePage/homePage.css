@@ -71,14 +71,22 @@
 
 #homePageStyles_aboutWrap {
     margin-top: 3rem;
-    border-top: .8rem solid;
-    border-bottom: .8rem solid;
+    /* border-top: .8rem solid;
+    border-bottom: .8rem solid; */
     padding: 2rem 0;
+}
+
+/* ! TESTING */
+
+#homePageStyles_aboutCard {
+    height: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
 }
 
 /* image wrapper */
 
-#homePageStyles_aboutImgWrap {
+/* #homePageStyles_aboutImgWrap {
     border-width: .4rem;
     border-style: solid;
     border-radius: 3px;
@@ -87,7 +95,7 @@
     width: 100%;
     max-width: 26rem;
     margin: 1rem;
-}
+} */
 
 /* image of cait in the about section */
 
@@ -96,7 +104,7 @@
     width: 100%;
     max-width: 26rem;
     border-radius: 3px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* the read more about button */

@@ -35,3 +35,28 @@ exports.newSub = async (req, res, next) => {
         });
     };
 };
+
+// @route    DELETE api/subscribe/unsubscribe
+// @desc     Unsubscribe from news letter
+// @access   Public
+exports.unsubscribe = (req, res, next) => {
+    Sub.findOneAndDelete({ email: req.params.email })
+        .then((sub) => {
+            if (!sub) {
+                return res.status(404).json({
+                    serverMsg: 'We are sorry, we could not find that email. Please try another email.'
+                });
+            }
+
+            return res.status(200).json({
+                serverMsg: `${sub.name}, you have successfully unsubscribed! We hope to see you again soon.`,
+                sub
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
+            });
+        });
+};

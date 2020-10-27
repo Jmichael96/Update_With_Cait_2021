@@ -6,4 +6,9 @@ const SubController = require('../controllers/subscribe');
 // @access   Public
 router.post('/new_sub', SubController.newSub);
 
+// @route    DELETE api/subscribe/unsubscribe
+// @desc     Unsubscribe from news letter
+// @access   Public
+router.delete('/unsubscribe', SubController.unsubscribe);
+
 module.exports = router;
