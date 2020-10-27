@@ -74,21 +74,49 @@ export const fetchSubs = () => (dispatch) => {
 };
 
 export const fetchSubsSuccess = () => (dispatch) => {
-    axios.get('/api/subscribe/fetch_subs') 
-    .then((res) => {
-        dispatch({
-            type: types.FETCH_SUBS_SUCCESS,
-            payload: res.data.subs
+    axios.get('/api/subscribe/fetch_subs')
+        .then((res) => {
+            dispatch({
+                type: types.FETCH_SUBS_SUCCESS,
+                payload: res.data.subs
+            });
+            dispatch(setAlert(res.data.serverMsg, 'success'));
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.FETCH_SUBS_FAIL,
+            });
         });
-        dispatch(setAlert(res.data.serverMsg, 'success'));
-    })
-    .catch((err) => {
-        const error = err.response.data.serverMsg;
-        if (error) {
-            dispatch(setAlert(error, 'error'));
-        }
-        dispatch({
-            type: types.FETCH_SUBS_FAIL,
-        });
+};
+
+//! DELETE SUB
+export const deleteSub = (id) => (dispatch) => {
+    dispatch({
+        type: types.DELETE_SUB
     });
+    dispatch(deleteSubSuccess(id));
+};
+
+export const deleteSubSuccess = (id) => (dispatch) => {
+    axios.delete(`/api/subscribe/delete_sub/${id}`)
+        .then((res) => {
+            dispatch({
+                type: types.DELETE_SUB_SUCCESS,
+                payload: id
+            });
+            dispatch(setAlert(res.data.serverMsg, 'success'));
+        })
+        .catch((err) => {
+            const error = err.response.data.serverMsg;
+            if (error) {
+                dispatch(setAlert(error, 'error'));
+            }
+            dispatch({
+                type: types.DELETE_SUB_FAIL,
+            });
+        });
 };

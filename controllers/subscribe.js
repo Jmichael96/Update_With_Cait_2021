@@ -87,3 +87,26 @@ exports.fetchSubs = (req, res, next) => {
             });
         });
 };
+
+// @route    DELETE api/subscribe/delete_sub/:id
+// @desc     Delete a sub
+// @access   Private
+exports.deleteSub = (req, res, next) => {
+    Sub.findByIdAndDelete({ _id: req.params.id })
+        .then((sub) => {
+            if (!sub) {
+                return res.status(404).json({
+                    serverMsg: 'Could not find sub to remove them'
+                });
+            }
+            return res.status(200).json({
+                serverMsg: 'Deleted subscription successfully',
+                sub
+            });
+        })
+        .catch((err) => {
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
+            });
+        });
+};

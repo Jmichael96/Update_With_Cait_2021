@@ -12,6 +12,7 @@ export default function (state = initialState, action) {
         case types.SUBSCRIBE:
         case types.UNSUBSCRIBE:
         case types.FETCH_SUBS:
+        case types.DELETE_SUB:
             return {
                 ...state,
                 loading: true
@@ -32,6 +33,17 @@ export default function (state = initialState, action) {
                 subs: payload,
                 loading: false
             };
+        case types.DELETE_SUB_FAIL:
+            return {
+                ...state,
+                loading: false
+            };
+        case types.DELETE_SUB_SUCCESS:
+            return {
+                ...state,
+                subs: state.subs.filter((sub) => sub._id !== payload),
+                loading: false
+            }
         default: return state;
     };
 };
