@@ -64,7 +64,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
             }
             if (!auth.loading && auth.isAuthenticated) {
 
-                return <Button isDelete onClick={() => { setModal('confirm', 'delete post', 'Are you sure you want to delete this post?', 'confirm', () => { deletePost(post._id, history) }) }} type="button">DELETE <AiFillDelete className="postContentStyles_deleteIcon" /></Button>
+                return <Button isdelete="true" onClick={() => { setModal('confirm', 'delete post', 'Are you sure you want to delete this post?', 'confirm', () => { deletePost(post._id, history) }) }} type="button">DELETE <AiFillDelete className="postContentStyles_deleteIcon" /></Button>
             }
         }
     };

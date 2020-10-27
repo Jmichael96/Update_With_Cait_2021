@@ -59,7 +59,29 @@ exports.unsubscribe = (req, res, next) => {
             });
         })
         .catch((err) => {
-            console.log(err);
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
+            });
+        });
+};
+
+// @route    GET api/subscribe/fetch_subs
+// @desc     Fetching all the subs for the logged in user
+// @access   Private
+exports.fetchSubs = (req, res, next) => {
+    Sub.find().sort({ _id: -1 })
+        .then((subs) => {
+            if (subs.length <= 0) {
+                return res.status(404).json({
+                    serverMsg: 'There are no subscriptions at this time'
+                });
+            }
+            return res.status(200).json({
+                serverMsg: 'Fetched subscriptions',
+                subs
+            });
+        })
+        .catch((err) => {
             return res.status(500).json({
                 serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });

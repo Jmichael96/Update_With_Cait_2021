@@ -22,6 +22,7 @@ import SavedPage from '../../pages/SavedPage/SavedPage';
 import SavedPostContentPage from '../../pages/SavedPostContentPage/SavedPostContentPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
 import UnSubscribePage from '../../pages/UnSubscribePage/UnSubscribePage';
+import SubDataPage from '../../pages/SubDataPage/SubDataPage';
 
 // assets
 import Modal from '../Layout/Modal/Modal';
@@ -47,8 +48,8 @@ const Routes = () => {
                 <PrivateRoute exact path="/create_post" component={CreatePostPage} />
                 <PrivateRoute exact path="/saved" component={SavedPage} />
                 <PrivateRoute exact path="/saved_post/:id" component={SavedPostContentPage} />
+                <PrivateRoute exact path="/my_subs" component={SubDataPage} />
             </Switch>
-            {/* <Footer /> */}
         </main>
     );
 };

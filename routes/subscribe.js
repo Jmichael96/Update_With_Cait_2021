@@ -11,4 +11,9 @@ router.post('/new_sub', SubController.newSub);
 // @access   Public
 router.delete('/unsubscribe', SubController.unsubscribe);
 
+// @route    GET api/subscribe/fetch_subs
+// @desc     Fetching all the subs for the logged in user
+// @access   Private
+router.get('/fetch_subs', SubController.fetchSubs);
+
 module.exports = router;

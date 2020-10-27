@@ -60,6 +60,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             </div>
             <Link to="/create_post" className="nav-link"><span className="navSpan">CREATE</span></Link>
             <Link to="/saved" className="nav-link"><span className="navSpan">SAVED</span></Link>
+            <Link to="/my_subs" className="nav-link"><span className="navSpan">MY SUBS</span></Link>
 
             <a href="#!" className="nav-link" onClick={() => logout()}>
                 {!loading ? <span className="navSpan">LOGOUT</span> : <SmSpinner />}

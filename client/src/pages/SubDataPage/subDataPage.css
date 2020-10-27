@@ -1,0 +1,67 @@
+/* number of subs text */
+#subDataPageStyles_subLengthText {
+    font-size: 1.1rem;
+    margin: 2rem 0 0 0;
+}
+table {
+    width: 100%;
+    max-width: 45rem;
+    border-collapse: collapse;
+    margin: 2rem 1rem;
+}
+
+/* Zebra striping */
+
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+
+th {
+    color: white;
+    font-weight: 600;
+}
+
+td, th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 760px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        border: 1px solid #ccc;
+        margin: 1rem 0;
+        box-shadow: 0 5px 15px rgb(0, 0, 0, .1);
+    }
+    td {
+        border: none;
+        border-bottom: 1px solid rgb(177, 173, 173);
+        position: relative;
+        padding-left: 25%;
+    }
+    td:before {
+        position: absolute;
+        top: 11px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-column);
+        color: #000;
+        font-weight: bold;
+    }
+    .subDataPageStyles_deleteTd {
+        width: 100%;
+        padding: 0;
+    }
+}

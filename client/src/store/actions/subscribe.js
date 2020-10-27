@@ -64,3 +64,31 @@ export const unSubscribeSuccess = (email) => (dispatch) => {
             });
         });
 };
+
+//! FETCH SUBS
+export const fetchSubs = () => (dispatch) => {
+    dispatch({
+        type: types.FETCH_SUBS
+    });
+    dispatch(fetchSubsSuccess());
+};
+
+export const fetchSubsSuccess = () => (dispatch) => {
+    axios.get('/api/subscribe/fetch_subs') 
+    .then((res) => {
+        dispatch({
+            type: types.FETCH_SUBS_SUCCESS,
+            payload: res.data.subs
+        });
+        dispatch(setAlert(res.data.serverMsg, 'success'));
+    })
+    .catch((err) => {
+        const error = err.response.data.serverMsg;
+        if (error) {
+            dispatch(setAlert(error, 'error'));
+        }
+        dispatch({
+            type: types.FETCH_SUBS_FAIL,
+        });
+    });
+};

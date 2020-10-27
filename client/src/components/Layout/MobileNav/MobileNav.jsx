@@ -43,6 +43,7 @@ const MobileNav = ({ logout, isAuthenticated, authLoading, user }) => {
             <Link to="/wellness" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">WELLNESS</span></Link>
             <Link to="/graphics" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">GRAPHICS</span></Link>
             <Link to="/about" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">ABOUT</span></Link>
+            <Link to="/my_subs" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">MY SUBS</span></Link>
             <a href="#!" className="mobileNavStyles_navLink" onClick={() => { logout(); toggleNavIcon(); menuHandler() }}>
                 <span className="mobileNavStyles_navSpan" style={{ color: Colors.navText }}>LOGOUT</span>
             </a>
