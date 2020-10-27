@@ -1,0 +1,41 @@
+/* root element of component */
+
+#unsubscribeStyles_root {
+    height: 100%;
+}
+
+/* form Wrapper */
+
+#unsubscribeStyles_formWrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 95%;
+    max-width: 30rem;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* form element */
+
+#unsubscribeStyles_form {
+    padding: 2rem;
+}
+
+/* form email input */
+
+#unsubscribeStyles_input {
+    font-size: 1rem;
+    padding: .5rem;
+    width: 100%;
+    max-width: 20rem;
+    margin: 1rem 0;
+}
+
+#unsubscribeStyles_input:focus {
+    outline: none;
+}

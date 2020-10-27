@@ -40,7 +40,8 @@ exports.newSub = async (req, res, next) => {
 // @desc     Unsubscribe from news letter
 // @access   Public
 exports.unsubscribe = (req, res, next) => {
-    Sub.findOneAndDelete({ email: req.params.email })
+
+    Sub.findOneAndDelete({ email: req.query.email })
         .then((sub) => {
             if (!sub) {
                 return res.status(404).json({
