@@ -62,7 +62,7 @@ const Subscribe = ({ setModal, subscribe }) => {
             <Wrapper styles={{ margin: '0 1rem' }}>
                 <div id="subscribeStyles_cardContentWrap" style={{ backgroundColor: Colors.cardBg }}>
                     <p id="subscribeStyles_infoText" style={{ color: Colors.cardText }}>
-                        Subscribe to get notified when the latest and new blogs drop!
+                        Subscribe below and get the latest blog updates!
                     </p>
                     <form id="subscribeStyles_form">
                         <Wrapper styles={{ justifyContent: 'center' }}>

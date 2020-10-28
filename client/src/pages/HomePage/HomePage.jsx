@@ -51,8 +51,8 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                             <div id="homePageStyles_aboutPWrap">
                                 <Wrapper>
                                     <p className="homePageStyles_pText" style={{ color: Colors.cardText }}>
-                                        Passionate about being the hands and feet of god and spreading the good news through writing.
-                                        Just here to be a friend to all. Welcome to the Update With Cait!
+                                        Passionate about being the hands and feet of God and spreading the Good News through writing.
+                                        Here to be a friend to all. Welcome to The Update With Cait!
                                     </p>
                                 </Wrapper>
                                 <Wrapper>
