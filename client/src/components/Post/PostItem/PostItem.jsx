@@ -43,13 +43,13 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
         if (!isEmpty(summary)) {
             if (summary.length > 140) {
                 let str = summary.slice(0, 140);
-                return <p className="postItemStyles_summary">{str + '...'}</p>
+                return <p className="postItemStyles_summary" style={{ color: Colors.cardText }}>{str + '...'}</p>
             }
-            return <p className="postItemStyles_summary">{summary}</p>
+            return <p className="postItemStyles_summary" style={{ color: Colors.cardText }}>{summary}</p>
         }
     };
     return (
-        <article className="postItemStyles_card" onClick={redirectHandler}>
+        <article className="postItemStyles_card" onClick={redirectHandler} style={{ backgroundColor: Colors.cardBg }}>
             <Wrapper>
                 <div className="postItemStyles_innerCard">
                     <Wrapper>
@@ -58,24 +58,24 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
                         </div>
                     </Wrapper>
                     <div className="postItemStyles_contentWrap">
-                        <h3 className="postItemStyles_title">{!isEmpty(title) && title}</h3>
-                        <p className="postItemStyles_date">
+                        <h3 className="postItemStyles_title" style={{ color: Colors.cardText }}>{!isEmpty(title) && title}</h3>
+                        <p className="postItemStyles_date" style={{ color: Colors.cardDate }}>
                             <Moment format="MMMM DD, YYYY">{!isEmpty(date) && date.toUpperCase()}</Moment>
                         </p>
                         <div style={{ borderColor: Colors.accentColor }} className="postItemStyles_divider"></div>
                         {renderSummary()}
                         <Wrapper styles={{ justifyContent: 'space-between' }}>
-                            <div className="postItemStyles_iconWrap">
+                            <div className="postItemStyles_iconWrap" style={{ color: Colors.cardText }}>
                                 <FaHeart className="postItemStyles_icon" />
                                 {renderLikeNumber()}
                             </div>
-                            <div className="postItemStyles_iconWrap">
+                            <div className="postItemStyles_iconWrap" style={{ color: Colors.cardText }}>
                                 <FaComment className="postItemStyles_icon" />
                                 {renderCommentNumber()}
                             </div>
                         </Wrapper>
                         <Wrapper>
-                            <button className="postItemStyles_readBtn" style={{ backgroundColor: Colors.secondaryBgColor }}><ImCircleRight className="postItemStyles_readIcon" /></button>
+                            <button className="postItemStyles_readBtn" style={{ backgroundColor: Colors.buttonBg }}><ImCircleRight style={{ color: Colors.buttonText }} className="postItemStyles_readIcon" /></button>
                         </Wrapper>
                     </div>
                 </div>

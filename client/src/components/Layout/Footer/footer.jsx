@@ -17,7 +17,7 @@ const Footer = () => {
 
   return (
     <footer id="footerStyles_root">
-      <article id="footerStyles_innerWrap" style={{ backgroundColor: Colors.secondaryBgColor }}>
+      <article id="footerStyles_innerWrap" >
         <FooterImages />
         <Wrapper>
           <img id="footerStyles_logoImg" alt="logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
@@ -27,13 +27,13 @@ const Footer = () => {
             &copy; Copyright {new Date().getFullYear()}
           </p>
         </Wrapper>
-      </article>
       <div id="footerStyles_ownershipWrap">
         <Link to="/login1996">
           <AiOutlineLogin id="footerStyles_loginIcon" />
         </Link>
         <p id="footerStyles_ownershipText">Built with <FaHeart id="footerStyles_heartIcon" /> by <a target="_blank" href="https://codevh.com">Jeffrey VanHorn</a></p>
       </div>
+      </article>
     </footer>
   )
 };

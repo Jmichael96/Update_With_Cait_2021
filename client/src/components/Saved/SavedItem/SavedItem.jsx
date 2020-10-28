@@ -8,6 +8,9 @@ import { FaTrash } from 'react-icons/fa';
 // styles
 import './savedItem.css';
 
+// utils
+import Colors from '../../../utils/constants/Colors';
+
 const SavedItem = ({ deleteSaved, setModal, post: { _id, title, category, date }, history }) => {
     // using the state for mouse enter and mouse leave
     const [mouse, setMouse] = useState(false);
@@ -31,7 +34,7 @@ const SavedItem = ({ deleteSaved, setModal, post: { _id, title, category, date }
     };
 
     return (
-        <article className="savedItemStyles_card" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+        <article className="savedItemStyles_card" onMouseEnter={mouseEnter} onMouseLeave={mouseLeave} style={{ backgroundColor: Colors.cardBg }}>
             <div className="savedItemStyles_innerWrap">
                 {category && <section className="savedItemStyles_categoryWrap">
                     <AiFillTag className="savedItemStyles_categoryIcon" />

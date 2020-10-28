@@ -7,8 +7,10 @@ import './modal.css';
 
 // components
 import Wrapper from '../Wrapper/Wrapper';
-import Colors from '../../../utils/constants/Colors';
 import Button from '../../Button/Button';
+
+// utils
+import Colors from '../../../utils/constants/Colors';
 
 const Modal = () => {
     const modalInfo = useSelector((state) => state.modal);
@@ -31,7 +33,7 @@ const Modal = () => {
         await modalAction();
         dispatch(removeModal());
     };
-    
+
     return (
         <div id="open-modal" className="modal-window" style={{
             visibility: modalInfo.isOpen ? 'visible' : 'hidden',
@@ -39,8 +41,8 @@ const Modal = () => {
             pointerEvents: modalInfo.isOpen ? 'auto' : 'none',
         }}>
             <div style={{ maxHeight: modalType !== 'error' ? '40rem' : '' }}>
-                <div id="modalHeader" style={{ backgroundColor: Colors.secondaryBgColor }}>
-                    {modalTitle && <h1 id="modalTitle">{modalTitle.toUpperCase()}</h1>}
+                <div id="modalHeader" style={{ backgroundColor: Colors.cardBg }}>
+                    {modalTitle && <h1 id="modalTitle" style={{ color: Colors.cardText }}>{modalTitle.toUpperCase()}</h1>}
                 </div>
                 <div id="modalContent">
                     {renderContent()}

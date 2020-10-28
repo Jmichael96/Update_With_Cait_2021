@@ -59,9 +59,9 @@ const Subscribe = ({ setModal, subscribe }) => {
 
     return (
         <section id="subscribeStyles_root">
-            <Wrapper styles={{ margin: '0 1rem'}}>
-                <div id="subscribeStyles_cardContentWrap" style={{ backgroundColor: Colors.accentColor }}>
-                    <p id="subscribeStyles_infoText">
+            <Wrapper styles={{ margin: '0 1rem' }}>
+                <div id="subscribeStyles_cardContentWrap" style={{ backgroundColor: Colors.cardBg }}>
+                    <p id="subscribeStyles_infoText" style={{ color: Colors.cardText }}>
                         Subscribe to get notified when the latest and new blogs drop!
                     </p>
                     <form id="subscribeStyles_form">

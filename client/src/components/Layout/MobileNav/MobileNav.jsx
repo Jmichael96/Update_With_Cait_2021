@@ -72,7 +72,7 @@ const MobileNav = ({ logout, isAuthenticated, authLoading, user }) => {
                 </div>
                 <a id="mobileNavStyles_menuBtn" className={`${!navToggle ? '' : 'active'}`} onClick={() => { toggleNavIcon(); menuHandler() }} href="#"><span></span></a>
             </div>
-            <div className={menuStyle} style={{ backgroundColor: Colors.secondaryBgColor }}>
+            <div className={menuStyle} style={{ backgroundColor: Colors.accentColor }}>
                 <img id="mobileNavStyles_caitLogoImg" alt="logo" src={require('../../../assets/images/UWCNavLogo.PNG')} />
                 {!authLoading && !isAuthenticated ? guestLinks : authLinks}
             </div>

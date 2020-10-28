@@ -32,10 +32,12 @@ const SavedPage = ({ fetchSaved, deleteSaved, setModal, saved: { loading, fetche
 
     return loading ? <LgSpinner /> : (
         <article>
-            {!loading && !isEmpty(savedPosts) && <h1 id="savedPageStyles_title">SAVED POSTS</h1>}
-            <Wrapper>
-                {!loading && fetchedDbSaved && renderSavedItems()}
-            </Wrapper>
+            {!loading && !isEmpty(savedPosts) ?
+                <Wrapper styles={{ marginTop: '4rem'}}>
+                    {!loading && fetchedDbSaved && renderSavedItems()}
+                </Wrapper> :
+                <h4 id="savedPageStyles_noPostTitle">There are no saved posts</h4>
+            }
         </article >
     );
 };

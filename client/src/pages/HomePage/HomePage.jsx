@@ -43,14 +43,14 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
             </section>
             <Subscribe setModal={setModal} subscribe={subscribe} />
             <PostCategories />
-            <section id="homePageStyles_aboutWrap" style={{ borderColor: Colors.accentColor }}>
+            <section id="homePageStyles_aboutWrap">
                 <Wrapper>
-                    <div id="homePageStyles_aboutCard" style={{ backgroundColor: Colors.accentColor }}>
+                    <div id="homePageStyles_aboutCard" style={{ backgroundColor: Colors.cardBg }}>
                         <Wrapper styles={{ justifyContent: 'space-evenly' }}>
                             <img id="homePageStyles_aboutImg" alt="caitlyn" src={require('../../assets/images/aboutImages/aboutImg1.JPG')} />
                             <div id="homePageStyles_aboutPWrap">
                                 <Wrapper>
-                                    <p className="homePageStyles_pText">
+                                    <p className="homePageStyles_pText" style={{ color: Colors.cardText }}>
                                         Passionate about being the hands and feet of god and spreading the good news through writing.
                                         Just here to be a friend to all. Welcome to the Update With Cait!
                                     </p>

@@ -56,9 +56,9 @@ const SubDataPage = ({ fetchSubs, subs: { loading, subs }, deleteSub, setModal }
                 <table>
                     <thead>
                         <tr>
-                            <th style={{ backgroundColor: Colors.secondaryBgColor }}>NAME</th>
-                            <th style={{ backgroundColor: Colors.secondaryBgColor }}>EMAIL</th>
-                            <th style={{ backgroundColor: Colors.secondaryBgColor }}>DELETE</th>
+                            <th style={{ backgroundColor: Colors.cardBg, color: Colors.cardText }}>NAME</th>
+                            <th style={{ backgroundColor: Colors.cardBg, color: Colors.cardText }}>EMAIL</th>
+                            <th style={{ backgroundColor: Colors.cardBg, color: Colors.cardText }}>DELETE</th>
                         </tr>
                     </thead>
                     <tbody>

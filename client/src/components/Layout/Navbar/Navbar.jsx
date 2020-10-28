@@ -100,7 +100,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
     };
 
     return (
-        <div className="navbarStyles_nav" style={{ backgroundColor: Colors.accentColor }}>
+        <div className="navbarStyles_nav" style={{ backgroundColor: Colors.navBg }}>
             {renderNavs()}
         </div>
     );

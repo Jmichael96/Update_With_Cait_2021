@@ -25,23 +25,23 @@ const PostCategories = ({ history }) => {
     return (
         <section id="postCategoriesStyles_root">
             <div id="postCategoriesStyles_relativeBg" style={{ backgroundColor: Colors.accentColor }}>
-                <div className="postCategoriesStyles_outerCard" onClick={redirectLifestyle}>
+                <div className="postCategoriesStyles_outerCard" onClick={redirectLifestyle} style={{ backgroundColor: Colors.cardBg }}>
                     <main className="postCategoriesStyles_card">
 
                     </main>
-                    <h5 className="postCategoriesStyles_labelText">lifestyle</h5>
+                    <h5 className="postCategoriesStyles_labelText" style={{ color: Colors.cardText }}>lifestyle</h5>
                 </div>
-                <div className="postCategoriesStyles_outerCard" onClick={redirectDevotional}>
+                <div className="postCategoriesStyles_outerCard" onClick={redirectDevotional} style={{ backgroundColor: Colors.cardBg }}>
                     <main className="postCategoriesStyles_card">
 
                     </main>
-                    <h5 className="postCategoriesStyles_labelText">devotional</h5>
+                    <h5 className="postCategoriesStyles_labelText" style={{ color: Colors.cardText }}>devotional</h5>
                 </div>
-                <div className="postCategoriesStyles_outerCard" onClick={redirectGraphics}>
+                <div className="postCategoriesStyles_outerCard" onClick={redirectGraphics} style={{ backgroundColor: Colors.cardBg }}>
                     <main className="postCategoriesStyles_card">
 
                     </main>
-                    <h5 className="postCategoriesStyles_labelText">graphics</h5>
+                    <h5 className="postCategoriesStyles_labelText" style={{ color: Colors.cardText }}>graphics</h5>
                 </div>
             </div>
         </section>

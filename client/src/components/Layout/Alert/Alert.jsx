@@ -20,7 +20,7 @@ const Alert = ({ alerts, removeAlert }) => {
             <div id="alertStyles_root">
                 {
                     alerts.map(alert => (
-                        <div key={alert.id} className={`alert alert-${alert.alertType}`} style={{ backgroundColor: Colors.primaryBgColor }}>
+                        <div key={alert.id} className={`alert alert-${alert.alertType}`} style={{ backgroundColor: Colors.alertBg }}>
                             <div className={`alertStyles_iconWrap_${alert.alertType}`}>
                                 {alert.alertType === 'success' && <AiOutlineCheck className="iconText" />}
                                 {alert.alertType === 'error' && <VscError className="iconText" />}
@@ -28,11 +28,11 @@ const Alert = ({ alerts, removeAlert }) => {
                             </div>
                             <div className="alertStyles_bodyWrap">
                                 <div className="alertStyles_msgWrap">
-                                    <a href="#!" className="alertStyles_alertMsg">
+                                    <a href="#!" className="alertStyles_alertMsg" style={{ color: Colors.alertText }}>
                                         {alert.msg}
                                     </a>
                                 </div>
-                                <a onClick={() => { removeAlertHandler(alert.id) }} href="#!" className="alertStyles_closeAlert" data-dismiss="alert" aria-hidden="true">x</a>
+                                <a onClick={() => { removeAlertHandler(alert.id) }} style={{ color: Colors.alertText }} href="#!" className="alertStyles_closeAlert" data-dismiss="alert" aria-hidden="true">x</a>
                             </div>
                         </div>
                     ))

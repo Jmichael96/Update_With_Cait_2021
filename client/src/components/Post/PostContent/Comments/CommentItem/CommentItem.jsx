@@ -24,15 +24,15 @@ const CommentItem = ({ comment: { _id, name, text, date }, deleteComment, postId
     };
 
     return (
-        <section className="commentItemStyles_commentCard" style={{ backgroundColor: Colors.accentColor }} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
+        <section className="commentItemStyles_commentCard" style={{ backgroundColor: Colors.cardBg }} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
             <div className="commentItemStyles_commentNameWrap">
-                <h6>{name}</h6>
+                <h6 style={{ color: Colors.cardText }}>{name}</h6>
             </div>
             <div className="commentItemStyles_commentTextWrap">
-                <p>{text}</p>
+                <p style={{ color: Colors.cardText }}>{text}</p>
             </div>
             <div className="commentItemStyles_commentDateWrap">
-                <p>{new Date(date).toLocaleString()}</p>
+                <p style={{ color: Colors.cardDate }}>{new Date(date).toLocaleString()}</p>
             </div>
             {!loading && isAuthenticated &&
                 <div className="commentItemStyles_deleteCommentWrap" style={{ display: !mouseVisible ? 'none' : 'block' }}>
