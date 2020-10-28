@@ -68,7 +68,7 @@ const AboutPage = () => {
                 </Wrapper>}
             <h2 id="aboutPageStyles_title">About Cait And The Update</h2>
             <Wrapper>
-                <section id="aboutPageStyles_contentWrap" style={{ backgroundColor: Colors.accentColor }}>
+                <section id="aboutPageStyles_contentWrap" style={{ backgroundColor: Colors.cardBg, color: Colors.cardText }}>
                     <p className="aboutPageStyles_aboutText">As some of you may know,
                     this is the third Update With Cait blog.
                     The journey originally started about a decade ago on Blogspot where

@@ -86,9 +86,9 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                 <div id="navbarStyles_desktopLinkWrap">
                     {!loading && !isAuth ? guestLinks : authLinks}
                     <div className="navbarStyles_socialIconWrap">
-                        <AiFillFacebook className="navbarStyles_socialIcon" />
-                        <AiFillInstagram className="navbarStyles_socialIcon" />
-                        <AiFillLinkedin className="navbarStyles_socialIcon" />
+                        <a href="https://facebook.com" target="_blank"><AiFillFacebook className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                        <a href="https://instagram.com" target="_blank"><AiFillInstagram className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                        <a href="https://linkedin.com" target="_blank"><AiFillLinkedin className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                     </div>
                 </div>
             )

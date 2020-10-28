@@ -66,9 +66,9 @@ const MobileNav = ({ logout, isAuthenticated, authLoading, user }) => {
         <div id="mobilNavStyles_root">
             <div id="mobileNavStyles_navBtnWrap">
                 <div className="mobileNavStyles__socialIconWrap">
-                    <AiFillFacebook className="mobileNavStyles_socialIcon" />
-                    <AiFillInstagram className="mobileNavStyles_socialIcon" />
-                    <AiFillLinkedin className="mobileNavStyles_socialIcon" />
+                    <a href="https://facebook.com" target="_blank"><AiFillFacebook className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                    <a href="https://instagram.com" target="_blank"><AiFillInstagram className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                    <a href="https://linkedin.com" target="_blank"><AiFillLinkedin className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                 </div>
                 <a id="mobileNavStyles_menuBtn" className={`${!navToggle ? '' : 'active'}`} onClick={() => { toggleNavIcon(); menuHandler() }} href="#"><span></span></a>
             </div>

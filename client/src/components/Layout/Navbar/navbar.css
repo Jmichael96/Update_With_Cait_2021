@@ -14,11 +14,13 @@
     display: flex;
     align-items: center;
 }
+
 /* icon links */
 
 .navbarStyles_socialIcon {
-    font-size: 1.5rem;
-    margin: .7rem .3rem 0 .3rem;
+    font-size: 1.7rem;
+    margin: .8rem .3rem 0 .3rem;
+    cursor: pointer;
 }
 
 /* nav link buttons */

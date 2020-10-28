@@ -163,7 +163,7 @@ EditPost.propTypes = {
     setModal: PropTypes.func.isRequired,
     updatePost: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
-    loading: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
 };
 
 const modules = {

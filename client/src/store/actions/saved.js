@@ -168,7 +168,7 @@ export const publishSavedPostSuccess = (savedId, history, formData) => (dispatch
             'Content-Type': 'application/json'
         }
     };
-    console.log(savedId, formData);
+
     axios.post('/api/save/publish_saved_post', { savedId, formData }, config)
         .then((res) => {
             // this is for unsaving a post and removing it from the saved reducer
@@ -182,6 +182,7 @@ export const publishSavedPostSuccess = (savedId, history, formData) => (dispatch
                 payload: res.data.newPost
             });
             dispatch(setAlert(res.data.serverMsg, 'success'));
+            history.push(`/post_content/${res.data.newPost._id}`);
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
