@@ -19,7 +19,7 @@ const SavedPage = ({ fetchSaved, deleteSaved, setModal, saved: { loading, fetche
         if (!fetchedDbSaved) {
             fetchSaved();
         }
-    }, [fetchSaved]);
+    }, [fetchSaved, fetchedDbSaved]);
 
     // render the saved items
     const renderSavedItems = () => {

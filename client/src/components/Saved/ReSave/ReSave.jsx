@@ -30,9 +30,6 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
     // extracting data from formData obj
     const { titleData, categoryData, summaryData } = formData;
 
-    // extracting the post state data with the useSelector method
-    const postData = useSelector((state) => state.post);
-
     useEffect(() => {
         if (!loading) {
             setFormData({
@@ -66,7 +63,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         } catch (err) {
 
         }
-    });
+    }, [titleData, categoryData, summaryData, coverImageData, contentData, setModal, publishSavedPost]);
 
     const resavePostHandler = useCallback(async (e) => {
         e.preventDefault();
@@ -93,7 +90,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         } catch (err) {
             throw err;
         }
-    });
+    }, [titleData, categoryData, summaryData, coverImageData, contentData, setModal, resavePost]);
 
     return (
         <article id="resaveStyles_root">

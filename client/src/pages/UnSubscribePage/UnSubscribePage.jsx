@@ -47,7 +47,7 @@ const UnSubscribePage = ({ sub: { loading }, unSubscribe, setModal }) => {
         console.log(email);
         await unSubscribe(email);
         resetInput();
-    }, [unSubscribe, email]);
+    }, [unSubscribe, email, setModal]);
 
     // empty input email
     const resetInput = () => {

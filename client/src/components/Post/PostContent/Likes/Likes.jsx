@@ -8,9 +8,6 @@ import './likes.css';
 // components
 import Button from '../../../Button/Button';
 
-// utils
-import isEmpty from '../../../../utils/isEmpty';
-
 const Likes = ({ likePost, unlikePost, post: { _id, like_number }, loading }) => {
     // to distinguish when a post is liked or unlikthe user and when to call each function
     const [isLiked, setIsLiked] = useState(false);

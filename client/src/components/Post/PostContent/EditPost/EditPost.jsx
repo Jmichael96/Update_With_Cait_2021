@@ -41,7 +41,7 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
             setCoverImageData(isEmpty(coverImage) ? '' : coverImage);
             setContentData(isEmpty(content) ? '' : content);
         }
-    }, [post, displayModal]);
+    }, [post, displayModal, loading]);
 
     // on change handler 
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -70,7 +70,7 @@ const EditPost = ({ post, loading, setModal, updatePost }) => {
         } catch (err) {
 
         }
-    }, [post, titleData, categoryData, summaryData, coverImageData, contentData]);
+    }, [post, titleData, categoryData, summaryData, coverImageData, contentData, setModal, updatePost]);
 
     const renderForm = () => {
         return (

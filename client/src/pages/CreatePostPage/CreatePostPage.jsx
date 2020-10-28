@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { createPost } from '../../store/actions/post';
 import { connect } from 'react-redux';

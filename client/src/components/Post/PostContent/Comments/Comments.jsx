@@ -26,7 +26,7 @@ const Comments = ({ addComment, comments, auth, loading, postId, deleteComment }
         } else if (!isEmpty(comments) && Object.keys(comments).length <= 4) {
             setReachedLimit(true);
         }
-    }, []);
+    }, [comments]);
 
     // load more posts function to render more posts to view
     const loadMore = () => {

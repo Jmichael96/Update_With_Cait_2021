@@ -17,10 +17,8 @@ const SavedPostContentPage = ({ fetchSavedPost, resavePost, publishSavedPost, se
     // getting the param id
     let { id } = useParams();
     useEffect(() => {
-        // if (isEmpty(savedPost)) {
         fetchSavedPost(id);
-        // }
-    }, [fetchSavedPost]);
+    }, [fetchSavedPost, id]);
 
     // render the re save component
     const renderResave = () => {

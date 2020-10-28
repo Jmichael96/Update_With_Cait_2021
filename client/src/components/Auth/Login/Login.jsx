@@ -34,7 +34,7 @@ const Login = ({ login, setModal, auth: { isAuthenticated, loading }, history })
         if (isAuthenticated) {
             history.push('/');
         }
-    }, [isAuthenticated]);
+    }, [isAuthenticated, history]);
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 

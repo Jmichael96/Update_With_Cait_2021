@@ -26,7 +26,7 @@ const WellnessPage = ({ fetchWellness, post: { loading, fetchedDbWellness, welln
         if (!fetchedDbWellness) {
             fetchWellness();
         }
-    }, [fetchWellness]);
+    }, [fetchWellness, fetchedDbWellness]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
     useEffect(() => {

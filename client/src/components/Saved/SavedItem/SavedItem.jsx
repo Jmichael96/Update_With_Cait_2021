@@ -38,7 +38,7 @@ const SavedItem = ({ deleteSaved, setModal, post: { _id, title, category, date }
             <div className="savedItemStyles_innerWrap">
                 {category && <section className="savedItemStyles_categoryWrap">
                     <AiFillTag className="savedItemStyles_categoryIcon" />
-                    <a className="savedItemStyles_category">{category.toUpperCase()}</a>
+                    <a className="savedItemStyles_category" href="#!" style={{ color: Colors.cardText}}>{category.toUpperCase()}</a>
                 </section>
                 }
                 {title && <h4 className="savedItemStyles_title">{title}</h4>}

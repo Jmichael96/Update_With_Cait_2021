@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchRecentPosts } from '../../store/actions/post';
@@ -26,7 +26,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
         if (!auth.loading && auth.isAuthenticated) {
             return (
                 <div id="homePageStyles_hitCounterWrap">
-                    <a href="https://www.hitwebcounter.com" target="_blank">
+                    <a href="https://www.hitwebcounter.com" rel="noopener noreferrer" target="_blank">
                         <img src="https://hitwebcounter.com/counter/counter.php?page=7696640&style=0010&nbdigits=5&type=page&initCount=0" title="Total Website Hits" alt="Web Hits" border="0" /></a>
                 </div>
             )
@@ -36,10 +36,10 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
         <article id="homePageStyles_root">
             <section id="homePageStyles_introImageWrap">
                 <div id="homePageStyles_introInnerWrap">
-                    <img className="homePageStyles_underlayImgLeft" src={require('../../assets/images/widemountain2.jpg')} />
-                    <img className="homePageStyles_underlayImgRight" src={require('../../assets/images/widemountain1.jpg')} />
+                    <img className="homePageStyles_underlayImgLeft" alt="" src={require('../../assets/images/widemountain2.jpg')} />
+                    <img className="homePageStyles_underlayImgRight" alt="" src={require('../../assets/images/widemountain1.jpg')} />
                 </div>
-                <img id="homePageStyles_mainImg" src={require('../../assets/images/cait2.JPG')} />
+                <img id="homePageStyles_mainImg" alt="" src={require('../../assets/images/cait2.JPG')} />
             </section>
             <Subscribe setModal={setModal} subscribe={subscribe} />
             <PostCategories />

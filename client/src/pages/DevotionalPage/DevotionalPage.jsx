@@ -26,7 +26,7 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, fetchedDbDevotional,
         if (!fetchedDbDevotional) {
             fetchDevotional();
         }
-    }, [fetchDevotional]);
+    }, [fetchDevotional, fetchedDbDevotional]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
     useEffect(() => {

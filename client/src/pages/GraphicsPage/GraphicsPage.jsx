@@ -26,7 +26,7 @@ const GraphicsPage = ({ fetchGraphics, post: { loading, fetchedDbGraphics, graph
         if (!fetchedDbGraphics) {
             fetchGraphics();
         }
-    }, [fetchGraphics]);
+    }, [fetchGraphics, fetchedDbGraphics]);
 
     // seeing if the amount of posts to load is greater or less than the limit component state
     useEffect(() => {
