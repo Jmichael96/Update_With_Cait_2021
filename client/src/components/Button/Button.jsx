@@ -8,7 +8,7 @@ import Colors from '../../utils/constants/Colors';
 
 const Button = (props) => {
     return (
-        <a className="buttonStyles_btn push" {...props} style={{ backgroundColor: !props.isdelete ? Colors.buttonBg : '#8f0303' }}>{props.children}</a>
+        <button className="buttonStyles_btn push" {...props} style={{ backgroundColor: !props.isdelete ? Colors.buttonBg : '#8f0303', border: Colors.buttonBg, color: Colors.buttonText }}>{props.children}</button>
     );
 };
 

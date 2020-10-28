@@ -7,7 +7,7 @@ function Wrapper(props) {
 const styles = {
   height: '100%',
   display: 'flex',
-  justifyContent: 'space-around',
+  justifyContent: 'center',
   flexFlow: 'row wrap',
   alignContent: 'center',
   alignItems: 'center'

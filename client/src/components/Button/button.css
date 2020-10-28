@@ -3,9 +3,9 @@
     padding: .5rem .8rem;
     cursor: pointer;
     text-decoration: none;
-    color: #fff;
     border-radius: 3px;
     font-size: 1.2rem;
+    border-radius: 3px;
 }
 
 .push {

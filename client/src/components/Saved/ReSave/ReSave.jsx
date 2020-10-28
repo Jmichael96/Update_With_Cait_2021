@@ -46,16 +46,6 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         }
     }, [loading, title, category, summary, coverImage, content]);
 
-    // extracting data from the postData state obj
-    const postLoading = postData.postLoading;
-    const post = postData.post;
-    // checking if a post is submitted to the post state then will be redirected
-    // useEffect(() => {
-    //     if (!postLoading && !loading && !isEmpty(post)) {
-    //         // history.push(`/post_content/${post._id}`);
-    //     }
-    // }, [postLoading, post]);
-
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
