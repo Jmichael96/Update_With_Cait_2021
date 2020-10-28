@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import { AiOutlineDownload, AiFillCheckCircle } from 'react-icons/ai';
 
 // styles
@@ -63,7 +62,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         } catch (err) {
 
         }
-    }, [titleData, categoryData, summaryData, coverImageData, contentData, setModal, publishSavedPost]);
+    }, [titleData, categoryData, summaryData, coverImageData, contentData, setModal, publishSavedPost, _id, history]);
 
     const resavePostHandler = useCallback(async (e) => {
         e.preventDefault();
@@ -90,7 +89,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
         } catch (err) {
             throw err;
         }
-    }, [titleData, categoryData, summaryData, coverImageData, contentData, setModal, resavePost]);
+    }, [title, category, summary, coverImage, content, _id, titleData, categoryData, summaryData, coverImageData, contentData, setModal, resavePost, history]);
 
     return (
         <article id="resaveStyles_root">

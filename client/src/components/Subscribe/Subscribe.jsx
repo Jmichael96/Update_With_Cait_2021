@@ -47,7 +47,7 @@ const Subscribe = ({ setModal, subscribe }) => {
         }
         await subscribe(name, email);
         resetForm();
-    }, [name, email, subscribe]);
+    }, [name, email, subscribe, setModal]);
 
     // reset the form
     const resetForm = () => {

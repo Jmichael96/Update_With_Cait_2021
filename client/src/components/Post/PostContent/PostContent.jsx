@@ -74,7 +74,7 @@ const PostContent = ({ updatePost, loading, post, auth, setModal, deletePost, hi
         if (!loading && isEmpty(post)) {
             return null;
         }
-        if (!loading && post.like_number === null || post.like_number === 0) {
+        if (!loading && post.like_number <= 0) {
             return 0;
         }
         if (!loading && post.like_number >= 1) {

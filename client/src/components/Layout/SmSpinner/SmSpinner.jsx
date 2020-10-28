@@ -5,7 +5,7 @@ import SyncLoader from 'react-spinners/SyncLoader';
 // utils
 import Colors from '../../../utils/constants/Colors'
 
-const SmSpinner = ({ }) => {
+const SmSpinner = () => {
     const styles = {
     };
 

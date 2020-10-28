@@ -47,7 +47,7 @@ const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal,
         } catch (err) {
 
         }
-    }, [createPost, title, summary, category, coverImage, content]);
+    }, [createPost, title, summary, category, coverImage, content, setModal, history]);
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -71,7 +71,7 @@ const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal,
         } catch (err) {
 
         }
-    }, [savePost, title, summary, category, coverImage, content]);
+    }, [savePost, title, summary, category, coverImage, content, setModal]);
 
     return (
         <section id="createPostStyles_root">
