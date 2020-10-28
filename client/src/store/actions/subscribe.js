@@ -85,7 +85,12 @@ export const fetchSubsSuccess = () => (dispatch) => {
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'error'));
+                if (err.response.status === 404) {
+                    dispatch(setAlert(error, 'warning'));
+                }
+                else {
+                    dispatch(setAlert(error, 'error'));
+                }
             }
             dispatch({
                 type: types.FETCH_SUBS_FAIL,

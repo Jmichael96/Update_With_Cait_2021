@@ -48,12 +48,17 @@ export const fetchSavedSuccess = () => (dispatch) => {
             dispatch({
                 type: types.FETCH_SAVED_SUCCESS,
                 payload: res.data.savedPosts
-            })
+            });
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
             if (error) {
-                dispatch(setAlert(error, 'warning'));
+                if (err.response.status === 404) {
+                    dispatch(setAlert(error, 'warning'));
+                }
+                else {
+                    dispatch(setAlert(error, 'error'));
+                }
             }
             dispatch({
                 type: types.FETCH_SAVED_FAIL,

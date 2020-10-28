@@ -21,10 +21,8 @@ import isEmpty from '../../utils/isEmpty';
 const SubDataPage = ({ fetchSubs, subs: { loading, subs }, deleteSub, setModal }) => {
 
     useEffect(() => {
-        if (!loading && isEmpty(subs)) {
-            fetchSubs();
-        }
-    }, [subs, loading, fetchSubs]);
+        fetchSubs();
+    }, [fetchSubs]);
 
     // delete handler
     const onDeleteHandler = (id) => {
