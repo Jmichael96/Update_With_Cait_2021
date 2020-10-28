@@ -7,6 +7,9 @@
     font-size: 1.2rem;
     border-radius: 3px;
 }
+.buttonStyles_btn:focus {
+    outline: none;
+}
 
 .push {
     display: inline-flex;

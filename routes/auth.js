@@ -9,7 +9,7 @@ router.post('/register', AuthController.register);
 
 // @route    GET api/auth/load_user
 // @desc     Load user
-// @access   Public
+// @access   Private
 router.get('/load_user', isAuth, AuthController.loadUser);
 
 // @route    POST api/auth/login

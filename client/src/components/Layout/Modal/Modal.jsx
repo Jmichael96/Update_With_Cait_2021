@@ -47,7 +47,7 @@ const Modal = () => {
                 <div id="modalContent">
                     {renderContent()}
                 </div>
-                <Wrapper styles={{ padding: '1rem' }}>
+                <Wrapper styles={{ padding: '1rem', justifyContent: 'space-evenly' }}>
                     {modalType === 'confirm' ? <Button style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={() => { dispatch(removeModal()) }}>CANCEL</Button> : ''}
                     {modalActionText && <Button style={{ backgroundColor: Colors.secondaryBgColor, borderColor: Colors.secondaryBgColor }} onClick={actionHandler}>{modalActionText.toUpperCase()}</Button>}
                 </Wrapper>

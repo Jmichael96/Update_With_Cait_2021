@@ -218,7 +218,6 @@ export const updatePostSuccess = (id, formData) => (dispatch) => {
                     post: res.data.post
                 }
             });
-            console.log(res.data);
             dispatch(setAlert(res.data.serverMsg, 'success'));
         })
         .catch((err) => {

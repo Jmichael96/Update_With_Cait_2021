@@ -41,16 +41,16 @@ exports.register = (req, res, next) => {
 
 // @route    GET api/auth/load_user
 // @desc     Load user
-// @access   Public
+// @access   Private
 exports.loadUser = (req, res, next) => {
     User.findById(req.user._id).select('-password')
         .then((user) => {
             if (!user) {
-                console.log('No user to load');
-                return;
+                return res.status(404).json({
+                    serverMsg: 'There is no user authorized'
+                });
             }
             return res.status(200).json(user);
-
         })
         .catch((err) => {
             console.log(err);

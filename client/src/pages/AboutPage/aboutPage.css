@@ -16,8 +16,8 @@
 
 .aboutPageStyles_pRoidWrap {
     position: relative;
-    width: 14rem;
-    height: 16rem;
+    width: 12rem;
+    height: 18rem;
     background-color: transparent;
     margin: 2rem 1rem;
 }
@@ -84,10 +84,10 @@
 .aboutPageStyles_innerImg {
     position: absolute;
     display: block;
-    width: 12.25rem;
+    width: 10.75rem;
     top: 14px;
-    left: 15px;
-    height: 12rem;
+    left: 10px;
+    height: 13.5rem;
 }
 
 /* thumbtack image */
@@ -127,9 +127,9 @@
 @media only screen and (max-width: 1024px) {
     .aboutPageStyles_pRoidWrap:nth-child(odd) {
         -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(-0deg);
-    -o-transform: rotate(-0deg);
-    -ms-transform: rotate(-0deg);
-    transform: rotate(-0deg);
+        -moz-transform: rotate(-0deg);
+        -o-transform: rotate(-0deg);
+        -ms-transform: rotate(-0deg);
+        transform: rotate(-0deg);
     }
 }

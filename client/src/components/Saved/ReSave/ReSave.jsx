@@ -151,7 +151,7 @@ const ReSave = ({ resavePost, publishSavedPost, loading, setModal, savedPost: { 
                         onChange={(e) => setContentData(e)}
                     />
                 </Wrapper>
-                <Wrapper>
+                <Wrapper styles={{ justifyContent: 'space-evenly' }}>
                     <Button onClick={(e) => resavePostHandler(e)}>{!loading ? <span>RE-SAVE <AiOutlineDownload className="resaveStyles_icon" /></span> : <SmSpinner />}</Button>
                     <Button type="submit" onClick={(e) => { publishPostHandler(e) }} id="resaveStyles_publishBtn">{!loading ? <span>PUBLISH <AiFillCheckCircle className="resaveStyles_icon" /></span> : <SmSpinner />}</Button>
                 </Wrapper>
@@ -175,15 +175,14 @@ const modules = {
         ['link', 'image'],
         [{ 'header': 1 }, { 'header': 2 }],               // custom button values
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+        // superscript/subscript
         [{ 'direction': 'rtl' }],                         // text direction
         [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
         [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
         [{ 'font': [] }],
         [{ 'align': [] }],
-        ['clean']
+        ['clean'],
     ],
 };
 const formats = [

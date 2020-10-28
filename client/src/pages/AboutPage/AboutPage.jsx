@@ -47,7 +47,7 @@ const AboutPage = () => {
                     </div>
                     <div className="aboutPageStyles_pRoidWrap">
                         <img alt="polaroid" className="aboutPageStyles_polaroidImg" src={require('../../assets/images/polaroid.png')} />
-                        <img alt="poloroid" className="aboutPageStyles_innerImg" src={require('../../assets/images/footerImages/footerImg2.JPG')} />
+                        <img alt="poloroid" className="aboutPageStyles_innerImg" src={require('../../assets/images/footerImages/footerImg1.JPG')} />
                         <img alt="thumbtack" className="aboutPageStyles_thumbtack" src={require('../../assets/images/thumbtack.png')} />
                     </div>
                     <div className="aboutPageStyles_pRoidWrap">
@@ -62,7 +62,7 @@ const AboutPage = () => {
                     </div>
                     <div className="aboutPageStyles_pRoidWrap">
                         <img alt="polaroid" className="aboutPageStyles_polaroidImg" src={require('../../assets/images/polaroid.png')} />
-                        <img alt="poloroid" className="aboutPageStyles_innerImg" src={require('../../assets/images/aboutImages/aboutImg1.JPG')} />
+                        <img alt="poloroid" className="aboutPageStyles_innerImg" src={require('../../assets/images/footerImages/footerImg4.JPG')} />
                         <img alt="thumbtack" className="aboutPageStyles_thumbtack" src={require('../../assets/images/thumbtack.png')} />
                     </div>
                 </Wrapper>}

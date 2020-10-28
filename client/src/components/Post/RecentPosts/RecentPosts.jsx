@@ -40,7 +40,7 @@ const RecentPosts = ({ fetchRecentPosts, loading, fetchedRecentPosts, recentPost
         <section id="recentPostsStyles_root" style={{ backgroundColor: Colors.accentColor }}>
             <div>
                 {!loading && fetchedRecentPosts && <h3 id="recentPostStyles_title">In Case You Missed It</h3>}
-                <Wrapper>
+                <Wrapper styles={{ justifyContent: 'space-evenly'}}>
                     {!loading ? renderRecentPosts() : <div id="recentPostsStyles_spinnerWrap"><LgSpinner /></div>}
                 </Wrapper>
             </div>

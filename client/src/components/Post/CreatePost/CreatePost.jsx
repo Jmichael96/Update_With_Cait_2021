@@ -53,7 +53,8 @@ const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal,
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     // save post handler
-    const savePostHandler = useCallback(async () => {
+    const savePostHandler = useCallback(async (e) => {
+        e.preventDefault();
         // make sure there is data in at least one field
         if (!title && !summary && !category && !coverImage && !content) {
             setModal('error', 'save error', 'You must have at least one input field filled out in order to save your post', 'okay', () => { });
@@ -134,8 +135,8 @@ const CreatePost = ({ createPost, postLoading, savedLoading, savePost, setModal,
                         onChange={(e) => setContent(e)}
                     />
                 </Wrapper>
-                <Wrapper>
-                    <Button id="createPostStyles_saveBtn" onClick={savePostHandler}>{!savedLoading ? <span>SAVE <AiOutlineDownload className="createPostStyles_btnIcon" /></span> : <SmSpinner />}</Button>
+                <Wrapper styles={{ justifyContent: 'space-evenly' }}>
+                    <Button id="createPostStyles_saveBtn" onClick={(e) => { savePostHandler(e) }}>{!savedLoading ? <span>SAVE <AiOutlineDownload className="createPostStyles_btnIcon" /></span> : <SmSpinner />}</Button>
                     <Button onClick={(e) => { submitPostHandler(e) }} id="createPostStyles_submitBtn">{!postLoading ? <span>POST <AiFillCheckCircle className="createPostStyles_btnIcon" /></span> : <SmSpinner />}</Button>
                 </Wrapper>
             </form>
@@ -161,15 +162,14 @@ const modules = {
         ['link', 'image'],
         [{ 'header': 1 }, { 'header': 2 }],               // custom button values
         [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-        [{ 'script': 'sub' }, { 'script': 'super' }],      // superscript/subscript
+        // superscript/subscript
         [{ 'direction': 'rtl' }],                         // text direction
         [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
         [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
         [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
         [{ 'font': [] }],
         [{ 'align': [] }],
-        ['clean']
+        ['clean'],
     ],
 };
 const formats = [

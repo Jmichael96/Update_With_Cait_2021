@@ -13,7 +13,7 @@ module.exports = async function (req, res, next) {
   try {
     jwt.verify(token, process.env.SECRET, (error, decoded) => {
       if (error) {
-        res.status(401).json({ serverMsg: 'Token is not valid' });
+        return res.status(401).json({ serverMsg: 'Token is not valid' });
       }
       else {
         req.user = decoded.user;
