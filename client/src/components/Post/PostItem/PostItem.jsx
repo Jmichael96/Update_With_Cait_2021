@@ -38,16 +38,6 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
         }
     };
 
-    // render the summary with the appropriate trimmed length
-    const renderSummary = () => {
-        if (!isEmpty(summary)) {
-            if (summary.length > 140) {
-                let str = summary.slice(0, 140);
-                return <p className="postItemStyles_summary" style={{ color: Colors.cardText }}>{str + '...'}</p>
-            }
-            return <p className="postItemStyles_summary" style={{ color: Colors.cardText }}>{summary}</p>
-        }
-    };
     return (
         <article className="postItemStyles_card" onClick={redirectHandler} style={{ backgroundColor: Colors.cardBg }}>
             <Wrapper>
@@ -63,7 +53,7 @@ const PostItem = ({ post: { _id, title, coverImage, summary, date, category, lik
                             <Moment format="MMMM DD, YYYY">{!isEmpty(date) && date.toUpperCase()}</Moment>
                         </p>
                         <div style={{ borderColor: Colors.accentColor }} className="postItemStyles_divider"></div>
-                        {renderSummary()}
+                        {!isEmpty(summary) && <p className="postItemStyles_summary" style={{ color: Colors.cardText }}>{summary}</p>}
                         <Wrapper styles={{ justifyContent: 'space-between' }}>
                             <div className="postItemStyles_iconWrap" style={{ color: Colors.cardText }}>
                                 <FaHeart className="postItemStyles_icon" />
