@@ -71,7 +71,7 @@ const GraphicsPage = ({ fetchGraphics, post: { loading, fetchedDbGraphics, graph
     };
 
     return loading ? <LgSpinner /> : (
-        <section>
+        <section id="graphicsPageStyles_root">
             <Wrapper>
                 {!loading && fetchedDbGraphics && renderPosts()}
             </Wrapper>

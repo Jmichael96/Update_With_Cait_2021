@@ -71,7 +71,7 @@ const LifestylePage = ({ fetchLifestyle, post: { loading, fetchedDbLifestyle, li
     };
 
     return loading ? <LgSpinner /> : (
-        <section style={{ marginTop: '2rem' }}>
+        <section id="lifestylePageStyles_root">
             <Wrapper>
                 {!loading && fetchedDbLifestyle && renderPosts()}
             </Wrapper>

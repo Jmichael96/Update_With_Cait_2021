@@ -1,3 +1,7 @@
+/* root element for component */
+#lifestylePageStyles_root {
+    margin-top: 2rem;
+}
 /* button for rendering more posts */
 
 .lifestylePageStyles_loadMoreBtn {

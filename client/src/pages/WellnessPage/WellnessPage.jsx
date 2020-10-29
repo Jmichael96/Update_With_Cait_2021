@@ -71,9 +71,11 @@ const WellnessPage = ({ fetchWellness, post: { loading, fetchedDbWellness, welln
     };
 
     return loading ? <LgSpinner /> : (
-        <section>
+        <section id="wellnessPageStyles_root">
             <Wrapper>
                 {!loading && fetchedDbWellness && renderPosts()}
+            </Wrapper>
+            <Wrapper>
                 {renderLoadMoreBtn()}
             </Wrapper>
         </section>

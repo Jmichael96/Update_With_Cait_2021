@@ -72,7 +72,7 @@ const DevotionalPage = ({ fetchDevotional, post: { loading, fetchedDbDevotional,
 
 
     return loading ? <LgSpinner /> : (
-        <section>
+        <section id="devotionalPageStyles_root">
             <Wrapper>
                 {!loading && fetchedDbDevotional && renderPosts()}
             </Wrapper>
