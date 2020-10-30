@@ -10,17 +10,17 @@ import Button from '../../../../Button/Button';
 // utils
 import isEmpty from '../../../../../utils/isEmpty';
 
-const AddComment = ({ addComment, loading, postId }) => {
+const AddComment = ({ addComment, postId }) => {
     const [formData, setFormData] = useState({
-        name: '',
-        text: ''
+        authorName: '',
+        content: ''
     });
     // setting modal 
     const [displayModal, setDisplayModal] = useState(false);
     // render an error message with this state
     const [formError, setFormError] = useState();
     // extracting contents from form data
-    const { name, text } = formData;
+    const { authorName, content } = formData;
 
     // on change handler
     const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,8 +28,8 @@ const AddComment = ({ addComment, loading, postId }) => {
     const renderForm = () => {
         return (
             <form id="addCommentStyles_form">
-                <input className="addCommentStyles_inputs" name="name" placeholder="Your Name" value={name} onChange={(e) => onChangeHandler(e)} />
-                <textarea className="addCommentStyles_inputs" name="text" rows="4" placeholder="Type a comment..." value={text} onChange={(e) => onChangeHandler(e)}></textarea>
+                <input className="addCommentStyles_inputs" name="authorName" placeholder="Your Name" value={authorName} onChange={(e) => onChangeHandler(e)} />
+                <textarea className="addCommentStyles_inputs" name="content" rows="4" placeholder="Type a comment..." value={content} onChange={(e) => onChangeHandler(e)}></textarea>
             </form>
         );
     };
@@ -40,32 +40,32 @@ const AddComment = ({ addComment, loading, postId }) => {
         // setting the form error to null
         setFormError();
 
-        if (isEmpty(name) && isEmpty(text)) {
+        if (isEmpty(authorName) && isEmpty(content)) {
             setFormError('Please add a name and message');
             return;
         }
-        if (isEmpty(name)) {
+        if (isEmpty(authorName)) {
             setFormError('Please submit a name');
             return;
         }
-        if (isEmpty(text)) {
+        if (isEmpty(content)) {
             setFormError('Please enter a message');
             return;
         }
         let formData = {
-            name,
-            text
+            authorName,
+            content
         };
         await addComment(postId, formData);
         resetHandler();
         setDisplayModal(false);
-    }, [addComment, name, text, postId]);
+    }, [addComment, authorName, content, postId]);
 
     // reset form
     const resetHandler = () => {
         setFormData({
-            name: '',
-            text: ''
+            authorName: '',
+            content: ''
         });
     }
     return (

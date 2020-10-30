@@ -10,7 +10,7 @@ import DeleteComment from '../DeleteComment/DeleteComment';
 // utils 
 import Colors from '../../../../../utils/constants/Colors';
 
-const CommentItem = ({ comment: { _id, name, text, date }, deleteComment, postId, auth: { loading, isAuthenticated } }) => {
+const CommentItem = ({ comment: { _id, authorName, content, date }, deleteComment, postId, auth: { loading, isAuthenticated } }) => {
     // using for mouse enter and mouse leave in the delete comment icon
     const [mouseVisible, setMouseVisible] = useState(false);
 
@@ -26,10 +26,10 @@ const CommentItem = ({ comment: { _id, name, text, date }, deleteComment, postId
     return (
         <section className="commentItemStyles_commentCard" style={{ backgroundColor: Colors.cardBg }} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
             <div className="commentItemStyles_commentNameWrap">
-                <h6 style={{ color: Colors.cardText }}>{name}</h6>
+                <h6 style={{ color: Colors.cardText }}>{authorName}</h6>
             </div>
             <div className="commentItemStyles_commentTextWrap">
-                <p style={{ color: Colors.cardText }}>{text}</p>
+                <p style={{ color: Colors.cardText }}>{content}</p>
             </div>
             <div className="commentItemStyles_commentDateWrap">
                 <p style={{ color: Colors.cardDate }}>{new Date(date).toLocaleString()}</p>

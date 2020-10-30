@@ -268,7 +268,7 @@ exports.deletePost = (req, res, next) => {
 // @desc     Add a comment to a post
 // @access   Public
 exports.addComment = (req, res, next) => {
-    if (!req.body.name || !req.body.text) {
+    if (!req.body.authorName || !req.body.content) {
         return res.status(406).json({
             serverMsg: 'Please make sure to enter a name and message'
         });
@@ -278,8 +278,8 @@ exports.addComment = (req, res, next) => {
         .then((post) => {
             // creating a new object to push to comments array
             const newComment = {
-                name: req.body.name,
-                text: req.body.text
+                authorName: req.body.authorName,
+                content: req.body.content
             };
 
             // adding to the comments array
