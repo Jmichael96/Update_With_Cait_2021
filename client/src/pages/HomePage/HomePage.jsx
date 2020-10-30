@@ -64,24 +64,6 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                         </Wrapper>
                     </div>
                 </Wrapper>
-                {/* <Wrapper styles={{ justifyContent: 'space-evenly' }}>
-                    <div id="homePageStyles_aboutImgWrap" style={{ borderColor: Colors.accentColor }}>
-                        <img id="homePageStyles_aboutImg" alt="caitlyn" src={require('../../assets/images/aboutImages/aboutImg1.JPG')} />
-                    </div>
-                    <div id="homePageStyles_aboutPWrap">
-                        <Wrapper>
-                            <p className="homePageStyles_pText">
-                                Passionate about being the hands and feet of god and spreading the good news through writing.
-                                Just here to be a friend to all. Welcome to the Update With Cait!
-                        </p>
-                        </Wrapper>
-                        <Wrapper>
-                            <Link to="/about">
-                                <Button>READ MORE</Button>
-                            </Link>
-                        </Wrapper>
-                    </div>
-                </Wrapper> */}
             </section>
             <RecentPosts fetchRecentPosts={fetchRecentPosts} recentPosts={recentPosts} loading={loading} fetchedRecentPosts={fetchedRecentPosts} />
             {!loading && fetchedRecentPosts && <Footer />}
