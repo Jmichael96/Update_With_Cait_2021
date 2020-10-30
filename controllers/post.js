@@ -291,6 +291,8 @@ exports.addComment = (req, res, next) => {
             // adding to the comments array
             post.comments.unshift(newComment);
             post.save();
+            const html = `<p>${req.body.authorName} said "${req.body.content}"</p>`;
+            sendMail(`New comment on the post '${post.title}'`, process.env.EMAIL, html, false);
             return res.status(201).json({
                 serverMsg: 'Added comment successfully',
                 post: post,
