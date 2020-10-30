@@ -40,7 +40,7 @@ const MobileNav = ({ logout, isAuthenticated, authLoading, user }) => {
             <Link to="/" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">HOME</span></Link>
             <Link to="/lifestyle" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">LIFESTYLE</span></Link>
             <Link to="/devotional" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">DEVOTIONAL</span></Link>
-            <Link to="/wellness" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">WELLNESS</span></Link>
+            {/* <Link to="/wellness" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">WELLNESS</span></Link> */}
             <Link to="/graphics" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">GRAPHICS</span></Link>
             <Link to="/about" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">ABOUT</span></Link>
             <Link to="/my_subs" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">MY SUBS</span></Link>
@@ -56,7 +56,7 @@ const MobileNav = ({ logout, isAuthenticated, authLoading, user }) => {
             <Link to="/" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">HOME</span></Link>
             <Link to="/lifestyle" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">LIFESTYLE</span></Link>
             <Link to="/devotional" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">DEVOTIONAL</span></Link>
-            <Link to="/wellness" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">WELLNESS</span></Link>
+            {/* <Link to="/wellness" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">WELLNESS</span></Link> */}
             <Link to="/graphics" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">GRAPHICS</span></Link>
             <Link to="/about" className="mobileNavStyles_navLink" onClick={() => { toggleNavIcon(); menuHandler() }}><span style={{ color: Colors.navText }} className="mobileNavStyles_navSpan">ABOUT</span></Link>
         </div>

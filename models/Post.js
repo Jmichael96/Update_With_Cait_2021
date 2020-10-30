@@ -34,11 +34,9 @@ let PostSchema = new mongoose.Schema({
         {
             authorName: {
                 type: String,
-                required: true
             },
             content: {
                 type: String,
-                required: true
             },
             date: {
                 type: Date,

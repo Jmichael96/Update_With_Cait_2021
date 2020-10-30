@@ -82,8 +82,10 @@ export const fetchLifestyleSuccess = () => (dispatch) => {
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
-            if (error) {
+            if (err.response.status === 404) {
                 dispatch(setAlert(error, 'warning'));
+            } else {
+                dispatch(setAlert(error, 'error'));
             }
             dispatch({
                 type: types.FETCH_LIFESTYLE_FAIL,
@@ -108,8 +110,10 @@ export const fetchDevotionalSuccess = () => (dispatch) => {
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
-            if (error) {
+            if (err.response.status === 404) {
                 dispatch(setAlert(error, 'warning'));
+            } else {
+                dispatch(setAlert(error, 'error'));
             }
             dispatch({
                 type: types.FETCH_DEVOTIONAL_FAIL,
@@ -135,8 +139,10 @@ export const fetchWellnessSuccess = () => (dispatch) => {
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
-            if (error) {
+            if (err.response.status === 404) {
                 dispatch(setAlert(error, 'warning'));
+            } else {
+                dispatch(setAlert(error, 'error'));
             }
             dispatch({
                 type: types.FETCH_WELLNESS_FAIL,
@@ -162,8 +168,10 @@ export const fetchGraphicsSuccess = () => (dispatch) => {
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;
-            if (error) {
+            if (err.response.status === 404) {
                 dispatch(setAlert(error, 'warning'));
+            } else {
+                dispatch(setAlert(error, 'error'));
             }
             dispatch({
                 type: types.FETCH_GRAPHICS_FAIL,

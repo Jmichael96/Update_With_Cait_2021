@@ -17,7 +17,7 @@ import PostContentPage from '../../pages/PostContentPage/PostContentPage';
 import LifestylePage from '../../pages/LifestylePage/LifestylePage';
 import DevotionalPage from '../../pages/DevotionalPage/DevotionalPage';
 import GraphicsPage from '../../pages/GraphicsPage/GraphicsPage';
-import WellnessPage from '../../pages/WellnessPage/WellnessPage';
+// import WellnessPage from '../../pages/WellnessPage/WellnessPage';
 import SavedPage from '../../pages/SavedPage/SavedPage';
 import SavedPostContentPage from '../../pages/SavedPostContentPage/SavedPostContentPage';
 import AboutPage from '../../pages/AboutPage/AboutPage';
@@ -43,7 +43,7 @@ const Routes = () => {
                 <Route exact path="/lifestyle" component={LifestylePage} />
                 <Route exact path="/devotional" component={DevotionalPage} />
                 <Route exact path="/graphics" component={GraphicsPage} />
-                <Route exact path="/wellness" component={WellnessPage} />
+                {/* <Route exact path="/wellness" component={WellnessPage} /> */}
                 <Route exact path="/unsub" component={UnSubscribePage} />
                 <PrivateRoute exact path="/create_post" component={CreatePostPage} />
                 <PrivateRoute exact path="/saved" component={SavedPage} />

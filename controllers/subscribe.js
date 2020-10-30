@@ -15,7 +15,7 @@ exports.newSub = async (req, res, next) => {
         let sub = await Sub.findOne({ email: req.body.email });
         if (sub) {
             return res.status(400).json({
-                serverMsg: 'Uh oh! Looks like the email that was used already exists.'
+                serverMsg: 'Uh oh! Looks like the email already exists.'
             });
         }
         sub = new Sub({

@@ -69,7 +69,6 @@ exports.login = (req, res, next) => {
     User.findOne({ email: req.body.email })
         .then((user) => {
             if (!user) {
-                console.log('User does not exist')
                 return res.status(401).json({
                     serverMsg: 'Invalid username or password'
                 });

@@ -52,7 +52,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                         <ul>
                             <li><Link to="/lifestyle" className="nav-link"><span className="navSpan">LIFESTYLE</span></Link></li>
                             <li> <Link to="/devotional" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link></li>
-                            <li><Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link></li>
+                            {/* <li><Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link></li> */}
                             <li><Link to="/graphics" className="nav-link"><span className="navSpan">GRAPHICS</span></Link></li>
                         </ul>
                     </li>
@@ -74,7 +74,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             <Link to="/" className="nav-link"><span className="navSpan">HOME</span></Link>
             <Link to="/lifestyle" className="nav-link"><span className="navSpan">LIFESTYLE</span></Link>
             <Link to="/devotional" className="nav-link"><span className="navSpan">DEVOTIONAL</span></Link>
-            <Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link>
+            {/* <Link to="/wellness" className="nav-link"><span className="navSpan">WELLNESS</span></Link> */}
             <Link to="/graphics" className="nav-link"><span className="navSpan">GRAPHICS</span></Link>
         </section>
     );

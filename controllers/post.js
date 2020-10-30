@@ -6,6 +6,12 @@ const sendMail = require('../services/nodemailer');
 // @desc     Create a post
 // @access   Private
 exports.createPost = async (req, res, next) => {
+    if (!req.body.title || !req.body.coverImage || !req.body.summary || !req.body.category || !req.body.content) {
+        return res.status(406).json({
+            serverMsg: 'Please make sure to fill out all the input fields'
+        });
+    }
+
     try {
         const post = new Post({
             title: req.body.title,
@@ -51,7 +57,7 @@ exports.createPost = async (req, res, next) => {
         });
     } catch (err) {
         return res.status(500).json({
-            serverMsg: 'Server error'
+            serverMsg: 'There was a problem with our server while completing your request. Please try again later'
         });
     };
 };
@@ -70,8 +76,8 @@ exports.fetchPost = (req, res, next) => {
             return res.status(200).json(post);
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'There was a problem with the server'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -93,8 +99,8 @@ exports.fetchLifestyle = (req, res, next) => {
             });
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -116,8 +122,8 @@ exports.fetchDevotional = (req, res, next) => {
             });
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -139,8 +145,8 @@ exports.fetchWellness = (req, res, next) => {
             });
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -162,8 +168,8 @@ exports.fetchGraphics = (req, res, next) => {
             });
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -185,8 +191,8 @@ exports.fetchRecentBlogs = (req, res, next) => {
             });
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -228,8 +234,8 @@ exports.updatePost = (req, res, next) => {
             });
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -257,8 +263,8 @@ exports.deletePost = (req, res, next) => {
             });
         })
         .catch((err) => {
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
@@ -291,9 +297,8 @@ exports.addComment = (req, res, next) => {
             });
         })
         .catch((err) => {
-            console.log(err);
-            res.status(500).json({
-                serverMsg: 'Server error'
+            return res.status(500).json({
+                serverMsg: 'There was a problem with our server while completing your request. Please try again later'
             });
         });
 };
