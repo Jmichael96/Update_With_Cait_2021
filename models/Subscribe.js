@@ -10,6 +10,10 @@ const SubSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 });
 const Sub = mongoose.model('Sub', SubSchema);
 module.exports = Sub;

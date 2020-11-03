@@ -12,6 +12,8 @@ connectDB();
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(bodyParser.json({ limit: '50mb', extended: true }));
 
+app.use(express.static('public'));
+
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
 }

@@ -21,14 +21,24 @@ module.exports = sendMail = (subject, sendingTo, html, isNew) => {
             from: EMAIL,
             bcc: sendingTo,
             subject: subject,
-            html: html
+            html: html,
+            // attachments: [{
+            //     filename: 'cait2.JPG',
+            //     path: '../cait2.JPG',
+            //     cid: 'image1@cid'
+            // }]
         }
     } else if (isNew) {
         mailOptions = {
             from: EMAIL,
             to: sendingTo,
             subject: subject,
-            html: html
+            html: html,
+            // attachments: [{
+            //     filename: 'cait2.JPG',
+            //     path: 'https://smaller-pictures.appspot.com/images/dreamstime_xxl_65780868_small.jpg',
+            //     cid: 'image1@cid'
+            // }]
         }
     }
     transporter.sendMail(mailOptions, function (error, info) {

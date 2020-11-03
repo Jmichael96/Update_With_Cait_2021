@@ -56,7 +56,7 @@ const UnSubscribePage = ({ sub: { loading }, unSubscribe, setModal }) => {
 
     return (
         <article id="unsubscribeStyles_root">
-            <section id="unsubscribeStyles_formWrap" style={{ backgroundColor: Colors.secondaryBgColor }}>
+            <section id="unsubscribeStyles_formWrap" style={{ backgroundColor: Colors.cardBg }}>
                 <form id="unsubscribeStyles_form">
                     <Wrapper>
                         <input

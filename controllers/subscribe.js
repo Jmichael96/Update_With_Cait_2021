@@ -24,12 +24,37 @@ exports.newSub = async (req, res, next) => {
         });
 
         await sub.save();
-        const html = `<p>Thank you for subscribing to the Update With Cait blog. From here every time a new blog is posted you will be immediately notified!</p>
-                        <br />
-                        <p style="text-align:center; color:black; font-size:.7rem;" font-weight:500;>&copy; Copyright</p>
-                        <p style="text-align:center; color:black; font-size:.7rem;">To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${sub.email}">HERE</a>
-                    </p>`;
-        sendMail(`Thank you for subscribing to the Update With Cait`, sub.email, html, true);
+        const html = `
+                <h1 style="color: black; font-size: 24px; text-align: center">Update With Cait</h1>
+                <div style="min-height:200px; max-height: 220px; width: 100%; justify-content: center; background: tan; padding: 8px 0 8px 0;">
+                    <h3 style="font-size:24px; text-align: center; color: black;">Welcome!</h3>
+                    <img style="width:100%; max-width: 200px; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;" src="https://images.pexels.com/photos/1236701/pexels-photo-1236701.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                </div>
+                <div style="width: 100%; margin-top: 110px;">
+                    <h3 style="text-align:center; font-size: 24px;">Thanks for subscribing to the update!</h3>
+                    <p style="text-align:center; font-size: 14px;">You will be notified after each new blog post.</p>
+                </div>
+                <img style="width: 100%; max-width: 300px; display: block; margin-top: 60px; margin-left: auto; margin-right: auto;" src="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                <div style="margin-top: 80px;">
+                    <h3 style="text-align:center; font-size: 24px;">Heres a message from Cait:</h3>
+                    <div style="width: 300px; margin-left: auto; margin-right: auto;">
+                        <p style="text-align:center; font-size: 14px;">Hi friends! I'm so happy you joined The Updates mailing list. Now, you'll never miss a blog.</p>
+                        <p style="text-align:center; font-size: 14px;">Thanks again! xoxo,</p>
+                        <p style="text-align:center; font-size: 14px;">Cait</p>
+                    </div>
+                </div>
+                <div style="margin-top: 100px">
+                    <p style="text-align:center; color:black; font-size: 11px;">&copy; Copyright</p>
+                    <p style="text-align:center; color:black; font-size: 12px;">To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${sub.email}">here</a></p>
+                </div>
+                `;
+
+        // <div style="margin-top: 60px; margin-left: auto; margin-right: auto;">
+        //     <img style="width: 150px; height: 150px; margin-left: auto; margin-right: auto;" src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80" />
+        //     <img style="width: 150px; height: 150px; margin-left: auto; margin-right: auto;" src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80" />
+        //     <img style="width: 150px; height: 150px; margin-left: auto; margin-right: auto;" src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80" />
+        // </div>
+        sendMail(`Thanks for subscribing to Update With Cait`, sub.email, html, true);
         return res.status(200).json({
             serverMsg: `Thank you for subscribing, ${sub.name}`
         });
