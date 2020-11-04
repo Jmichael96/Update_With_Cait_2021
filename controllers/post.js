@@ -36,18 +36,25 @@ exports.createPost = async (req, res, next) => {
         const newPost = await post.save();
 
         for (let i = 0; i < bccArray.length; i++) {
-            // creating html for the email
             const html = `
-                <h5>Post Summary:</h5>
-                <br />
-                <p>${newPost.summary}</p>
-                <br />
-                <a target="_blank" href="https://www.updatewithcait.com/">Post Link</a>
-                <br />
-                <p>To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${bccArray[i]}">HERE</a></p>
+                 <h1 style="color: black; font-size: 30px; text-align: center">Update With Cait</h1>
+                <div style="height: auto; width: 100%; justify-content: center; background: #E7D1B1; padding: 8px 0 8px 0;">
+                    <h3 style="font-size:24px; text-align: center; color: black;">${newPost.title}</h3>
+                    <div style="width: 300px; margin-left: auto; margin-right: auto;">    
+                        <p style="text-align:center; font-size: 14px;">${newPost.summary}</p>
+                    </div>
+                </div>
+                <div style="margin-top: 80px;">
+                    <p style="text-align:center; font-size: 14px;">New post from The Update. Click below to read the latest blog.</p>
+                    <p style="text-align:center;font-size: 14px;"><a href="http://localhost:3000/post_content/${newPost._id}" target="_blank">updatewithcait.com</a></p>
+                </div>
+                <div style="margin-top: 100px">
+                    <p style="text-align:center; color:black; font-size: 11px;">&copy; Copyright</p>
+                    <p style="text-align:center; color:black; font-size: 12px;">To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${bccArray[i]}">here</a></p>
+                </div>
             `;
             // sending mail 
-            sendMail('New blog post from Update With Cait', bccArray[i], html, false);
+            sendMail('New post from The Update With Cait', bccArray[i], html, false);
         };
 
         // returning the successful status

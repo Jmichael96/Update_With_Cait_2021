@@ -25,8 +25,8 @@ exports.newSub = async (req, res, next) => {
 
         await sub.save();
         const html = `
-                <h1 style="color: black; font-size: 24px; text-align: center">Update With Cait</h1>
-                <div style="min-height:200px; max-height: 220px; width: 100%; justify-content: center; background: tan; padding: 8px 0 8px 0;">
+                <h1 style="color: black; font-size: 30px; text-align: center">Update With Cait</h1>
+                <div style="min-height:200px; max-height: 220px; width: 100%; justify-content: center; background: #E7D1B1; padding: 8px 0 8px 0;">
                     <h3 style="font-size:24px; text-align: center; color: black;">Welcome!</h3>
                     <img style="width:100%; max-width: 200px; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;" src="https://images.pexels.com/photos/1236701/pexels-photo-1236701.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
                 </div>
@@ -48,12 +48,6 @@ exports.newSub = async (req, res, next) => {
                     <p style="text-align:center; color:black; font-size: 12px;">To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${sub.email}">here</a></p>
                 </div>
                 `;
-
-        // <div style="margin-top: 60px; margin-left: auto; margin-right: auto;">
-        //     <img style="width: 150px; height: 150px; margin-left: auto; margin-right: auto;" src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80" />
-        //     <img style="width: 150px; height: 150px; margin-left: auto; margin-right: auto;" src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80" />
-        //     <img style="width: 150px; height: 150px; margin-left: auto; margin-right: auto;" src="https://images.unsplash.com/photo-1497250681960-ef046c08a56e?ixlib=rb-1.2.1&w=1000&q=80" />
-        // </div>
         sendMail(`Thanks for subscribing to Update With Cait`, sub.email, html, true);
         return res.status(200).json({
             serverMsg: `Thank you for subscribing, ${sub.name}`
