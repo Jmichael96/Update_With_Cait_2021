@@ -22,11 +22,6 @@ module.exports = sendMail = (subject, sendingTo, html, isNew) => {
             bcc: sendingTo,
             subject: subject,
             html: html,
-            // attachments: [{
-            //     filename: 'cait2.JPG',
-            //     path: '../cait2.JPG',
-            //     cid: 'image1@cid'
-            // }]
         }
     } else if (isNew) {
         mailOptions = {
