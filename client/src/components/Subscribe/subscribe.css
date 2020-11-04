@@ -38,6 +38,10 @@
     height: 1.4rem;
 }
 
+.subscribeStyles_input:focus {
+    outline: none;
+}
+
 /* mail icon inside the submit button */
 
 .subscribeStyles_mailIcon {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const productionDB = process.env.DB;
+const productionDB = process.env.MONGODB_URI;
 const developmentDB = process.env.TEST_DB;
 
 const connectDB = async () => {

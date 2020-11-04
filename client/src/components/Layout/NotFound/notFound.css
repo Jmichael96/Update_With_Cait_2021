@@ -1,0 +1,77 @@
+/* title for the page */
+
+#errorTitle {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2rem;
+}
+
+/* image of vader */
+
+#vaderImg {
+    display: block;
+    width: 100%;
+    max-width: 15rem;
+}
+
+.bubble {
+    background: #000000;
+    display: table;
+    height: 8rem;
+    position: relative;
+    top: 20px;
+    width: 20rem;
+    float: left;
+    margin: 0 15px 45px;
+}
+
+.bubble:nth-of-type(3n-2) {
+    border-radius: 100px / 80px;
+}
+
+.bubble:nth-of-type(3n-1) {
+    border-radius: 120px / 100px;
+}
+
+.bubble:nth-of-type(3n) {
+    border-radius: 200px 200px 195px 195px / 100px;
+}
+
+.bubble:before {
+    background: #000;
+    border-bottom-right-radius: 40px 30px;
+    content: "";
+    height: 40px;
+    left: 180px;
+    position: absolute;
+    top: 93%;
+    width: 40px;
+}
+
+.bubble:after {
+    background: #FFF;
+    border-bottom-right-radius: 30px 30px;
+    content: "";
+    height: 38px;
+    left: 160px;
+    position: absolute;
+    top: 100%;
+    width: 30px;
+}
+
+.bubbleContent {
+    display: table-cell;
+    height: 100%;
+    padding: 0 30px 0;
+    vertical-align: middle;
+}
+
+p.quote {
+    display: block;
+    font: italic 1.5rem Georgia, Times, serif;
+    margin: 0;
+    padding: 0 45px;
+    position: relative;
+    text-align: center;
+    color: white;
+}

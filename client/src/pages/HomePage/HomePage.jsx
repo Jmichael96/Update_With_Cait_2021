@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchRecentPosts } from '../../store/actions/post';
 import { subscribe } from '../../store/actions/subscribe';
 import { setModal } from '../../store/actions/modal';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 // styles
 import './homePage.css';
@@ -20,7 +20,7 @@ import Button from '../../components/Button/Button';
 // utils
 import Colors from '../../utils/constants/Colors';
 
-const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts }, auth, subscribe }) => {
+const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fetchedRecentPosts }, auth, subscribe, history }) => {
 
     const renderCounter = () => {
         if (!auth.loading && auth.isAuthenticated) {
@@ -32,6 +32,11 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
             )
         }
     }
+    // redirect to about page
+    const redirectAbout = () => {
+        history.push('/about');
+    };
+
     return (
         <article id="homePageStyles_root">
             <section id="homePageStyles_introImageWrap">
@@ -56,9 +61,7 @@ const HomePage = ({ setModal, fetchRecentPosts, post: { loading, recentPosts, fe
                                     </p>
                                 </Wrapper>
                                 <Wrapper>
-                                    <Link to="/about">
-                                        <Button>READ MORE</Button>
-                                    </Link>
+                                    <Button onClick={redirectAbout}>READ MORE</Button>
                                 </Wrapper>
                             </div>
                         </Wrapper>
@@ -78,6 +81,7 @@ HomePage.propTypes = {
     subscribe: PropTypes.func.isRequired,
     post: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
+    history: PropTypes.any,
 };
 
 const mapStateToProps = (state) => ({
@@ -85,4 +89,6 @@ const mapStateToProps = (state) => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps, { setModal, fetchRecentPosts, subscribe })(HomePage);
+const exportHomePage = withRouter(HomePage);
+
+export default connect(mapStateToProps, { setModal, fetchRecentPosts, subscribe })(exportHomePage);

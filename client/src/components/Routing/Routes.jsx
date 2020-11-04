@@ -9,6 +9,7 @@ import PrivateRoute from './PrivateRoutes';
 import Login from '../Auth/Login/Login';
 import Navbar from '../Layout/Navbar/Navbar';
 import ScrollTop from '../Layout/ScrollTop/ScrollTop';
+import NotFound from '../Layout/NotFound/NotFound';
 
 // pages
 import HomePage from '../../pages/HomePage/HomePage';
@@ -49,6 +50,7 @@ const Routes = () => {
                 <PrivateRoute exact path="/saved" component={SavedPage} />
                 <PrivateRoute exact path="/saved_post/:id" component={SavedPostContentPage} />
                 <PrivateRoute exact path="/my_subs" component={SubDataPage} />
+                <Route component={NotFound} />
             </Switch>
         </main>
     );

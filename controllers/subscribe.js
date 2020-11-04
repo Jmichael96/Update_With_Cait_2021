@@ -28,13 +28,13 @@ exports.newSub = async (req, res, next) => {
                 <h1 style="color: black; font-size: 30px; text-align: center">Update With Cait</h1>
                 <div style="min-height:200px; max-height: 220px; width: 100%; justify-content: center; background: #E7D1B1; padding: 8px 0 8px 0;">
                     <h3 style="font-size:24px; text-align: center; color: black;">Welcome!</h3>
-                    <img style="width:100%; max-width: 200px; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;" src="https://images.pexels.com/photos/1236701/pexels-photo-1236701.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                    <img style="width:100%; max-width: 200px; display: block; margin-left: auto; margin-right: auto; margin-top: 20px;" src="https://www.updatewithcait.com/assets/images/cait2.JPG" />
                 </div>
                 <div style="width: 100%; margin-top: 110px;">
                     <h3 style="text-align:center; font-size: 24px;">Thanks for subscribing to the update!</h3>
                     <p style="text-align:center; font-size: 14px;">You will be notified after each new blog post.</p>
                 </div>
-                <img style="width: 100%; max-width: 300px; display: block; margin-top: 60px; margin-left: auto; margin-right: auto;" src="https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+                <img style="width: 100%; max-width: 300px; display: block; margin-top: 60px; margin-left: auto; margin-right: auto;" src="https://www.updatewithcait.com/assets/images/aboutImages/aboutImg1.JPG" />
                 <div style="margin-top: 80px;">
                     <h3 style="text-align:center; font-size: 24px;">Heres a message from Cait:</h3>
                     <div style="width: 300px; margin-left: auto; margin-right: auto;">
