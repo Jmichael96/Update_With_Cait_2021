@@ -10,8 +10,8 @@ router.use('/api/posts', post);
 router.use('/api/save', saved);
 router.use('/api/subscribe', sub);
 
-// router.use((req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/build/index.html'));
-// });
+router.use((req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 module.exports = router;
