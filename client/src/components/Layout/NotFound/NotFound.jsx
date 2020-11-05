@@ -18,7 +18,7 @@ const NotFound = () => {
                 </div>
             </Wrapper>
             <Wrapper>
-                <img id="vaderImg" src={require('../../../assets/images/vader.png')} />
+                <img alt="" id="vaderImg" src={require('../../../assets/images/vader.png')} />
             </Wrapper>
         </article>
     )

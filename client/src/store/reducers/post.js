@@ -182,7 +182,9 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 post: payload.post,
-                devotionalPosts: updatedCategory === 'Devotional' ? [payload.post, ...state.devotionalPosts] : state.devotionalPosts,
+                devotionalPosts: updatedCategory === 'Devotional' ? state.devotionalPosts.map(post =>
+                    post._id === payload.id ? { ...post, ...payload.post } : post
+                ) : state.devotionalPosts,
                 lifestylePosts: updatedCategory === 'Lifestyle' ? [payload.post, ...state.lifestylePosts] : state.lifestylePosts,
                 graphicsPosts: updatedCategory === 'Graphics' ? [payload.post, ...state.graphicsPosts] : state.graphicsPosts,
                 wellnessPosts: updatedCategory === 'Wellness' ? [payload.post, ...state.wellnessPosts] : state.wellnessPosts,
