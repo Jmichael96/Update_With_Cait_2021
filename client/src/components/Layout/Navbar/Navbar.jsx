@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../../store/actions/auth';
 import { Link } from 'react-router-dom';
-import { AiFillInstagram, AiFillLinkedin, AiFillFacebook } from 'react-icons/ai';
+import { AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 
 // components
 import SmSpinner from '../SmSpinner/SmSpinner';
@@ -86,7 +86,6 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                 <div id="navbarStyles_desktopLinkWrap">
                     {!loading && !isAuth ? guestLinks : authLinks}
                     <div className="navbarStyles_socialIconWrap">
-                        <a href="https://facebook.com" rel="noopener noreferrer" target="_blank"><AiFillFacebook className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                         <a href="https://instagram.com" rel="noopener noreferrer" target="_blank"><AiFillInstagram className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                         <a href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><AiFillLinkedin className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                     </div>

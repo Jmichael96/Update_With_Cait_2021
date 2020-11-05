@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { AiFillInstagram, AiFillLinkedin, AiFillFacebook } from 'react-icons/ai';
+import { AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 
 // styles
 import './mobileNav.css';
@@ -66,7 +66,6 @@ const MobileNav = ({ logout, isAuthenticated, authLoading, user }) => {
         <div id="mobilNavStyles_root">
             <div id="mobileNavStyles_navBtnWrap">
                 <div className="mobileNavStyles__socialIconWrap">
-                    <a href="https://facebook.com" rel="noopener noreferrer" target="_blank"><AiFillFacebook className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                     <a href="https://instagram.com" rel="noopener noreferrer" target="_blank"><AiFillInstagram className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                     <a href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><AiFillLinkedin className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                 </div>
