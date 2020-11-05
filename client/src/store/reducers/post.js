@@ -22,7 +22,6 @@ export default (state = initialState, action) => {
         case types.CREATE_POST:
         case types.FETCH_DEVOTIONAL:
         case types.FETCH_GRAPHICS:
-        case types.FETCH_WELLNESS:
         case types.FETCH_LIFESTYLE:
         case types.PUBLISH_SAVED_POST_ADD:
         case types.FETCH_POST:
@@ -64,7 +63,6 @@ export default (state = initialState, action) => {
                 devotionalPosts: createdPostCategory === 'Devotional' ? [payload, ...state.devotionalPosts] : state.devotionalPosts,
                 lifestylePosts: createdPostCategory === 'Lifestyle' ? [payload, ...state.lifestylePosts] : state.lifestylePosts,
                 graphicsPosts: createdPostCategory === 'Graphics' ? [payload, ...state.graphicsPosts] : state.graphicsPosts,
-                wellnessPosts: createdPostCategory === 'Wellness' ? [payload, ...state.wellnessPosts] : state.wellnessPosts,
                 recentPosts: !state.fetchedRecentPosts ? state.recentPosts : updatedRecentPosts
             };
 
@@ -110,21 +108,6 @@ export default (state = initialState, action) => {
                 loading: false,
                 fetchedDbDevotional: true
             };
-        case types.FETCH_WELLNESS_FAIL:
-            return {
-                ...state,
-                wellnessPosts: [],
-                post: null,
-                loading: false
-            };
-        case types.FETCH_WELLNESS_SUCCESS:
-            return {
-                ...state,
-                wellnessPosts: payload,
-                post: null,
-                loading: false,
-                fetchedDbWellness: true
-            };
         case types.FETCH_GRAPHICS_FAIL:
             return {
                 ...state,
@@ -168,7 +151,6 @@ export default (state = initialState, action) => {
                 devotionalPosts: publishedPostCategory === 'Devotional' ? [payload, ...state.devotionalPosts] : state.devotionalPosts,
                 lifestylePosts: publishedPostCategory === 'Lifestyle' ? [payload, ...state.lifestylePosts] : state.lifestylePosts,
                 graphicsPosts: publishedPostCategory === 'Graphics' ? [payload, ...state.graphicsPosts] : state.graphicsPosts,
-                wellnessPosts: publishedPostCategory === 'Wellness' ? [payload, ...state.wellnessPosts] : state.wellnessPosts,
                 loading: false
             };
         case types.UPDATE_POST_FAIL:
@@ -185,9 +167,12 @@ export default (state = initialState, action) => {
                 devotionalPosts: updatedCategory === 'Devotional' ? state.devotionalPosts.map(post =>
                     post._id === payload.id ? { ...post, ...payload.post } : post
                 ) : state.devotionalPosts,
-                lifestylePosts: updatedCategory === 'Lifestyle' ? [payload.post, ...state.lifestylePosts] : state.lifestylePosts,
-                graphicsPosts: updatedCategory === 'Graphics' ? [payload.post, ...state.graphicsPosts] : state.graphicsPosts,
-                wellnessPosts: updatedCategory === 'Wellness' ? [payload.post, ...state.wellnessPosts] : state.wellnessPosts,
+                lifestylePosts: updatedCategory === 'Lifestyle' ? state.lifestylePosts.map(post =>
+                    post._id === payload.id ? { ...post, ...payload.post } : post
+                ) : state.lifestylePosts,
+                graphicsPosts: updatedCategory === 'Graphics' ? state.graphicsPosts.map(post =>
+                    post._id === payload.id ? { ...post, ...payload.post } : post
+                ) : state.graphicsPosts,
                 loading: false
             };
         case types.DELETE_POST_FAIL:
@@ -204,7 +189,6 @@ export default (state = initialState, action) => {
                 devotionalPosts: deletedCategory === 'Devotional' ? state.devotionalPosts.filter(post => post._id !== payload.id) : state.devotionalPosts,
                 lifestylePosts: deletedCategory === 'Lifestyle' ? state.lifestylePosts.filter(post => post._id !== payload.id) : state.lifestylePosts,
                 graphicsPosts: deletedCategory === 'Graphics' ? state.graphicsPosts.filter(post => post._id !== payload.id) : state.graphicsPosts,
-                wellnessPosts: deletedCategory === 'Wellness' ? state.wellnessPosts.filter(post => post._id !== payload.id) : state.wellnessPosts,
                 loading: false
             };
         case types.ADD_COMMENT_FAIL:
@@ -227,9 +211,6 @@ export default (state = initialState, action) => {
                 graphicsPosts: addedCommentCat === 'Graphics' ? state.graphicsPosts.map(post =>
                     post._id === payload.id ? { ...post, comments: payload.post.comments } : post
                 ) : state.graphicsPosts,
-                wellnessPosts: addedCommentCat === 'Wellness' ? state.wellnessPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
-                ) : state.wellnessPosts,
                 loading: false
             };
         case types.DELETE_COMMENT_FAIL:
@@ -252,9 +233,6 @@ export default (state = initialState, action) => {
                 graphicsPosts: deletedPostCat === 'Graphics' ? state.graphicsPosts.map(post =>
                     post._id === payload.id ? { ...post, comments: payload.post.comments } : post
                 ) : state.graphicsPosts,
-                wellnessPosts: deletedPostCat === 'Wellness' ? state.wellnessPosts.map(post =>
-                    post._id === payload.id ? { ...post, comments: payload.post.comments } : post
-                ) : state.wellnessPosts,
             };
         case types.LIKE_POST:
             return {
@@ -279,10 +257,7 @@ export default (state = initialState, action) => {
                 graphicsPosts: likedPostCat === 'Graphics' ? state.graphicsPosts.map(post =>
                     post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.graphicsPosts,
-                wellnessPosts: likedPostCat === 'Wellness' ? state.wellnessPosts.map(post =>
-                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
-                ) : state.wellnessPosts,
-            }
+            };
         case types.UNLIKE_POST:
             return {
                 ...state,
@@ -306,9 +281,6 @@ export default (state = initialState, action) => {
                 graphicsPosts: unlikedPostCat === 'Graphics' ? state.graphicsPosts.map(post =>
                     post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
                 ) : state.graphicsPosts,
-                wellnessPosts: unlikedPostCat === 'Wellness' ? state.wellnessPosts.map(post =>
-                    post._id === payload.id ? { ...post, like_number: payload.post.like_number } : post
-                ) : state.wellnessPosts,
             };
         default: return state;
     };
