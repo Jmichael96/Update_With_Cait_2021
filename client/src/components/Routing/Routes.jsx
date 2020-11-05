@@ -50,7 +50,7 @@ const Routes = () => {
                 <PrivateRoute exact path="/saved" component={SavedPage} />
                 <PrivateRoute exact path="/saved_post/:id" component={SavedPostContentPage} />
                 <PrivateRoute exact path="/my_subs" component={SubDataPage} />
-                <Route component={NotFound} />
+                {/* <Route component={NotFound} /> */}
             </Switch>
         </main>
     );

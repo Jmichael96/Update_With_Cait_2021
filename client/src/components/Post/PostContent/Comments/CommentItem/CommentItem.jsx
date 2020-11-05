@@ -23,6 +23,14 @@ const CommentItem = ({ comment: { _id, authorName, content, date }, deleteCommen
         setMouseVisible(false);
     };
 
+    // check if the user is on mobile and render the correct delete button
+    const checkMobileHandler = () => {
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            return true;
+        }
+        return false;
+    };
+
     return (
         <section className="commentItemStyles_commentCard" style={{ backgroundColor: Colors.cardBg }} onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
             <div className="commentItemStyles_commentNameWrap">

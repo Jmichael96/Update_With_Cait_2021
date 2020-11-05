@@ -4,7 +4,7 @@ const developmentDB = process.env.TEST_DB;
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(productionDB, {
+        await mongoose.connect(developmentDB, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useFindAndModify: false,
@@ -14,7 +14,7 @@ const connectDB = async () => {
         console.log('Database has been penetrated!');
     } catch (err) {
         console.error(err.message);
-        console.log('DB Error')
+        console.log('DB Error');
         process.exit(1);
     }
 }
