@@ -46,11 +46,11 @@ exports.createPost = async (req, res, next) => {
                 </div>
                 <div style="margin-top: 80px;">
                     <p style="text-align:center; font-size: 14px;">New post from The Update. Click below to read the latest blog.</p>
-                    <p style="text-align:center;font-size: 14px;"><a href="http://localhost:3000/post_content/${newPost._id}" target="_blank">updatewithcait.com</a></p>
+                    <p style="text-align:center;font-size: 14px;"><a href="https://updatewithcait.com/post_content/${newPost._id}" target="_blank">updatewithcait.com</a></p>
                 </div>
                 <div style="margin-top: 100px">
                     <p style="text-align:center; color:black; font-size: 11px;">&copy; Copyright</p>
-                    <p style="text-align:center; color:black; font-size: 12px;">To unsubscribe click <a target="_blank" href="http://localhost:3000/unsub?user_email=${bccArray[i]}">here</a></p>
+                    <p style="text-align:center; color:black; font-size: 12px;">To unsubscribe click <a target="_blank" href="https://updatewithcait.com/unsub?user_email=${bccArray[i]}">here</a></p>
                 </div>
             `;
             // sending mail 
