@@ -20,7 +20,7 @@ exports.newSub = async (req, res, next) => {
         }
         sub = new Sub({
             name: req.body.name,
-            email: req.body.email
+            email: req.body.email.toLowerCase()
         });
 
         await sub.save();

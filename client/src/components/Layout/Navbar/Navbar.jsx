@@ -86,8 +86,8 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
                 <div id="navbarStyles_desktopLinkWrap">
                     {!loading && !isAuth ? guestLinks : authLinks}
                     <div className="navbarStyles_socialIconWrap">
-                        <a href="https://instagram.com" rel="noopener noreferrer" target="_blank"><AiFillInstagram className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
-                        <a href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><AiFillLinkedin className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                        <a href="https://www.instagram.com/updatewithcait/?hl=en" rel="noopener noreferrer" target="_blank"><AiFillInstagram className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                        <a href="https://www.linkedin.com/in/caitlyn-ellis/" rel="noopener noreferrer" target="_blank"><AiFillLinkedin className="navbarStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                     </div>
                 </div>
             )

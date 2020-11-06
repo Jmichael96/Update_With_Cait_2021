@@ -66,8 +66,8 @@ const MobileNav = ({ logout, isAuthenticated, authLoading, user }) => {
         <div id="mobilNavStyles_root">
             <div id="mobileNavStyles_navBtnWrap">
                 <div className="mobileNavStyles__socialIconWrap">
-                    <a href="https://instagram.com" rel="noopener noreferrer" target="_blank"><AiFillInstagram className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
-                    <a href="https://linkedin.com" rel="noopener noreferrer" target="_blank"><AiFillLinkedin className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                    <a href="https://www.instagram.com/updatewithcait/?hl=en" rel="noopener noreferrer" target="_blank"><AiFillInstagram className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
+                    <a href="https://www.linkedin.com/in/caitlyn-ellis/" rel="noopener noreferrer" target="_blank"><AiFillLinkedin className="mobileNavStyles_socialIcon" style={{ color: Colors.navText }} /></a>
                 </div>
                 <a id="mobileNavStyles_menuBtn" className={`${!navToggle ? '' : 'active'}`} onClick={() => { toggleNavIcon(); menuHandler() }} href="#!"><span></span></a>
             </div>
