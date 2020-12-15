@@ -68,11 +68,11 @@ export const loginSuccess = (email, password) => (dispatch) => {
 };
 
 //! LOGOUT 
-export const logout = () => dispatch => {
+export const logout = (history) => dispatch => {
     dispatch({ type: types.LOGOUT });
-    dispatch(logoutSuccess());
+    dispatch(logoutSuccess(history));
 }
-export const logoutSuccess = () => (dispatch) => {
+export const logoutSuccess = (history) => (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -85,6 +85,7 @@ export const logoutSuccess = () => (dispatch) => {
                 type: types.LOGOUT_SUCCESS
             });
             dispatch(setAlert('You have successfully logged out. Goodbye Caitlyn!', 'success'));
+            history.push('/');
         })
         .catch((err) => {
             const error = err.response.data.serverMsg;

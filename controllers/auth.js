@@ -22,7 +22,7 @@ exports.register = (req, res, next) => {
                     }
                 }
                 jwt.sign(payload, process.env.SECRET,
-                    { expiresIn: 3600 }, (err, token) => {
+                    { expiresIn: 360000000 }, (err, token) => {
                         if (err) {
                             console.log(err);
                             throw err;
@@ -91,7 +91,7 @@ exports.login = (req, res, next) => {
             }
 
             jwt.sign(payload, process.env.SECRET,
-                { expiresIn: 3600 }, (err, token) => {
+                { expiresIn: 360000000 }, (err, token) => {
                     if (err) {
                         console.log(err);
                         throw err;

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../../store/actions/auth';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
 
 // components
@@ -13,7 +13,7 @@ import Colors from '../../../utils/constants/Colors';
 // styles
 import './navbar.css';
 
-const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout, history }) => {
     const [isAuth, setIsAuth] = useState(false);
     // set whether or not the mobile nav should be set
     const [mobilize, setMobilize] = useState(null);
@@ -62,7 +62,7 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
             <Link to="/saved" className="nav-link"><span className="navSpan">SAVED</span></Link>
             <Link to="/my_subs" className="nav-link"><span className="navSpan">MY SUBS</span></Link>
 
-            <a href="#!" className="nav-link" onClick={() => logout()}>
+            <a href="#!" className="nav-link" onClick={() => logout(history)}>
                 {!loading ? <span className="navSpan">LOGOUT</span> : <SmSpinner />}
             </a>
             {/* <p>{!loading && !isEmpty(user) && <p>Welcome {user.name}</p>}</p> */}
@@ -107,14 +107,16 @@ const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
 
 Navbar.propTypes = {
     logout: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired
+    auth: PropTypes.object.isRequired,
+    history: PropTypes.any,
 };
 
 const mapStateToProps = state => ({
     auth: state.auth
 });
 
+const exportNav = withRouter(Navbar)
 export default connect(
     mapStateToProps,
     { logout }
-)(Navbar);
+)(exportNav);
