@@ -32,11 +32,13 @@
     font-size: 1rem;
     line-height: 1.4rem;
 }
+
 /* the content images */
 
 #postDataStyles_content img {
-    height: 8rem;
-    width: auto;
+    height: auto;
+    width: 100%;
+    max-width: 18rem;
 }
 
 /* date wrapper */

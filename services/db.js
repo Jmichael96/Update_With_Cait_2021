@@ -4,7 +4,7 @@ const developmentDB = process.env.TEST_DB;
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(productionDB, {
+        await mongoose.connect(developmentDB, {
             useNewUrlParser: true,
             useCreateIndex: true,
             useFindAndModify: false,
